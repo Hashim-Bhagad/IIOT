@@ -91,7 +91,7 @@ export default function StudyWorkspace({ week, index, extraQuestions }: { week: 
       <Link className="brand" href="/week/1"><span className="brand-mark"><Icon name="book" size={24}/></span><span>IIoT<br/><small>Study Studio</small></span></Link>
       <p className="course-name">Industry 4.0 &amp;<br/>Industrial Internet of Things</p>
       <div className="course-progress"><span>Assignment progress</span><strong>{totalAnswered} / {totalQuestions}</strong><div className="progress-track" role="progressbar" aria-label="Assignments answered" aria-valuenow={totalAnswered} aria-valuemin={0} aria-valuemax={totalQuestions}><span style={{width:`${totalAnswered / totalQuestions * 100}%`}}/></div></div>
-      <nav className="week-nav">{index.map(item => {
+      <nav className="week-nav" aria-label="Course sections"><Link className="pyq-nav-link" href="/pyqs"><span className="week-number">PYQ</span><span className="week-link-title">Extra PYQs</span><span className="week-count" aria-label={`${extraQuestions} additional questions`}>{extraQuestions} Qs</span></Link>{index.map(item => {
         const count = Object.keys(progress.answers).filter(id => id.startsWith(`w${item.id}-`)).length;
         return <Link key={item.id} href={`/week/${item.id}`} aria-current={week.id === item.id ? 'page' : undefined}><span className="week-number">{String(item.id).padStart(2, '0')}</span><span className="week-link-title">{item.title}</span><span className="week-count" aria-label={`${count} of ${item.questions} answered`}>{count === item.questions ? <Icon name="check" size={16}/> : `${count}/${item.questions}`}</span></Link>;
       })}</nav>
@@ -99,7 +99,7 @@ export default function StudyWorkspace({ week, index, extraQuestions }: { week: 
     </aside>
 
     <div className="study-body">
-      <header className="workspace-bar"><span>Industry 4.0 &amp; IIoT</span><label className="mobile-week">Week<select value={week.id} onChange={event => router.push(`/week/${event.target.value}`)} aria-label="Choose a course week">{index.map(item => <option key={item.id} value={item.id}>{item.id}. {item.title}</option>)}</select></label><span className="workspace-status">Week {week.id} of {index.length} <span className="status-dot"/> {lessonsRead}/{week.sections.length} topics understood</span></header>
+      <header className="workspace-bar"><span>Industry 4.0 &amp; IIoT</span><label className="mobile-week">Section<select value={week.id} onChange={event => router.push(event.target.value === 'pyqs' ? '/pyqs' : `/week/${event.target.value}`)} aria-label="Choose a course section"><option value="pyqs">PYQs · {extraQuestions} extra questions</option>{index.map(item => <option key={item.id} value={item.id}>{item.id}. {item.title}</option>)}</select></label><span className="workspace-status">Week {week.id} of {index.length} <span className="status-dot"/> {lessonsRead}/{week.sections.length} topics understood</span></header>
       <main id="study-main">
         <div className="week-header"><h1>{week.title}</h1><div className="week-meta">Week {week.id} <span>·</span> {week.sections.length} topics <span>·</span> {week.quiz.length} exercises</div><p>{week.summary}</p></div>
         <div className="pyq-entry"><span>More practice beyond the weekly assignments.</span><Link className="text-button" href="/pyqs">{extraQuestions} extra PYQs <Icon name="arrow" size={16}/></Link></div>

@@ -94,6 +94,7 @@ export default function PyqWorkspace({ bank, lessons }: { bank: PyqBank; lessons
       <aside className="course-rail" aria-label="PYQ topics">
         <Link className="brand" href="/week/1"><span className="brand-mark"><Icon name="book" size={24}/></span><span>IIoT<br/><small>Study Studio</small></span></Link>
         <p className="course-name">Extra PYQs<br/>Beyond the weekly assignments</p>
+        <nav className="week-nav pyq-section-nav" aria-label="Course sections"><Link className="pyq-nav-link" href="/pyqs" aria-current="page"><span className="week-number">PYQ</span><span className="week-link-title">Extra PYQs</span><span className="week-count">{bank.questions.length} Qs</span></Link><Link href="/week/1"><span className="week-number">01–12</span><span className="week-link-title">Weekly notes &amp; assignments</span><Icon name="arrow" size={16}/></Link></nav>
         <div className="course-progress"><span>Extra questions reviewed</span><strong>{reviewed} / {bank.questions.length}</strong><div className="progress-track" role="progressbar" aria-label="Extra PYQs reviewed" aria-valuenow={reviewed} aria-valuemin={0} aria-valuemax={bank.questions.length}><span style={{ width: `${reviewed / bank.questions.length * 100}%` }}/></div></div>
         <nav className="pyq-week-nav">
           <button type="button" aria-pressed={week === 0} onClick={() => filter(0, year)}>All weeks <span>{bank.questions.length}</span></button>

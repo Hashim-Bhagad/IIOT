@@ -57,6 +57,10 @@ li + li { margin-top: 8px; }
 .week-nav a { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 9px 8px; text-decoration: none; color: var(--ink); border: 1px solid transparent; border-radius: 6px; }
 .week-nav a:hover { background: #dfe7ed; }
 .week-nav a[aria-current='page'] { border-color: #c9d4dd; background: var(--surface); }
+.week-nav .pyq-nav-link { border-color: var(--rule-solid); background: var(--surface); margin-bottom: 12px; }
+.week-nav .pyq-nav-link:hover { background: var(--accent-tint); }
+.week-nav .pyq-nav-link .week-number { color: var(--accent); font-weight: 600; }
+.pyq-section-nav { margin-bottom: 24px; }
 .week-number { font-size: 12px; font-variant-numeric: tabular-nums; flex-shrink: 0; color: var(--muted); }
 .week-nav a[aria-current='page'] .week-number { color: var(--accent); font-weight: 600; }
 .week-link-title { font-size: 12px; font-weight: 500; line-height: 1.45; flex: 1; }
