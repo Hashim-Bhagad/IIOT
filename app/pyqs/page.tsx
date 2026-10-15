@@ -10,7 +10,7 @@ export default function PyqsPage() {
   const lessons = getWeeks().flatMap(week => week.sections.map(section => ({
     id: section.id,
     title: section.title,
-    diagram: customDiagrams[section.id] ?? section.diagram ?? null,
+    diagram: customDiagrams[section.id] ?? section.quick?.diagram ?? section.diagram ?? null,
   })));
   return <PyqWorkspace bank={getPyqs()} lessons={lessons} />;
 }

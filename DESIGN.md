@@ -20,7 +20,7 @@ colors:
 typography:
   display:
     fontFamily: "Space Grotesk, sans-serif"
-    fontSize: "44px"
+    fontSize: "36px"
     fontWeight: 500
     lineHeight: 1.25
     letterSpacing: "-0.025em"
@@ -138,7 +138,7 @@ components:
 
 The interface is an open reading workspace on cool paper. Deep blue ink, precise hairlines, compact controls and schematic figures make relationships and distinctions easy to inspect. Space Grotesk headings give the material a technical character; Inter supports sustained reading and operation.
 
-Density follows the material: long lessons remain open, definitions and comparisons use aligned rows, and optional explanations use native disclosure controls. Burnt orange identifies actions and selection. Green and red describe answer outcomes. The established visual world excludes shadows, decorative gradients, simulated paper texture and decorative illustration assets.
+Density follows the learner's fast-revision needs: each topic opens with a short summary, a figure and 3–5 pointers. Native disclosures hold full notes, definitions and comparisons. Burnt orange identifies actions and selection. Green and red describe answer outcomes. The established visual world excludes shadows, decorative gradients and simulated paper texture; instructional illustrations explain concrete distinctions.
 
 **Key Characteristics:**
 
@@ -185,7 +185,7 @@ The pairing is precise without making prose feel like a console. Headings use a 
 
 ### Hierarchy
 
-- **Display:** the frontmatter display role serves week headings, constrained to 20ch. It steps to 38px at 900px and 32px at 560px.
+- **Display:** week headings are constrained to 20ch and use 36px, stepping to 30px at 560px. The PYQ heading uses 38px and 32px respectively.
 - **Headline:** the headline role serves lesson headings, constrained to 30ch; it steps to 26px at 560px. Question headings use the same desktop size with a 34ch limit and step to 25px at 560px. The week-map heading uses the headline-small role and steps to 20px.
 - **Title:** the title role serves lesson subheadings and diagram titles. Diagram labels use Inter semibold with renderer-specific metrics.
 - **Body:** lessons use the body role and a maximum measure of 72ch; lesson paragraphs step to 14px at 560px. Intros use body-intro. The page base is 16px, stepping to 15px on narrow screens.
@@ -197,11 +197,11 @@ The pairing is precise without making prose feel like a console. Headings use a 
 
 The desktop shell is a two-column grid with a sticky, independently scrolling course rail (272px wide, 100dvh tall) and a flexible study body. The rail has 32px top, 20px horizontal and 24px bottom padding. The reading workspace is centered with a maximum outer width of 1104px and 48px horizontal padding; its header is capped at 820px. Practice and review regions cap at 880px and 840px respectively.
 
-The horizontal workspace bar has a minimum height of 72px. Study modes sit on a single hairline baseline. Lessons begin after 64px and end with 48px of padding and a divider. The spacing primitives record recurring built steps; component padding also includes the exact local values documented in the frontmatter.
+The horizontal workspace bar has a minimum height of 72px. Study modes sit on a single hairline baseline. Concise lessons begin after 40px and end with 32px of padding and a divider (32px/24px below 560px). The spacing primitives record recurring built steps; component padding also includes the exact local values documented in the frontmatter.
 
 - **At 1180px and below:** the rail narrows to 240px, main padding becomes 40px 32px 24px, and the workspace bar uses 32px horizontal padding. Practice footer counts move to a full-width row.
 - **At 900px and below:** the rail disappears, the shell becomes a single block, and a full-width native mobile week selector appears in the workspace bar. The main region uses 36px 24px 20px padding; secondary workspace status is hidden.
-- **At 560px and below:** main padding becomes 28px 20px 20px, the workspace bar uses 20px horizontal padding, lesson headings stack above the Understood control, and definition rows become a single column. Lesson spacing becomes 48px before / 36px after; answer actions stack and tab icons disappear.
+- **At 560px and below:** main padding becomes 28px 20px 20px, the workspace bar uses 20px horizontal padding, lesson headings stack above the Understood control, and definition rows become a single column. Lesson spacing becomes 32px before / 24px after; answer actions stack and tab icons disappear.
 
 Tables retain a minimum width of 480px inside horizontal scroll containers. Diagrams reflow their geometry to available inline width rather than depending on a fixed desktop image. Print removes navigation and operational controls, opens the reading width, and avoids splitting figures, tables and worked examples.
 
@@ -277,3 +277,11 @@ Geometry follows the renderer: dimensions align to an 8px grid and ports/text po
 The PYQ route reuses the cool-paper workspace, native controls and answer feedback. A compact four-column comparison shows source, covered, repeated and additional counts; it becomes two columns on mobile. The desktop rail filters related weeks, while mobile uses a labelled native select. Year filtering and a question jump menu work with the same question set.
 
 At the user’s explicit request for Motion/Lottie, the PYQ route adds brief 160–200ms opacity transitions for question/feedback changes and a locally authored, non-looping Lottie checkmark for correct answers. These are exceptions to the earlier no-entrance-animation rule. Reduced-motion preferences remove the fades/check animation. Diagrams remain responsive SVG with a prose walkthrough; eight additional concept diagrams clarify sensor terms, RFID, AI/ML/DL, cloud-service responsibilities, R operators, learning tasks, MOS sensing and IIRA activities.
+
+## Concise study view
+
+Each topic shows its quick summary, one figure and 3–5 short pointers. Pointers use two columns on desktop and one on mobile. A native topic select moves focus to the chosen lesson heading. The five-pointer week overview and original learning goals are optional disclosures.
+
+Every topic has a diagram specification. Branch diagrams connect a category root to peer concepts; flow arrows indicate a sequence, and layers show levels or nested scopes. Five topic views use original SVG illustrations to contrast sensors/actuators, AR/VR, fog/cloud (two weeks) and RFID tag types. Labels remain HTML text, figures have accessible descriptions, and narrow layouts preserve readable text.
+
+**More detail** retains the complete original teaching material. Answer feedback shows 1–2 pointers before optional **Full explanation** and **Source caveat** disclosures. Ambiguous-key warnings remain explicit; concise explanations retain relevant source conflicts. Progress keys and answer scoring remain unchanged.

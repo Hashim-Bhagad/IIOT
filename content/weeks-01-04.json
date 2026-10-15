@@ -88,6 +88,16 @@
             "The radio sends the measurement to the control room.",
             "A buzzer warns workers and the operator follows the safety procedure."
           ]
+        },
+        "quick": {
+          "summary": "Sensors measure, processors decide and actuators change the physical world.",
+          "points": [
+            "Sensor → processor → actuator is the essential chain.",
+            "Sensors and actuators are transducers: energy conversion works in opposite directions.",
+            "Assignment MQ-5 detects LPG, CH4 and CO; actual sensitivity depends on model and environment.",
+            "DHT22: temperature/humidity; HC-SR04: distance; PIR: motion.",
+            "Actuators need both an energy source and a control signal."
+          ]
         }
       },
       {
@@ -172,6 +182,47 @@
             "Check accuracy against a trusted reference.",
             "Check response time so a dangerous temperature rise is not reported too late."
           ]
+        },
+        "quick": {
+          "summary": "Separate measurement quality, response behavior, output format and sensed quantity.",
+          "points": [
+            "Range: measurable limits; accuracy: closeness to reference; resolution: smallest detectable change.",
+            "Sensitivity: output/input change; repeatability: consistency; drift: change under constant conditions.",
+            "Zero-order follows immediately; first-order settles gradually; second-order can overshoot.",
+            "Analog/digital describes output; scalar/vector describes quantity, so classifications can overlap.",
+            "Active/passive terminology varies; use the course examples rather than a universal rule."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Classify the sensor",
+            "nodes": [
+              {
+                "label": "Sensor classification",
+                "detail": "Choose the relevant classification axis."
+              },
+              {
+                "label": "Measurement quality",
+                "detail": "Range, accuracy, resolution, sensitivity, drift, repeatability"
+              },
+              {
+                "label": "Dynamic behavior",
+                "detail": "Zero-, first-, second-order responses"
+              },
+              {
+                "label": "Output interface",
+                "detail": "Analog or digital"
+              },
+              {
+                "label": "Quantity",
+                "detail": "Scalar or vector"
+              },
+              {
+                "label": "Course convention",
+                "detail": "Active/passive examples depend on terminology"
+              }
+            ],
+            "caption": "These are separate classification axes; one sensor can belong to several categories."
+          }
         }
       },
       {
@@ -242,6 +293,16 @@
             }
           ],
           "caption": "ZigBee adds a network above IEEE 802.15.4’s physical and MAC layers. Relaying extends reach beyond a single radio hop."
+        },
+        "quick": {
+          "summary": "802.15.4 defines radio/MAC; ZigBee adds networking, routing and application functions.",
+          "points": [
+            "DSSS is coding; O-QPSK is 2.4 GHz modulation; CSMA/CA controls medium access.",
+            "Coordinator starts the network; routers relay; end devices send/receive their own data without relaying.",
+            "Course ZigBee figures: 20–250 kbps, about 10–70 m; real deployments vary.",
+            "Source packet figures differ from the 127-byte 802.15.4 frame limit; layers and overhead matter.",
+            "Low duty cycles save battery; small sensor radios use milliwatts, not megawatts."
+          ]
         }
       },
       {
@@ -324,6 +385,16 @@
             "The app requests a reading using CoAP.",
             "6LoWPAN adapts the IPv6 packet for the low-power radio link."
           ]
+        },
+        "quick": {
+          "summary": "6LoWPAN fits IPv6 onto small radio frames; CoRE helps clients discover constrained-device resources.",
+          "points": [
+            "Adaptation sits between MAC and IPv6: compress headers, fragment packets, reassemble them.",
+            "IPv6 minimum MTU: 1280 bytes; 802.15.4 frame: 127 bytes; these are different limits.",
+            "Mesh-under forwards below IP; route-over routes at the IP layer.",
+            "CoRE discovery: Registration Interface, Resource Directory and REST-based interactions.",
+            "Course worldwide band: 2400–2483.5 MHz; 6LoWPAN itself is not restricted to one radio band."
+          ]
         }
       },
       {
@@ -403,6 +474,39 @@
             "Channel hopping helps the plant work around local interference.",
             "Choose a protocol that also fits interoperability, safety and deployment needs."
           ]
+        },
+        "quick": {
+          "summary": "Industrial radios favor predictable delivery; Z-Wave targets home control.",
+          "points": [
+            "WirelessHART uses 802.15.4, TDMA slots and channel hopping for industrial communication.",
+            "ISA 100.11a developer: International Society of Automation; supports IPv6 and AES-128.",
+            "Z-Wave assignment maximum: 100 kbps; generations differ.",
+            "Course Z-Wave node count: 232 despite competing source counts; Home ID identifies the network.",
+            "WirelessHART scheduling is not ordinary unscheduled CSMA/CA."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Choose by radio role",
+            "nodes": [
+              {
+                "label": "Radio choices",
+                "detail": "Match the radio to its role."
+              },
+              {
+                "label": "WirelessHART",
+                "detail": "Industrial TDMA and channel hopping"
+              },
+              {
+                "label": "ISA 100.11a",
+                "detail": "Industrial interoperability; IPv6 support"
+              },
+              {
+                "label": "Z-Wave",
+                "detail": "Home control; course maximum 100 kbps"
+              }
+            ],
+            "caption": "The radios are alternatives for different needs, not consecutive protocol layers."
+          }
         }
       },
       {
@@ -466,6 +570,39 @@
               "Very short deliberate interaction"
             ]
           ]
+        },
+        "quick": {
+          "summary": "Bluetooth connects peripherals; RFID identifies items; NFC supports close, tap-like exchanges.",
+          "points": [
+            "Classic Bluetooth piconet: one master plus seven active slaves; this is not a BLE topology rule.",
+            "RFID uses tag, reader and software; passive tags draw energy from the reader.",
+            "RFID needs no optical line of sight, but radio conditions still affect reading.",
+            "NFC course figures: under 10 cm, 13.56 MHz, 106/212/424 kbps.",
+            "Passive NFC relies on another device’s RF field; the source’s transmit-only wording is simplified."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Nearby communication jobs",
+            "nodes": [
+              {
+                "label": "Nearby links",
+                "detail": "Match the communication task."
+              },
+              {
+                "label": "Bluetooth",
+                "detail": "Connect nearby peripherals; classic piconet 1 + 7"
+              },
+              {
+                "label": "RFID",
+                "detail": "Identify tags; passive tags use reader energy"
+              },
+              {
+                "label": "NFC",
+                "detail": "Tap-like exchange; course range under 10 cm"
+              }
+            ],
+            "caption": "Match the task first: peripheral connection, identification or close interaction."
+          }
         }
       },
       {
@@ -514,6 +651,43 @@
             "A lifespan prevents yesterday’s alarm status from being treated as current.",
             "A history limit keeps the small device’s buffer from growing indefinitely."
           ]
+        },
+        "quick": {
+          "summary": "QoS balances resources, freshness, retained data and delivery behavior.",
+          "points": [
+            "Four groups: Resource utilization, Timeliness, Data availability, Data delivery.",
+            "Deadline limits update gaps; latency budget limits send-to-receive delay.",
+            "Durability retains availability after publisher departure; lifespan limits validity; history limits retained samples.",
+            "Reliability and transport priority concern delivery; buffering and sampling filters concern resources.",
+            "Low latency, battery life and bandwidth compete; average speed alone cannot guarantee deadlines."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Four QoS groups",
+            "nodes": [
+              {
+                "label": "QoS groups",
+                "detail": "Choose the policy for the required property."
+              },
+              {
+                "label": "Resource utilization",
+                "detail": "Buffer limits and sampling filters"
+              },
+              {
+                "label": "Timeliness",
+                "detail": "Update deadlines and latency budgets"
+              },
+              {
+                "label": "Data availability",
+                "detail": "Durability, lifespan and history"
+              },
+              {
+                "label": "Data delivery",
+                "detail": "Reliability and transport priority"
+              }
+            ],
+            "caption": "Different policies solve different delivery and resource problems."
+          }
         }
       },
       {
@@ -613,6 +787,16 @@
               "Federated messaging; source security wording is simplified"
             ]
           ]
+        },
+        "quick": {
+          "summary": "Choose the message model and transport separately from radio technology and reliability guarantees.",
+          "points": [
+            "MQTT: broker-based publish/subscribe over TCP; DDS RTPS: topics over UDP.",
+            "MQTT QoS 0: no retry; 1: possible duplicates; 2: exactly once for the protocol exchange.",
+            "Assignment CoAP uses UDP and REST resources; Observe is an extension, PUSH is not a core method.",
+            "DTLS is the supplied session-layer key, not a precise universal OSI placement.",
+            "Source XMPP security wording is simplified; conventional XMPP transport security typically uses TLS."
+          ]
         }
       }
     ],
@@ -629,7 +813,10 @@
         "correctIndex": 2,
         "explanation": "MQ-5 is the gas-sensor answer given in the source. DHT22 is the closest named alternative but measures temperature and humidity, not those gases.",
         "sectionId": "w1-system",
-        "sourceNote": "The source groups MQ-5 with these gases. Exact sensitivity and calibration depend on the sensor model and environment."
+        "sourceNote": "The source groups MQ-5 with these gases. Exact sensitivity and calibration depend on the sensor model and environment.",
+        "brief": [
+          "Course key groups MQ-5 with these gases; real selectivity and calibration depend on model and environment."
+        ]
       },
       {
         "id": "w1-q02",
@@ -642,7 +829,10 @@
         ],
         "correctIndex": 0,
         "explanation": "O-QPSK is the 2.4 GHz modulation in the notes. BPSK is the tempting distractor because it is associated with the lower 868/915 MHz course bands.",
-        "sectionId": "w1-radio"
+        "sectionId": "w1-radio",
+        "brief": [
+          "At 2.4 GHz, the course uses O-QPSK; BPSK belongs to its lower-band mapping."
+        ]
       },
       {
         "id": "w1-q03",
@@ -655,7 +845,10 @@
         ],
         "correctIndex": 1,
         "explanation": "Discovery needs registration, stored resource descriptions and suitable resource interactions. A Resource Directory alone is only the catalog and does not describe the complete process.",
-        "sectionId": "w1-ip"
+        "sectionId": "w1-ip",
+        "brief": [
+          "Discovery needs registration, a directory and REST-based resource interactions; a catalog alone is incomplete."
+        ]
       },
       {
         "id": "w1-q04",
@@ -669,7 +862,11 @@
         "correctIndex": 3,
         "explanation": "The supplied assignment answer is 100 kbps. The 250 kbps figure belongs to the course’s 2.4 GHz IEEE 802.15.4 family, not the described Z-Wave system.",
         "sectionId": "w1-industrial-radio",
-        "sourceNote": "This is the lecture/assignment figure; Z-Wave generations and variants can differ."
+        "sourceNote": "This is the lecture/assignment figure; Z-Wave generations and variants can differ.",
+        "brief": [
+          "Course maximum is 100 kbps; 250 kbps belongs to the described 2.4 GHz 802.15.4 family.",
+          "Z-Wave generations and variants can differ."
+        ]
       },
       {
         "id": "w1-q05",
@@ -682,7 +879,10 @@
         ],
         "correctIndex": 1,
         "explanation": "UDP is the assignment’s transport answer. TCP is used by MQTT; DSSS and TDMA describe different lower-layer mechanisms.",
-        "sectionId": "w1-messaging"
+        "sectionId": "w1-messaging",
+        "brief": [
+          "Assignment CoAP transport is UDP; MQTT uses TCP."
+        ]
       },
       {
         "id": "w1-q06",
@@ -695,7 +895,10 @@
         ],
         "correctIndex": 0,
         "explanation": "DSSS is the spread-spectrum coding scheme. O-QPSK is modulation, so it is a plausible but different category of answer.",
-        "sectionId": "w1-radio"
+        "sectionId": "w1-radio",
+        "brief": [
+          "DSSS describes spread-spectrum coding; O-QPSK describes modulation."
+        ]
       },
       {
         "id": "w1-q07",
@@ -708,7 +911,10 @@
         ],
         "correctIndex": 1,
         "explanation": "Range is the measurable input interval. The smallest detectable change is resolution, while closeness to a reference is accuracy.",
-        "sectionId": "w1-sensors"
+        "sectionId": "w1-sensors",
+        "brief": [
+          "Highest/lowest measurable values define range; smallest change is resolution; closeness to reference is accuracy."
+        ]
       },
       {
         "id": "w1-q08",
@@ -721,7 +927,10 @@
         ],
         "correctIndex": 2,
         "explanation": "The course answer is International Society of Automation. IEEE supplies the 802.15.4 foundation, but that does not make it the developer of ISA 100.11a.",
-        "sectionId": "w1-industrial-radio"
+        "sectionId": "w1-industrial-radio",
+        "brief": [
+          "ISA developed the industrial protocol; IEEE supplies its 802.15.4 foundation."
+        ]
       },
       {
         "id": "w1-q09",
@@ -734,7 +943,10 @@
         ],
         "correctIndex": 2,
         "explanation": "Vendor-specific gateways and APIs can constrain all three listed properties. Low radio frequency is unrelated to whether the application interface is proprietary.",
-        "sectionId": "w1-ip"
+        "sectionId": "w1-ip",
+        "brief": [
+          "Vendor-specific gateways and APIs can restrict flexibility, interoperability and last-mile connectivity."
+        ]
       },
       {
         "id": "w1-q10",
@@ -747,7 +959,10 @@
         ],
         "correctIndex": 0,
         "explanation": "QoS 0 sends without protocol acknowledgment or retry. QoS 1 is at least once and can duplicate messages, so it is the closest wrong choice.",
-        "sectionId": "w1-messaging"
+        "sectionId": "w1-messaging",
+        "brief": [
+          "QoS 0 sends without protocol acknowledgment or retry; QoS 1 may duplicate messages."
+        ]
       },
       {
         "id": "w1-q11",
@@ -760,7 +975,10 @@
         ],
         "correctIndex": 2,
         "explanation": "The processor interprets the sensor reading and decides the actuator command. A router can carry the data, but does not fill the decision role in this chain.",
-        "sectionId": "w1-system"
+        "sectionId": "w1-system",
+        "brief": [
+          "The processor interprets readings and decides commands; a router transports data."
+        ]
       },
       {
         "id": "w1-q12",
@@ -773,7 +991,10 @@
         ],
         "correctIndex": 1,
         "explanation": "A vector quantity includes magnitude and direction; the assignment also names orientation. Magnitude alone describes a scalar sensor.",
-        "sectionId": "w1-sensors"
+        "sectionId": "w1-sensors",
+        "brief": [
+          "Vectors have magnitude and direction; the assignment additionally names orientation."
+        ]
       },
       {
         "id": "w1-q13",
@@ -787,7 +1008,10 @@
         "correctIndex": 3,
         "explanation": "The course worldwide band is 2400–2483.5 MHz. The source identifies 902–929 MHz as a North American band, so it is the nearest distractor.",
         "sectionId": "w1-ip",
-        "sourceNote": "Band statement follows the supplied course notes; 6LoWPAN itself is an adaptation approach rather than a single fixed-frequency radio."
+        "sourceNote": "Band statement follows the supplied course notes; 6LoWPAN itself is an adaptation approach rather than a single fixed-frequency radio.",
+        "brief": [
+          "2400–2483.5 MHz is the course worldwide-band answer; 6LoWPAN itself is adaptation, not a fixed-frequency radio."
+        ]
       },
       {
         "id": "w1-q14",
@@ -800,7 +1024,10 @@
         ],
         "correctIndex": 0,
         "explanation": "DDS is data-centric publish/subscribe organized around topics. Time slots belong to scheduled medium access, not the name for DDS data.",
-        "sectionId": "w1-messaging"
+        "sectionId": "w1-messaging",
+        "brief": [
+          "DDS organizes publish/subscribe data around topics; time slots describe scheduled medium access."
+        ]
       },
       {
         "id": "w1-q15",
@@ -814,7 +1041,10 @@
         "correctIndex": 3,
         "explanation": "DTLS is the supplied assignment key. CoAP uses DTLS for secure datagram communication but is an application protocol, so it is the closest distractor in context.",
         "sectionId": "w1-messaging",
-        "sourceNote": "The notes explicitly flag this answer-key wording. DTLS secures datagram transport; session-layer placement is not a precise general technical statement."
+        "sourceNote": "The notes explicitly flag this answer-key wording. DTLS secures datagram transport; session-layer placement is not a precise general technical statement.",
+        "brief": [
+          "DTLS is the supplied course key; its session-layer placement is not a precise universal networking fact."
+        ]
       }
     ],
     "revision": [
@@ -828,7 +1058,17 @@
       "CoRE discovery: registration, directory and REST interactions.",
       "MQTT/TCP: QoS 0 at most once, 1 at least once, 2 exactly once for the exchange.",
       "CoAP/UDP; DDS data = topics; DTLS is the flagged session-layer assignment key."
-    ]
+    ],
+    "quick": {
+      "summary": "Follow measurements into actions, then distinguish radio, IP adaptation, messaging and delivery guarantees.",
+      "points": [
+        "Sensor → processor → actuator; range, accuracy and resolution describe different properties.",
+        "802.15.4 supplies radio/MAC; ZigBee builds networking above it.",
+        "6LoWPAN adapts IPv6; CoRE supports constrained resource discovery.",
+        "MQTT uses TCP; assignment CoAP uses UDP; QoS 0 means no retry.",
+        "Course figures and DTLS placement need their source caveats."
+      ]
+    }
   },
   {
     "id": 2,
@@ -902,6 +1142,16 @@
             }
           ],
           "caption": "The key shift from 3.0 to 4.0 is coordination across connected systems, rather than automation of an isolated task."
+        },
+        "quick": {
+          "summary": "Match each industrial revolution to its enabling technology.",
+          "points": [
+            "First: steam/mechanization; second: electricity/mass production; third: computers/automation; fourth: connected intelligence.",
+            "Steam-engine invention is the assignment’s NOT-fourth-revolution answer.",
+            "Industry 4.0 term: Hannover Fair, Germany, 2011 in the course.",
+            "Smart adapts behavior; connected exchanges information; coordinated factories need both.",
+            "Historical market examples and forecasts illustrate disruption rather than current statistics."
+          ]
         }
       },
       {
@@ -970,6 +1220,39 @@
             "Change scheduling and process settings to reduce waste.",
             "Check quality and worker safety so savings do not create another problem."
           ]
+        },
+        "quick": {
+          "summary": "Megatrends change production; sustainability reduces energy demand, resource use and waste.",
+          "points": [
+            "Megatrends: physical, digital and biological; their boundaries can overlap.",
+            "Assignment material bundle: lighter, stronger, recyclable, adaptive; not every material has every property.",
+            "Sustainable production emphasizes energy efficiency, resource conservation and low waste.",
+            "Subsidies may help fund projects; reliance on them is not a defining sustainability characteristic.",
+            "Lecture forecasts remain historical predictions, not evidence that their outcomes occurred."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Sustainable production",
+            "nodes": [
+              {
+                "label": "Sustainability goals",
+                "detail": "Reduce resource use and waste."
+              },
+              {
+                "label": "Energy efficiency",
+                "detail": "Reduce energy needed for useful output"
+              },
+              {
+                "label": "Resource conservation",
+                "detail": "Use fewer finite resources"
+              },
+              {
+                "label": "Low waste",
+                "detail": "Avoid unnecessary material and process losses"
+              }
+            ],
+            "caption": "Subsidies can support these goals but do not define sustainability."
+          }
         }
       },
       {
@@ -1020,6 +1303,43 @@
             "The planner adjusts the schedule rather than leaving a line waiting.",
             "Better information can lower excess buffer stock over time."
           ]
+        },
+        "quick": {
+          "summary": "ICT links manufacturing information while supply, energy and workforce pressures shape decisions.",
+          "points": [
+            "ICT is manufacturing’s information backbone; ERP means Enterprise Resource Planning.",
+            "Globalization issues: business models, energy prices, ICT adoption, supply chains, emerging markets.",
+            "Emerging issues: technology, population growth, regulation, resource consumption, economic downturns.",
+            "Real-time supply visibility can reduce unnecessary inventory and tied-up capital, while uncertainty still requires stock.",
+            "ERP plans across business functions; GPS locates; RFID identifies."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Manufacturing information roles",
+            "nodes": [
+              {
+                "label": "Information tools",
+                "detail": "Each tool supports a different manufacturing need."
+              },
+              {
+                "label": "ICT",
+                "detail": "Connects and coordinates information"
+              },
+              {
+                "label": "ERP",
+                "detail": "Integrates enterprise planning"
+              },
+              {
+                "label": "GPS",
+                "detail": "Locates shipments"
+              },
+              {
+                "label": "RFID",
+                "detail": "Identifies parts and products"
+              }
+            ],
+            "caption": "These tools have different roles; ERP is not a sensor or radio standard."
+          }
         }
       },
       {
@@ -1101,6 +1421,16 @@
             "JIT aligns the batch with real downstream demand.",
             "If a defect appears, Jidoka prevents the same fault spreading through the next batch."
           ]
+        },
+        "quick": {
+          "summary": "Lean delivers customer value with less waste, supported by people and continuous improvement.",
+          "points": [
+            "Toyota/Japan origin; Jidoka exposes/stops problems; JIT supplies the needed amount at the needed time.",
+            "TIM WOOD: Transportation, Inventory, Motion, Waiting, Overproduction, Over-processing, Defects.",
+            "Transportation moves items; motion concerns people; overproduction and inventory are different wastes.",
+            "Value stream includes every action from order to delivery, including waste.",
+            "People engagement: Learn, Do, Teach; Lean protects quality and customer value, not only cost."
+          ]
         }
       },
       {
@@ -1171,6 +1501,16 @@
             "Optimize: calculate a speed that meets demand using less energy.",
             "Automate: adjust speed as demand changes and warn on abnormal vibration."
           ]
+        },
+        "quick": {
+          "summary": "Monitoring observes; control changes; optimization improves; automation combines these capabilities.",
+          "points": [
+            "Monitoring uses sensor/external data; control changes operating settings.",
+            "Optimization algorithms are the assignment resource for choosing better operating conditions.",
+            "Automation combines monitoring, control and optimization within designed limits.",
+            "Connected does not automatically mean autonomous; human oversight can still be needed.",
+            "Tracking supports recalls and supply coordination; useful action creates the business benefit."
+          ]
         }
       },
       {
@@ -1229,6 +1569,16 @@
             }
           ],
           "caption": "A sensor is physical; a radio connection is connectivity; an analytics dashboard is digital."
+        },
+        "quick": {
+          "summary": "A smart business model connects customer benefit, revenue and enabling technology.",
+          "points": [
+            "Key attributes: value proposition, revenue streams, technologies.",
+            "Technology layers: Physical senses/processes locally; Connectivity transports; Digital stores/analyzes.",
+            "Value perspectives: novelty, efficiency, lock-in, complementarity.",
+            "Lock-in retains customers/makes migration harder; the source’s lower-switching-cost claim contradicts that meaning.",
+            "Semios illustrates efficiency/subscription monitoring; company offerings are historical lecture examples."
+          ]
         }
       },
       {
@@ -1279,6 +1629,47 @@
             "Agility reschedules work and adapts the line.",
             "Optimization chooses a schedule with acceptable time, energy and quality."
           ]
+        },
+        "quick": {
+          "summary": "A smart factory learns and adapts through coordinated connected operations.",
+          "points": [
+            "Five characteristics: Connection, Optimization, Transparency, Proactivity, Agility.",
+            "Agility = Flexibility + Adaptation + Self-configuration.",
+            "Optimization improves objectives; transparency reveals state; proactivity anticipates problems.",
+            "Automation pyramid: device → control → manufacturing system → ERP.",
+            "Physical ledgers are the course non-component; computers alone do not make operations smart."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Smart factory characteristics",
+            "nodes": [
+              {
+                "label": "Smart factory",
+                "detail": "Combine five characteristics."
+              },
+              {
+                "label": "Connection",
+                "detail": "Link machines, humans and data"
+              },
+              {
+                "label": "Optimization",
+                "detail": "Improve production objectives"
+              },
+              {
+                "label": "Transparency",
+                "detail": "Make current state understandable"
+              },
+              {
+                "label": "Proactivity",
+                "detail": "Predict problems early"
+              },
+              {
+                "label": "Agility",
+                "detail": "Flexibility, adaptation and self-configuration"
+              }
+            ],
+            "caption": "These characteristics work together; they are not a sequence of production stages."
+          }
         }
       },
       {
@@ -1312,7 +1703,39 @@
         "traps": [
           "These three questions are in the supplied Week 2 assignment, although their full lecture coverage occurs later.",
           "HL7 is a standards family; the source’s word format is shorthand, not a single universal file format."
-        ]
+        ],
+        "quick": {
+          "summary": "Three assignment prerequisites connect CPS, Industrial Internet and healthcare interoperability.",
+          "points": [
+            "CPS = Cyber Physical Systems: physical processes and computation interact through feedback.",
+            "CPS plus internet technologies leading to Industrial Internet is True in the supplied key.",
+            "HL7 supports healthcare information exchange and interoperability; it is a standards family, not one file format.",
+            "These assignment topics receive fuller lecture coverage in later weeks."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Assignment prerequisites",
+            "nodes": [
+              {
+                "label": "Assignment concepts",
+                "detail": "Recognize three different technology roles."
+              },
+              {
+                "label": "CPS",
+                "detail": "Physical processes plus computation and feedback"
+              },
+              {
+                "label": "Industrial Internet",
+                "detail": "Course bridge: CPS plus internet technologies"
+              },
+              {
+                "label": "HL7",
+                "detail": "Healthcare information-exchange standards family"
+              }
+            ],
+            "caption": "These are assignment bridges to later lectures, not three interchangeable technologies."
+          }
+        }
       }
     ],
     "quiz": [
@@ -1327,7 +1750,10 @@
         ],
         "correctIndex": 2,
         "explanation": "The assignment names lighter, stronger, recyclable and adaptive. Low cost can matter, but it does not replace the material-property bundle in this question.",
-        "sectionId": "w2-sustainability"
+        "sectionId": "w2-sustainability",
+        "brief": [
+          "The assignment’s property bundle is lighter, stronger, recyclable and adaptive; individual materials need not exhibit every property."
+        ]
       },
       {
         "id": "w2-q02",
@@ -1340,7 +1766,10 @@
         ],
         "correctIndex": 2,
         "explanation": "The steam engine belongs to the first revolution. CPS is a fourth-revolution enabler and therefore does not satisfy the NOT question.",
-        "sectionId": "w2-revolutions"
+        "sectionId": "w2-revolutions",
+        "brief": [
+          "Watch NOT: steam belongs to the first revolution; CPS enables the fourth."
+        ]
       },
       {
         "id": "w2-q03",
@@ -1353,7 +1782,10 @@
         ],
         "correctIndex": 3,
         "explanation": "ICT connects and coordinates information throughout manufacturing. A hydraulic actuator moves equipment but does not supply the information backbone.",
-        "sectionId": "w2-global"
+        "sectionId": "w2-global",
+        "brief": [
+          "ICT carries and coordinates information; an actuator supplies physical movement."
+        ]
       },
       {
         "id": "w2-q04",
@@ -1366,7 +1798,10 @@
         ],
         "correctIndex": 1,
         "explanation": "The source defines sustainability by efficient energy, conserved resources and low waste. A subsidy may fund work, but dependence on it is not the defining production property.",
-        "sectionId": "w2-sustainability"
+        "sectionId": "w2-sustainability",
+        "brief": [
+          "Watch NOT: sustainability concerns energy, resources and waste; subsidies can fund it without defining it."
+        ]
       },
       {
         "id": "w2-q05",
@@ -1379,7 +1814,10 @@
         ],
         "correctIndex": 0,
         "explanation": "Learn, Do, Teach means gain the skill, practice it and share it. Lead, Design, Test sounds like a project workflow but is not the source’s people-engagement sequence.",
-        "sectionId": "w2-lean"
+        "sectionId": "w2-lean",
+        "brief": [
+          "Lean people engagement means gaining skills, practicing them and teaching others."
+        ]
       },
       {
         "id": "w2-q06",
@@ -1392,7 +1830,10 @@
         ],
         "correctIndex": 0,
         "explanation": "Optimization algorithms select better operating settings or decisions. Manual controls can change a setting, but do not themselves perform the course’s optimization step.",
-        "sectionId": "w2-smart-products"
+        "sectionId": "w2-smart-products",
+        "brief": [
+          "Algorithms select better settings; manual adjustment alone supplies control rather than the course’s optimization resource."
+        ]
       },
       {
         "id": "w2-q07",
@@ -1404,7 +1845,10 @@
         "correctIndex": 0,
         "explanation": "The supplied assignment treats the statement as true: CPS links computation and physical processes, and internet connectivity extends the interaction. False would ignore the conceptual bridge emphasized by the course.",
         "sectionId": "w2-quiz-bridge",
-        "sourceNote": "This assignment prerequisite is developed in later CPS and Industrial Internet lectures."
+        "sourceNote": "This assignment prerequisite is developed in later CPS and Industrial Internet lectures.",
+        "brief": [
+          "The supplied course key accepts this conceptual bridge: physical/computational systems gain wider interaction through internet connectivity."
+        ]
       },
       {
         "id": "w2-q08",
@@ -1415,7 +1859,10 @@
         ],
         "correctIndex": 1,
         "explanation": "True is the supplied key: better visibility can reduce unnecessary stock and the money tied up in it. This does not mean every real system can remove all inventory.",
-        "sectionId": "w2-global"
+        "sectionId": "w2-global",
+        "brief": [
+          "Visibility can reduce unnecessary stock and tied-up capital; it does not eliminate uncertainty or all inventory."
+        ]
       },
       {
         "id": "w2-q09",
@@ -1428,7 +1875,10 @@
         ],
         "correctIndex": 1,
         "explanation": "Cyber Physical Systems couples physical components with computational components. Central Processing Software describes software alone and omits the physical interaction.",
-        "sectionId": "w2-quiz-bridge"
+        "sectionId": "w2-quiz-bridge",
+        "brief": [
+          "CPS couples computational and physical components; software alone omits the physical interaction."
+        ]
       },
       {
         "id": "w2-q10",
@@ -1441,7 +1891,10 @@
         ],
         "correctIndex": 1,
         "explanation": "ERP is Enterprise Resource Planning, used for integrated business planning and information. Energy Routing Protocol sounds network-related but is not the course acronym.",
-        "sectionId": "w2-global"
+        "sectionId": "w2-global",
+        "brief": [
+          "ERP integrates enterprise planning and information; it is not a routing protocol."
+        ]
       },
       {
         "id": "w2-q11",
@@ -1454,7 +1907,10 @@
         ],
         "correctIndex": 2,
         "explanation": "A value stream covers the entire order-to-delivery path, including value-adding work and waste that can be improved. The assembly cycle alone is just one part.",
-        "sectionId": "w2-lean"
+        "sectionId": "w2-lean",
+        "brief": [
+          "Include the entire order-to-delivery path, including waste; assembly alone is only one part."
+        ]
       },
       {
         "id": "w2-q12",
@@ -1467,7 +1923,10 @@
         ],
         "correctIndex": 3,
         "explanation": "The model connects customer benefit, income and enabling technology. Sensors, actuators and routers are implementation elements rather than the three business attributes asked for.",
-        "sectionId": "w2-business"
+        "sectionId": "w2-business",
+        "brief": [
+          "Connect customer benefit, income and enabling technology; device components are a different category."
+        ]
       },
       {
         "id": "w2-q13",
@@ -1480,7 +1939,10 @@
         ],
         "correctIndex": 2,
         "explanation": "Physical ledgers are the supplied non-component. Data analytics is a key component because it turns connected measurements into actionable insight.",
-        "sectionId": "w2-factory"
+        "sectionId": "w2-factory",
+        "brief": [
+          "Watch NOT: the course excludes physical ledgers, while analytics turns connected measurements into usable insight."
+        ]
       },
       {
         "id": "w2-q14",
@@ -1494,7 +1956,10 @@
         "correctIndex": 3,
         "explanation": "HL7 is associated with healthcare information exchange. Z-Wave carries home-control communications and does not define clinical data exchange.",
         "sectionId": "w2-quiz-bridge",
-        "sourceNote": "The source labels this a later healthcare-week topic. HL7 is a standards family rather than a single data file format."
+        "sourceNote": "The source labels this a later healthcare-week topic. HL7 is a standards family rather than a single data file format.",
+        "brief": [
+          "HL7 is the course healthcare-exchange answer: a standards family, not a single universal file format."
+        ]
       },
       {
         "id": "w2-q15",
@@ -1507,7 +1972,10 @@
         ],
         "correctIndex": 0,
         "explanation": "Agility is flexibility, adaptation and self-configuration. Volume, velocity and variety are big-data characteristics and are the nearest memorable three-part distractor.",
-        "sectionId": "w2-factory"
+        "sectionId": "w2-factory",
+        "brief": [
+          "Agility concerns responding to change; Volume, Velocity and Variety describe big data."
+        ]
       }
     ],
     "revision": [
@@ -1523,7 +1991,17 @@
       "Physical, connectivity and digital layers serve different roles.",
       "Smart-factory agility: flexibility, adaptation, self-configuration.",
       "CPS = Cyber Physical Systems; HL7 is healthcare information exchange."
-    ]
+    ],
+    "quick": {
+      "summary": "Connect industrial eras, Lean waste reduction and smart-factory business value.",
+      "points": [
+        "Steam → electricity → computers → connected intelligence identifies the four revolutions.",
+        "Sustainability means efficient energy, conserved resources and low waste.",
+        "Lean: customer value, Jidoka, Just-in-Time and Learn–Do–Teach.",
+        "Smart products: monitor → control → optimize → automate.",
+        "Smart factories combine connected operations, adaptable systems and workable business models."
+      ]
+    }
   },
   {
     "id": 3,
@@ -1614,6 +2092,16 @@
             "The next reading checks whether the action worked.",
             "A networked monitor tracks many furnaces and alerts an operator to abnormal behavior."
           ]
+        },
+        "quick": {
+          "summary": "CPS combines physical processes with computation in a continuing feedback loop.",
+          "points": [
+            "Reactive computation continuously handles environmental inputs/outputs; it does not mean zero response time.",
+            "Embedded systems compute, communicate and control; a broader CPS can network many such systems.",
+            "Real-time means meeting timing requirements; concurrent processes overlap in time.",
+            "Image-guided surgery and therapy is the assignment healthcare application.",
+            "Mobile CPS constraints: network stability, power, security; design aesthetics is the course NOT answer."
+          ]
         }
       },
       {
@@ -1690,6 +2178,16 @@
             "Cognition shows which machine needs attention.",
             "Configuration adjusts operation or triggers a supervised maintenance response."
           ]
+        },
+        "quick": {
+          "summary": "Follow measurements through information, shared understanding and supervisory action.",
+          "points": [
+            "Order: Connection → Conversion → Cyber → Cognition → Configuration.",
+            "Connection acquires measurements; Conversion extracts meaningful machine-health information.",
+            "Cyber aggregates machine status centrally: the supplied key for precise status-information gathering.",
+            "Cognition supports understanding/decisions; Configuration applies supervised adjustment.",
+            "Week 4 uses Cognitive/Control for the related Cognition/Configuration roles."
+          ]
         }
       },
       {
@@ -1757,6 +2255,16 @@
             }
           ],
           "caption": "Intelligence lives in computation on measurements, not simply in placing an antenna on a sensor."
+        },
+        "quick": {
+          "summary": "Smart sensors combine sensing and processing; course intelligent sensors also manage external devices.",
+          "points": [
+            "Signal path: sensing → conditioning → ADC → digital interface.",
+            "Conditioning filters/amplifies; ADC digitizes; processing can reduce transmitted data.",
+            "Assignment intelligent-sensor capability combines data processing with managing external sensors/devices.",
+            "Microcontroller and memory support local applications within power, timing and bandwidth limits.",
+            "Source calibration claims conflict; smart/intelligent labels and actual capabilities depend on design."
+          ]
         }
       },
       {
@@ -1835,6 +2343,16 @@
             "A defect report links back to the design and production history.",
             "The team can identify the affected versions without guessing from isolated files."
           ]
+        },
+        "quick": {
+          "summary": "PLM coordinates product information and collaboration from idea to retirement.",
+          "points": [
+            "Collaboration platforms combine organizational networking with business operations.",
+            "Lifecycle phases: Visualize, Explain, Perceive, Use, Dispose.",
+            "PLM aims to increase revenue/value and reduce cost; the lecture lists nine components.",
+            "Assignment solution approach: ten steps; source explains only the first, data gathering and education.",
+            "Single source of truth means authoritative data, not a ban on backups."
+          ]
         }
       },
       {
@@ -1912,6 +2430,35 @@
             "Use AR later to highlight the real valves and approved instructions.",
             "Keep authoritative procedures and supervision available; an overlay is not a substitute for safety rules."
           ]
+        },
+        "quick": {
+          "summary": "AR overlays the real world; VR creates an interactive simulated environment.",
+          "points": [
+            "AR enhances present reality; it need not replace the whole environment.",
+            "AR types: marker-based, marker-less, projection-based, superimposition-based.",
+            "VR types: non-immersive, semi-immersive, fully immersive.",
+            "Remote control is the assignment AR non-component; real device arrangements vary.",
+            "Course names: Thomas Caudell for AR; Jaron Lanier for VR."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Reality or simulation?",
+            "nodes": [
+              {
+                "label": "Reality technologies",
+                "detail": "Compare real-world overlays and simulated environments."
+              },
+              {
+                "label": "AR",
+                "detail": "Adds information to the visible real environment"
+              },
+              {
+                "label": "VR",
+                "detail": "Presents an interactive simulated environment"
+              }
+            ],
+            "caption": "Look for an overlay on reality versus entry into a simulation."
+          }
         }
       },
       {
@@ -1991,6 +2538,35 @@
             "Check its performance on appropriate unseen data.",
             "Use the result to guide a supervised maintenance decision."
           ]
+        },
+        "quick": {
+          "summary": "AI includes learning methods, while the assignment uses a simplified knowledge-base/search comparison.",
+          "points": [
+            "Course historical answer: John McCarthy proposed Artificial Intelligence in 1956.",
+            "Course AI comparison: large knowledge base plus heuristic search; this is not a universal modern-AI definition.",
+            "AI contains ML; ML contains DL; method choice depends on task, data and resources.",
+            "Course NOT-challenge key: lack of available data; usable labeled/representative data can still be scarce.",
+            "Understanding data and making results actionable remain industrial AI challenges."
+          ],
+          "diagram": {
+            "type": "layers",
+            "title": "AI contains ML contains DL",
+            "nodes": [
+              {
+                "label": "AI",
+                "detail": "Broad methods for intelligent tasks"
+              },
+              {
+                "label": "Machine Learning",
+                "detail": "AI methods that learn patterns from data"
+              },
+              {
+                "label": "Deep Learning",
+                "detail": "ML using multilayer models"
+              }
+            ],
+            "caption": "Nested scopes do not mean every task requires deep learning."
+          }
         }
       },
       {
@@ -2073,6 +2649,16 @@
             "Store both useful measurements and their quality context.",
             "Analyze the clean series for trends or abnormal events."
           ]
+        },
+        "quick": {
+          "summary": "Collect, transmit, clean, store and analyze industrial data to extract useful outcomes.",
+          "points": [
+            "Three main Vs: Volume = amount; Velocity = arrival rate; Variety = formats.",
+            "Other source Vs: Variability, Veracity, Visualization, Value.",
+            "Pre-processing integrates, cleans and removes redundancy while preserving important events.",
+            "Inter-DCN is between data centers; intra-DCN is within one.",
+            "GFS/HDFS are distributed file systems; NoSQL is nonrelational, not structure-free."
+          ]
         }
       },
       {
@@ -2131,6 +2717,38 @@
               "Schedule maintenance before the next high-demand shift"
             ]
           ]
+        },
+        "quick": {
+          "summary": "Analytics describes events, estimates outcomes and recommends actions; cloud supplies scalable services.",
+          "points": [
+            "Descriptive: what happened? Predictive: what might happen? Prescriptive: what should we do?",
+            "Cloud: on-demand self-service, broad access, resource pooling, rapid elasticity, measured service.",
+            "Elasticity adjusts capacity; measured service tracks usage; resources still have limits and costs.",
+            "Predictions are estimates; actionable decisions and data quality determine practical value."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Three analytics questions",
+            "nodes": [
+              {
+                "label": "Analytics purposes",
+                "detail": "Identify the question being answered."
+              },
+              {
+                "label": "Descriptive",
+                "detail": "What happened, when and where?"
+              },
+              {
+                "label": "Predictive",
+                "detail": "What might happen next?"
+              },
+              {
+                "label": "Prescriptive",
+                "detail": "What action best meets objectives and constraints?"
+              }
+            ],
+            "caption": "These are different purposes; prediction remains an estimate."
+          }
         }
       }
     ],
@@ -2146,7 +2764,10 @@
         ],
         "correctIndex": 2,
         "explanation": "Reactive computation keeps processing changing environmental input and producing output. Zero delay is a timing impossibility, not the meaning of reactive.",
-        "sectionId": "w3-cps"
+        "sectionId": "w3-cps",
+        "brief": [
+          "Reactive means ongoing environmental input/output interaction; it does not promise zero delay."
+        ]
       },
       {
         "id": "w3-q02",
@@ -2159,7 +2780,10 @@
         ],
         "correctIndex": 3,
         "explanation": "Image-guided surgery connects sensing, computation and physical intervention. Storing administrative paperwork can be useful IT but does not illustrate the physical feedback application asked for.",
-        "sectionId": "w3-cps"
+        "sectionId": "w3-cps",
+        "brief": [
+          "Surgery connects sensing, computation and physical intervention; administrative record storage alone does not illustrate this feedback application."
+        ]
       },
       {
         "id": "w3-q03",
@@ -2173,7 +2797,10 @@
         "correctIndex": 2,
         "explanation": "Cyber is the central information/status hub in the supplied key. Connection acquires accurate source data, so it is the closest distractor but refers to an earlier function.",
         "sectionId": "w3-five-c",
-        "sourceNote": "The source distinguishes accurate data acquisition at Connection from the central status-information hub at Cyber."
+        "sourceNote": "The source distinguishes accurate data acquisition at Connection from the central status-information hub at Cyber.",
+        "brief": [
+          "Course key: Cyber is the central status hub; Connection acquires accurate source measurements."
+        ]
       },
       {
         "id": "w3-q04",
@@ -2186,7 +2813,10 @@
         ],
         "correctIndex": 1,
         "explanation": "The answer combines processing with management/control of external devices. An analog voltage output alone describes a simpler sensing path and lacks the stated intelligent capabilities.",
-        "sectionId": "w3-sensors"
+        "sectionId": "w3-sensors",
+        "brief": [
+          "The course capability combines processing sensed data with managing external sensors/devices; raw output alone is insufficient."
+        ]
       },
       {
         "id": "w3-q05",
@@ -2200,7 +2830,11 @@
         "correctIndex": 0,
         "explanation": "The supplied approach has 10 steps. Nine is the number of PLM components in the notes, making it the closest distractor.",
         "sectionId": "w3-plm",
-        "sourceNote": "The notes give the count and explain the first step, but do not fully specify all ten steps."
+        "sourceNote": "The notes give the count and explain the first step, but do not fully specify all ten steps.",
+        "brief": [
+          "Course solution count is ten; nine counts PLM components.",
+          "The source explains only the first solution step, not the complete ten-step sequence."
+        ]
       },
       {
         "id": "w3-q06",
@@ -2213,7 +2847,10 @@
         ],
         "correctIndex": 2,
         "explanation": "Remote control is the supplied non-component. Sensors and cameras capture the environment so the augmentation can be aligned with it.",
-        "sectionId": "w3-reality"
+        "sectionId": "w3-reality",
+        "brief": [
+          "Watch NOT: remote control is excluded from the course device list; sensors/cameras align augmentation with reality."
+        ]
       },
       {
         "id": "w3-q07",
@@ -2227,7 +2864,10 @@
         "correctIndex": 3,
         "explanation": "The lecture emphasizes the abundance of raw IIoT data, so its key is lack of available data. Understanding that data remains difficult and is a stated challenge.",
         "sectionId": "w3-ai",
-        "sourceNote": "Course-key context only: real AI projects can lack usable labeled, representative or accessible data even when raw data is abundant."
+        "sourceNote": "Course-key context only: real AI projects can lack usable labeled, representative or accessible data even when raw data is abundant.",
+        "brief": [
+          "Course key assumes abundant raw IIoT data; usable labeled, representative or accessible data can still be scarce."
+        ]
       },
       {
         "id": "w3-q08",
@@ -2241,7 +2881,10 @@
         "correctIndex": 1,
         "explanation": "Design aesthetics is not in the course’s primary engineering-constraint list. Network stability directly affects the sensing/control exchange and is a constraint.",
         "sectionId": "w3-cps",
-        "sourceNote": "The supplied notes identify mobile CPS constraints as an assignment topic beyond the Week 3 video coverage."
+        "sourceNote": "The supplied notes identify mobile CPS constraints as an assignment topic beyond the Week 3 video coverage.",
+        "brief": [
+          "Watch NOT: aesthetics is outside the assignment’s primary engineering constraints; network stability directly affects control exchanges."
+        ]
       },
       {
         "id": "w3-q09",
@@ -2254,7 +2897,10 @@
         ],
         "correctIndex": 3,
         "explanation": "The course sequence starts with accurate connection data, converts it, aggregates it in Cyber, builds knowledge in Cognition and acts through Configuration. The second option reverses conversion and interpretation roles.",
-        "sectionId": "w3-five-c"
+        "sectionId": "w3-five-c",
+        "brief": [
+          "Acquire → convert → aggregate → understand → act maps the five stages; Cognition and Configuration have different roles."
+        ]
       },
       {
         "id": "w3-q10",
@@ -2267,7 +2913,10 @@
         ],
         "correctIndex": 0,
         "explanation": "CPS computation reacts to continuing physical inputs. Unlimited memory is not guaranteed, and many CPS components are constrained embedded devices.",
-        "sectionId": "w3-cps"
+        "sectionId": "w3-cps",
+        "brief": [
+          "Physical inputs keep changing, so computation must react; CPS devices are not guaranteed unlimited resources."
+        ]
       },
       {
         "id": "w3-q11",
@@ -2280,7 +2929,10 @@
         ],
         "correctIndex": 2,
         "explanation": "The course definition links organizational interaction to business operations. A private unshared note stores information but does not enable the described collaboration.",
-        "sectionId": "w3-plm"
+        "sectionId": "w3-plm",
+        "brief": [
+          "The definition joins organizational interaction with business operations; isolated private notes do not provide collaboration."
+        ]
       },
       {
         "id": "w3-q12",
@@ -2293,7 +2945,10 @@
         ],
         "correctIndex": 0,
         "explanation": "AR adds information to the current real environment. Replacing the environment with a simulation is the defining contrast with VR.",
-        "sectionId": "w3-reality"
+        "sectionId": "w3-reality",
+        "brief": [
+          "AR adds information to present reality; replacing the environment with simulation is VR."
+        ]
       },
       {
         "id": "w3-q13",
@@ -2307,7 +2962,10 @@
         "correctIndex": 1,
         "explanation": "John McCarthy is the supplied AI-name answer. Jaron Lanier is associated with the term Virtual Reality in the notes.",
         "sectionId": "w3-ai",
-        "sourceNote": "The notes say this historical name is in the assignment but not in the Week 3 video."
+        "sourceNote": "The notes say this historical name is in the assignment but not in the Week 3 video.",
+        "brief": [
+          "The assignment attributes the phrase to John McCarthy; Jaron Lanier is the course’s VR name."
+        ]
       },
       {
         "id": "w3-q14",
@@ -2321,7 +2979,10 @@
         "correctIndex": 0,
         "explanation": "The course’s chosen pair is large knowledge base plus heuristic search. Exhaustive/fixed algorithmic search is contrasted with heuristic guidance in these notes.",
         "sectionId": "w3-ai",
-        "sourceNote": "This is a simplified course comparison; many modern AI systems do not fit a literal knowledge-base/heuristic-search template."
+        "sourceNote": "This is a simplified course comparison; many modern AI systems do not fit a literal knowledge-base/heuristic-search template.",
+        "brief": [
+          "This is the course’s simplified knowledge-base/heuristic-search comparison, not a universal definition of modern AI."
+        ]
       },
       {
         "id": "w3-q15",
@@ -2335,7 +2996,10 @@
         "correctIndex": 1,
         "explanation": "All three listed engineering issues affect mobile CPS operation. Visual appearance can matter to users but is not this assignment’s constraint set.",
         "sectionId": "w3-cps",
-        "sourceNote": "The notes label the mobile CPS constraint list as assignment material beyond the Week 3 videos."
+        "sourceNote": "The notes label the mobile CPS constraint list as assignment material beyond the Week 3 videos.",
+        "brief": [
+          "Mobile operation must handle network changes, energy limits and security; appearance is outside this assignment list."
+        ]
       }
     ],
     "revision": [
@@ -2351,7 +3015,17 @@
       "Course AI NOT answer: lack of available data, with usable-data caveat.",
       "Mobile CPS: network stability, power, security; aesthetics is not the primary constraint.",
       "Big data: seven Vs; collect, transmit, pre-process, store, analyze; descriptive/predictive/prescriptive."
-    ]
+    ],
+    "quick": {
+      "summary": "Understand feedback systems, 5C stages, product collaboration, AR, AI and data-to-decision tools.",
+      "points": [
+        "CPS repeatedly senses, computes and controls; reactive does not mean zero delay.",
+        "5C: Connection → Conversion → Cyber → Cognition → Configuration.",
+        "PLM covers the whole lifecycle; course solution count is ten steps.",
+        "AR adds to reality; VR supplies a simulated environment.",
+        "AI and data questions include simplified course comparisons and important caveats."
+      ]
+    }
   },
   {
     "id": 4,
@@ -2446,6 +3120,16 @@
             "The operator needs reliable access to genuine data: availability matters too.",
             "Safe operating controls limit the physical consequence even if an information layer fails."
           ]
+        },
+        "quick": {
+          "summary": "Protect software, data, communications, operations and people across the whole industrial system.",
+          "points": [
+            "Application security protects software; information security protects data; physical security protects equipment/facilities.",
+            "Five defense areas: application, information, network, operational, end-user education.",
+            "CIA = Confidentiality, Integrity, Availability; IIoT also needs reliability and safety.",
+            "Weak links can expose the whole factory; coordinated standards matter beyond isolated device choices.",
+            "End-user risk is the source’s training emphasis, not a universal measured ranking."
+          ]
         }
       },
       {
@@ -2530,6 +3214,43 @@
             "The request may be phishing even if the logo looks correct.",
             "If it is tailored to one engineer with plant-specific details, it is spear phishing."
           ]
+        },
+        "quick": {
+          "summary": "Recognize malicious software and deceptive requests, especially the targeting clue in spear phishing.",
+          "points": [
+            "Ransomware blocks/encrypts access and demands payment; legitimate backup encryption alone is not ransomware.",
+            "Malware is the umbrella category; ransomware is one subtype.",
+            "Social engineering exploits people; phishing uses deceptive messages/sites and can overlap other categories.",
+            "Spear phishing targets a person/organization; the assignment’s reversed description is False.",
+            "Targeting defines spear phishing, not a fixed number of emails."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Recognize the attack cue",
+            "nodes": [
+              {
+                "label": "Attack patterns",
+                "detail": "Identify the behavior and target."
+              },
+              {
+                "label": "Ransomware",
+                "detail": "Blocked access plus payment demand"
+              },
+              {
+                "label": "Broad phishing",
+                "detail": "Deceptive messages distributed widely"
+              },
+              {
+                "label": "Spear phishing",
+                "detail": "Tailored deception targeting a person or organization"
+              },
+              {
+                "label": "Pretexting",
+                "detail": "Invented role or story exploits trust"
+              }
+            ],
+            "caption": "Attack patterns can overlap; targeting distinguishes spear phishing."
+          }
         }
       },
       {
@@ -2611,6 +3332,16 @@
             "The network transported the number correctly.",
             "A shared unit/schema is needed for semantic interoperability."
           ]
+        },
+        "quick": {
+          "summary": "IIoT connects industrial sensing, analysis and decisions while introducing integration and security challenges.",
+          "points": [
+            "Goals: worker safety, ergonomics, longer machine life and operational efficiency.",
+            "Adoption challenges: data integration, cybersecurity/privacy, standards, legacy equipment, skills.",
+            "Semantic interoperability requires shared meaning and units, beyond successful message transport.",
+            "Mining: gas/strata monitoring gives warnings; RFID/location helps locate miners.",
+            "Pulse oximeters estimate oxygen saturation and pulse; connected alerts support broader procedures."
+          ]
         }
       },
       {
@@ -2681,6 +3412,35 @@
             "Maintenance is prioritized across the fleet rather than train by train in isolation.",
             "Operators use the shared view to adjust scheduling."
           ]
+        },
+        "quick": {
+          "summary": "GE’s Industrial Internet links intelligent machines, advanced analytics and people at work.",
+          "points": [
+            "Course attribution: General Electric coined Industrial Internet.",
+            "GE waves: Industrial Revolution → Internet Revolution → Industrial Internet; separate from four industrial revolutions.",
+            "First-wave drawbacks: poor working conditions, inefficient processes and waste.",
+            "Three elements: intelligent machines, advanced analytics, people at work.",
+            "Sector savings figures are historical lecture estimates, not current measured outcomes."
+          ],
+          "diagram": {
+            "type": "flow",
+            "title": "GE’s three waves",
+            "nodes": [
+              {
+                "label": "Industrial Revolution",
+                "detail": "Machines; poor conditions, waste and inefficiency"
+              },
+              {
+                "label": "Internet Revolution",
+                "detail": "Computers and information become connected"
+              },
+              {
+                "label": "Industrial Internet",
+                "detail": "Industrial machines combine sensing and analytics"
+              }
+            ],
+            "caption": "GE’s historical three-wave grouping differs from the four industrial revolutions."
+          }
         }
       },
       {
@@ -2765,6 +3525,16 @@
             "At the target amount it commands the valve to close.",
             "The reading, action and quality record can be shared with the connected production system."
           ]
+        },
+        "quick": {
+          "summary": "Prepare and digitize industrial measurements, then calibrate against a reference.",
+          "points": [
+            "Smart configuration: multi-parameter sensing, analog detection, digital conditioning, bus interface; Manual Control Unit is excluded.",
+            "ADC: analog → digital; DAC: digital → analog; neither automatically establishes calibration.",
+            "Calibration compares with a standard reference; conditioning prepares the signal.",
+            "Milk flow spins an impeller; its signals estimate quantity for filling control.",
+            "Gas-sensor numbers describe example devices, not universal limits or safe-exposure guidance."
+          ]
         }
       },
       {
@@ -2845,6 +3615,16 @@
             "SCADA displays status from several pump sites.",
             "An operator adjusts approved supervisory settings and investigates warnings."
           ]
+        },
+        "quick": {
+          "summary": "PLC executes local control; SCADA gives operators a wider supervisory view.",
+          "points": [
+            "PLC = Programmable Logic Controller; modules: CPU/memory, power supply, input/output.",
+            "Course scan: monitor → read inputs → execute → diagnose → write outputs → repeat.",
+            "SCADA = Supervisory Control and Data Acquisition; complements PLC local control.",
+            "HMI presents information to people; RTU supports remote-site acquisition/control.",
+            "Controller timing depends on implementation; wireless links still need reliability, security and suitable latency."
+          ]
         }
       },
       {
@@ -2915,6 +3695,43 @@
               "Guided diagnostics help the worker"
             ]
           ]
+        },
+        "quick": {
+          "summary": "Connected coordination links smart objects, networks, business intelligence and people.",
+          "points": [
+            "Design facets: interoperability, distributed decisions, information clarity, technical assistance.",
+            "5C Control applies supervised self-configuration, self-optimization and self-adjustment.",
+            "Earlier notes call the final role Configuration and use Cognition instead of Cognitive.",
+            "Electronics is the historical lecture-chart growth answer, not a current ranking.",
+            "Industry 4.0 coordinates machines/supply chains; isolated automation alone is insufficient."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Four connected-process design facets",
+            "nodes": [
+              {
+                "label": "Connected processes",
+                "detail": "Combine four design facets."
+              },
+              {
+                "label": "Interoperability",
+                "detail": "Exchange usable data across devices"
+              },
+              {
+                "label": "Distributed decisions",
+                "detail": "Make local decisions toward shared objectives"
+              },
+              {
+                "label": "Information clarity",
+                "detail": "Make digital state understandable"
+              },
+              {
+                "label": "Technical assistance",
+                "detail": "Reduce unnecessary human burden"
+              }
+            ],
+            "caption": "People remain in the loop while connected systems coordinate decisions and assistance."
+          }
         }
       },
       {
@@ -2989,6 +3806,16 @@
             "Maintenance and scheduling teams see the same status.",
             "They coordinate repair and production changes before the final station runs out of usable components."
           ]
+        },
+        "quick": {
+          "summary": "Match named lecture cases to their benefits and follow connected production across stages.",
+          "points": [
+            "Thames Water: equipment-status monitoring and failure detection; Volkswagen: AR/augmented maintenance.",
+            "Rolls-Royce: predictive engine care/TotalCare; GE Predix: lecture cloud/pull-economy example.",
+            "Car production has parallel body and parts tracks joining at final assembly before shipping.",
+            "Connected visibility spans stages; traditional factories could still have local sensors and computers.",
+            "Company examples are historical case studies, not verified current offerings."
+          ]
         }
       }
     ],
@@ -3004,7 +3831,10 @@
         ],
         "correctIndex": 3,
         "explanation": "Application security focuses on software applications and their exposed functions. Building entry is a physical-security issue and is the nearest related but different defense.",
-        "sectionId": "w4-security"
+        "sectionId": "w4-security",
+        "brief": [
+          "Application security protects software functions; unauthorized building entry belongs to physical security."
+        ]
       },
       {
         "id": "w4-q02",
@@ -3017,7 +3847,10 @@
         ],
         "correctIndex": 1,
         "explanation": "The malicious blocking and payment demand identify ransomware. Legitimate backup encryption may use the same mathematical tool but lacks the coercive attack.",
-        "sectionId": "w4-threats"
+        "sectionId": "w4-threats",
+        "brief": [
+          "Malicious blocking plus a payment demand identifies ransomware; legitimate encryption alone does not."
+        ]
       },
       {
         "id": "w4-q03",
@@ -3030,7 +3863,10 @@
         ],
         "correctIndex": 2,
         "explanation": "All three are explicit adoption challenges: older systems, attack exposure and incompatible standards. Faster displays do not address the main deployment barriers.",
-        "sectionId": "w4-iiot"
+        "sectionId": "w4-iiot",
+        "brief": [
+          "Older installations, attack exposure and incompatible standards create deployment barriers; connection is not automatically seamless."
+        ]
       },
       {
         "id": "w4-q04",
@@ -3043,7 +3879,10 @@
         ],
         "correctIndex": 0,
         "explanation": "GE uses the three-wave historical grouping in the second option. Steam/electricity/computers are technologies in the separate revolution timeline, not these wave names.",
-        "sectionId": "w4-internet"
+        "sectionId": "w4-internet",
+        "brief": [
+          "Use GE’s historical three-wave names; steam/electricity/computers belong to the separate industrial-revolution timeline."
+        ]
       },
       {
         "id": "w4-q05",
@@ -3056,7 +3895,10 @@
         ],
         "correctIndex": 0,
         "explanation": "The source identifies poor working conditions, inefficiency and waste. Zero-waste production is the opposite of the drawback described.",
-        "sectionId": "w4-internet"
+        "sectionId": "w4-internet",
+        "brief": [
+          "GE’s historical account emphasizes poor conditions, inefficiency and waste; zero-waste production reverses that drawback."
+        ]
       },
       {
         "id": "w4-q06",
@@ -3069,7 +3911,10 @@
         ],
         "correctIndex": 2,
         "explanation": "Manual Control Unit is the supplied non-component. Conditioning is included because measurements need preparation before/around processing and conversion.",
-        "sectionId": "w4-sensors"
+        "sectionId": "w4-sensors",
+        "brief": [
+          "Watch NOT: Manual Control Unit is excluded from the supplied configuration; signal conditioning is included."
+        ]
       },
       {
         "id": "w4-q07",
@@ -3083,7 +3928,10 @@
         "correctIndex": 1,
         "explanation": "Electronics is the assignment answer tied to the lecture chart. Other sectors can benefit, but are not the highest bar in the supplied example.",
         "sectionId": "w4-processes",
-        "sourceNote": "Historical lecture prediction, not a verified current growth ranking or investment forecast."
+        "sourceNote": "Historical lecture prediction, not a verified current growth ranking or investment forecast.",
+        "brief": [
+          "Electronics is the historical lecture-chart key, not a verified current growth ranking or forecast."
+        ]
       },
       {
         "id": "w4-q08",
@@ -3097,7 +3945,10 @@
         "correctIndex": 2,
         "explanation": "The final stage applies supervisory decisions and adaptive actions. Collecting samples belongs at Connection and is the closest earlier-stage distractor.",
         "sectionId": "w4-processes",
-        "sourceNote": "Earlier weekly notes call this related final stage Configuration."
+        "sourceNote": "Earlier weekly notes call this related final stage Configuration.",
+        "brief": [
+          "Control applies supervisory decisions through adaptation; earlier course notes call this related stage Configuration."
+        ]
       },
       {
         "id": "w4-q09",
@@ -3110,7 +3961,10 @@
         ],
         "correctIndex": 2,
         "explanation": "Security is system-wide: inconsistent choices and weak links can expose the whole process. A single-vendor requirement is not the purpose of a security standard.",
-        "sectionId": "w4-security"
+        "sectionId": "w4-security",
+        "brief": [
+          "One weak link can expose the wider factory; standards coordinate security across implementations."
+        ]
       },
       {
         "id": "w4-q10",
@@ -3123,7 +3977,10 @@
         ],
         "correctIndex": 0,
         "explanation": "The three sensing roles support warning, environmental/structural monitoring and worker location. They are safety/operational functions rather than commercial advertising.",
-        "sectionId": "w4-iiot"
+        "sectionId": "w4-iiot",
+        "brief": [
+          "Match sensing roles: gas/strata → warnings and working conditions; RFID/location → locating miners."
+        ]
       },
       {
         "id": "w4-q11",
@@ -3136,7 +3993,10 @@
         ],
         "correctIndex": 1,
         "explanation": "The course attributes Industrial Internet to General Electric. Toyota is associated with Lean/TPS, a separate industrial idea.",
-        "sectionId": "w4-internet"
+        "sectionId": "w4-internet",
+        "brief": [
+          "The course attributes Industrial Internet to GE; Toyota belongs to Lean/TPS."
+        ]
       },
       {
         "id": "w4-q12",
@@ -3149,7 +4009,10 @@
         ],
         "correctIndex": 1,
         "explanation": "Liquid flow rotates the impeller and its signals support the flow/quantity estimate. A thermometer measures temperature and cannot replace this flow mechanism.",
-        "sectionId": "w4-sensors"
+        "sectionId": "w4-sensors",
+        "brief": [
+          "Liquid rotates an impeller; its signals support quantity estimation. Temperature sensing cannot substitute for flow measurement."
+        ]
       },
       {
         "id": "w4-q13",
@@ -3162,7 +4025,10 @@
         ],
         "correctIndex": 3,
         "explanation": "ADC means analog-to-digital converter. DAC performs the opposite digital-to-analog direction, making it the closest distractor.",
-        "sectionId": "w4-sensors"
+        "sectionId": "w4-sensors",
+        "brief": [
+          "ADC digitizes analog input; DAC reverses that direction."
+        ]
       },
       {
         "id": "w4-q14",
@@ -3175,7 +4041,10 @@
         ],
         "correctIndex": 3,
         "explanation": "Thames Water is the operational-efficiency monitoring/failure-detection example. AR maintenance belongs to the Volkswagen example in these notes.",
-        "sectionId": "w4-applications"
+        "sectionId": "w4-applications",
+        "brief": [
+          "In the historical course cases, Thames Water illustrates status/failure monitoring; Volkswagen illustrates AR maintenance."
+        ]
       },
       {
         "id": "w4-q15",
@@ -3187,7 +4056,11 @@
         "correctIndex": 0,
         "explanation": "False: the statement reverses the distinction. Spear phishing is tailored to a specific person or organization; broad phishing can be distributed widely.",
         "sectionId": "w4-threats",
-        "sourceNote": "The notes label this as assignment knowledge outside the Week 4 videos. Targeting is the defining distinction, not a fixed message count."
+        "sourceNote": "The notes label this as assignment knowledge outside the Week 4 videos. Targeting is the defining distinction, not a fixed message count.",
+        "brief": [
+          "The statement reverses the definitions: spear phishing is targeted; generic phishing can be broad.",
+          "Targeting is decisive, not a fixed message count."
+        ]
       }
     ],
     "revision": [
@@ -3203,6 +4076,16 @@
       "PLC modules CPU, power, I/O; SCADA is Supervisory Control and Data Acquisition.",
       "5C Control: supervised self-configuration, optimization, adjustment; Electronics is the historical chart answer.",
       "Thames Water = status/failure detection; Volkswagen = AR; Rolls-Royce = predictive engine care."
-    ]
+    ],
+    "quick": {
+      "summary": "Secure connected factories, recognize industrial control roles and match course case studies.",
+      "points": [
+        "CIA: confidentiality, integrity, availability; industrial systems also need reliability and safety.",
+        "Ransomware demands payment; spear phishing targets particular people or organizations.",
+        "IIoT deployment faces data integration, security, standards, legacy equipment and skills gaps.",
+        "ADC digitizes; PLC controls locally; SCADA provides supervisory monitoring.",
+        "Historical cases and growth-chart answers describe the lecture context."
+      ]
+    }
   }
 ]

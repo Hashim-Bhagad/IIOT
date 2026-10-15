@@ -5,6 +5,12 @@ export type DiagramData = {
   caption: string;
 };
 
+export type QuickNotes = {
+  summary: string;
+  points: string[];
+  diagram?: DiagramData;
+};
+
 export type Section = {
   id: string;
   title: string;
@@ -16,6 +22,7 @@ export type Section = {
   diagram?: DiagramData;
   example?: { title: string; steps: string[] };
   traps: string[];
+  quick: QuickNotes;
 };
 
 export type Question = {
@@ -26,6 +33,7 @@ export type Question = {
   explanation: string;
   sectionId: string;
   sourceNote?: string;
+  brief: string[];
 };
 
 export type Week = {
@@ -36,6 +44,7 @@ export type Week = {
   sections: Section[];
   quiz: Question[];
   revision: string[];
+  quick: QuickNotes;
 };
 
 export type WeekIndex = { id: number; title: string; questions: number; sectionIds: string[] };

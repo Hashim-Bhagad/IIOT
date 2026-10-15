@@ -309,3 +309,50 @@ tbody th { font-weight: 500; }
 @media (max-width: 560px) {
   .pyq-app .week-header h1 { font-size: 32px; }
 }
+
+/* Short pointers and visual explanations are the default reading view. */
+.week-header h1 { font-size: 36px; }
+.week-header p { font-size: 15px; margin: 14px 0 20px; }
+.quick-week { display: grid; grid-template-columns: minmax(0,1fr) minmax(180px,320px); align-items: start; gap: 12px 24px; padding: 24px 0; border-bottom: 1px solid var(--rule); font-size: 13px; }
+.week-snapshot { padding: 10px 0; }
+.week-snapshot li { max-width: 60ch; }
+.quick-week .learning-outcomes { grid-column: 1 / -1; margin: 0; padding: 0; font-size: 12px; }
+.topic-picker { display: grid; gap: 6px; font-size: 12px; color: var(--muted); min-width: 0; }
+.topic-picker select { width: 100%; min-width: 0; min-height: 44px; padding: 8px 12px; border: 1px solid var(--rule-solid); border-radius: 6px; background: var(--surface); color: var(--ink); font-size: 13px; text-overflow: ellipsis; }
+.quick-lesson { margin-top: 40px; padding-bottom: 32px; }
+.quick-lesson .lesson-intro { font-size: 15px !important; margin: 14px 0 20px; }
+.quick-visual .lesson-diagram { margin: 20px 0; }
+.quick-points { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px 32px; padding-left: 20px; margin: 20px 0; font-size: 15px; line-height: 1.6; }
+.quick-points li { margin: 0; padding-left: 4px; }
+.lesson-detail { border-top: 1px solid var(--rule); padding-top: 12px; font-size: 13px; }
+.lesson-detail > summary { color: var(--link); font-weight: 500; }
+.lesson-detail[open] > summary { margin-bottom: 20px; }
+.answer-pointers { padding-left: 20px; margin: 16px 0; font-size: 15px; line-height: 1.6; max-width: 70ch; }
+.answer-pointers li + li { margin-top: 8px; }
+.full-explanation, .source-caveat { margin-top: 14px; font-size: 13px; }
+.full-explanation > summary { color: var(--link); }
+.source-caveat > summary { color: var(--accent); font-weight: 500; }
+.visual-contrast { margin: 20px 0; }
+.contrast-pictures { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+.contrast-pictures.three-pictures { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.contrast-pictures > div { min-width: 0; padding: 16px; background: var(--paper-2); border-radius: 8px; }
+.contrast-pictures svg { display: block; width: 100%; max-width: 240px; height: auto; margin: 0 auto 12px; }
+.contrast-pictures h4 { font-size: 15px; margin: 0; }
+.contrast-pictures p { font-size: 13px; line-height: 1.5; color: var(--muted); margin: 6px 0 0; }
+.visual-contrast figcaption { font-size: 12px; line-height: 1.6; color: var(--muted); margin-top: 12px; }
+@media (max-width: 560px) {
+  .week-header h1 { font-size: 30px; }
+  .quick-week { grid-template-columns: minmax(0,1fr); gap: 12px; padding: 20px 0; }
+  .quick-week .learning-outcomes { grid-column: auto; }
+  .week-snapshot { padding: 0; }
+  .quick-lesson { margin-top: 32px; padding-bottom: 24px; }
+  .quick-points { grid-template-columns: minmax(0,1fr); gap: 10px; font-size: 14px; }
+  .quick-lesson .lesson-intro { font-size: 14px !important; }
+  .contrast-pictures { gap: 12px; }
+  .contrast-pictures > div { padding: 12px; }
+  .contrast-pictures h4 { font-size: 14px; }
+  .contrast-pictures.three-pictures { grid-template-columns: minmax(0,1fr); }
+  .three-pictures > div { display: grid; grid-template-columns: 72px minmax(0,1fr); gap: 0 12px; align-items: center; }
+  .three-pictures svg { grid-row: span 2; margin: 0; }
+  .three-pictures p { align-self: start; }
+}

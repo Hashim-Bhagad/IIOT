@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import type { Progress, Question, Section, Week, WeekIndex } from '@/lib/types';
 import Diagram from './Diagram';
 import { Icon } from './Icon';
+import AnswerExplanation from './AnswerExplanation';
+import VisualContrast, { hasVisualContrast } from './VisualContrast';
 
 const STORAGE = 'iiot-study-progress-v1';
 const EMPTY: Progress = { answers: {}, understood: {}, flagged: {} };
@@ -26,17 +28,24 @@ function readProgress(): Progress {
   } catch { return EMPTY; }
 }
 
-function Lesson({ section, understood, onToggle, hideDiagram = false }: { section: Section; understood: boolean; onToggle: () => void; hideDiagram?: boolean }) {
-  return <section className="lesson" id={section.id} aria-labelledby={`${section.id}-heading`}>
-    <div className="lesson-heading"><h2 id={`${section.id}-heading`}>{section.title}</h2><label className="understood"><input type="checkbox" checked={understood} onChange={onToggle}/><span>Understood</span></label></div>
-    <p className="lesson-intro">{section.intro}</p>
-    {section.paragraphs.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
-    {section.terms.length > 0 && <dl className="definitions">{section.terms.map((term, i) => <div key={i}><dt>{term.term}</dt><dd>{term.meaning}</dd></div>)}</dl>}
-    {section.diagram && !hideDiagram && <Diagram id={section.id} data={section.diagram}/>}
-    {section.comparison && <div className="table-scroll"><table><caption>{section.title}: compare the differences</caption><thead><tr>{section.comparison.headers.map((header, i) => <th key={i} scope="col">{header}</th>)}</tr></thead><tbody>{section.comparison.rows.map((row, i) => <tr key={i}>{row.map((cell, j) => j === 0 ? <th key={j} scope="row">{cell}</th> : <td key={j}>{cell}</td>)}</tr>)}</tbody></table></div>}
-    <div className="key-points"><h3>Keep these clear</h3><ul>{section.keyPoints.map((point, i) => <li key={i}>{point}</li>)}</ul></div>
-    {section.example && <div className="worked-example"><h3>{section.example.title}</h3><ol>{section.example.steps.map((step, i) => <li key={i}>{step}</li>)}</ol></div>}
-    {section.traps.length > 0 && <details className="exam-traps"><summary>Exam traps &amp; course-specific details <span>{section.traps.length}</span></summary><ul>{section.traps.map((trap, i) => <li key={i}>{trap}</li>)}</ul></details>}
+function Lesson({ section, understood, onToggle }: { section: Section; understood: boolean; onToggle: () => void }) {
+  const diagram = section.quick?.diagram ?? section.diagram;
+  const illustrated = hasVisualContrast(section.id);
+  return <section className="lesson quick-lesson" id={section.id} aria-labelledby={`${section.id}-heading`}>
+    <div className="lesson-heading"><h2 id={`${section.id}-heading`} tabIndex={-1}>{section.title}</h2><label className="understood"><input type="checkbox" checked={understood} onChange={onToggle}/><span>Understood</span></label></div>
+    <p className="lesson-intro">{section.quick?.summary ?? section.intro}</p>
+    <div className="quick-visual" data-quick-visual>{illustrated ? <VisualContrast sectionId={section.id}/> : diagram && <Diagram id={`${section.id}-quick`} data={diagram}/>}</div>
+    <ul className="quick-points">{(section.quick?.points ?? section.keyPoints).map((point,i)=><li key={i}>{point}</li>)}</ul>
+    <details className="lesson-detail"><summary>More detail</summary>
+      <p>{section.intro}</p>
+      {section.paragraphs.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
+      {section.terms.length > 0 && <dl className="definitions">{section.terms.map((term, i) => <div key={i}><dt>{term.term}</dt><dd>{term.meaning}</dd></div>)}</dl>}
+      {illustrated && section.diagram && <Diagram id={`${section.id}-detail`} data={section.diagram}/>}
+      {section.comparison && <div className="table-scroll"><table><caption>{section.title}: compare the differences</caption><thead><tr>{section.comparison.headers.map((header, i) => <th key={i} scope="col">{header}</th>)}</tr></thead><tbody>{section.comparison.rows.map((row, i) => <tr key={i}>{row.map((cell, j) => j === 0 ? <th key={j} scope="row">{cell}</th> : <td key={j}>{cell}</td>)}</tr>)}</tbody></table></div>}
+      <div className="key-points"><h3>Further exam facts</h3><ul>{section.keyPoints.map((point, i) => <li key={i}>{point}</li>)}</ul></div>
+      {section.example && <div className="worked-example"><h3>{section.example.title}</h3><ol>{section.example.steps.map((step, i) => <li key={i}>{step}</li>)}</ol></div>}
+      {section.traps.length > 0 && <details className="exam-traps"><summary>Exam traps &amp; source details <span>{section.traps.length}</span></summary><ul>{section.traps.map((trap, i) => <li key={i}>{trap}</li>)}</ul></details>}
+    </details>
   </section>;
 }
 
@@ -61,7 +70,6 @@ export default function StudyWorkspace({ week, index, extraQuestions }: { week: 
   const totalAnswered = index.reduce((sum, item) => sum + Object.keys(progress.answers).filter(id => id.startsWith(`w${item.id}-`)).length, 0);
   const totalQuestions = index.reduce((sum, item) => sum + item.questions, 0);
   const nextWeek = index.find(item => item.id > week.id);
-  const overview = week.sections.find(section => section.diagram);
   const question = week.quiz[active];
   const result = retrying ? undefined : progress.answers[question.id];
   const selected = result ? result.selected : draft;
@@ -101,15 +109,22 @@ export default function StudyWorkspace({ week, index, extraQuestions }: { week: 
     <div className="study-body">
       <header className="workspace-bar"><span>Industry 4.0 &amp; IIoT</span><label className="mobile-week">Section<select value={week.id} onChange={event => router.push(event.target.value === 'pyqs' ? '/pyqs' : `/week/${event.target.value}`)} aria-label="Choose a course section"><option value="pyqs">PYQs · {extraQuestions} extra questions</option>{index.map(item => <option key={item.id} value={item.id}>{item.id}. {item.title}</option>)}</select></label><span className="workspace-status">Week {week.id} of {index.length} <span className="status-dot"/> {lessonsRead}/{week.sections.length} topics understood</span></header>
       <main id="study-main">
-        <div className="week-header"><h1>{week.title}</h1><div className="week-meta">Week {week.id} <span>·</span> {week.sections.length} topics <span>·</span> {week.quiz.length} exercises</div><p>{week.summary}</p></div>
-        <div className="pyq-entry"><span>More practice beyond the weekly assignments.</span><Link className="text-button" href="/pyqs">{extraQuestions} extra PYQs <Icon name="arrow" size={16}/></Link></div>
+        <div className="week-header"><h1>{week.title}</h1><div className="week-meta">Week {week.id} <span>·</span> {week.sections.length} topics <span>·</span> {week.quiz.length} exercises</div><p>{week.quick?.summary ?? week.summary}</p></div>
         <div className="study-tabs" role="tablist" aria-label="Study mode">{(['learn','practice','review'] as Mode[]).map(tab => <button key={tab} id={`tab-${tab}`} role="tab" type="button" aria-selected={mode === tab} aria-controls="study-panel" tabIndex={mode === tab ? 0 : -1} onKeyDown={event => { const tabs: Mode[] = ['learn','practice','review']; const position = tabs.indexOf(tab); const target = event.key === 'ArrowRight' ? tabs[(position + 1) % 3] : event.key === 'ArrowLeft' ? tabs[(position + 2) % 3] : event.key === 'Home' ? tabs[0] : event.key === 'End' ? tabs[2] : undefined; if (target) { event.preventDefault(); setMode(target); document.getElementById(`tab-${target}`)?.focus(); } }} onClick={() => setMode(tab)}>{tab === 'learn' ? <Icon name="book" size={18}/> : tab === 'review' ? <Icon name="bookmark" size={18}/> : <Icon name="check" size={18}/>}<span>{tab === 'learn' ? 'Learn' : tab === 'practice' ? 'Practice' : 'Review'}</span>{tab === 'practice' && <small>{answered}/15</small>}{tab === 'review' && reviewQuestions.length > 0 && <small>{reviewQuestions.length}</small>}</button>)}</div>
         {storageError && <p className="storage-error" role="status">This browser couldn’t save your progress. You can keep studying, but answers may not be remembered after closing the page.</p>}
         <div id="study-panel" role="tabpanel" aria-labelledby={`tab-${mode}`}>
           {mode === 'learn' && <div className="learn-panel">
-            <div className="week-map">{overview?.diagram && <Diagram id={`week-${week.id}-overview`} data={overview.diagram}/>}<details className="learning-outcomes"><summary>What you’ll understand in this week</summary><ul>{week.objectives.map((objective, i) => <li key={i}>{objective}</li>)}</ul></details><div className="topic-index" aria-label="Jump to a topic">{week.sections.map(section => <a key={section.id} href={`#${section.id}`}>{section.title}</a>)}</div></div>
-            {week.sections.map(section => <Lesson key={section.id} section={section} hideDiagram={section.id === overview?.id} understood={!!progress.understood[section.id]} onToggle={() => setProgress(previous => ({ ...previous, understood: { ...previous.understood, [section.id]: !previous.understood[section.id] } }))}/>)}
-            <div className="lesson-finish"><div><h2>Put this week into practice.</h2><p>Answer the assignments, then return to any concept that needs another look.</p></div><button className="button primary" onClick={() => { setMode('practice'); window.scrollTo({top:0,behavior:'auto'}); }}>Start the 15 exercises <Icon name="arrow"/></button></div>
+            <div className="quick-week">
+              <details className="week-snapshot"><summary>Week in five pointers</summary><ul>{(week.quick?.points ?? week.revision.slice(0,5)).map((point,i)=><li key={i}>{point}</li>)}</ul></details>
+              <label className="topic-picker">Jump to topic<select aria-label="Jump to a lesson topic" defaultValue="" onChange={event => {
+                const target = document.getElementById(event.target.value);
+                target?.querySelector('h2')?.focus({preventScroll:true});
+                target?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+              }}><option value="" disabled>Choose a topic</option>{week.sections.map(section=><option key={section.id} value={section.id}>{section.title}</option>)}</select></label>
+              <details className="learning-outcomes"><summary>Learning goals</summary><p>{week.summary}</p><ul>{week.objectives.map((objective,i)=><li key={i}>{objective}</li>)}</ul></details>
+            </div>
+            {week.sections.map(section => <Lesson key={section.id} section={section} understood={!!progress.understood[section.id]} onToggle={() => setProgress(previous => ({ ...previous, understood: { ...previous.understood, [section.id]: !previous.understood[section.id] } }))}/>)}
+            <div className="lesson-finish"><div><h2>Put this week into practice.</h2><p>Try the 15 assignment questions.</p></div><button className="button primary" onClick={() => { setMode('practice'); window.scrollTo({top:0,behavior:'auto'}); }}>Start the 15 exercises <Icon name="arrow"/></button></div>
           </div>}
 
           {mode === 'practice' && <div className="practice-panel">
@@ -119,7 +134,7 @@ export default function StudyWorkspace({ week, index, extraQuestions }: { week: 
             <h2 className="question-title">{question.question}</h2>
             <fieldset className="answer-options"><legend className="sr-only">Choose one answer</legend>{question.options.map((option, i) => <label key={i} className={`answer-option ${selected === i ? 'selected' : ''} ${result && i === question.correctIndex ? 'correct-option' : ''} ${result && selected === i && !result.correct ? 'wrong-option' : ''}`}><input type="radio" name={question.id} value={i} checked={selected === i} disabled={!!result} onChange={() => setDraft(i)}/><span>{option}</span>{result && i === question.correctIndex && <Icon name="check" size={20}/>}</label>)}</fieldset>
             <div className="question-actions">{!result ? <button className="button primary" disabled={draft === null} onClick={checkAnswer}>Check answer <Icon name="arrow" size={18}/></button> : <button className="button" onClick={() => {setDraft(null);setRetrying(true);}}>Try this question again</button>}<button className="text-button" onClick={() => readLesson(question.sectionId)}>Read the relevant note <Icon name="arrow" size={16}/></button></div>
-            {result && <div className={`answer-feedback ${result.correct ? 'is-correct' : 'needs-review'}`} role="status"><h3><Icon name={result.correct ? 'check' : 'close'}/>{result.correct ? 'Correct. Here’s why.' : 'Keep this distinction clear.'}</h3><p><strong>Answer:</strong> {question.options[question.correctIndex]}</p><p>{question.explanation}</p>{question.sourceNote && <p className="source-note"><strong>Course context:</strong> {question.sourceNote}</p>}</div>}
+            {result && <div className={`answer-feedback ${result.correct ? 'is-correct' : 'needs-review'}`} role="status"><h3><Icon name={result.correct ? 'check' : 'close'}/>{result.correct ? 'Correct' : 'Review this distinction'}</h3><p><strong>Answer:</strong> {question.options[question.correctIndex]}</p><AnswerExplanation brief={question.brief} explanation={question.explanation} sourceNote={question.sourceNote}/></div>}
             <div className="practice-footer"><button className="button" disabled={active === 0} onClick={() => goQuestion(active - 1)}>Previous question</button><span>{correct} correct <span>·</span> {answered} answered</span><button className="button" disabled={active === 14} onClick={() => goQuestion(active + 1)}>Next question <Icon name="arrow" size={16}/></button></div>
             {answered === 15 && <div className="practice-complete"><h3>All 15 questions attempted.</h3><p>{correct} correct. {15 - correct} need another look.</p><button className="button primary" onClick={() => setMode('review')}>Review this week</button></div>}
           </div>}

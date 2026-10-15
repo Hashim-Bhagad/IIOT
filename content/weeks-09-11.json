@@ -73,7 +73,17 @@
           "Do not equate fog with replacing the cloud: the lecture explicitly describes a complement.",
           "'Merging real-time and non-real-time workloads' is an assignment-key fact; the notes say it is not explicitly explained in the transcript.",
           "Vendor descriptions are course-era examples, not verification of current product support or universal protocol compatibility."
-        ]
+        ],
+        "quick": {
+          "summary": "Fog handles nearby urgent work and filters data before cloud transmission.",
+          "points": [
+            "End devices → fog nodes → cloud; fog complements cloud computing.",
+            "Prior filtration removes noisy or unnecessary readings before sending.",
+            "Course key includes mixed real-time/non-real-time workloads; transcript does not explain this explicitly.",
+            "Crosser is the course-era protocol/PLC/hardware cue; current universal compatibility is not established.",
+            "Lecture IT/OT grouping is simplified; supervisory functions can overlap."
+          ]
+        }
       },
       {
         "id": "w9-r",
@@ -164,7 +174,44 @@
           "R is the language/environment; RStudio is an IDE, not a replacement name for R.",
           "The extracted source's logical-operator row is incomplete. The operator meanings here are presented explicitly rather than copying that broken row.",
           "Package versions and installation details are course context. No package installation is required to solve these recognition questions."
-        ]
+        ],
+        "quick": {
+          "summary": "Recognize R operators and the ten-fold validation used in the course demo.",
+          "points": [
+            "%in% checks membership; : creates sequences.",
+            "%/% gives integer division; %% gives the remainder.",
+            "R is the language; RStudio is an IDE.",
+            "caret supports model training; e1071 is associated with SVM in the demo.",
+            "Ten-fold validation rotates the held-out partition; set.seed makes random choices reproducible."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Tell R operators apart",
+            "nodes": [
+              {
+                "label": "R operators",
+                "detail": "Choose the operation to identify its symbol."
+              },
+              {
+                "label": "Sequence :",
+                "detail": "Build an ordered range."
+              },
+              {
+                "label": "Membership %in%",
+                "detail": "Check whether a vector contains a value."
+              },
+              {
+                "label": "Integer division %/%",
+                "detail": "Return the integer quotient."
+              },
+              {
+                "label": "Remainder %%",
+                "detail": "Return what division leaves over."
+              }
+            ],
+            "caption": "Choose by the operation requested, not by a similar-looking symbol."
+          }
+        }
       },
       {
         "id": "w9-julia",
@@ -209,7 +256,48 @@
           "Dictn() is not the dictionary constructor. Tuple and Array describe different structures.",
           "Use double quotes for Julia strings; the source's prose uses quotation marks informally.",
           "Exact default integer width is environment dependent; Int64 is the course demo's output."
-        ]
+        ],
+        "quick": {
+          "summary": "Julia dictionaries map keys to values; recognize constructors and string operations.",
+          "points": [
+            "Dict() creates a dictionary; Dictn() is a distractor.",
+            "println prints values; typeof reports their types.",
+            "Double-quoted strings use $name for interpolation; string(s3, s4) joins strings.",
+            "Arrays use brackets; tuples and dictionaries serve different collection roles.",
+            "Int64 is the demo output; integer width depends on the environment."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Recognize Julia syntax",
+            "nodes": [
+              {
+                "label": "Julia tools",
+                "detail": "Choose syntax by its task."
+              },
+              {
+                "label": "Dict()",
+                "detail": "Map keys to values."
+              },
+              {
+                "label": "println()",
+                "detail": "Print a value."
+              },
+              {
+                "label": "typeof()",
+                "detail": "Report a value’s type."
+              },
+              {
+                "label": "$name",
+                "detail": "Insert a variable into a double-quoted string."
+              },
+              {
+                "label": "string(s3, s4)",
+                "detail": "Join strings."
+              }
+            ],
+            "caption": "These operations have separate jobs; they are not sequential steps."
+          }
+        }
       },
       {
         "id": "w9-data-management",
@@ -278,7 +366,17 @@
           "Repeated data is redundancy; incorrect data is a cleaning issue; separate source tables are an integration issue.",
           "NoSQL is not synonymous with 'no security' or 'no structure'.",
           "The listed tools are lecture examples, not a claim that a single storage technology fits every workload."
-        ]
+        ],
+        "quick": {
+          "summary": "Collect, prepare and store data before analysis; distinguish three preprocessing jobs.",
+          "points": [
+            "Lifecycle order: generation → acquisition → storage → analysis.",
+            "Integration combines sources; cleaning fixes inaccurate or incomplete records.",
+            "Redundancy mitigation detects repeated data and uses filtering or compression.",
+            "Inter-DCN means between centres; intra-DCN means within one.",
+            "NoSQL suits some large, varied datasets; relational storage can also be appropriate."
+          ]
+        }
       },
       {
         "id": "w9-hadoop",
@@ -381,7 +479,17 @@
           "YARN allocates; HDFS stores; MapReduce computes.",
           "The source mixes Hadoop generations. JobTracker/TaskTracker belongs to older MapReduce architecture.",
           "'Master/slave' is the source's historical vocabulary; this app uses metadata service and worker nodes."
-        ]
+        ],
+        "quick": {
+          "summary": "Hadoop separates storage, parallel processing and resource allocation.",
+          "points": [
+            "YARN allocates CPU, memory and other cluster resources.",
+            "HDFS stores replicated blocks; MapReduce processes jobs; Common supplies shared utilities.",
+            "NameNode tracks metadata; DataNodes store actual blocks.",
+            "MongoDB with Hadoop supports batch aggregation, warehousing and ETL.",
+            "JobTracker/TaskTracker are historical MapReduce v1 terms; modern YARN uses different roles."
+          ]
+        }
       },
       {
         "id": "w9-dcn",
@@ -482,7 +590,17 @@
           "The inbound-bandwidth answer is key-backed; the source notes it is not explicitly spelled out in the transcript.",
           "The quoted link speeds are historical examples, not current ceilings.",
           "SDDC is about programmable infrastructure; it does not make physical servers or links disappear."
-        ]
+        ],
+        "quick": {
+          "summary": "Data-centre networks connect servers; topology and aggregate traffic determine important constraints.",
+          "points": [
+            "Three tiers: edge/Top-of-Rack → aggregation → core.",
+            "BCube uses BCube Source Routing, abbreviated BSR.",
+            "Course key: many small IIoT messages can raise inbound bandwidth; transcript leaves this implicit.",
+            "SDDC virtualizes infrastructure for programmable workload management; physical equipment remains.",
+            "Fat-tree adds multiple paths; course link speeds are historical examples."
+          ]
+        }
       },
       {
         "id": "w9-sdn",
@@ -549,7 +667,17 @@
           "A logically centralized controller is not necessarily one physical server.",
           "The source's OpenFlow 1.1–1.5 range and 'latest' wording describe lecture-era versions; do not use them as a current-version claim.",
           "The source uses 10.0.0.* as an intuitive wildcard sketch; exact match syntax depends on the rule system."
-        ]
+        ],
+        "quick": {
+          "summary": "SDN separates forwarding decisions from packet handling.",
+          "points": [
+            "Control plane decides; data plane forwards; applications express business needs.",
+            "Southbound links controller/devices; northbound links controller/applications; OpenFlow is the course southbound example.",
+            "Limited TCAM rule storage motivates wildcard combination of compatible rules.",
+            "Wildcard combination reduces rules; it does not enlarge TCAM.",
+            "Logical centralization can use several physical controllers; secure placement and links still matter."
+          ]
+        }
       },
       {
         "id": "w9-automation",
@@ -625,7 +753,36 @@
           "Software-defined automation does not mean eliminating physical sensors and machines.",
           "'Dynamic, real-time control' is the keyed course phrase; timing guarantees require an engineered implementation.",
           "The hierarchy is the lecture's simplified model; labels and PLC placement can differ in other automation architectures."
-        ]
+        ],
+        "quick": {
+          "summary": "Software-defined automation virtualizes control functions while physical machines still need safe, timely actions.",
+          "points": [
+            "Rule-based forwarding policies adapt priorities as industrial requirements change.",
+            "Device → control → cloud business applications; southbound faces devices, northbound faces applications.",
+            "Key phrase: virtualized platform for dynamic, real-time system control.",
+            "Virtual control does not remove physical sensors and actuators.",
+            "Segmentation, remote commands and virtualization still require engineered security, availability and timing."
+          ],
+          "diagram": {
+            "type": "layers",
+            "title": "Programmable industrial layers",
+            "nodes": [
+              {
+                "label": "Devices",
+                "detail": "Physical sensors and actuators."
+              },
+              {
+                "label": "Control",
+                "detail": "Virtualized functions and forwarding policies."
+              },
+              {
+                "label": "Cloud applications",
+                "detail": "Business analytics, billing and security."
+              }
+            ],
+            "caption": "Southbound faces devices; northbound faces applications. Timing and safety still require engineering."
+          }
+        }
       }
     ],
     "quiz": [
@@ -640,7 +797,10 @@
         ],
         "correctIndex": 0,
         "explanation": "Prior filtration removes noisy or unnecessary data before cloud transmission. Encryption protects contents but does not reduce the repeated or noisy readings themselves.",
-        "sectionId": "w9-fog"
+        "sectionId": "w9-fog",
+        "brief": [
+          "Filter unwanted readings before transmission; encryption protects contents but does not remove noise."
+        ]
       },
       {
         "id": "w9-q2",
@@ -654,7 +814,10 @@
         "correctIndex": 1,
         "explanation": "The assignment key names merging real-time and non-real-time workloads. Offline-only archiving misses the real-time role of near-source computing.",
         "sectionId": "w9-fog",
-        "sourceNote": "Key-backed fact; the notes say the transcript does not explicitly spell it out."
+        "sourceNote": "Key-backed fact; the notes say the transcript does not explicitly spell it out.",
+        "brief": [
+          "Course key includes mixed real-time/non-real-time workloads; the transcript does not explicitly explain this capability."
+        ]
       },
       {
         "id": "w9-q3",
@@ -668,7 +831,10 @@
         "correctIndex": 2,
         "explanation": "Crosser is the keyed vendor for this phrase. Nebbiolo is associated with fogOS, fogNode and fogSM in the course.",
         "sectionId": "w9-fog",
-        "sourceNote": "Course-era vendor description; this is not a verified current compatibility guarantee."
+        "sourceNote": "Course-era vendor description; this is not a verified current compatibility guarantee.",
+        "brief": [
+          "Crosser is the course-era vendor cue; this phrase is not a current universal-compatibility guarantee."
+        ]
       },
       {
         "id": "w9-q4",
@@ -681,7 +847,10 @@
         ],
         "correctIndex": 3,
         "explanation": "%in% tests membership. The colon creates a sequence; %/% performs integer division; %% gives a remainder.",
-        "sectionId": "w9-r"
+        "sectionId": "w9-r",
+        "brief": [
+          "Membership differs from sequence creation (:), integer division (%/%) and remainder (%%)."
+        ]
       },
       {
         "id": "w9-q5",
@@ -695,7 +864,10 @@
         "correctIndex": 0,
         "explanation": "trainControl(method='cv', number=10) selects ten-fold cross-validation. Two-fold is the same general family but the wrong number for this demo.",
         "sectionId": "w9-r",
-        "sourceNote": "The number is specific to the course demo."
+        "sourceNote": "The number is specific to the course demo.",
+        "brief": [
+          "In this course demo, method='cv' with number=10 rotates validation through ten partitions."
+        ]
       },
       {
         "id": "w9-q6",
@@ -708,7 +880,10 @@
         ],
         "correctIndex": 1,
         "explanation": "Dict() constructs a dictionary. A tuple or array is a different collection type; Dictn() is the distractor spelling.",
-        "sectionId": "w9-julia"
+        "sectionId": "w9-julia",
+        "brief": [
+          "Use the exact constructor spelling; tuples and arrays are different collections."
+        ]
       },
       {
         "id": "w9-q7",
@@ -721,7 +896,10 @@
         ],
         "correctIndex": 2,
         "explanation": "Redundancy mitigation targets repeated data. Cleaning targets inaccurate/incomplete data; integration combines sources.",
-        "sectionId": "w9-data-management"
+        "sectionId": "w9-data-management",
+        "brief": [
+          "Repeated records signal redundancy; inaccurate records need cleaning; separate sources need integration."
+        ]
       },
       {
         "id": "w9-q8",
@@ -734,7 +912,10 @@
         ],
         "correctIndex": 3,
         "explanation": "YARN is the resource-allocation answer. HDFS stores blocks and MapReduce processes jobs; neither is the component named by the key for resource negotiation.",
-        "sectionId": "w9-hadoop"
+        "sectionId": "w9-hadoop",
+        "brief": [
+          "Resource allocation differs from storing blocks in HDFS or processing jobs with MapReduce."
+        ]
       },
       {
         "id": "w9-q9",
@@ -747,7 +928,10 @@
         ],
         "correctIndex": 0,
         "explanation": "Batch aggregation is one of the listed MongoDB/Hadoop applications, along with warehousing and ETL. Routing and slot scheduling are network functions.",
-        "sectionId": "w9-hadoop"
+        "sectionId": "w9-hadoop",
+        "brief": [
+          "MongoDB/Hadoop applications include batch aggregation, warehousing and ETL; routing is a network task."
+        ]
       },
       {
         "id": "w9-q10",
@@ -760,7 +944,10 @@
         ],
         "correctIndex": 1,
         "explanation": "BCube Source Routing (BSR) is the protocol name to remember. BGP and OSPF are other routing protocols, not this BCube-specific answer.",
-        "sectionId": "w9-dcn"
+        "sectionId": "w9-dcn",
+        "brief": [
+          "BCube has its own named source-routing protocol, BSR; BGP and OSPF are distractors."
+        ]
       },
       {
         "id": "w9-q11",
@@ -774,7 +961,10 @@
         "correctIndex": 2,
         "explanation": "Many small sensor messages can add up to a large incoming data rate. Individual message size alone does not describe aggregate traffic.",
         "sectionId": "w9-dcn",
-        "sourceNote": "Key-backed fact; the notes say the transcript does not explicitly spell it out."
+        "sourceNote": "Key-backed fact; the notes say the transcript does not explicitly spell it out.",
+        "brief": [
+          "Key-backed, not explicit in transcript: aggregate arrival rate matters even when individual messages are small."
+        ]
       },
       {
         "id": "w9-q12",
@@ -787,7 +977,10 @@
         ],
         "correctIndex": 3,
         "explanation": "SDDC provides programmable virtualized infrastructure and workload management. Physical servers still exist; virtualization does not remove security responsibilities.",
-        "sectionId": "w9-dcn"
+        "sectionId": "w9-dcn",
+        "brief": [
+          "Virtualized resources enable programmable workload management; physical infrastructure and security responsibilities remain."
+        ]
       },
       {
         "id": "w9-q13",
@@ -800,7 +993,10 @@
         ],
         "correctIndex": 0,
         "explanation": "Compatible rules can be combined with wildcard matches to reduce the rule count. Removing control-plane functions does not solve the limited-rule-storage problem.",
-        "sectionId": "w9-sdn"
+        "sectionId": "w9-sdn",
+        "brief": [
+          "Combine compatible matches into broader rules to reduce rule count; TCAM capacity itself does not grow."
+        ]
       },
       {
         "id": "w9-q14",
@@ -813,7 +1009,10 @@
         ],
         "correctIndex": 1,
         "explanation": "Rule-based policies let the controller change forwarding behavior as priorities change. Permanently fixed priorities fail to adapt to the process.",
-        "sectionId": "w9-automation"
+        "sectionId": "w9-automation",
+        "brief": [
+          "Changing priorities require adaptable forwarding rules rather than permanently fixed handling."
+        ]
       },
       {
         "id": "w9-q15",
@@ -827,7 +1026,10 @@
         "correctIndex": 2,
         "explanation": "The key describes a virtualized platform supporting dynamic, real-time control. Batch-only control misses the time-sensitive automation goal.",
         "sectionId": "w9-automation",
-        "sourceNote": "Course definition; real-time guarantees depend on the actual implementation."
+        "sourceNote": "Course definition; real-time guarantees depend on the actual implementation.",
+        "brief": [
+          "Course definition: virtualized dynamic, real-time control; actual timing guarantees still need engineering."
+        ]
       }
     ],
     "revision": [
@@ -842,7 +1044,17 @@
       "SDDC = programmable infrastructure and workload management.",
       "SDN: northbound to applications, southbound to devices; wildcard combination saves rule space.",
       "Rule-based forwarding changes sensor-data priorities; software-defined automation virtualizes dynamic control."
-    ]
+    ],
+    "quick": {
+      "summary": "Filter near machines, recognize analytics tools, and separate network decisions from packet forwarding.",
+      "points": [
+        "Fog filters locally; cloud handles larger storage and analytics.",
+        "R operators and Julia Dict() are assignment recognition clues.",
+        "YARN allocates resources; HDFS stores; MapReduce processes.",
+        "BCube uses BSR; many small messages still need bandwidth.",
+        "SDN changes forwarding through rules; automation still needs physical devices."
+      ]
+    }
   },
   {
     "id": 10,
@@ -927,7 +1139,17 @@
           "'Ordinary and emergent' and the service phrase are key-backed details that the source says are absent from the video.",
           "Contiki and the named stack/version are course/research context, not current software recommendations.",
           "The notes expand DMS as Distributed Management System; keep this lecture label separate from terminology used in other smart-grid references."
-        ]
+        ],
+        "quick": {
+          "summary": "Apply SDN to constrained networks without overlooking control overhead or urgent traffic.",
+          "points": [
+            "TSCH means Time Slotted Channel Hopping: scheduled slots plus changing channels.",
+            "Course 6TiSCH slicing answer: Layer 2, despite IPv6 elsewhere in the stack.",
+            "Key-only details absent from video: ordinary/emergent streams and delay-constrained emergent services.",
+            "Fog/access devices handle nearby urgent services; proximity does not guarantee zero delay.",
+            "uSDN is the lightweight Contiki example; grid functions include DMS, DERMS and SCADA."
+          ]
+        }
       },
       {
         "id": "w10-mininet",
@@ -992,7 +1214,17 @@
           "The controller did not inspect all 74,150 packets; 277 is the controller packet-in count.",
           "OpenFlow 1.1 was the version used in this demo. The source's support claim is not a general statement about all current Mininet versions.",
           "Python 2.7 and historical resource sizes are recognition facts, not a setup guide."
-        ]
+        ],
+        "quick": {
+          "summary": "Installed switch rules let most packets bypass repeated controller decisions.",
+          "points": [
+            "Mininet emulates; POX controls; Open vSwitch switches; D-ITG generates traffic.",
+            "SPD means Shortest Path Delay; the demo uses UDP.",
+            "74,150 packets produced 277 controller packet-ins; those counts measure different events.",
+            "Delay is travel time; jitter is delay variation; throughput is delivered data rate.",
+            "Historical setup/results are demo-specific; zero QoS violations does not guarantee universal performance."
+          ]
+        }
       },
       {
         "id": "w10-trust",
@@ -1079,7 +1311,40 @@
           "Resilience is not the same as reliability: changing adversarial conditions are the distinguishing cue.",
           "Availability is not permission for everyone to read everything; confidentiality and authorization still apply.",
           "More capable cloud hardware does not mean cloud security is automatically solved."
-        ]
+        ],
+        "quick": {
+          "summary": "Trustworthiness includes safe physical operation as well as information protection.",
+          "points": [
+            "CIA: confidentiality limits reading; integrity prevents unauthorized changes; availability keeps services usable.",
+            "Trustworthiness: security, privacy, reliability, resilience and safety.",
+            "Resilience handles dynamic adversarial conditions; reliability concerns stated conditions over time.",
+            "IT and OT need shared protection, including cloud and third-party dependencies.",
+            "Avoid, mitigate, transfer or accept risk; controls can leave residual risk."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Three easily confused properties",
+            "nodes": [
+              {
+                "label": "System properties",
+                "detail": "Distinguish the quality being tested."
+              },
+              {
+                "label": "Reliability",
+                "detail": "Correct operation over time under stated conditions."
+              },
+              {
+                "label": "Resilience",
+                "detail": "Correct operation under changing adversarial conditions."
+              },
+              {
+                "label": "Safety",
+                "detail": "Avoid unacceptable physical harm."
+              }
+            ],
+            "caption": "Dynamic adversarial conditions identify resilience."
+          }
+        }
       },
       {
         "id": "w10-stride",
@@ -1164,7 +1429,40 @@
           "System Builder is distinct from System Owner and Component Builder.",
           "Jamming is listed under physical attacks in this course, even though its consequence is disrupted communication.",
           "The source also names 'resource exemption' and 'reversal attack' without enough definition; these labels are not substitutes for the clearly defined STRIDE categories."
-        ]
+        ],
+        "quick": {
+          "summary": "Name the threat, then identify who designs, operates or supplies the protection.",
+          "points": [
+            "STRIDE: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege.",
+            "Tampering threatens integrity; disclosure threatens confidentiality; DoS threatens availability.",
+            "System Builder designs trustworthy systems, defines component requirements, tests and certifies.",
+            "Owner defines operating needs and maintains patches; component builders supply compliant parts.",
+            "Course classification: SQL injection application; sniffing network; jamming physical."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Who owns which responsibility?",
+            "nodes": [
+              {
+                "label": "IIC roles",
+                "detail": "Match each role to its responsibility."
+              },
+              {
+                "label": "System Owner",
+                "detail": "Defines operating needs and ensures timely patches."
+              },
+              {
+                "label": "System Builder",
+                "detail": "Designs, defines trust requirements, tests and certifies."
+              },
+              {
+                "label": "Component Builder",
+                "detail": "Supplies compliant hardware, software or services."
+              }
+            ],
+            "caption": "The trustworthy-design and certification question identifies the System Builder."
+          }
+        }
       },
       {
         "id": "w10-protection",
@@ -1235,7 +1533,17 @@
           "NIST SP 800-82 is the quiz's keyed answer; IEC 62443 is also relevant but is not included as a second correct option here.",
           "A firewall enforces rules; it does not replace all device, data or application protections.",
           "Standards names and the 'no converged standard' remark are course context, not current compliance advice."
-        ]
+        ],
+        "quick": {
+          "summary": "Protect every device layer, communication path and state of data.",
+          "points": [
+            "Protection areas: end device, fog, cloud, communication and data; security management coordinates.",
+            "Authentication checks identity; authorization checks permission.",
+            "Constrained-device key: lightweight symmetric-key cryptography, alongside access controls.",
+            "Data states: at rest means stored; in use means processed; in transit means moving.",
+            "Course key names NIST SP 800-82; IEC 62443 is also relevant, not a current compliance assessment."
+          ]
+        }
       },
       {
         "id": "w10-factory",
@@ -1371,7 +1679,17 @@
           "'Transport' is the NOT-a-Lumada-layer answer.",
           "The question about adjusted process parameters uses flexibility, even though optimization is another genuine factory trait.",
           "The quantified company results and product architectures are historical examples, not updated performance claims."
-        ]
+        ],
+        "quick": {
+          "summary": "Smart factories connect production levels and adapt operations using shared information.",
+          "points": [
+            "Levels: field devices → shop floor → plant/MES → enterprise/ERP.",
+            "Traits: connected, optimized, transparent, proactive, agile/flexible; adjusting parameters cues flexibility.",
+            "Course-era Lumada layers: Edge, Core, Analytics, Studio, Foundry; exclude Transport.",
+            "North Star BlueScope wearables detect radiation/toxic gases; Fanuc cues Zero Downtime.",
+            "ABB cues YuMi; historical company examples do not establish current performance or product configurations."
+          ]
+        }
       },
       {
         "id": "w10-food",
@@ -1462,7 +1780,17 @@
           "SmartLabel's code is QR; Intellicup's base component is NFC. Do not swap them.",
           "QR, RFID, GPS and NFC have different roles; using one name for all tracking is inaccurate.",
           "The lecture's phrase that sensors help 'every step except the plate' is a course illustration, not a universal technology limitation."
-        ]
+        ],
+        "quick": {
+          "summary": "Food IIoT links origin, movement and conditions from field to consumer.",
+          "points": [
+            "Sensing → communication → stakeholder applications supports food-chain decisions.",
+            "Traceability records origin and journey; condition monitoring checks product quality during that journey.",
+            "Course examples: SmartLabel uses QR; Intellicup has an NFC chip at its base.",
+            "BioRanger detects pathogens; CityCrop/Farmshelf grow indoors; Eskesso controls cooking.",
+            "Complete records are necessary for traceability; product features are course-era examples."
+          ]
+        }
       }
     ],
     "quiz": [
@@ -1478,7 +1806,10 @@
         "correctIndex": 0,
         "explanation": "The key places the slicing mechanism at Layer 2. The presence of IPv6 does not move this specific link/MAC slicing function to Layer 3.",
         "sectionId": "w10-sdn-networks",
-        "sourceNote": "Specific to the software-defined 6TiSCH architecture tested in the course."
+        "sourceNote": "Specific to the software-defined 6TiSCH architecture tested in the course.",
+        "brief": [
+          "The course architecture keys slicing to Layer 2; IPv6 presence does not change that specific function."
+        ]
       },
       {
         "id": "w10-q2",
@@ -1492,7 +1823,10 @@
         "correctIndex": 1,
         "explanation": "Ordinary and emergent are the keyed categories. TCP is a transport protocol; encryption is a protection choice, not the two service categories here.",
         "sectionId": "w10-sdn-networks",
-        "sourceNote": "Key-backed detail; the source says it is not in the video."
+        "sourceNote": "Key-backed detail; the source says it is not in the video.",
+        "brief": [
+          "Ordinary/emergent is the assignment-key classification; the source says this detail is absent from the video."
+        ]
       },
       {
         "id": "w10-q3",
@@ -1506,7 +1840,10 @@
         "correctIndex": 2,
         "explanation": "Nearby fog/access resources provide the key's delay-constrained emergent services. Fog reduces travel/processing demands but does not guarantee zero latency everywhere.",
         "sectionId": "w10-sdn-networks",
-        "sourceNote": "Key-backed detail; the source says it is not in the video."
+        "sourceNote": "Key-backed detail; the source says it is not in the video.",
+        "brief": [
+          "Key-only detail absent from video: nearby fog/access supports delay-constrained emergent service, without guaranteeing zero latency."
+        ]
       },
       {
         "id": "w10-q4",
@@ -1519,7 +1856,10 @@
         ],
         "correctIndex": 3,
         "explanation": "Resilience concerns continued correct behavior as adversity changes. Reliability is correct operation under stated conditions over a specified period.",
-        "sectionId": "w10-trust"
+        "sectionId": "w10-trust",
+        "brief": [
+          "Changing adversarial conditions distinguish resilience from reliability under stated conditions."
+        ]
       },
       {
         "id": "w10-q5",
@@ -1532,7 +1872,10 @@
         ],
         "correctIndex": 0,
         "explanation": "E means Elevation of privilege: gaining unauthorized additional rights. Encryption is a control, not this threat-model category.",
-        "sectionId": "w10-stride"
+        "sectionId": "w10-stride",
+        "brief": [
+          "E concerns gaining unauthorized additional permissions; encryption is a protection mechanism."
+        ]
       },
       {
         "id": "w10-q6",
@@ -1545,7 +1888,10 @@
         ],
         "correctIndex": 1,
         "explanation": "The System Builder owns design, component trust requirements and verification. The owner defines operational needs and ensures continued maintenance.",
-        "sectionId": "w10-stride"
+        "sectionId": "w10-stride",
+        "brief": [
+          "Design, component trust requirements, testing and certification belong to the builder; operational needs belong to the owner."
+        ]
       },
       {
         "id": "w10-q7",
@@ -1558,7 +1904,10 @@
         ],
         "correctIndex": 2,
         "explanation": "The suggested approach is lightweight symmetric-key cryptography, alongside identity/access controls. Disabling authentication sacrifices protection rather than solving resource constraints.",
-        "sectionId": "w10-protection"
+        "sectionId": "w10-protection",
+        "brief": [
+          "Constrained resources motivate efficient shared-key protection, not disabling authentication."
+        ]
       },
       {
         "id": "w10-q8",
@@ -1571,7 +1920,10 @@
         ],
         "correctIndex": 3,
         "explanation": "The security states are stored, actively processed and moving. Sensing/sending/learning are architecture stages from another application, not the three data states.",
-        "sectionId": "w10-protection"
+        "sectionId": "w10-protection",
+        "brief": [
+          "Distinguish stored, actively processed and moving data; these are security states, not application stages."
+        ]
       },
       {
         "id": "w10-q9",
@@ -1585,7 +1937,10 @@
         "correctIndex": 0,
         "explanation": "NIST SP 800-82 is the keyed control-system/OT guidance. ISO/IEC 15408 is the notes' IT-security evaluation example; wireless/OpenFlow specifications are not the requested guidance.",
         "sectionId": "w10-protection",
-        "sourceNote": "The notes also identify IEC 62443 as relevant OT security material. This quiz preserves the assignment's NIST SP 800-82 answer without making IEC 62443 a conflicting option."
+        "sourceNote": "The notes also identify IEC 62443 as relevant OT security material. This quiz preserves the assignment's NIST SP 800-82 answer without making IEC 62443 a conflicting option.",
+        "brief": [
+          "The assignment keys NIST SP 800-82; IEC 62443 is also relevant OT security material."
+        ]
       },
       {
         "id": "w10-q10",
@@ -1599,7 +1954,10 @@
         "correctIndex": 1,
         "explanation": "Transport is absent from the listed five layers: Edge, Core, Analytics, Studio and Foundry. Edge and Analytics are genuine layers in this course example.",
         "sectionId": "w10-factory",
-        "sourceNote": "Course-era Lumada architecture."
+        "sourceNote": "Course-era Lumada architecture.",
+        "brief": [
+          "Course-era layers are Edge, Core, Analytics, Studio and Foundry; the question asks which is absent."
+        ]
       },
       {
         "id": "w10-q11",
@@ -1612,7 +1970,10 @@
         ],
         "correctIndex": 2,
         "explanation": "Worker helmets/wristbands in this case detect radiation and toxic gases and help monitor health. Product identifiers belong to other application examples.",
-        "sectionId": "w10-factory"
+        "sectionId": "w10-factory",
+        "brief": [
+          "Match this worker-wearable case to health hazards, especially radiation and toxic gases."
+        ]
       },
       {
         "id": "w10-q12",
@@ -1625,7 +1986,10 @@
         ],
         "correctIndex": 3,
         "explanation": "SmartLabel uses a QR code to expose product information. GPS tracks position; it is not the product-information code in this example.",
-        "sectionId": "w10-food"
+        "sectionId": "w10-food",
+        "brief": [
+          "The product-information code is QR; position tracking by GPS is a different function."
+        ]
       },
       {
         "id": "w10-q13",
@@ -1638,7 +2002,10 @@
         ],
         "correctIndex": 0,
         "explanation": "The base contains an NFC chip. The QR/e-wallet process is related to the system but is not the physical component asked for.",
-        "sectionId": "w10-food"
+        "sectionId": "w10-food",
+        "brief": [
+          "The question asks for the physical base component; the related e-wallet/QR process is a distractor."
+        ]
       },
       {
         "id": "w10-q14",
@@ -1651,7 +2018,10 @@
         ],
         "correctIndex": 1,
         "explanation": "The keyed characteristic is flexibility: adapting machine configuration, material flow or temperature to requirements. Transparency makes the state visible but does not itself describe adjustment.",
-        "sectionId": "w10-factory"
+        "sectionId": "w10-factory",
+        "brief": [
+          "Adapting configuration, material flow or temperature cues flexibility, although optimization is also a factory trait."
+        ]
       },
       {
         "id": "w10-q15",
@@ -1664,7 +2034,10 @@
         ],
         "correctIndex": 2,
         "explanation": "A firewall applies rules allowing or blocking network traffic. A data warehouse stores data and does not inherently act as the network boundary.",
-        "sectionId": "w10-protection"
+        "sectionId": "w10-protection",
+        "brief": [
+          "Look for rule-enforced traffic boundaries; storage systems do not inherently filter network access."
+        ]
       }
     ],
     "revision": [
@@ -1681,7 +2054,17 @@
       "Lumada = Edge, Core, Analytics, Studio, Foundry; Transport is excluded.",
       "North Star BlueScope = radiation/toxic gases; adaptable parameters = flexibility.",
       "SmartLabel = QR; Intellicup = NFC; BioRanger = pathogens."
-    ]
+    ],
+    "quick": {
+      "summary": "Recognize software-defined network roles, security distinctions, and smart-factory and food examples.",
+      "points": [
+        "6TiSCH slicing: Layer 2; edge streams: ordinary and emergent, per the course key.",
+        "Resilience handles changing adversity; STRIDE names threats.",
+        "Protect devices, links and data at rest, in use and in transit.",
+        "Factory flexibility adjusts processes; Lumada excludes Transport in this course example.",
+        "SmartLabel uses QR; Intellicup has NFC at its base."
+      ]
+    }
   },
   {
     "id": 11,
@@ -1809,7 +2192,17 @@
           "ADAMM's three measurements are temperature, cough rate and heart rate—not blood pressure, glucose and weight.",
           "The scalable-algorithm answer is key-backed and only partly covered by the transcript.",
           "Product features and demographic projections are lecture context, not current medical-device advice."
-        ]
+        ],
+        "quick": {
+          "summary": "Healthcare sensors send readings for protected processing, storage and learning.",
+          "points": [
+            "Course order: sensing → sending → processing → storing → learning.",
+            "ADAMM course cue: body temperature, cough rate and heart rate; no diagnostic-accuracy guarantee.",
+            "QardioCore: ECG; Dexcom: glucose; iHealth BP5: blood pressure; Kinsa: temperature.",
+            "Key-backed challenge: scalable algorithms without compromising security; only partly covered in transcript.",
+            "Sensors support care teams; readings do not replace clinical assessment."
+          ]
+        }
       },
       {
         "id": "w11-power",
@@ -1912,7 +2305,17 @@
           "FAN is not the same scope as HAN; learn the technology bundle given by the key.",
           "The 200 ms value is a lecture example, not a fixed delay for every cloud location or network.",
           "Self-healing and autonomous actions remain subject to safety, permission and failure constraints."
-        ]
+        ],
+        "quick": {
+          "summary": "Power systems add information exchange, feedback and growing autonomy to electricity delivery.",
+          "points": [
+            "Maturity: monitoring → control → optimization → autonomy.",
+            "Architecture: sensing → gateways/network → applications; electricity flows generation → transmission → distribution → consumption.",
+            "HAN: home; NAN: neighborhood; FAN: field/distribution; WAN: wide area.",
+            "Course FAN bundle: WiMAX, 3G, 4G wireless; Ethernet wired.",
+            "Cloud delay and self-healing examples depend on deployment; critical control needs engineered timing and safety."
+          ]
+        }
       },
       {
         "id": "w11-ami",
@@ -1979,7 +2382,16 @@
         "traps": [
           "Acquisition means gathering, not the keyed analysis function.",
           "AMI includes communication and backend systems; it is not only a collection of meters."
-        ]
+        ],
+        "quick": {
+          "summary": "AMI includes meters, communications and backend systems; acquisition and analysis are different jobs.",
+          "points": [
+            "MDAS acquires meter readings; MDMS manages and analyzes them.",
+            "AMI is the complete infrastructure, not just an individual smart meter.",
+            "Remote meter operations can lower operating costs.",
+            "Usage records and control messages require access protection and authentication."
+          ]
+        }
       },
       {
         "id": "w11-inventory",
@@ -2065,7 +2477,44 @@
           "Inventory management protects against stock-outs; increasing stock-outs is not its objective.",
           "'Comprehensive visibility' includes forecasts and expiration dates, not only a live location.",
           "RFID identification does not itself predict demand; forecasting needs linked data and analytics."
-        ]
+        ],
+        "quick": {
+          "summary": "Keep enough usable stock while balancing demand, delivery delays and holding costs.",
+          "points": [
+            "Inventory management protects against stock-outs; excess stock can cost money or spoil.",
+            "Lead time is order-to-delivery time; variability makes replenishment harder.",
+            "Comprehensive visibility includes levels, expiry dates, item locations and forecast demand.",
+            "Identification tracks an item; condition sensors check whether storage preserves quality.",
+            "RFID alone does not forecast demand; analytics needs linked, trustworthy records."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Comprehensive inventory visibility",
+            "nodes": [
+              {
+                "label": "Inventory visibility",
+                "detail": "Combine all four views."
+              },
+              {
+                "label": "Levels",
+                "detail": "How much stock is available?"
+              },
+              {
+                "label": "Expiry dates",
+                "detail": "When does stock expire?"
+              },
+              {
+                "label": "Item locations",
+                "detail": "Where is each item?"
+              },
+              {
+                "label": "Forecast demand",
+                "detail": "How much will be needed?"
+              }
+            ],
+            "caption": "The keyed answer includes all four; location alone is incomplete."
+          }
+        }
       },
       {
         "id": "w11-rfid",
@@ -2137,7 +2586,40 @@
           "A semi-passive tag does not actively beacon in this course's description.",
           "Transponders and beacons is a key-backed active-tag classification, only partly explained by the source.",
           "The source's broad 'RFID is more secure / carries more information' comparison is a simplification; implementation and backend design determine these properties."
-        ]
+        ],
+        "quick": {
+          "summary": "Distinguish RFID tags by both power supply and transmission method.",
+          "points": [
+            "Passive: reader-powered, no onboard battery, backscatter communication.",
+            "Active: own power and active transmitter; course-key types are transponders and beacons.",
+            "Semi-passive: battery powers IC/sensing, no active transmitter; still uses backscatter.",
+            "Course active-tag taxonomy is only partly explained in the transcript.",
+            "RFID needs no optical line of sight; security and read performance depend on implementation."
+          ],
+          "diagram": {
+            "type": "branch",
+            "title": "Battery and transmitter are different",
+            "nodes": [
+              {
+                "label": "RFID tag types",
+                "detail": "Compare battery and transmission behavior."
+              },
+              {
+                "label": "Passive",
+                "detail": "Reader-powered; no battery; backscatter."
+              },
+              {
+                "label": "Active",
+                "detail": "Own power; active radio transmission."
+              },
+              {
+                "label": "Semi-passive",
+                "detail": "Battery powers IC; no active transmitter; backscatter."
+              }
+            ],
+            "caption": "A battery alone does not make an RFID tag active."
+          }
+        }
       },
       {
         "id": "w11-safety",
@@ -2210,7 +2692,17 @@
           "Segmentation means enforced policies, not simply drawing boxes on a network map.",
           "The secure-web-gateway answer is key-backed and not fully developed in the transcript.",
           "AR/VR overlays are not inherently safe because they look helpful; protect the content and command chain."
-        ]
+        ],
+        "quick": {
+          "summary": "Plant safety protects people, machinery and the integrity of connected commands.",
+          "points": [
+            "Intrusion triangle: motive, means and opportunity.",
+            "Availability in the key = functioning time / total time.",
+            "Segmentation divides a network and explicitly enforces security policies.",
+            "Course-key secure web gateway enables early detection/cross-branch protection; capability is architecture-specific, not guaranteed.",
+            "IDS detects; IPS can block; AR guidance also needs trustworthy content."
+          ]
+        }
       },
       {
         "id": "w11-facilities",
@@ -2321,7 +2813,17 @@
           "Facility management includes people, finance and contracts, not only building sensors.",
           "The key's space-utilization application is only partly/not explicitly covered by the transcript.",
           "Collected data must be consistent and useful before it can support the claimed efficiency improvements."
-        ]
+        ],
+        "quick": {
+          "summary": "Facility management coordinates people, property, operations, maintenance and supporting records.",
+          "points": [
+            "Manage operations and maintenance on behalf of property owners.",
+            "Cost-barrier answer: increase operating efficiency and reduce maintenance cost.",
+            "Course-key analytics example: exact square-foot office utilization; transcript coverage is partial.",
+            "Asset, fault, repair and usage history supports preventive decisions.",
+            "Applications include HVAC, lighting, alarms and booking; savings depend on useful data and implementation."
+          ]
+        }
       }
     ],
     "quiz": [
@@ -2336,7 +2838,10 @@
         ],
         "correctIndex": 0,
         "explanation": "The course order is sensing → sending → processing → storing → learning. The closest swapped sequence places processing before sending, contrary to this architecture.",
-        "sectionId": "w11-healthcare"
+        "sectionId": "w11-healthcare",
+        "brief": [
+          "In the course sequence, sending precedes processing; learning follows storage."
+        ]
       },
       {
         "id": "w11-q2",
@@ -2350,7 +2855,10 @@
         "correctIndex": 1,
         "explanation": "The named combination is temperature, cough rate and heart rate. Blood pressure/glucose/weight are other health measurements but not this course's ADAMM cue.",
         "sectionId": "w11-healthcare",
-        "sourceNote": "Course device example; this is not a clinical claim about diagnostic accuracy."
+        "sourceNote": "Course device example; this is not a clinical claim about diagnostic accuracy.",
+        "brief": [
+          "Course-device cue: temperature, cough rate and heart rate; this does not establish diagnostic accuracy."
+        ]
       },
       {
         "id": "w11-q3",
@@ -2364,7 +2872,10 @@
         "correctIndex": 2,
         "explanation": "Scale and security must be maintained together. Disabling security is not a solution to scaling, and healthcare requires diverse devices and measurements.",
         "sectionId": "w11-healthcare",
-        "sourceNote": "Key-backed answer; the notes say it is only partly/not explicitly present in the transcript."
+        "sourceNote": "Key-backed answer; the notes say it is only partly/not explicitly present in the transcript.",
+        "brief": [
+          "Key-backed challenge, partly covered in transcript: scale algorithms while preserving security."
+        ]
       },
       {
         "id": "w11-q4",
@@ -2377,7 +2888,10 @@
         ],
         "correctIndex": 3,
         "explanation": "The sequence is monitoring, control, optimization, autonomy. Monitoring and control precede optimization.",
-        "sectionId": "w11-power"
+        "sectionId": "w11-power",
+        "brief": [
+          "Follow monitoring → control → optimization → autonomy; earlier stages cannot follow optimization here."
+        ]
       },
       {
         "id": "w11-q5",
@@ -2391,7 +2905,10 @@
         "correctIndex": 0,
         "explanation": "The FAN answer lists WiMAX/3G/4G and Ethernet. ZigBee/6LoWPAN is the HAN technology cue in these notes.",
         "sectionId": "w11-power",
-        "sourceNote": "Course-listed technology bundle; not an exhaustive current list."
+        "sourceNote": "Course-listed technology bundle; not an exhaustive current list.",
+        "brief": [
+          "Course FAN bundle: WiMAX/3G/4G plus Ethernet; ZigBee/6LoWPAN cues HAN, not an exhaustive current list."
+        ]
       },
       {
         "id": "w11-q6",
@@ -2404,7 +2921,10 @@
         ],
         "correctIndex": 1,
         "explanation": "MDMS manages/analyzes meter data; MDAS acquires it. The distinction between acquisition and management is the exam cue.",
-        "sectionId": "w11-ami"
+        "sectionId": "w11-ami",
+        "brief": [
+          "Acquisition gathers readings; management analyzes them. Distinguish MDAS from MDMS."
+        ]
       },
       {
         "id": "w11-q7",
@@ -2417,7 +2937,10 @@
         ],
         "correctIndex": 2,
         "explanation": "Inventory management protects against stock-outs while balancing cost. Overfilling is not the objective and can increase holding cost or spoilage.",
-        "sectionId": "w11-inventory"
+        "sectionId": "w11-inventory",
+        "brief": [
+          "Prevent shortages while balancing holding costs; maximizing stock can waste money or cause spoilage."
+        ]
       },
       {
         "id": "w11-q8",
@@ -2430,7 +2953,10 @@
         ],
         "correctIndex": 3,
         "explanation": "Semi-passive has a battery for the IC but communicates without an active transmitter. A fully passive tag is reader-powered; an active beacon transmits itself.",
-        "sectionId": "w11-rfid"
+        "sectionId": "w11-rfid",
+        "brief": [
+          "A battery can power the IC without an active transmitter; semi-passive still uses backscatter."
+        ]
       },
       {
         "id": "w11-q9",
@@ -2443,7 +2969,10 @@
         ],
         "correctIndex": 0,
         "explanation": "Comprehensive visibility combines levels, expiry, locations and demand forecast. Temperature is a useful condition measurement but is not the full keyed visibility definition.",
-        "sectionId": "w11-inventory"
+        "sectionId": "w11-inventory",
+        "brief": [
+          "The keyed definition combines levels, expiry, location and forecast demand; tracking location alone is incomplete."
+        ]
       },
       {
         "id": "w11-q10",
@@ -2456,7 +2985,10 @@
         ],
         "correctIndex": 1,
         "explanation": "The key defines availability as functioning time / total time. Password or encryption ratios measure different things.",
-        "sectionId": "w11-safety"
+        "sectionId": "w11-safety",
+        "brief": [
+          "Use functioning time divided by total observation time; login/encryption ratios measure different properties."
+        ]
       },
       {
         "id": "w11-q11",
@@ -2469,7 +3001,10 @@
         ],
         "correctIndex": 2,
         "explanation": "Segmentation makes smaller areas and enforces policies at their boundaries. Merely dividing a diagram without access enforcement misses the protection purpose.",
-        "sectionId": "w11-safety"
+        "sectionId": "w11-safety",
+        "brief": [
+          "Smaller network areas need explicitly enforced policies; drawing boundaries alone provides no enforcement."
+        ]
       },
       {
         "id": "w11-q12",
@@ -2482,7 +3017,10 @@
         ],
         "correctIndex": 3,
         "explanation": "Better operations and maintenance can address cost. Ignoring maintenance can increase future failures and expense rather than improve efficiency.",
-        "sectionId": "w11-facilities"
+        "sectionId": "w11-facilities",
+        "brief": [
+          "Efficiency and reduced maintenance expense address cost; neglecting maintenance can increase future failures."
+        ]
       },
       {
         "id": "w11-q13",
@@ -2496,7 +3034,10 @@
         "correctIndex": 0,
         "explanation": "Space-utilization analysis is the keyed facility application. Julia and routing may be tools elsewhere but are not the application asked here.",
         "sectionId": "w11-facilities",
-        "sourceNote": "Key-backed example; the notes say this is only partly/not explicitly present in the transcript."
+        "sourceNote": "Key-backed example; the notes say this is only partly/not explicitly present in the transcript.",
+        "brief": [
+          "Course-key example: office square-foot utilization; the source notes only partial or absent transcript coverage."
+        ]
       },
       {
         "id": "w11-q14",
@@ -2510,7 +3051,10 @@
         "correctIndex": 1,
         "explanation": "The active-tag classification in the key is transponders and beacons. Passive and semi-passive are separate tag power/communication categories, not two active types.",
         "sectionId": "w11-rfid",
-        "sourceNote": "Assignment-key taxonomy; only partly/not explicitly explained in the transcript."
+        "sourceNote": "Assignment-key taxonomy; only partly/not explicitly explained in the transcript.",
+        "brief": [
+          "The key’s active-tag taxonomy is transponders/beacons; passive/semi-passive are separate categories, partly explained in transcript."
+        ]
       },
       {
         "id": "w11-q15",
@@ -2524,7 +3068,10 @@
         "correctIndex": 2,
         "explanation": "Secure web gateway is the keyed component in the described cloud-integrated security architecture. A meter or calendar does not perform this web-security control role.",
         "sectionId": "w11-safety",
-        "sourceNote": "Key-backed architecture-specific capability, not a universal guarantee of every gateway."
+        "sourceNote": "Key-backed architecture-specific capability, not a universal guarantee of every gateway.",
+        "brief": [
+          "Secure web gateway is the course-key architecture-specific answer; early detection/cross-branch protection is not universally guaranteed."
+        ]
       }
     ],
     "revision": [
@@ -2541,6 +3088,16 @@
       "Availability = functioning time / total time; segmentation = divide and enforce policy.",
       "Secure web gateway = the keyed mobile-security/cross-branch control.",
       "Facility cost = higher operating efficiency + lower maintenance cost; analytics example = office square-foot utilization."
-    ]
+    ],
+    "quick": {
+      "summary": "Match healthcare, power, inventory and facility questions to their defining sequence or distinction.",
+      "points": [
+        "Healthcare follows sensing, sending, processing, storing, learning.",
+        "Power maturity ends in autonomy; MDAS gathers and MDMS analyzes meter data.",
+        "Inventory management prevents stock-outs; comprehensive visibility includes expiry and forecasts.",
+        "Semi-passive RFID has a battery but no active transmitter.",
+        "Availability is functioning time divided by total time; segmentation enforces policies."
+      ]
+    }
   }
 ]

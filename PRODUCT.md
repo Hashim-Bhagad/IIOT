@@ -16,11 +16,11 @@ An NPTEL Industry 4.0 and IIoT learner starting from scratch, preparing within a
 
 ## Product Purpose
 
-Teach the supplied course material with detailed visual weekly notes, then let the learner answer exercises and understand mistakes. Success means every supplied week and all 180 supplied assignment questions are covered, with explanations linking practice back to teaching.
+Teach the supplied course material with concise visual weekly notes, then let the learner answer exercises and understand mistakes. Success means every supplied week and all 180 supplied assignment questions are covered, with explanations linking practice back to teaching. Short pointers and a visual form the default view; the full original notes remain available on demand.
 
 ## Operating Context
 
-Twelve local Word documents cover Weeks 1–12. The user previously requested a short visual guide and now explicitly requests a detailed Next.js website. The short guide is content evidence, not a binding visual identity.
+Twelve local Word documents cover Weeks 1–12. The user requests a Next.js website with short pointers, flowcharts and illustrations to support fast revision. Detailed notes stay accessible through disclosures.
 
 ## Capabilities and Constraints
 
@@ -31,7 +31,7 @@ Twelve local Word documents cover Weeks 1–12. The user previously requested a 
 - Most original answer-option lists are absent; generated distractors must be labelled as practice alternatives.
 - Preserve course-key-specific facts as such and flag inconsistent or questionable statements.
 - No official exam blueprint; do not invent course coverage or score guarantees.
-- Local progress without an account is an implementation assumption. Hosting remains undecided; deliver a runnable local application.
+- Progress stays in browser storage without an account. The app runs locally and deploys to Vercel.
 
 ## Evidence on Hand
 

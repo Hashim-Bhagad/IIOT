@@ -40,7 +40,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A transducer converts energy from one form to another."
+      ]
     },
     {
       "id": "pyq-2023-1-2",
@@ -63,7 +66,10 @@
           "answer": "a"
         }
       ],
-      "sourceNote": "The source keys this idealized statement True; practical sensors may respond to interfering quantities."
+      "sourceNote": "The source keys this idealized statement True; practical sensors may respond to interfering quantities.",
+      "brief": [
+        "The key describes an ideal sensor: respond to the intended measurand and reject other influences."
+      ]
     },
     {
       "id": "pyq-2023-1-3",
@@ -88,7 +94,11 @@
           "answer": "a"
         }
       ],
-      "sourceNote": "The wording “proportional” can also suggest analog output. The supplied key selects Scalar; scalar primarily means magnitude without direction."
+      "sourceNote": "The wording “proportional” can also suggest analog output. The supplied key selects Scalar; scalar primarily means magnitude without direction.",
+      "brief": [
+        "Scalar means magnitude without direction.",
+        "The source keys Scalar; “proportional” is imprecise wording here."
+      ]
     },
     {
       "id": "pyq-2023-1-4",
@@ -113,7 +123,10 @@
           "answer": "b"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Resolution is the smallest input change the sensor can distinguish."
+      ]
     },
     {
       "id": "pyq-2023-1-5",
@@ -146,7 +159,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "An actuator implements a control action as a physical effect such as motion or opening a valve."
+      ]
     },
     {
       "id": "pyq-2023-1-6",
@@ -171,7 +187,10 @@
           "answer": "c"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "An electric rotary actuator uses electrical energy to produce rotation."
+      ]
     },
     {
       "id": "pyq-2023-1-7",
@@ -204,7 +223,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "IEEE 802.15.4 supplies the low-rate wireless personal-area-network foundation."
+      ]
     },
     {
       "id": "pyq-2023-1-10",
@@ -229,7 +251,10 @@
           "answer": "a"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A ZigBee end device communicates through its parent without routing other nodes’ packets."
+      ]
     },
     {
       "id": "pyq-2023-1-11",
@@ -254,7 +279,10 @@
           "answer": "c"
         }
       ],
-      "sourceNote": "The source says “packet size”; 127 bytes is the course’s IEEE 802.15.4 frame-size value, not an application payload allowance."
+      "sourceNote": "The source says “packet size”; 127 bytes is the course’s IEEE 802.15.4 frame-size value, not an application payload allowance.",
+      "brief": [
+        "The course specifies a maximum IEEE 802.15.4 frame of 127 bytes."
+      ]
     },
     {
       "id": "pyq-2023-1-12",
@@ -279,7 +307,10 @@
           "answer": "d"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The supplied answer is mesh."
+      ]
     },
     {
       "id": "pyq-2023-1-13",
@@ -310,7 +341,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A passive RFID tag harvests energy from the reader signal and replies by backscatter, so the claim about its own power source is False."
+      ]
     },
     {
       "id": "pyq-2023-1-14",
@@ -335,7 +369,10 @@
           "answer": "d"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "IETF expands to Internet Engineering Task Force."
+      ]
     },
     {
       "id": "pyq-2023-1-15",
@@ -360,7 +397,10 @@
           "answer": "b"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "MQTT uses publish/subscribe over TCP/IP: publishers send topic messages to a broker, and subscribers receive messages for their subscriptions."
+      ]
     },
     {
       "id": "pyq-2024-1-2",
@@ -385,7 +425,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Accuracy concerns agreement between the measured result and a standard/reference value."
+      ]
     },
     {
       "id": "pyq-2024-1-3",
@@ -410,7 +453,11 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "“Active” has different meanings across sensor/transducer classifications. This item retains the supplied key’s wording rather than equating it universally with externally powered or self-generating devices."
+      "sourceNote": "“Active” has different meanings across sensor/transducer classifications. This item retains the supplied key’s wording rather than equating it universally with externally powered or self-generating devices.",
+      "brief": [
+        "Course key: a sensor that independently senses the input.",
+        "“Active” terminology differs across sensor classifications."
+      ]
     },
     {
       "id": "pyq-2024-1-5",
@@ -435,7 +482,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "ZigBee is associated with low-cost, low-power mesh networking in this course."
+      ]
     },
     {
       "id": "pyq-2024-1-6",
@@ -460,7 +510,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "6LoWPAN adapts IPv6 packets for constrained low-power wireless networks."
+      ]
     },
     {
       "id": "pyq-2024-1-7",
@@ -485,7 +538,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "NFC supports very short-range interaction between electronic devices."
+      ]
     },
     {
       "id": "pyq-2024-1-8",
@@ -510,7 +566,11 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": "Question/key wording issue: Hydraulic is the provided key; the compression/decompression description is imprecise for hydraulic liquid actuation."
+      "sourceNote": "Question/key wording issue: Hydraulic is the provided key; the compression/decompression description is imprecise for hydraulic liquid actuation.",
+      "brief": [
+        "PDF key: Hydraulic Actuators.",
+        "Wording issue: compression/decompression better describes pneumatic gas actuation."
+      ]
     },
     {
       "id": "pyq-2024-1-9",
@@ -535,7 +595,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "ISA100.11a is the named wireless-network technology for industrial automation."
+      ]
     },
     {
       "id": "pyq-2024-1-11",
@@ -560,7 +623,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Z-Wave is primarily associated with home automation in the supplied comparison."
+      ]
     },
     {
       "id": "pyq-2024-1-12",
@@ -585,7 +651,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The supplied WirelessHART data-rate value is 250 kb/s."
+      ]
     },
     {
       "id": "pyq-2024-1-13",
@@ -610,7 +679,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "MQTT QoS 2 is Exactly once delivery at the protocol level."
+      ]
     },
     {
       "id": "pyq-2024-1-15",
@@ -635,7 +707,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "An infrared sensor measures radiation in the infrared part of the electromagnetic spectrum, so it is classified as optical here."
+      ]
     },
     {
       "id": "pyq-2023-2-2",
@@ -660,7 +735,10 @@
           "answer": "a"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Digital fabrication is the supplied association for producing mutable, adaptable objects."
+      ]
     },
     {
       "id": "pyq-2023-2-3",
@@ -685,7 +763,10 @@
           "answer": "a"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A tipping point is a threshold after which change produces a major shift."
+      ]
     },
     {
       "id": "pyq-2023-2-4",
@@ -718,7 +799,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The source includes globalization, socio-economic factors and environmental factors as sustainability drivers."
+      ]
     },
     {
       "id": "pyq-2023-2-5",
@@ -743,7 +827,11 @@
           "answer": "b"
         }
       ],
-      "sourceNote": "The phrasing is broad; retain this as a course-key association, not a general legal classification of public information."
+      "sourceNote": "The phrasing is broad; retain this as a course-key association, not a general legal classification of public information.",
+      "brief": [
+        "Course key: advertisement regulations, for information communicated publicly.",
+        "The wording is broad; this is not a general legal classification."
+      ]
     },
     {
       "id": "pyq-2023-2-6",
@@ -768,7 +856,10 @@
           "answer": "d"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Population growth affects demand for food, available industrial locations and political choices."
+      ]
     },
     {
       "id": "pyq-2023-2-7",
@@ -793,7 +884,10 @@
           "answer": "c"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The keyed statement is that recession is observable through GDP."
+      ]
     },
     {
       "id": "pyq-2023-2-8",
@@ -826,7 +920,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Toyota’s Lean approach combines Jidoka with Just-in-Time."
+      ]
     },
     {
       "id": "pyq-2023-2-9",
@@ -851,7 +948,10 @@
           "answer": "a"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Lean aims for lower lead time, lower cost and better quality by removing waste."
+      ]
     },
     {
       "id": "pyq-2023-2-10",
@@ -876,7 +976,10 @@
           "answer": "b"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "KPI means Key Performance Indicator."
+      ]
     },
     {
       "id": "pyq-2023-2-11",
@@ -901,7 +1004,11 @@
           "answer": "d"
         }
       ],
-      "sourceNote": "The source keys “All of the above”; smart connected products are not necessarily cheaper to purchase in every deployment."
+      "sourceNote": "The source keys “All of the above”; smart connected products are not necessarily cheaper to purchase in every deployment.",
+      "brief": [
+        "The course keys cost, environmental and recall benefits together.",
+        "These are possible benefits; a connected product is not always cheaper."
+      ]
     },
     {
       "id": "pyq-2023-2-12",
@@ -926,7 +1033,10 @@
           "answer": "a"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A lock-in model makes switching away from the provider harder or less attractive, helping retain customers."
+      ]
     },
     {
       "id": "pyq-2023-2-13",
@@ -951,7 +1061,10 @@
           "answer": "d"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The digital layer stores, processes and analyses data."
+      ]
     },
     {
       "id": "pyq-2023-2-14",
@@ -984,7 +1097,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A smart factory seeks transparency: its status and metrics should be visible for decisions."
+      ]
     },
     {
       "id": "pyq-2024-2-2",
@@ -1009,7 +1125,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Cloud computing is the digital rather than physical megatrend among these options."
+      ]
     },
     {
       "id": "pyq-2024-2-4",
@@ -1034,7 +1153,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Sustainable SCM includes environmental effects such as climate change, contamination and resource use."
+      ]
     },
     {
       "id": "pyq-2024-2-6",
@@ -1059,7 +1181,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": "This course wording is narrower than every economic use of “emerging market”."
+      "sourceNote": "This course wording is narrower than every economic use of “emerging market”.",
+      "brief": [
+        "The source describes emerging markets as meeting demand/standards for newly developed innovative products."
+      ]
     },
     {
       "id": "pyq-2024-2-7",
@@ -1084,7 +1209,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Lean begins with customer-defined value and removes activities that do not support it."
+      ]
     },
     {
       "id": "pyq-2024-2-8",
@@ -1109,7 +1237,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The source groups social, economic and environmental dimensions together in its sustainability discussion."
+      ]
     },
     {
       "id": "pyq-2024-2-10",
@@ -1134,7 +1265,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Integrating humans in increasingly automated plants is the concern highlighted here."
+      ]
     },
     {
       "id": "pyq-2024-2-11",
@@ -1159,7 +1293,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A rapid rise in selling price is not an inherent customer benefit of connected products."
+      ]
     },
     {
       "id": "pyq-2024-2-12",
@@ -1184,7 +1321,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The lecture’s building blocks include a profit blueprint, customer value and key resources/processes."
+      ]
     },
     {
       "id": "pyq-2024-2-14",
@@ -1209,7 +1349,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Smart software and process-control applications are uses of IT in a smart factory."
+      ]
     },
     {
       "id": "pyq-2024-2-15",
@@ -1232,7 +1375,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The source marks the statement True: communication, trust and capital support the value created by an IIoT business model."
+      ]
     },
     {
       "id": "pyq-2023-3-2",
@@ -1257,7 +1403,10 @@
           "answer": "d"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A CPS combines physical equipment and computation, exchanges measurements and actions through sensors/actuators, and can comprise networked embedded systems."
+      ]
     },
     {
       "id": "pyq-2023-3-3",
@@ -1282,7 +1431,10 @@
           "answer": "b"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Conversion turns acquired machine data into meaningful information."
+      ]
     },
     {
       "id": "pyq-2023-3-4",
@@ -1307,7 +1459,10 @@
           "answer": "a"
         }
       ],
-      "sourceNote": "This is the lecture’s smart/intelligent distinction; product terminology is not universally consistent."
+      "sourceNote": "This is the lecture’s smart/intelligent distinction; product terminology is not universally consistent.",
+      "brief": [
+        "The course comparison assigns limited data aggregation to its smart-sensor category and broader processing/management to intelligent sensors."
+      ]
     },
     {
       "id": "pyq-2023-3-6",
@@ -1332,7 +1487,10 @@
           "answer": "b"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The lecture associates application-specific sensor-node customization with intelligent sensors."
+      ]
     },
     {
       "id": "pyq-2023-3-8",
@@ -1357,7 +1515,10 @@
           "answer": "a"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The coordination item is to give authority to decision-makers in a decentralized system."
+      ]
     },
     {
       "id": "pyq-2023-3-9",
@@ -1382,7 +1543,10 @@
           "answer": "d"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The supplied key lists nine PLM components for handling a product over its lifecycle."
+      ]
     },
     {
       "id": "pyq-2023-3-11",
@@ -1407,7 +1571,10 @@
           "answer": "a"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Projection-based AR projects light onto physical surfaces to add information."
+      ]
     },
     {
       "id": "pyq-2023-3-12",
@@ -1432,7 +1599,10 @@
           "answer": "b"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Semi-immersive simulation is a VR category: the learner interacts with a simulated environment with partial immersion."
+      ]
     },
     {
       "id": "pyq-2023-3-14",
@@ -1473,7 +1643,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Deep learning is a subset of machine learning, which itself lies within AI."
+      ]
     },
     {
       "id": "pyq-2023-3-15",
@@ -1498,7 +1671,10 @@
           "answer": "b"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "GFS is a distributed file system designed for large-scale storage."
+      ]
     },
     {
       "id": "pyq-2023-4-14",
@@ -1523,7 +1699,10 @@
           "answer": "c"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The Cognition stage makes information interpretable through visualization and decision support."
+      ]
     },
     {
       "id": "pyq-2023-8-2",
@@ -1556,7 +1735,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "Course vocabulary: Variability is included in this paper’s five-V list."
+      "sourceNote": "Course vocabulary: Variability is included in this paper’s five-V list.",
+      "brief": [
+        "The paper uses Volume, Velocity, Variability, Veracity and Variety as its five Vs."
+      ]
     },
     {
       "id": "pyq-2023-11-12",
@@ -1581,7 +1763,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The Pepsi Max bus-stop example overlays apparent events on a real-world view and is categorized as AR."
+      ]
     },
     {
       "id": "pyq-2024-3-1",
@@ -1606,7 +1791,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "CPS computations interact with physical processes, can run concurrently and have timing requirements."
+      ]
     },
     {
       "id": "pyq-2024-3-2",
@@ -1631,7 +1819,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "DAU expands to Data Aggregation Unit in the smart-grid CPS example."
+      ]
     },
     {
       "id": "pyq-2024-3-4",
@@ -1656,7 +1847,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The four productivity enablers are IT proliferation, a single source of truth, industrialization and coordination."
+      ]
     },
     {
       "id": "pyq-2024-3-5",
@@ -1681,7 +1875,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "PLM means Product Lifecycle Management: organizing product information and activities across its life."
+      ]
     },
     {
       "id": "pyq-2024-3-6",
@@ -1706,7 +1903,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "ABC means Activity Based Costing."
+      ]
     },
     {
       "id": "pyq-2024-3-7",
@@ -1731,7 +1931,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Machining, production and education are the AR/VR application fields selected in the course."
+      ]
     },
     {
       "id": "pyq-2024-3-8",
@@ -1756,7 +1959,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Markerless AR is a named category that does not require a designated visual marker to trigger an overlay."
+      ]
     },
     {
       "id": "pyq-2024-3-9",
@@ -1781,7 +1987,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": "Source spelling: “Thamos Caudell”; the intended name is Thomas Caudell."
+      "sourceNote": "Source spelling: “Thamos Caudell”; the intended name is Thomas Caudell.",
+      "brief": [
+        "The source intends Thomas Caudell as the person associated with the term Augmented Reality."
+      ]
     },
     {
       "id": "pyq-2024-3-10",
@@ -1806,7 +2015,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Marker-based AR detects a visual marker and uses it to anchor or trigger augmented content."
+      ]
     },
     {
       "id": "pyq-2024-3-11",
@@ -1831,7 +2043,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The course includes procedural knowledge (how), declarative knowledge (facts) and heuristic knowledge (experience-based guidance)."
+      ]
     },
     {
       "id": "pyq-2024-3-12",
@@ -1856,7 +2071,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "AI can support machine safety, product lifecycle work and efficient manufacturing."
+      ]
     },
     {
       "id": "pyq-2024-3-13",
@@ -1881,7 +2099,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Big data may include structured and unstructured information."
+      ]
     },
     {
       "id": "pyq-2024-3-14",
@@ -1906,7 +2127,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A distributed file system is intended to support consistency, accessibility and fault tolerance across machines."
+      ]
     },
     {
       "id": "pyq-2024-3-15",
@@ -1931,7 +2155,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Data collected from outside social platforms is an external source relative to the organization collecting it."
+      ]
     },
     {
       "id": "pyq-2024-4-15",
@@ -1956,7 +2183,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": "The source’s allocation of “autonomous decision” to Cognition is retained; applying control adjustments is addressed in the Configuration/Control stage elsewhere in the notes."
+      "sourceNote": "The source’s allocation of “autonomous decision” to Cognition is retained; applying control adjustments is addressed in the Configuration/Control stage elsewhere in the notes.",
+      "brief": [
+        "The paper assigns autonomous decision making, machine learning and decision support to Cognition."
+      ]
     },
     {
       "id": "pyq-2024-11-9",
@@ -1979,7 +2209,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "AR/VR content, models and captured information can raise intellectual-property-rights concerns, so the paper keys the statement True."
+      ]
     },
     {
       "id": "pyq-2023-4-1",
@@ -2012,7 +2245,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "The keyed scope is hardware/software/data; real security programmes can also include processes and people."
+      "sourceNote": "The keyed scope is hardware/software/data; real security programmes can also include processes and people.",
+      "brief": [
+        "The source’s cybersecurity definition explicitly includes hardware, software and data."
+      ]
     },
     {
       "id": "pyq-2023-4-2",
@@ -2045,7 +2281,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Network security controls network access and protects traffic and infrastructure against unauthorized or improper use."
+      ]
     },
     {
       "id": "pyq-2023-4-3",
@@ -2070,7 +2309,10 @@
           "answer": "a"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Locky is the ransomware example in the source."
+      ]
     },
     {
       "id": "pyq-2023-4-5",
@@ -2103,7 +2345,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Ubiquitous sensing means sensors and actuators are deployed widely across the process to observe, control and optimize it."
+      ]
     },
     {
       "id": "pyq-2023-4-6",
@@ -2128,7 +2373,10 @@
           "answer": "a"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The integration challenge is making generated data understandable and useful for analysis and business applications."
+      ]
     },
     {
       "id": "pyq-2023-4-8",
@@ -2161,7 +2409,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The source includes environmental harm, inefficient processes and poor working conditions as negative effects of the Industrial Revolution."
+      ]
     },
     {
       "id": "pyq-2023-4-9",
@@ -2194,7 +2445,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The three elements in GE’s course account are intelligent machines, advanced analytics and people at work."
+      ]
     },
     {
       "id": "pyq-2023-4-10",
@@ -2219,7 +2473,10 @@
           "answer": "c"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Sensing gives machines measurements that enable more automated monitoring and control."
+      ]
     },
     {
       "id": "pyq-2023-4-11",
@@ -2242,7 +2499,10 @@
           "answer": "a"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The supplied True answer reflects the course’s multi-sensing smart-sensor description."
+      ]
     },
     {
       "id": "pyq-2023-4-12",
@@ -2267,7 +2527,10 @@
           "answer": "a"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Self-decision making means monitoring the sensor’s operation and surroundings and making an appropriate local decision."
+      ]
     },
     {
       "id": "pyq-2023-4-13",
@@ -2308,7 +2571,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "SCADA means Supervisory Control and Data Acquisition."
+      ]
     },
     {
       "id": "pyq-2024-4-3",
@@ -2341,7 +2607,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "CIA means Confidentiality, Integrity and Availability."
+      ]
     },
     {
       "id": "pyq-2024-4-4",
@@ -2366,7 +2635,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The course contrasts IIoT with isolated traditional automation through ubiquitous sensing, advanced analytics and IT tools/methodologies."
+      ]
     },
     {
       "id": "pyq-2024-4-8",
@@ -2389,7 +2661,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The supplied statement is True: limited non-renewable energy resources are a pressure on future industrial operation."
+      ]
     },
     {
       "id": "pyq-2024-4-11",
@@ -2414,7 +2689,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": "This is the paper’s abbreviated IEEE1451 description, not a complete statement of the standards family."
+      "sourceNote": "This is the paper’s abbreviated IEEE1451 description, not a complete statement of the standards family.",
+      "brief": [
+        "The source’s IEEE1451 smart-sensor cue is a standardized physical connection for communication."
+      ]
     },
     {
       "id": "pyq-2024-4-12",
@@ -2439,7 +2717,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "MRAA provides low-level I/O/communication access on GNU/Linux in the Intel-device example."
+      ]
     },
     {
       "id": "pyq-2024-4-13",
@@ -2464,7 +2745,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Connecting heterogeneous objects is central to the design: machines with different interfaces must exchange useful information."
+      ]
     },
     {
       "id": "pyq-2024-4-14",
@@ -2489,7 +2773,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The lecture associates the Autonomous Pull Economy with an end-to-end automated facility."
+      ]
     },
     {
       "id": "pyq-2023-5-1",
@@ -2514,7 +2801,11 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": "The source repeats option label (b), and its key says (b), so the keyed text is ambiguous. Both original choices are preserved; this question is for review and is not scored. "
+      "sourceNote": "The source repeats option label (b), and its key says (b), so the keyed text is ambiguous. Both original choices are preserved; this question is for review and is not scored. ",
+      "brief": [
+        "The PDF repeats option label (b).",
+        "Its key is ambiguous, so this question is not scored."
+      ]
     },
     {
       "id": "pyq-2023-5-2",
@@ -2539,7 +2830,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The Boeing example combines a smart digital manufacturing facility with lower assembly delay/response time and fewer manufacturing/assembly errors."
+      ]
     },
     {
       "id": "pyq-2023-5-4",
@@ -2564,7 +2858,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "Historical course statistic; the app preserves the supplied key without presenting it as today’s ILO rate."
+      "sourceNote": "Historical course statistic; the app preserves the supplied key without presenting it as today’s ILO rate.",
+      "brief": [
+        "The lecture-era figure is approximately one death every 15 seconds from occupational disease or accident."
+      ]
     },
     {
       "id": "pyq-2023-5-5",
@@ -2589,7 +2886,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A business model explains how an organization creates, delivers and captures value, including its organizational/financial structure and how it earns revenue."
+      ]
     },
     {
       "id": "pyq-2023-5-6",
@@ -2614,7 +2914,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A market segment is a group of customers or end-user organizations the enterprise aims to serve."
+      ]
     },
     {
       "id": "pyq-2023-5-7",
@@ -2647,7 +2950,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Subscription fees recur over time, providing recurring revenue."
+      ]
     },
     {
       "id": "pyq-2023-5-8",
@@ -2672,7 +2978,11 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "Outcome-based models are valid in IoT generally; this key concerns the lecture’s narrower three-category IIoT list."
+      "sourceNote": "Outcome-based models are valid in IoT generally; this key concerns the lecture’s narrower three-category IIoT list.",
+      "brief": [
+        "Course IIoT list: cloud-based, service-oriented, process-oriented.",
+        "Outcome-based is still a valid broader IoT model."
+      ]
     },
     {
       "id": "pyq-2023-5-10",
@@ -2697,7 +3007,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Interoperability gaps, immature or untested technologies and increased complexity can each obstruct an IIoT business model."
+      ]
     },
     {
       "id": "pyq-2023-5-11",
@@ -2730,7 +3043,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "IIRA expands to Industrial Internet Reference Architecture."
+      ]
     },
     {
       "id": "pyq-2023-5-12",
@@ -2753,7 +3069,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": "Organization description is retained as the course-era description."
+      "sourceNote": "Organization description is retained as the course-era description.",
+      "brief": [
+        "The source describes IIC as a nonprofit promoting open standards and interoperability for industry and M2M environments."
+      ]
     },
     {
       "id": "pyq-2023-5-13",
@@ -2778,7 +3097,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The gateway-mediated edge pattern links sensors/actuators to edge devices or gateways and then a wide-area network."
+      ]
     },
     {
       "id": "pyq-2023-5-14",
@@ -2811,7 +3133,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The IIRA viewpoints are Business, Usage, Functional and Implementation."
+      ]
     },
     {
       "id": "pyq-2023-5-15",
@@ -2836,7 +3161,11 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "Key conflict: 2023 PDF = 6; regular course notes = 5 functional domains. Treat 6 as this paper’s key, not a general IIRA fact."
+      "sourceNote": "Key conflict: 2023 PDF = 6; regular course notes = 5 functional domains. Treat 6 as this paper’s key, not a general IIRA fact.",
+      "brief": [
+        "2023 PDF key: six domains.",
+        "Course notes teach five; keep this discrepancy in mind."
+      ]
     },
     {
       "id": "pyq-2024-5-1",
@@ -2861,7 +3190,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Warehouse automation is the technology driver in the Amazon case."
+      ]
     },
     {
       "id": "pyq-2024-5-2",
@@ -2886,7 +3218,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Intelligent manufacturing, smart warehousing and smart logistics are Industry 4.0 applications in the source."
+      ]
     },
     {
       "id": "pyq-2024-5-4",
@@ -2911,7 +3246,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Subscription, outcome-based and asset-sharing are the named IoT models."
+      ]
     },
     {
       "id": "pyq-2024-5-6",
@@ -2936,7 +3274,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Data security is a critical challenge when an IoT service collects, transfers or processes customer/industrial information."
+      ]
     },
     {
       "id": "pyq-2024-5-7",
@@ -2961,7 +3302,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The service-oriented model aggregates/analyzes data and offers cloud-backed on-demand services through self-service interfaces."
+      ]
     },
     {
       "id": "pyq-2024-5-8",
@@ -2986,7 +3330,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The course calls the process-oriented model hybrid because it combines business-model approaches around an industrial process."
+      ]
     },
     {
       "id": "pyq-2024-5-10",
@@ -3011,7 +3358,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "It is incorrect to say safety is not a concern in IIRA."
+      ]
     },
     {
       "id": "pyq-2024-5-11",
@@ -3036,7 +3386,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The IIRA three-tier pattern is Edge, Platform and Enterprise."
+      ]
     },
     {
       "id": "pyq-2024-5-13",
@@ -3061,7 +3414,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "An activity is described using Trigger, Workflow, Effect and Constraints."
+      ]
     },
     {
       "id": "pyq-2024-5-14",
@@ -3086,7 +3442,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Fundamental capabilities are high-level capabilities/specifications essential for the business tasks."
+      ]
     },
     {
       "id": "pyq-2024-5-15",
@@ -3111,7 +3470,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Industrial actuation belongs to the Control domain because it changes the physical process."
+      ]
     },
     {
       "id": "pyq-2024-10-12",
@@ -3136,7 +3498,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Amazon’s robotic shelves support automated product search/movement in the warehousing example."
+      ]
     },
     {
       "id": "pyq-2024-10-13",
@@ -3161,7 +3526,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "Historical case description: this does not assert that the same initiative remains operational today."
+      "sourceNote": "Historical case description: this does not assert that the same initiative remains operational today.",
+      "brief": [
+        "The false statement denies blockchain use in the taught Maersk shipping case."
+      ]
     },
     {
       "id": "pyq-2023-6-1",
@@ -3194,7 +3562,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "LM35 produces an analog output voltage proportional to Celsius temperature."
+      ]
     },
     {
       "id": "pyq-2023-6-3",
@@ -3219,7 +3590,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The keyed ultrasonic application is measuring liquid or trash level."
+      ]
     },
     {
       "id": "pyq-2023-6-4",
@@ -3244,7 +3618,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Baseline resistance is the resistance in air before exposure to the target gas."
+      ]
     },
     {
       "id": "pyq-2023-6-6",
@@ -3277,7 +3654,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Sensitivity is the change in output per unit change in input gas concentration."
+      ]
     },
     {
       "id": "pyq-2023-6-7",
@@ -3302,7 +3682,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "TSN is the Industrial Ethernet option in this list."
+      ]
     },
     {
       "id": "pyq-2023-6-8",
@@ -3335,7 +3718,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Modbus TCP defines a Protocol Data Unit (PDU) and an Application Data Unit (ADU)."
+      ]
     },
     {
       "id": "pyq-2023-6-9",
@@ -3360,7 +3746,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The lecture lists line, tree, star and hybrid arrangements for EtherCAT; mesh is the exception among these choices."
+      ]
     },
     {
       "id": "pyq-2023-6-10",
@@ -3385,7 +3774,11 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "Units issue: the PDF keys 1500 bytes, a size value. A data rate would require units such as bits per second."
+      "sourceNote": "Units issue: the PDF keys 1500 bytes, a size value. A data rate would require units such as bits per second.",
+      "brief": [
+        "PDF key: 1500 bytes.",
+        "Bytes measure size, not data rate; the source wording is imprecise."
+      ]
     },
     {
       "id": "pyq-2023-6-11",
@@ -3410,7 +3803,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "PROFINET expands to PROcess FIeld NETwork in the source."
+      ]
     },
     {
       "id": "pyq-2023-6-12",
@@ -3435,7 +3831,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "PSTN is the wired-connectivity example."
+      ]
     },
     {
       "id": "pyq-2023-6-13",
@@ -3460,7 +3859,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Satellite deployment has launch costs, relatively long propagation paths/delays and difficult physical repairs."
+      ]
     },
     {
       "id": "pyq-2023-6-14",
@@ -3485,7 +3887,11 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": "Source-specific range: 2023 cellular question = 30–100 GHz; 2024 general-band question = 30–300 GHz."
+      "sourceNote": "Source-specific range: 2023 cellular question = 30–100 GHz; 2024 general-band question = 30–300 GHz.",
+      "brief": [
+        "This cellular-use question keys 30–100 GHz.",
+        "The general mmWave band in the 2024 paper is 30–300 GHz."
+      ]
     },
     {
       "id": "pyq-2023-6-15",
@@ -3510,7 +3916,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The LM35 output changes linearly with Celsius temperature."
+      ]
     },
     {
       "id": "pyq-2024-6-2",
@@ -3535,7 +3944,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A sensing device needs the sensor, processing, wireless communication and power management in the supplied architecture."
+      ]
     },
     {
       "id": "pyq-2024-6-3",
@@ -3560,7 +3972,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "ADXL335 is the accelerometer example."
+      ]
     },
     {
       "id": "pyq-2024-6-4",
@@ -3583,7 +3998,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The supplied MOS gas-sensor example uses a heater to provide operating thermal energy."
+      ]
     },
     {
       "id": "pyq-2024-6-5",
@@ -3608,7 +4026,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Air quality, toxic-gas leakage and alcohol breath testing concern gas composition."
+      ]
     },
     {
       "id": "pyq-2024-6-8",
@@ -3633,7 +4054,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The source calls a combined temperature-and-video device a hybrid sensor because it combines different sensing modalities."
+      ]
     },
     {
       "id": "pyq-2024-6-9",
@@ -3658,7 +4082,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "EtherNet/IP distinguishes explicit messaging for request/response exchanges and implicit messaging for time-sensitive cyclic I/O."
+      ]
     },
     {
       "id": "pyq-2024-6-10",
@@ -3683,7 +4110,11 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "Source ambiguity: the Ethernet/IP wording can be read as the separate EtherNet/IP protocol. The paper’s intended incorrect option is (c), retained for scoring."
+      "sourceNote": "Source ambiguity: the Ethernet/IP wording can be read as the separate EtherNet/IP protocol. The paper’s intended incorrect option is (c), retained for scoring.",
+      "brief": [
+        "PDF key: “cannot be used for process control/measurement” is incorrect.",
+        "PROFINET supports those uses and is distinct from the EtherNet/IP protocol."
+      ]
     },
     {
       "id": "pyq-2024-6-11",
@@ -3708,7 +4139,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": "Master/slave is the historical terminology used in the supplied paper."
+      "sourceNote": "Master/slave is the historical terminology used in the supplied paper.",
+      "brief": [
+        "The course describes Modbus RTU as master/slave: a master initiates requests to addressed devices."
+      ]
     },
     {
       "id": "pyq-2024-6-12",
@@ -3733,7 +4167,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "PROFIBUS uses a bus topology in the lecture."
+      ]
     },
     {
       "id": "pyq-2024-6-14",
@@ -3758,7 +4195,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": "The PDF prints “TTL”; the intended transmission-time-interval concept is usually abbreviated TTI. The source key is All of the above."
+      "sourceNote": "The PDF prints “TTL”; the intended transmission-time-interval concept is usually abbreviated TTI. The source key is All of the above.",
+      "brief": [
+        "The source lists smaller slots, fewer OFDM symbols and shorter symbol duration as ways to shorten the transmission interval."
+      ]
     },
     {
       "id": "pyq-2024-6-15",
@@ -3783,7 +4223,11 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The general millimetre-wave band is 30–300 GHz.",
+        "Do not confuse it with the narrower cellular-use example."
+      ]
     },
     {
       "id": "pyq-2023-7-2",
@@ -3808,7 +4252,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "The PDF says “processor”; NodeMCU is a development platform/board built around a microcontroller."
+      "sourceNote": "The PDF says “processor”; NodeMCU is a development platform/board built around a microcontroller.",
+      "brief": [
+        "NodeMCU is the processing/development-board option in the demonstration."
+      ]
     },
     {
       "id": "pyq-2023-7-3",
@@ -3831,7 +4278,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The statement is True: the demonstration programs a NodeMCU board through the Arduino IDE."
+      ]
     },
     {
       "id": "pyq-2023-7-4",
@@ -3864,7 +4314,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The source lists star, tree and mesh topologies for ZigBee."
+      ]
     },
     {
       "id": "pyq-2023-7-6",
@@ -3889,7 +4342,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "The source uses “DigiMesh” as the keyed library cue; actual package/class names depend on the demo and library version."
+      "sourceNote": "The source uses “DigiMesh” as the keyed library cue; actual package/class names depend on the demo and library version.",
+      "brief": [
+        "The supplied key associates DigiMesh with the Python XBee demonstration."
+      ]
     },
     {
       "id": "pyq-2023-7-7",
@@ -3922,7 +4378,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "CEP correlates streams from multiple sources, evaluates causal/temporal patterns under rules and works near real time."
+      ]
     },
     {
       "id": "pyq-2023-7-9",
@@ -3947,7 +4406,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Prescriptive analytics recommends actions using optimization, simulation and decision models."
+      ]
     },
     {
       "id": "pyq-2023-7-10",
@@ -3972,7 +4434,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "FarmBeats includes soil sensors, cameras, UAVs, a weather station, IoT gateway, IoT base station and cloud services."
+      ]
     },
     {
       "id": "pyq-2023-7-11",
@@ -3997,7 +4462,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "SWAMP is the irrigation-management project for different crops and climates across countries."
+      ]
     },
     {
       "id": "pyq-2023-7-12",
@@ -4030,7 +4498,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "iRobot-Factory is the cognitive-manufacturing example."
+      ]
     },
     {
       "id": "pyq-2023-7-13",
@@ -4055,7 +4526,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The three phases are integration of data/context, synthesis and analysis, then process/production innovation."
+      ]
     },
     {
       "id": "pyq-2023-7-14",
@@ -4080,7 +4554,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The three user entities are providers, consumers and operators."
+      ]
     },
     {
       "id": "pyq-2023-7-15",
@@ -4105,7 +4582,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The course lists four major ICS components."
+      ]
     },
     {
       "id": "pyq-2024-7-1",
@@ -4130,7 +4610,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "LP means Low Power in Low-Power Wide-Area Network."
+      ]
     },
     {
       "id": "pyq-2024-7-2",
@@ -4153,7 +4636,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": "This reproduces the course example, not current country-specific regulatory advice. Network/service charges are separate from spectrum licensing."
+      "sourceNote": "This reproduces the course example, not current country-specific regulatory advice. Network/service charges are separate from spectrum licensing.",
+      "brief": [
+        "The supplied key marks the license-fee claim False for the European 868 MHz example."
+      ]
     },
     {
       "id": "pyq-2024-7-3",
@@ -4186,7 +4672,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "These are source-era configuration values rather than guaranteed limits for every current SIGFOX service."
+      "sourceNote": "These are source-era configuration values rather than guaranteed limits for every current SIGFOX service.",
+      "brief": [
+        "The course configuration permits up to 140 messages per day with 12 bytes per message."
+      ]
     },
     {
       "id": "pyq-2024-7-4",
@@ -4211,7 +4700,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The hands-on example includes DHT.h to interface with the DHT22 sensor."
+      ]
     },
     {
       "id": "pyq-2024-7-6",
@@ -4236,7 +4728,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "ZigBee uses IEEE802.15.4 for its physical and MAC layers."
+      ]
     },
     {
       "id": "pyq-2024-7-7",
@@ -4259,7 +4754,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The statement swaps the roles: ZigBee is a protocol/stack, while XBee names radio products that may implement it or other radio stacks."
+      ]
     },
     {
       "id": "pyq-2024-7-8",
@@ -4284,7 +4782,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The coordinator is the network root and can bridge networks in the lecture’s description."
+      ]
     },
     {
       "id": "pyq-2024-7-9",
@@ -4309,7 +4810,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "IIoT data can be polymorphic, related over time and correlated across space or other dimensions."
+      ]
     },
     {
       "id": "pyq-2024-7-11",
@@ -4334,7 +4838,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": "The question describes the lecture’s “current” systems at the time of the course."
+      "sourceNote": "The question describes the lecture’s “current” systems at the time of the course.",
+      "brief": [
+        "The course lists manual thresholds, no runtime threshold update and missing context awareness as limitations of the discussed CEP systems."
+      ]
     },
     {
       "id": "pyq-2024-7-12",
@@ -4359,7 +4866,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The smart-water-management example is customizable, application-specific and replicable."
+      ]
     },
     {
       "id": "pyq-2024-7-14",
@@ -4384,7 +4894,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "SmartSantander is presented as a realistic experimentation environment with heterogeneity, reliability and mobility considerations."
+      ]
     },
     {
       "id": "pyq-2023-5-9",
@@ -4409,7 +4922,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": "This is the source’s phrasing; IaaS does not mean the provider manages all application software."
+      "sourceNote": "This is the source’s phrasing; IaaS does not mean the provider manages all application software.",
+      "brief": [
+        "IaaS supplies underlying computing infrastructure online; PaaS supplies an application-development platform and SaaS supplies a finished application."
+      ]
     },
     {
       "id": "pyq-2023-7-8",
@@ -4434,7 +4950,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The course contrasts distributed edge computing near devices with centralized cloud computing."
+      ]
     },
     {
       "id": "pyq-2023-8-1",
@@ -4459,7 +4978,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The trio is Descriptive, Predictive and Prescriptive analytics: understand present/past conditions, estimate future outcomes and recommend actions."
+      ]
     },
     {
       "id": "pyq-2023-8-4",
@@ -4492,7 +5014,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": "SVMs also have regression variants; this question asks for the classification example among the listed choices."
+      "sourceNote": "SVMs also have regression variants; this question asks for the classification example among the listed choices.",
+      "brief": [
+        "A Support Vector Machine can be used as a classifier to assign discrete classes."
+      ]
     },
     {
       "id": "pyq-2023-8-5",
@@ -4517,7 +5042,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Clustering groups examples without supplied class labels, so it is an unsupervised-learning task."
+      ]
     },
     {
       "id": "pyq-2023-8-6",
@@ -4542,7 +5070,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Reinforcement learning improves an agent’s actions through interaction with an environment and reward feedback."
+      ]
     },
     {
       "id": "pyq-2023-8-7",
@@ -4567,7 +5098,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A decision node tests an attribute and chooses a branch."
+      ]
     },
     {
       "id": "pyq-2023-8-8",
@@ -4600,7 +5134,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Deep learning uses multi-layer neural networks, loosely inspired by interconnected neurons."
+      ]
     },
     {
       "id": "pyq-2023-8-9",
@@ -4633,7 +5170,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The supplied cloud motivations include computation, storage for large data volumes and effective acquisition."
+      ]
     },
     {
       "id": "pyq-2023-8-10",
@@ -4658,7 +5198,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The three service models are IaaS, PaaS and SaaS: infrastructure, a development/runtime platform and finished software."
+      ]
     },
     {
       "id": "pyq-2023-8-11",
@@ -4683,7 +5226,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Microsoft Azure is the IaaS example among these choices; Google App Engine is a PaaS example and Microsoft 365 is SaaS."
+      ]
     },
     {
       "id": "pyq-2023-8-12",
@@ -4708,7 +5254,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "AWS is the public-cloud example: a provider offers cloud services to customers over shared provider infrastructure."
+      ]
     },
     {
       "id": "pyq-2023-8-13",
@@ -4733,7 +5282,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A useful SLA should be mutually acceptable, quantifiable and controllable."
+      ]
     },
     {
       "id": "pyq-2023-8-14",
@@ -4758,7 +5310,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The simplified architecture places fog between edge devices and the remote cloud."
+      ]
     },
     {
       "id": "pyq-2023-8-15",
@@ -4783,7 +5338,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A neural network has an input layer, one or more hidden layers and an output layer."
+      ]
     },
     {
       "id": "pyq-2024-8-2",
@@ -4808,7 +5366,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Supervised learning uses training examples with known states/classes or target outputs."
+      ]
     },
     {
       "id": "pyq-2024-8-4",
@@ -4833,7 +5394,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Hadoop and Spark support batch-oriented data processing."
+      ]
     },
     {
       "id": "pyq-2024-8-11",
@@ -4858,7 +5422,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "In PaaS, the provider manages the underlying platform while the customer develops and controls its application and relevant configuration."
+      ]
     },
     {
       "id": "pyq-2024-8-12",
@@ -4883,7 +5450,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "NetBeans is a development environment, not an industrial cloud platform in this list."
+      ]
     },
     {
       "id": "pyq-2024-8-13",
@@ -4908,7 +5478,11 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": "The source keys All of the above. Simulation is not literally guaranteed to have zero total cost."
+      "sourceNote": "The source keys All of the above. Simulation is not literally guaranteed to have zero total cost.",
+      "brief": [
+        "Simulation enables repeatable tests before deployment.",
+        "It can reduce costs; modelling and computing are not necessarily free."
+      ]
     },
     {
       "id": "pyq-2024-8-15",
@@ -4931,7 +5505,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The statement is False: k-medoids seeks representative medoids and low within-cluster dissimilarity."
+      ]
     },
     {
       "id": "pyq-2024-9-9",
@@ -4956,7 +5533,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "On-demand self-service, resource pooling and broad network access are all characteristics listed in the course’s NIST cloud definition."
+      ]
     },
     {
       "id": "pyq-2023-9-1",
@@ -4989,7 +5569,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The source credits fog with enabling new functionality, enriching existing functionality and processing control analytics."
+      ]
     },
     {
       "id": "pyq-2023-9-3",
@@ -5020,7 +5603,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The listed transportation use cases are smart parking, traffic lights, location-aware services and the Internet of Vehicles."
+      ]
     },
     {
       "id": "pyq-2023-9-4",
@@ -5045,7 +5631,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Nebbiolo, Crosser and FogHorn are all fog-platform examples in the course."
+      ]
     },
     {
       "id": "pyq-2023-9-5",
@@ -5070,7 +5659,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "TRUE is an R reserved word/logical constant."
+      ]
     },
     {
       "id": "pyq-2023-9-6",
@@ -5095,7 +5687,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": "The source’s “cannot” is a simplified intended-purpose distinction, not a proof that no R package can ever emit code."
+      "sourceNote": "The source’s “cannot” is a simplified intended-purpose distinction, not a proof that no R package can ever emit code.",
+      "brief": [
+        "R is used for data analysis, graphics and visualization."
+      ]
     },
     {
       "id": "pyq-2023-9-7",
@@ -5120,7 +5715,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "TRUE -> C assigns TRUE to C using rightward assignment."
+      ]
     },
     {
       "id": "pyq-2023-9-8",
@@ -5145,7 +5743,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The %% operator computes the remainder."
+      ]
     },
     {
       "id": "pyq-2023-9-9",
@@ -5176,7 +5777,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The statement is False: : creates a sequence such as 1:5."
+      ]
     },
     {
       "id": "pyq-2023-9-10",
@@ -5201,7 +5805,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The data-management order is Generation → Acquisition → Storage → Analysis."
+      ]
     },
     {
       "id": "pyq-2023-9-11",
@@ -5226,7 +5833,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Spatial analytics examines location, distance and geographic relationships between objects."
+      ]
     },
     {
       "id": "pyq-2023-9-12",
@@ -5251,7 +5861,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Secure is the desirable property among these options."
+      ]
     },
     {
       "id": "pyq-2023-9-13",
@@ -5276,7 +5889,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "DCell is a named data-centre-network topology."
+      ]
     },
     {
       "id": "pyq-2023-9-14",
@@ -5301,7 +5917,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Scalability, static resource assignment and fault tolerance are all DCN challenges in the lecture."
+      ]
     },
     {
       "id": "pyq-2023-9-15",
@@ -5332,7 +5951,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The statement is False because OpenFlow is a protocol used in the course’s SDN examples."
+      ]
     },
     {
       "id": "pyq-2024-9-3",
@@ -5357,7 +5979,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": "These product names are historical course examples rather than a check of the current vendor catalogue."
+      "sourceNote": "These product names are historical course examples rather than a check of the current vendor catalogue.",
+      "brief": [
+        "The taught Nebbiolo names are fogOS, fogNode and fogSM. fogBCD is the distractor, so it is the answer to the NOT question."
+      ]
     },
     {
       "id": "pyq-2024-9-4",
@@ -5382,7 +6007,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The lecture’s SONM example includes blockchain infrastructure, video streaming and machine learning."
+      ]
     },
     {
       "id": "pyq-2024-9-5",
@@ -5405,7 +6033,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "R does not require an explicit datatype declaration for an ordinary variable assignment."
+      ]
     },
     {
       "id": "pyq-2024-9-6",
@@ -5430,7 +6061,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "Text extraction drops the PDF’s exponent formatting in the prompt; the intended expression is a to the power b."
+      "sourceNote": "Text extraction drops the PDF’s exponent formatting in the prompt; the intended expression is a to the power b.",
+      "brief": [
+        "The ^ operator expresses exponentiation, so a^b calculates a raised to b."
+      ]
     },
     {
       "id": "pyq-2024-9-8",
@@ -5455,7 +6089,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Julia supports tuples, dictionaries and arrays."
+      ]
     },
     {
       "id": "pyq-2024-9-10",
@@ -5480,7 +6117,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Integration combines data from different sources."
+      ]
     },
     {
       "id": "pyq-2024-9-11",
@@ -5503,7 +6143,11 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": "Source simplification: “three main” refers to this course list, not a claim that graph or other NoSQL models do not exist."
+      "sourceNote": "Source simplification: “three main” refers to this course list, not a claim that graph or other NoSQL models do not exist.",
+      "brief": [
+        "Course list: key–value, column-oriented, document-oriented.",
+        "Not exhaustive: graph databases are also a NoSQL family."
+      ]
     },
     {
       "id": "pyq-2024-9-12",
@@ -5526,7 +6170,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The statement reverses responsibilities."
+      ]
     },
     {
       "id": "pyq-2024-9-13",
@@ -5551,7 +6198,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "BCube is server-centric, so claiming it follows a switch-oriented approach is false."
+      ]
     },
     {
       "id": "pyq-2024-9-15",
@@ -5576,7 +6226,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": "This is the course’s architectural-benefit comparison; any particular implementation can still introduce operational complexity."
+      "sourceNote": "This is the course’s architectural-benefit comparison; any particular implementation can still introduce operational complexity.",
+      "brief": [
+        "The source rejects the claim that separating control and data planes increases traditional complexity."
+      ]
     },
     {
       "id": "pyq-2023-10-1",
@@ -5601,7 +6254,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The public network in the shown architecture contains both switches and routers."
+      ]
     },
     {
       "id": "pyq-2023-10-2",
@@ -5632,7 +6288,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The source associates the industrial-cloud part of the SDIIoT architecture with the data-centre network."
+      ]
     },
     {
       "id": "pyq-2023-10-3",
@@ -5657,7 +6316,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A trustworthy IIoT system addresses security, safety and resilience together."
+      ]
     },
     {
       "id": "pyq-2023-10-4",
@@ -5682,7 +6344,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "Attack-layer classifications can overlap; this exercise follows the supplied taxonomy."
+      "sourceNote": "Attack-layer classifications can overlap; this exercise follows the supplied taxonomy.",
+      "brief": [
+        "Data spoofing is assigned to the application-layer attack list in this paper."
+      ]
     },
     {
       "id": "pyq-2023-10-5",
@@ -5707,7 +6372,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The source places impersonation, jamming and device tampering in its physical-layer list; man-in-the-middle is the exception among these choices."
+      ]
     },
     {
       "id": "pyq-2023-10-6",
@@ -5732,7 +6400,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Avoiding, mitigating and outsourcing/transferring risk are all risk-treatment approaches named in the course."
+      ]
     },
     {
       "id": "pyq-2023-10-7",
@@ -5755,7 +6426,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The statement is False: confidentiality is a data-protection objective."
+      ]
     },
     {
       "id": "pyq-2023-10-8",
@@ -5788,7 +6462,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Cloud security, fog-device protection and data protection are all building blocks in the supplied framework."
+      ]
     },
     {
       "id": "pyq-2023-10-9",
@@ -5813,7 +6490,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The key expands the pair as Information Technology and Operational Technology."
+      ]
     },
     {
       "id": "pyq-2023-10-10",
@@ -5846,7 +6526,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A smart factory enables data analysis and quality control."
+      ]
     },
     {
       "id": "pyq-2023-10-11",
@@ -5871,7 +6554,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The matching is Connected → continuous real-time data; Transparent → live metrics; Agile → flexibility/adaptability; Optimized → minimum manual intervention."
+      ]
     },
     {
       "id": "pyq-2023-10-12",
@@ -5896,7 +6582,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "Company/product facts are retained as the course-era case description."
+      "sourceNote": "Company/product facts are retained as the course-era case description.",
+      "brief": [
+        "The false statement is that FANUC’s Zero Downtime System does not predict component failure."
+      ]
     },
     {
       "id": "pyq-2023-10-13",
@@ -5919,7 +6608,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "CityCrop is described as an intelligent indoor-garden example for fruits, herbs, vegetables, greens and edible flowers."
+      ]
     },
     {
       "id": "pyq-2023-10-14",
@@ -5944,7 +6636,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Improper resource utilization conflicts with the optimization aim of a smart factory."
+      ]
     },
     {
       "id": "pyq-2024-10-1",
@@ -5969,7 +6664,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": "This tests the supplied diagram labels, not a claim that real IIoT installations cannot use private networks."
+      "sourceNote": "This tests the supplied diagram labels, not a claim that real IIoT installations cannot use private networks.",
+      "brief": [
+        "The diagram lists WSN, an industrial bus/network, a public network and an industrial cloud."
+      ]
     },
     {
       "id": "pyq-2024-10-2",
@@ -5994,7 +6692,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Applications, the data plane and the control plane are the SDWSN platform parts in this list."
+      ]
     },
     {
       "id": "pyq-2024-10-4",
@@ -6019,7 +6720,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "R stands for Repudiation in STRIDE: denying an action or event, especially when accountability evidence is insufficient."
+      ]
     },
     {
       "id": "pyq-2024-10-5",
@@ -6044,7 +6748,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": "Preserve “reversal attack” as the course’s term; layer taxonomies may overlap and this is not a complete attack catalogue."
+      "sourceNote": "Preserve “reversal attack” as the course’s term; layer taxonomies may overlap and this is not a complete attack catalogue.",
+      "brief": [
+        "The application-layer example keyed in this paper is reversal attack."
+      ]
     },
     {
       "id": "pyq-2024-10-6",
@@ -6069,7 +6776,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The source associates trust permeation with establishing device integrity through the IIoT system."
+      ]
     },
     {
       "id": "pyq-2024-10-8",
@@ -6094,7 +6804,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "This is a standards-identification exercise, not a statement of which standards legally apply to a particular installation."
+      "sourceNote": "This is a standards-identification exercise, not a statement of which standards legally apply to a particular installation.",
+      "brief": [
+        "NERC-CIP is the OT-security standard association in this question."
+      ]
     },
     {
       "id": "pyq-2024-10-9",
@@ -6119,7 +6832,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Flow-rule protection is associated with the programmable network’s forwarding rules."
+      ]
     },
     {
       "id": "pyq-2024-10-11",
@@ -6144,7 +6860,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": "Company/factory details are retained as course-era case associations."
+      "sourceNote": "Company/factory details are retained as course-era case associations.",
+      "brief": [
+        "The A330/A350 Toulouse final-assembly-line statement belongs to another aerospace case, not the KUKA factory description."
+      ]
     },
     {
       "id": "pyq-2024-10-14",
@@ -6169,7 +6888,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Livestock-barn IoT monitors animal health parameters."
+      ]
     },
     {
       "id": "pyq-2024-10-15",
@@ -6194,7 +6916,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "LAI stands for Leaf Area Index in agricultural IoT."
+      ]
     },
     {
       "id": "pyq-2023-10-15",
@@ -6217,7 +6942,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Multiple people and devices create more points at which healthcare data can be altered."
+      ]
     },
     {
       "id": "pyq-2023-11-1",
@@ -6242,7 +6970,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Drug overdose, wrong prescriptions and costly hospitals/clinics are all challenges listed in the source."
+      ]
     },
     {
       "id": "pyq-2023-11-2",
@@ -6267,7 +6998,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "QardioCore is the wireless ECG example."
+      ]
     },
     {
       "id": "pyq-2023-11-3",
@@ -6292,7 +7026,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Kinsa is the named smart thermometer."
+      ]
     },
     {
       "id": "pyq-2023-11-5",
@@ -6317,7 +7054,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Smart metering is an application/enabler, not one of the challenges in this list."
+      ]
     },
     {
       "id": "pyq-2023-11-7",
@@ -6342,7 +7082,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Home Area Network, Wide Area Network and Neighborhood Area Network are named categories in the smart-grid hierarchy."
+      ]
     },
     {
       "id": "pyq-2023-11-8",
@@ -6365,7 +7108,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "An RFID system combines tags, read/write devices (readers) and a host system."
+      ]
     },
     {
       "id": "pyq-2023-11-9",
@@ -6390,7 +7136,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A passive tag responds using backscatter of the reader’s signal."
+      ]
     },
     {
       "id": "pyq-2023-11-11",
@@ -6415,7 +7164,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Firewalls separate networks under rules; intrusion prevention detects/blocks attacks; access control uses identity/permissions; antivirus and antimalware scan for malicious software."
+      ]
     },
     {
       "id": "pyq-2023-11-13",
@@ -6440,7 +7192,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Both smart meters and security/safety alarms are facility-management applications."
+      ]
     },
     {
       "id": "pyq-2023-11-14",
@@ -6465,7 +7220,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Inability to identify bottleneck causes is a limitation, not a benefit."
+      ]
     },
     {
       "id": "pyq-2023-11-15",
@@ -6490,7 +7248,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Remote facility monitoring is an achievable analytics-supported benefit."
+      ]
     },
     {
       "id": "pyq-2024-9-2",
@@ -6515,7 +7276,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The false statement is unidirectional consumer–supplier communication."
+      ]
     },
     {
       "id": "pyq-2024-11-1",
@@ -6540,7 +7304,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Limited computation, limited memory and short battery life constrain healthcare IoT devices."
+      ]
     },
     {
       "id": "pyq-2024-11-2",
@@ -6565,7 +7332,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "This is the monitoring behaviour described in the course, not a diagnostic guarantee or treatment instruction."
+      "sourceNote": "This is the monitoring behaviour described in the course, not a diagnostic guarantee or treatment instruction.",
+      "brief": [
+        "The intended response to a detected abnormality is triggering an alarm."
+      ]
     },
     {
       "id": "pyq-2024-11-3",
@@ -6590,7 +7360,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Authentication is the fourth item alongside Confidentiality, Integrity and Availability in the healthcare list."
+      ]
     },
     {
       "id": "pyq-2024-11-5",
@@ -6613,7 +7386,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The statement is False: smart-grid systems integrate data communication with the physical electricity network."
+      ]
     },
     {
       "id": "pyq-2024-11-7",
@@ -6638,7 +7414,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Inventory automation includes both stock-in and stock-out."
+      ]
     },
     {
       "id": "pyq-2024-11-8",
@@ -6663,7 +7442,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Behavioural analytics looks for abnormal network behaviour that may indicate an incident."
+      ]
     },
     {
       "id": "pyq-2024-11-10",
@@ -6688,7 +7470,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": "The source uses “stakeholder” broadly enough to include buildings and finance; the exercise follows that vocabulary."
+      "sourceNote": "The source uses “stakeholder” broadly enough to include buildings and finance; the exercise follows that vocabulary.",
+      "brief": [
+        "The source groups buildings, finance and people in its facility-management stakeholder/context list."
+      ]
     },
     {
       "id": "pyq-2024-11-11",
@@ -6713,7 +7498,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Ageing assets/inventory create a need for proactive, preventive and maintenance procedures."
+      ]
     },
     {
       "id": "pyq-2024-11-12",
@@ -6738,7 +7526,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The course positions subcontractors between owners and customers in its logical facility-management relationship."
+      ]
     },
     {
       "id": "pyq-2024-11-13",
@@ -6763,7 +7554,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Facility management seeks efficient use of manpower, assets and technology together."
+      ]
     },
     {
       "id": "pyq-2024-11-15",
@@ -6788,7 +7582,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Real-time monitoring and easier diagnosis are presented as healthcare-IoT advantages."
+      ]
     },
     {
       "id": "pyq-2023-12-1",
@@ -6813,7 +7610,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The positive oil/gas benefit is saving cost and time through better visibility and maintenance."
+      ]
     },
     {
       "id": "pyq-2023-12-2",
@@ -6846,7 +7646,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "IoT aims to minimize supply-chain risk, not maximize it."
+      ]
     },
     {
       "id": "pyq-2023-12-3",
@@ -6879,7 +7682,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Real-time monitoring is the positive pharmaceutical application."
+      ]
     },
     {
       "id": "pyq-2023-12-6",
@@ -6904,7 +7710,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": "Generation labels are the source’s historical classification; this is a different question from the disputed Fourth/sixth-generation bundle in the regular assignment."
+      "sourceNote": "Generation labels are the source’s historical classification; this is a different question from the disputed Fourth/sixth-generation bundle in the regular assignment.",
+      "brief": [
+        "The source describes second-generation UAVs with static design, a fixed camera mount, still photos/video and manual steering."
+      ]
     },
     {
       "id": "pyq-2023-12-8",
@@ -6929,7 +7738,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Inspecting construction infrastructure and roadways belongs to construction, not agriculture."
+      ]
     },
     {
       "id": "pyq-2023-12-9",
@@ -6952,7 +7764,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The statement is False because precision forestry and canopy mapping are UAV applications in the source."
+      ]
     },
     {
       "id": "pyq-2023-12-12",
@@ -6985,7 +7800,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The matching is Mining → blast-design surface survey; Healthcare → medicine/vaccine/serum delivery; Forestry → species information; Warehousing → scanning stored items."
+      ]
     },
     {
       "id": "pyq-2023-12-13",
@@ -7010,7 +7828,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The oil/gas applications combine safer inspection without industrial climbing, pipeline-leak monitoring and video/thermal observations."
+      ]
     },
     {
       "id": "pyq-2023-12-14",
@@ -7033,7 +7854,11 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": "The False result is supported by reusability; no general current price claim is implied."
+      "sourceNote": "The False result is supported by reusability; no general current price claim is implied.",
+      "brief": [
+        "The statement is False because drone displays can be reused.",
+        "Relative cost depends on the event."
+      ]
     },
     {
       "id": "pyq-2023-12-15",
@@ -7066,7 +7891,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A case study investigates real-life phenomena by examining related events in a specific context."
+      ]
     },
     {
       "id": "pyq-2024-12-5",
@@ -7091,7 +7919,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "UAV payloads can capture aerial, visual and thermal imagery in the supplied examples."
+      ]
     },
     {
       "id": "pyq-2024-12-6",
@@ -7116,7 +7947,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The paper describes first-generation UAVs as fundamental remote-controlled aircraft of different forms."
+      ]
     },
     {
       "id": "pyq-2024-12-7",
@@ -7141,7 +7975,10 @@
           "answer": "(c)"
         }
       ],
-      "sourceNote": "The paper groups shoreline-erosion monitoring under construction-site work; the answer is retained in that context."
+      "sourceNote": "The paper groups shoreline-erosion monitoring under construction-site work; the answer is retained in that context.",
+      "brief": [
+        "Monitoring shoreline erosion is the positive construction-site application among the supplied choices."
+      ]
     },
     {
       "id": "pyq-2024-12-8",
@@ -7174,7 +8011,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "UAVs inspect telecommunications towers from different heights and angles, reducing the need for close physical climbing in the course example."
+      ]
     },
     {
       "id": "pyq-2024-12-10",
@@ -7199,7 +8039,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "The source includes plantation/seedling work, remote sensing of carbon in biomass and forest security/deforestation monitoring."
+      ]
     },
     {
       "id": "pyq-2024-12-11",
@@ -7224,7 +8067,10 @@
           "answer": "(d)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "Mining applications include blast-design surface surveys, stockpile management and exploration."
+      ]
     },
     {
       "id": "pyq-2024-12-12",
@@ -7247,7 +8093,10 @@
           "answer": "(a)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "A case study examines data in context through a defined procedure and can include qualitative and quantitative analysis."
+      ]
     },
     {
       "id": "pyq-2024-12-14",
@@ -7272,7 +8121,10 @@
           "answer": "(b)"
         }
       ],
-      "sourceNote": ""
+      "sourceNote": "",
+      "brief": [
+        "IoD stands for Internet of Drones: connected drones exchanging data within a networked system."
+      ]
     }
   ]
 }

@@ -5,7 +5,7 @@ import type { Week, WeekIndex } from './types';
 
 let loaded: Week[] | undefined;
 export function getWeeks(): Week[] {
-  if (!loaded) {
+  if (!loaded || process.env.NODE_ENV === 'development') {
     loaded = ['weeks-01-04.json', 'weeks-05-08.json', 'weeks-09-11.json', 'week-12.json']
       .flatMap(file => JSON.parse(fs.readFileSync(path.join(process.cwd(), 'content', file), 'utf8')) as Week[])
       .sort((a, b) => a.id - b.id);

@@ -20,8 +20,8 @@ npm start
 
 ## Study workflow
 
-- **Learn:** detailed explanations, definitions, comparisons, worked examples and accessible diagrams. Expand a diagram walkthrough or an exam-trap section for more detail; mark topics understood as you study.
-- **Practice:** 15 assignment questions per week. Choose an answer, check the explanation, save questions for revision, or jump to the related lesson.
+- **Learn:** a short summary, 3–5 pointers and a visual for every topic. Use the topic picker to jump ahead; expand **More detail** for the original explanations, definitions, comparisons and worked examples. Mark topics understood as you study.
+- **Practice:** 15 assignment questions per week. Check an answer to see 1–2 explanation pointers; expand **Full explanation** or **Source caveat** when needed. Save questions for revision or jump to the related lesson.
 - **Review:** a concise recall sheet plus saved and missed questions. Retrying an exercise updates its result when a new answer is checked.
 
 Progress is saved in this browser using local storage. There is no account or server-side database. A storage warning appears if saving is unavailable. The original Word source files are kept separately in the sibling `../course-docx/` folder. The app uses the prepared JSON content under `content/`, so those source files are not required to run it.
@@ -40,7 +40,7 @@ See [DEPLOY.md](DEPLOY.md). Vercel configuration, Node 24.x selection and a lock
 
 ## Content and limits
 
-The app contains 98 learning sections, 64 diagram specifications and 180 assignment questions. Content is stored in four JSON files under `content/`; schema types are in `lib/types.ts`.
+The app contains 98 learning sections, 98 diagram specifications (64 original and 34 new), five illustrated topic comparisons and 180 assignment questions. All 459 weekly/PYQ answers include brief explanations alongside the full originals. Content is stored under `content/`; schema types are in `lib/types.ts`.
 
 The source documents give assignment prompts and keyed answers but omit most original option lists. Practice distractors are authored and labelled as such. Course-key-specific wording, inconsistent numbers and historical platform details are flagged in lessons and answer feedback. This is preparation from the supplied notes, not an official exam paper. No official exam blueprint was supplied. Week 12 flags the UAV-generation key/slide discrepancy and the two conveyor-case questions supplied outside its transcript.
 
@@ -55,4 +55,4 @@ npm run build
 
 `validate:pyqs` accounts for every original question, checks source options/keys, duplicate/weekly matches, PDF files and lesson links.
 
-`validate:content` checks complete week/question coverage, table shapes, diagram budgets, unique options/IDs and exercise-to-lesson links. Browser checks cover rendering, diagram bounds, answer feedback, local persistence, revision and navigation.
+`validate:content` checks complete week/question coverage, concise-note word budgets, a visual per topic, table shapes, diagram budgets, unique options/IDs and exercise-to-lesson links. Browser checks cover rendering, diagram bounds, expandable full explanations, answer feedback, local persistence, revision and navigation.

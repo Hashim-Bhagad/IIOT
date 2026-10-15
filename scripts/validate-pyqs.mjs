@@ -19,6 +19,7 @@ const occurrences = new Set();
 for (const q of bank.questions) {
   assert.equal(sections.get(q.sectionId),q.weekId,`Related lesson: ${q.id}`);
   assert(q.explanation.length > 70,`Missing teaching explanation: ${q.id}`);
+  assert(q.brief?.length>=1 && q.brief.length<=2 && q.brief.every(point=>typeof point==='string' && point.trim().split(/\s+/).length<=25),`Answer pointer budget: ${q.id}`);
   assert(q.options.length===2 || q.options.length===4,`Options: ${q.id}`);
   assert(new Set(q.options).size===q.options.length,`Duplicate option text: ${q.id}`);
   assert(q.sources.length>0,`Missing PDF provenance: ${q.id}`);
