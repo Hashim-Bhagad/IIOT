@@ -1,0 +1,190 @@
+{
+  "w1-sensors": {
+    "type": "branch",
+    "title": "Keep sensor characteristics distinct",
+    "nodes": [
+      {
+        "label": "Sensor reading",
+        "detail": "Describe what the measurement can and cannot tell you."
+      },
+      {
+        "label": "Accuracy",
+        "detail": "Agreement with the reference value."
+      },
+      {
+        "label": "Resolution",
+        "detail": "Smallest input change the sensor can distinguish."
+      },
+      {
+        "label": "Range",
+        "detail": "Lowest and highest measurable input."
+      },
+      {
+        "label": "Sensitivity",
+        "detail": "Output change for a unit input change."
+      }
+    ],
+    "caption": "A very fine resolution does not by itself guarantee accurate measurements."
+  },
+  "w11-rfid": {
+    "type": "branch",
+    "title": "Battery and transmitter are different questions",
+    "nodes": [
+      {
+        "label": "RFID tag",
+        "detail": "Ask how it gets power and how it sends a response."
+      },
+      {
+        "label": "Passive",
+        "detail": "Reader-powered; replies by backscatter."
+      },
+      {
+        "label": "Semi-passive",
+        "detail": "Battery powers the IC; still replies by backscatter."
+      },
+      {
+        "label": "Active",
+        "detail": "Battery-powered with an active transmitter; beacon/transponder examples."
+      }
+    ],
+    "caption": "An onboard battery alone does not distinguish semi-passive from active transmission."
+  },
+  "w3-ai": {
+    "type": "layers",
+    "title": "AI contains machine learning; ML contains deep learning",
+    "nodes": [
+      {
+        "label": "Artificial intelligence",
+        "detail": "Broad field of machine reasoning and intelligent behaviour."
+      },
+      {
+        "label": "Machine learning",
+        "detail": "A subset of AI that learns patterns or behaviour from data/experience."
+      },
+      {
+        "label": "Deep learning",
+        "detail": "A subset of ML based on multi-layer neural networks."
+      }
+    ],
+    "caption": "The hierarchy goes AI → ML → DL. Reversing ML and DL makes the true/false statements incorrect."
+  },
+  "w8-cloud-models": {
+    "type": "layers",
+    "title": "Rent infrastructure, a platform, or finished software",
+    "nodes": [
+      {
+        "label": "IaaS",
+        "detail": "Provider supplies infrastructure; customer manages its software stack."
+      },
+      {
+        "label": "PaaS",
+        "detail": "Provider supplies a platform; customer develops/configures its application."
+      },
+      {
+        "label": "SaaS",
+        "detail": "Provider supplies a finished application for the customer to use."
+      }
+    ],
+    "caption": "The service boundary determines what the provider and customer manage; cloud does not always mean “provider manages everything”."
+  },
+  "w9-r": {
+    "type": "branch",
+    "title": "R operators: match the symbol to its job",
+    "nodes": [
+      {
+        "label": "R expression",
+        "detail": "Similar-looking operators do different things."
+      },
+      {
+        "label": "1:5",
+        "detail": "Sequence: 1, 2, 3, 4, 5."
+      },
+      {
+        "label": "7 %% 2",
+        "detail": "Remainder: 1."
+      },
+      {
+        "label": "2^3",
+        "detail": "Exponentiation: 8."
+      },
+      {
+        "label": "TRUE -> C",
+        "detail": "Assign TRUE to C."
+      },
+      {
+        "label": "a & b",
+        "detail": "Elementwise logical AND."
+      }
+    ],
+    "caption": "The sequence operator is :, not &. %% is remainder, while %/% is integer division."
+  },
+  "w8-ml": {
+    "type": "branch",
+    "title": "Start with the learning task",
+    "nodes": [
+      {
+        "label": "Training information",
+        "detail": "What target or feedback does the system receive?"
+      },
+      {
+        "label": "Supervised",
+        "detail": "Known targets: classification for categories, regression for numbers."
+      },
+      {
+        "label": "Unsupervised",
+        "detail": "No target labels: find clusters or structure."
+      },
+      {
+        "label": "Reinforcement",
+        "detail": "Choose actions and learn from reward feedback."
+      }
+    ],
+    "caption": "SVM is the classification example; clustering is unsupervised; a real-number target suggests regression."
+  },
+  "w6-gas-principle": {
+    "type": "flow",
+    "title": "Gas sensing: compare the response with a baseline",
+    "nodes": [
+      {
+        "label": "Air baseline",
+        "detail": "Measure resistance before target-gas exposure."
+      },
+      {
+        "label": "Gas exposure",
+        "detail": "A heated MOS sensing surface interacts with the gas."
+      },
+      {
+        "label": "Resistance change",
+        "detail": "Compare the response against baseline conditions."
+      },
+      {
+        "label": "Interpret response",
+        "detail": "Sensitivity measures change per input; selectivity distinguishes gases."
+      }
+    ],
+    "caption": "Baseline, sensitivity and selectivity name different aspects of the measurement."
+  },
+  "w5-viewpoints": {
+    "type": "flow",
+    "title": "An IIRA activity has four descriptors",
+    "nodes": [
+      {
+        "label": "Trigger",
+        "detail": "The event or condition that initiates the activity."
+      },
+      {
+        "label": "Workflow",
+        "detail": "The steps taken to perform it."
+      },
+      {
+        "label": "Effect",
+        "detail": "The state after successful completion."
+      },
+      {
+        "label": "Constraints",
+        "detail": "Limits or conditions on how the activity may run."
+      }
+    ],
+    "caption": "This lists activity descriptors; constraints apply throughout rather than only after the effect."
+  }
+}

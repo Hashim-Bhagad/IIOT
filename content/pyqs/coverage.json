@@ -1,0 +1,3724 @@
+[
+  {
+    "sourceId": "2023-1-8",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w1-q06"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 1,
+    "number": 8,
+    "question": "The IEEE 802.15.4 standard uses DSSS scheme for data transmission. What does DSSS stand for?"
+  },
+  {
+    "sourceId": "2023-1-9",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w1-q02"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 1,
+    "number": 9,
+    "question": "When does Zigbee uses the OQPSK modulation scheme?"
+  },
+  {
+    "sourceId": "2023-1-1",
+    "decision": "added",
+    "questionId": "pyq-2023-1-1",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 1,
+    "number": 1,
+    "question": "Which of the following is/are not a type of transducer?"
+  },
+  {
+    "sourceId": "2023-1-2",
+    "decision": "added",
+    "questionId": "pyq-2023-1-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 1,
+    "number": 2,
+    "question": "“Sensor is sensitive to only the measured property. It is insensitive to any other property besides what it is designed to detect.” True or false?"
+  },
+  {
+    "sourceId": "2023-1-3",
+    "decision": "added",
+    "questionId": "pyq-2023-1-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 1,
+    "number": 3,
+    "question": "“_______ sensors produce an output proportional to the magnitude of the quantity being measured.” Fill in the blank."
+  },
+  {
+    "sourceId": "2023-1-4",
+    "decision": "added",
+    "questionId": "pyq-2023-1-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 1,
+    "number": 4,
+    "question": "What is the resolution of a sensor?"
+  },
+  {
+    "sourceId": "2023-1-5",
+    "decision": "added",
+    "questionId": "pyq-2023-1-5",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 1,
+    "number": 5,
+    "question": "___________ is a part of the system that deals with the control actions required in the system."
+  },
+  {
+    "sourceId": "2023-1-6",
+    "decision": "added",
+    "questionId": "pyq-2023-1-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 1,
+    "number": 6,
+    "question": "What is the function of an electric rotary actuator?"
+  },
+  {
+    "sourceId": "2023-1-7",
+    "decision": "added",
+    "questionId": "pyq-2023-1-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 1,
+    "number": 7,
+    "question": "Which of the following communication standards provide a framework for WPAN ?"
+  },
+  {
+    "sourceId": "2023-1-10",
+    "decision": "added",
+    "questionId": "pyq-2023-1-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 1,
+    "number": 10,
+    "question": "Which of the following statements is true about the end devices in Zigbee protocol?"
+  },
+  {
+    "sourceId": "2023-1-11",
+    "decision": "added",
+    "questionId": "pyq-2023-1-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 1,
+    "number": 11,
+    "question": "What is the maximum packet size supported by IEEE 802.15.4 standard?"
+  },
+  {
+    "sourceId": "2023-1-12",
+    "decision": "added",
+    "questionId": "pyq-2023-1-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 1,
+    "number": 12,
+    "question": "Z-wave uses _____ network topology. Fill in the blank."
+  },
+  {
+    "sourceId": "2023-1-13",
+    "decision": "added",
+    "questionId": "pyq-2023-1-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 1,
+    "number": 13,
+    "question": "Passive tags in RFID are powered by their own power source. True or False?"
+  },
+  {
+    "sourceId": "2023-1-14",
+    "decision": "added",
+    "questionId": "pyq-2023-1-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 1,
+    "number": 14,
+    "question": "What is the full form of IETF in the context of the Internet?"
+  },
+  {
+    "sourceId": "2023-1-15",
+    "decision": "added",
+    "questionId": "pyq-2023-1-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 1,
+    "number": 15,
+    "question": "MQTT works on ________framework on top of TCP/IP. Fill in the blank."
+  },
+  {
+    "sourceId": "2023-2-1",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w2-q02"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 2,
+    "number": 1,
+    "question": "Which of the following is a feature of the Fourth industrial revolution?"
+  },
+  {
+    "sourceId": "2023-2-15",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w2-q15"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 2,
+    "number": 15,
+    "question": "Which of the following falls under the Agility characteristic of a smart factory?"
+  },
+  {
+    "sourceId": "2023-2-2",
+    "decision": "added",
+    "questionId": "pyq-2023-2-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 2,
+    "number": 2,
+    "question": "___________ has helped in producing objects that are mutable and adaptable. Fill in the blank."
+  },
+  {
+    "sourceId": "2023-2-3",
+    "decision": "added",
+    "questionId": "pyq-2023-2-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 2,
+    "number": 3,
+    "question": "Select the option that best describes the tipping point."
+  },
+  {
+    "sourceId": "2023-2-4",
+    "decision": "added",
+    "questionId": "pyq-2023-2-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 2,
+    "number": 4,
+    "question": "Which of the following is/are drivers of sustainability in Industry 4.0?"
+  },
+  {
+    "sourceId": "2023-2-5",
+    "decision": "added",
+    "questionId": "pyq-2023-2-5",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 2,
+    "number": 5,
+    "question": "Information regulation in public is covered under which of the following laws?"
+  },
+  {
+    "sourceId": "2023-2-6",
+    "decision": "added",
+    "questionId": "pyq-2023-2-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 2,
+    "number": 6,
+    "question": "How does population growth affect the manufacturing industry?"
+  },
+  {
+    "sourceId": "2023-2-7",
+    "decision": "added",
+    "questionId": "pyq-2023-2-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 2,
+    "number": 7,
+    "question": "Which of the following statements is true about recession?"
+  },
+  {
+    "sourceId": "2023-2-8",
+    "decision": "added",
+    "questionId": "pyq-2023-2-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 2,
+    "number": 8,
+    "question": "The lean manufacturing system, introduced by Toyoto, is based on which of the following approaches?"
+  },
+  {
+    "sourceId": "2023-2-9",
+    "decision": "added",
+    "questionId": "pyq-2023-2-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 2,
+    "number": 9,
+    "question": "Which of the following is not an impact of the Lean production system on manufacturing?"
+  },
+  {
+    "sourceId": "2023-2-10",
+    "decision": "added",
+    "questionId": "pyq-2023-2-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 2,
+    "number": 10,
+    "question": "What is KPI in the context of performance management?"
+  },
+  {
+    "sourceId": "2023-2-11",
+    "decision": "added",
+    "questionId": "pyq-2023-2-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 2,
+    "number": 11,
+    "question": "Which of the following statements is/are true about smart and connected products?"
+  },
+  {
+    "sourceId": "2023-2-12",
+    "decision": "added",
+    "questionId": "pyq-2023-2-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 2,
+    "number": 12,
+    "question": "Lock-in centric business models helps in"
+  },
+  {
+    "sourceId": "2023-2-13",
+    "decision": "added",
+    "questionId": "pyq-2023-2-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 2,
+    "number": 13,
+    "question": "What is the function of the digital layer in a smart business architecture?"
+  },
+  {
+    "sourceId": "2023-2-14",
+    "decision": "added",
+    "questionId": "pyq-2023-2-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 2,
+    "number": 14,
+    "question": "Which of the following is not a characteristic of a smart factory?"
+  },
+  {
+    "sourceId": "2023-3-1",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w2-q09"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 3,
+    "number": 1,
+    "question": "What is the full form of CPS?"
+  },
+  {
+    "sourceId": "2023-3-5",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w3-q04"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 3,
+    "number": 5,
+    "question": "_____sensors are capable of processing sensed data and performing pre-defined functions by processing data. Fill in the blank with the appropriate option."
+  },
+  {
+    "sourceId": "2023-3-7",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w3-q11"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 3,
+    "number": 7,
+    "question": "___________ allows employees to share information and solve business problems. Fill in the blank."
+  },
+  {
+    "sourceId": "2023-3-10",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w3-q12"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 3,
+    "number": 10,
+    "question": "Which of the following statements is true about Augmented reality?"
+  },
+  {
+    "sourceId": "2023-3-13",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w3-q14"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 3,
+    "number": 13,
+    "question": "Which of the following search methods is used by a computer program that does not use artificial intelligence?"
+  },
+  {
+    "sourceId": "2023-3-2",
+    "decision": "added",
+    "questionId": "pyq-2023-3-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 3,
+    "number": 2,
+    "question": "Select the statement(s) that best describes a CPS."
+  },
+  {
+    "sourceId": "2023-3-3",
+    "decision": "added",
+    "questionId": "pyq-2023-3-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 3,
+    "number": 3,
+    "question": "What does conversion refer to in context of CPS architecture for IIoT?"
+  },
+  {
+    "sourceId": "2023-3-4",
+    "decision": "added",
+    "questionId": "pyq-2023-3-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 3,
+    "number": 4,
+    "question": "Select the statement which describes one of the limitations of smart sensors."
+  },
+  {
+    "sourceId": "2023-3-6",
+    "decision": "added",
+    "questionId": "pyq-2023-3-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 3,
+    "number": 6,
+    "question": "Which of the following allows application-specific customization of sensor nodes?"
+  },
+  {
+    "sourceId": "2023-3-8",
+    "decision": "added",
+    "questionId": "pyq-2023-3-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 3,
+    "number": 8,
+    "question": "Coordination is one of the four keys that enable collaboration productivity. How can one initiate coordination?"
+  },
+  {
+    "sourceId": "2023-3-9",
+    "decision": "added",
+    "questionId": "pyq-2023-3-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 3,
+    "number": 9,
+    "question": "How many components are there in PLM that are used to handle a product across its lifetime?"
+  },
+  {
+    "sourceId": "2023-3-11",
+    "decision": "added",
+    "questionId": "pyq-2023-3-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 3,
+    "number": 11,
+    "question": "What is projection-based AR?"
+  },
+  {
+    "sourceId": "2023-3-12",
+    "decision": "added",
+    "questionId": "pyq-2023-3-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 3,
+    "number": 12,
+    "question": "Semi-immersive simulation is a type of"
+  },
+  {
+    "sourceId": "2023-3-14",
+    "decision": "added",
+    "questionId": "pyq-2023-3-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 3,
+    "number": 14,
+    "question": "Select the correct statement."
+  },
+  {
+    "sourceId": "2023-3-15",
+    "decision": "added",
+    "questionId": "pyq-2023-3-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 3,
+    "number": 15,
+    "question": "Which of the following statements is true about the GFS file system?"
+  },
+  {
+    "sourceId": "2023-4-7",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w2-q02"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 4,
+    "number": 7,
+    "question": "Commercialization and the mass production of steam engines marked the beginning of the______ stage of the Industrial revolution. Fill in the blank."
+  },
+  {
+    "sourceId": "2023-4-15",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w11-q9"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 4,
+    "number": 15,
+    "question": "How can smart factory be beneficial in inventory tracking?"
+  },
+  {
+    "sourceId": "2023-4-1",
+    "decision": "added",
+    "questionId": "pyq-2023-4-1",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 4,
+    "number": 1,
+    "question": "Cybersecurity involves the security of"
+  },
+  {
+    "sourceId": "2023-4-2",
+    "decision": "added",
+    "questionId": "pyq-2023-4-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 4,
+    "number": 2,
+    "question": "________ security represents the set of policies that monitor and prevent unauthorized access, safeguard the data and network from network traffic. Fill in the blank."
+  },
+  {
+    "sourceId": "2023-4-3",
+    "decision": "added",
+    "questionId": "pyq-2023-4-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 4,
+    "number": 3,
+    "question": "Locky is an example of which type of cybersecurity threat?"
+  },
+  {
+    "sourceId": "2023-4-4",
+    "decision": "duplicate",
+    "canonicalSourceId": "2024-4-3",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2023,
+    "assignment": 4,
+    "number": 4,
+    "question": "What does C represent in the CIA-Triad in cybersecurity?",
+    "questionId": "pyq-2024-4-3"
+  },
+  {
+    "sourceId": "2023-4-5",
+    "decision": "added",
+    "questionId": "pyq-2023-4-5",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 4,
+    "number": 5,
+    "question": "What is ubiquitous sensing in IIoT?"
+  },
+  {
+    "sourceId": "2023-4-6",
+    "decision": "added",
+    "questionId": "pyq-2023-4-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 4,
+    "number": 6,
+    "question": "Which of the following is a data integration challenge in deploying IIoT?"
+  },
+  {
+    "sourceId": "2023-4-8",
+    "decision": "added",
+    "questionId": "pyq-2023-4-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 4,
+    "number": 8,
+    "question": "What were the negative effects of Industrial revolution?"
+  },
+  {
+    "sourceId": "2023-4-9",
+    "decision": "added",
+    "questionId": "pyq-2023-4-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 4,
+    "number": 9,
+    "question": "How many key elements are there in the Industrial internet?"
+  },
+  {
+    "sourceId": "2023-4-10",
+    "decision": "added",
+    "questionId": "pyq-2023-4-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 4,
+    "number": 10,
+    "question": "How does sensing contributes to the industry?"
+  },
+  {
+    "sourceId": "2023-4-11",
+    "decision": "added",
+    "questionId": "pyq-2023-4-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 4,
+    "number": 11,
+    "question": "A smart sensor can perform multiple sensing, unlike the traditional sensors. True or false?"
+  },
+  {
+    "sourceId": "2023-4-12",
+    "decision": "added",
+    "questionId": "pyq-2023-4-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 4,
+    "number": 12,
+    "question": "What is self-decision making in a smart sensor?"
+  },
+  {
+    "sourceId": "2023-4-13",
+    "decision": "added",
+    "questionId": "pyq-2023-4-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 4,
+    "number": 13,
+    "question": "What is the full form of SCADA?"
+  },
+  {
+    "sourceId": "2023-4-14",
+    "decision": "added",
+    "questionId": "pyq-2023-4-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 4,
+    "number": 14,
+    "question": "What does the Cognitive layer in the 5C architecture for Cyber-physical Systems represents?"
+  },
+  {
+    "sourceId": "2023-5-3",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w5-q01"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 5,
+    "number": 3,
+    "question": "Which of the following company provides Air-as-a-Service?"
+  },
+  {
+    "sourceId": "2023-5-1",
+    "decision": "added",
+    "questionId": "pyq-2023-5-1",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 5,
+    "number": 1,
+    "question": "Which of the following is a feature of Amazon Smart Warehousing's logistics and supply chain management?"
+  },
+  {
+    "sourceId": "2023-5-2",
+    "decision": "added",
+    "questionId": "pyq-2023-5-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 5,
+    "number": 2,
+    "question": "How does Boeing achieve efficient manufacturing?"
+  },
+  {
+    "sourceId": "2023-5-4",
+    "decision": "added",
+    "questionId": "pyq-2023-5-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 5,
+    "number": 4,
+    "question": "According to the International Labor Organization, what is the approximate death rate owing to occupational disease or accident?"
+  },
+  {
+    "sourceId": "2023-5-5",
+    "decision": "added",
+    "questionId": "pyq-2023-5-5",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 5,
+    "number": 5,
+    "question": "What is a Business Model?"
+  },
+  {
+    "sourceId": "2023-5-6",
+    "decision": "added",
+    "questionId": "pyq-2023-5-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 5,
+    "number": 6,
+    "question": "What is a Market Segment?"
+  },
+  {
+    "sourceId": "2023-5-7",
+    "decision": "added",
+    "questionId": "pyq-2023-5-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 5,
+    "number": 7,
+    "question": "Which of the following statement is true w.r.t. Subscription Model?"
+  },
+  {
+    "sourceId": "2023-5-8",
+    "decision": "added",
+    "questionId": "pyq-2023-5-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 5,
+    "number": 8,
+    "question": "Which of the following is not an IIoT business models?"
+  },
+  {
+    "sourceId": "2023-5-9",
+    "decision": "added",
+    "questionId": "pyq-2023-5-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 5,
+    "number": 9,
+    "question": "Which of the following Cloud-Based Business Model aims to provide the required hardware and software online in the cloud?"
+  },
+  {
+    "sourceId": "2023-5-10",
+    "decision": "added",
+    "questionId": "pyq-2023-5-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 5,
+    "number": 10,
+    "question": "Which of the following is a/are challenge(s) of IIoT Business Model?"
+  },
+  {
+    "sourceId": "2023-5-11",
+    "decision": "added",
+    "questionId": "pyq-2023-5-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 5,
+    "number": 11,
+    "question": "What is the full form of IIRA?"
+  },
+  {
+    "sourceId": "2023-5-12",
+    "decision": "added",
+    "questionId": "pyq-2023-5-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 5,
+    "number": 12,
+    "question": "“Industrial Internet Consortium (IIC) is a non-profit organization created to promote open standards and interoperability for industry technologies and machine-to-machine (M2M) environments.” – Is the statement True or False?"
+  },
+  {
+    "sourceId": "2023-5-13",
+    "decision": "added",
+    "questionId": "pyq-2023-5-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 5,
+    "number": 13,
+    "question": "Which of the following are the components of Gateway-Mediated Edge Architecture?"
+  },
+  {
+    "sourceId": "2023-5-14",
+    "decision": "added",
+    "questionId": "pyq-2023-5-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 5,
+    "number": 14,
+    "question": "Which of the following is not a viewpoint of IIRA?"
+  },
+  {
+    "sourceId": "2023-5-15",
+    "decision": "added",
+    "questionId": "pyq-2023-5-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 5,
+    "number": 15,
+    "question": "How many domains are there in the Functional Viewpoint of IIRA?"
+  },
+  {
+    "sourceId": "2023-6-2",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w6-q03"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 6,
+    "number": 2,
+    "question": "Temperature sensor DS1621 is a ______ sensor, which generates ______ bits temperature data."
+  },
+  {
+    "sourceId": "2023-6-5",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w6-q05"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 6,
+    "number": 5,
+    "question": "Which type of sensor decreases its resistance w.r.t. the baseline resistance when exposed to a reducing gas?"
+  },
+  {
+    "sourceId": "2023-6-1",
+    "decision": "added",
+    "questionId": "pyq-2023-6-1",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 6,
+    "number": 1,
+    "question": "Which type of voltage does LM 35 temperature sensor generate?"
+  },
+  {
+    "sourceId": "2023-6-3",
+    "decision": "added",
+    "questionId": "pyq-2023-6-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 6,
+    "number": 3,
+    "question": "Which of the following is the application of Ultrasonic sensor?"
+  },
+  {
+    "sourceId": "2023-6-4",
+    "decision": "added",
+    "questionId": "pyq-2023-6-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 6,
+    "number": 4,
+    "question": "What is the Baseline Resistance of a sensor?"
+  },
+  {
+    "sourceId": "2023-6-6",
+    "decision": "added",
+    "questionId": "pyq-2023-6-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 6,
+    "number": 6,
+    "question": "Define the Sensitivity of a gas sensor."
+  },
+  {
+    "sourceId": "2023-6-7",
+    "decision": "added",
+    "questionId": "pyq-2023-6-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 6,
+    "number": 7,
+    "question": "Which of the following protocol falls under the category of Industrial Ethernet??"
+  },
+  {
+    "sourceId": "2023-6-8",
+    "decision": "added",
+    "questionId": "pyq-2023-6-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 6,
+    "number": 8,
+    "question": "What are the two units defined in the ModBus-TCP data frame?"
+  },
+  {
+    "sourceId": "2023-6-9",
+    "decision": "added",
+    "questionId": "pyq-2023-6-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 6,
+    "number": 9,
+    "question": "Which of the following network topology/(ies) is/are not supported by EtherCat?"
+  },
+  {
+    "sourceId": "2023-6-10",
+    "decision": "added",
+    "questionId": "pyq-2023-6-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 6,
+    "number": 10,
+    "question": "What is the maximum data rate per packet of EtherNet/IP?"
+  },
+  {
+    "sourceId": "2023-6-11",
+    "decision": "added",
+    "questionId": "pyq-2023-6-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 6,
+    "number": 11,
+    "question": "What is the full form of Profinet?"
+  },
+  {
+    "sourceId": "2023-6-12",
+    "decision": "added",
+    "questionId": "pyq-2023-6-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 6,
+    "number": 12,
+    "question": "Which of the following communication infrastructure is an example of wired connectivity?"
+  },
+  {
+    "sourceId": "2023-6-13",
+    "decision": "added",
+    "questionId": "pyq-2023-6-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 6,
+    "number": 13,
+    "question": "Which of the following is/are the limitation(s) of satellite communication?"
+  },
+  {
+    "sourceId": "2023-6-14",
+    "decision": "added",
+    "questionId": "pyq-2023-6-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 6,
+    "number": 14,
+    "question": "What is the frequency spectrum of mmWave for cellular communication?"
+  },
+  {
+    "sourceId": "2023-6-15",
+    "decision": "added",
+    "questionId": "pyq-2023-6-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 6,
+    "number": 15,
+    "question": "The output voltage of LM 35 temperature sensor is _________ proportional to the Celsius temperature."
+  },
+  {
+    "sourceId": "2023-7-5",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w7-q05"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 7,
+    "number": 5,
+    "question": "Which software is used to configure XBee?"
+  },
+  {
+    "sourceId": "2023-7-1",
+    "decision": "duplicate",
+    "canonicalSourceId": "2024-7-3",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2023,
+    "assignment": 7,
+    "number": 1,
+    "question": "What is the payload per message of SIGFOX?",
+    "questionId": "pyq-2024-7-3"
+  },
+  {
+    "sourceId": "2023-7-2",
+    "decision": "added",
+    "questionId": "pyq-2023-7-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 7,
+    "number": 2,
+    "question": "Which of the following is a processor?"
+  },
+  {
+    "sourceId": "2023-7-3",
+    "decision": "added",
+    "questionId": "pyq-2023-7-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 7,
+    "number": 3,
+    "question": "“We can use Arduino IDE to program a NodeMCU board.” --- Is this statement True/False?"
+  },
+  {
+    "sourceId": "2023-7-4",
+    "decision": "added",
+    "questionId": "pyq-2023-7-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 7,
+    "number": 4,
+    "question": "Which of the following topology(ies) is/are supported by ZigBee?"
+  },
+  {
+    "sourceId": "2023-7-6",
+    "decision": "added",
+    "questionId": "pyq-2023-7-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 7,
+    "number": 6,
+    "question": "Which Python library is necessary/imported while using Xbee?"
+  },
+  {
+    "sourceId": "2023-7-7",
+    "decision": "added",
+    "questionId": "pyq-2023-7-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 7,
+    "number": 7,
+    "question": "Which of the following statements is true about Complex Event Processing (CEP)?"
+  },
+  {
+    "sourceId": "2023-7-8",
+    "decision": "added",
+    "questionId": "pyq-2023-7-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 7,
+    "number": 8,
+    "question": "Edge provides _____ computing, and cloud provides ________ computing."
+  },
+  {
+    "sourceId": "2023-7-9",
+    "decision": "added",
+    "questionId": "pyq-2023-7-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 7,
+    "number": 9,
+    "question": "What are the Enablers of Prescriptive analytics in the context of IIoT - Processing & Analytics?"
+  },
+  {
+    "sourceId": "2023-7-10",
+    "decision": "added",
+    "questionId": "pyq-2023-7-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 7,
+    "number": 10,
+    "question": "What are the component of FarmBeats?"
+  },
+  {
+    "sourceId": "2023-7-11",
+    "decision": "added",
+    "questionId": "pyq-2023-7-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 7,
+    "number": 11,
+    "question": "What is SWAMP?"
+  },
+  {
+    "sourceId": "2023-7-12",
+    "decision": "added",
+    "questionId": "pyq-2023-7-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 7,
+    "number": 12,
+    "question": "Which of the following provides Cognitive Manufacturing?"
+  },
+  {
+    "sourceId": "2023-7-13",
+    "decision": "added",
+    "questionId": "pyq-2023-7-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 7,
+    "number": 13,
+    "question": "What are the three different phases of smart manufacturing?"
+  },
+  {
+    "sourceId": "2023-7-14",
+    "decision": "added",
+    "questionId": "pyq-2023-7-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 7,
+    "number": 14,
+    "question": "What is the three user entities in Industrial Manufacturing?"
+  },
+  {
+    "sourceId": "2023-7-15",
+    "decision": "added",
+    "questionId": "pyq-2023-7-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 7,
+    "number": 15,
+    "question": "How many major components comprise Industrial Control Systems?"
+  },
+  {
+    "sourceId": "2023-8-1",
+    "decision": "added",
+    "questionId": "pyq-2023-8-1",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 8,
+    "number": 1,
+    "question": "What are the three types of IIoT Analytics?"
+  },
+  {
+    "sourceId": "2023-8-2",
+    "decision": "added",
+    "questionId": "pyq-2023-8-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 8,
+    "number": 2,
+    "question": "What are the main 5 Vs of big data?"
+  },
+  {
+    "sourceId": "2023-8-3",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-3-14",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2023,
+    "assignment": 8,
+    "number": 3,
+    "question": "“Machine learning is a subset of deep learning.” --- True/False?",
+    "questionId": "pyq-2023-3-14"
+  },
+  {
+    "sourceId": "2023-8-4",
+    "decision": "added",
+    "questionId": "pyq-2023-8-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 8,
+    "number": 4,
+    "question": "Which of the following is an example of Classification?"
+  },
+  {
+    "sourceId": "2023-8-5",
+    "decision": "added",
+    "questionId": "pyq-2023-8-5",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 8,
+    "number": 5,
+    "question": "Clustering is used in _________ learning?"
+  },
+  {
+    "sourceId": "2023-8-6",
+    "decision": "added",
+    "questionId": "pyq-2023-8-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 8,
+    "number": 6,
+    "question": "Which machine learning algorithm enables machines to improve performance by automatically learning the ideal behaviors for a specific environment??"
+  },
+  {
+    "sourceId": "2023-8-7",
+    "decision": "added",
+    "questionId": "pyq-2023-8-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 8,
+    "number": 7,
+    "question": "Which node in the Decision Tree evaluates or determines the outcome based on an attribute's value?"
+  },
+  {
+    "sourceId": "2023-8-8",
+    "decision": "added",
+    "questionId": "pyq-2023-8-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 8,
+    "number": 8,
+    "question": "What is the subfield of machine learning that mimics the working function of billions of neurons in our brain??"
+  },
+  {
+    "sourceId": "2023-8-9",
+    "decision": "added",
+    "questionId": "pyq-2023-8-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 8,
+    "number": 9,
+    "question": "Why do we need cloud?"
+  },
+  {
+    "sourceId": "2023-8-10",
+    "decision": "added",
+    "questionId": "pyq-2023-8-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 8,
+    "number": 10,
+    "question": "What are the three types of services offered by cloud computing?"
+  },
+  {
+    "sourceId": "2023-8-11",
+    "decision": "added",
+    "questionId": "pyq-2023-8-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 8,
+    "number": 11,
+    "question": "Which of the following is an example of Infrastructure-as-a-Service?"
+  },
+  {
+    "sourceId": "2023-8-12",
+    "decision": "added",
+    "questionId": "pyq-2023-8-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 8,
+    "number": 12,
+    "question": "Amazon Web Service is a ________ cloud."
+  },
+  {
+    "sourceId": "2023-8-13",
+    "decision": "added",
+    "questionId": "pyq-2023-8-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 8,
+    "number": 13,
+    "question": "Which one of the following is not a characteristic of a good SLA?"
+  },
+  {
+    "sourceId": "2023-8-14",
+    "decision": "added",
+    "questionId": "pyq-2023-8-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 8,
+    "number": 14,
+    "question": "Fog layer is located between which two layers?"
+  },
+  {
+    "sourceId": "2023-8-15",
+    "decision": "added",
+    "questionId": "pyq-2023-8-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 8,
+    "number": 15,
+    "question": "What are the three main layers of Deep learning?"
+  },
+  {
+    "sourceId": "2023-9-1",
+    "decision": "added",
+    "questionId": "pyq-2023-9-1",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 9,
+    "number": 1,
+    "question": "Why is it necessary to have fog computing in IIoT?"
+  },
+  {
+    "sourceId": "2023-9-3",
+    "decision": "added",
+    "questionId": "pyq-2023-9-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 9,
+    "number": 3,
+    "question": "State true or false — Smart parking, smart traffic light systems, location-aware services, and the Internet of Vehicles are the possible use cases of the fog-based solutions for transportation."
+  },
+  {
+    "sourceId": "2023-9-4",
+    "decision": "added",
+    "questionId": "pyq-2023-9-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 9,
+    "number": 4,
+    "question": "Which of the following provide/s the fog platform?"
+  },
+  {
+    "sourceId": "2023-9-5",
+    "decision": "added",
+    "questionId": "pyq-2023-9-5",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 9,
+    "number": 5,
+    "question": "Which of the following represents reserve word(s) in R programming?"
+  },
+  {
+    "sourceId": "2023-9-6",
+    "decision": "added",
+    "questionId": "pyq-2023-9-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 9,
+    "number": 6,
+    "question": "Which of the following cannot be performed by R programming?"
+  },
+  {
+    "sourceId": "2023-9-7",
+    "decision": "added",
+    "questionId": "pyq-2023-9-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 9,
+    "number": 7,
+    "question": "Which of the following way/s can be used for the declaration of variables in R programming?"
+  },
+  {
+    "sourceId": "2023-9-8",
+    "decision": "added",
+    "questionId": "pyq-2023-9-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 9,
+    "number": 8,
+    "question": "Fill in the blanks. _________ operator can be used to calculate the remainder of the division in R programming."
+  },
+  {
+    "sourceId": "2023-9-9",
+    "decision": "added",
+    "questionId": "pyq-2023-9-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 9,
+    "number": 9,
+    "question": "State true or false — ‘&’ is a special operator that can create a series of numbers for a vector in R programming."
+  },
+  {
+    "sourceId": "2023-9-10",
+    "decision": "added",
+    "questionId": "pyq-2023-9-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 9,
+    "number": 10,
+    "question": "Which of the following represents the correct order for the process of Data management?"
+  },
+  {
+    "sourceId": "2023-9-11",
+    "decision": "added",
+    "questionId": "pyq-2023-9-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 9,
+    "number": 11,
+    "question": "Fill in the blanks. _________ is used to find the spatial relationship between the objects and to analyze the geographic relation among them."
+  },
+  {
+    "sourceId": "2023-9-12",
+    "decision": "added",
+    "questionId": "pyq-2023-9-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 9,
+    "number": 12,
+    "question": "Which of the following represents the properties of data center networks?"
+  },
+  {
+    "sourceId": "2023-9-13",
+    "decision": "added",
+    "questionId": "pyq-2023-9-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 9,
+    "number": 13,
+    "question": "Which of the following represents the topology used by the data center network?"
+  },
+  {
+    "sourceId": "2023-9-14",
+    "decision": "added",
+    "questionId": "pyq-2023-9-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 9,
+    "number": 14,
+    "question": "What are the challenges of a data center network?"
+  },
+  {
+    "sourceId": "2023-9-15",
+    "decision": "added",
+    "questionId": "pyq-2023-9-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 9,
+    "number": 15,
+    "question": "State true or false —Software-Defined Network (SDN) never use OpenFlow protocol."
+  },
+  {
+    "sourceId": "2023-9-2",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-9-3",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2023,
+    "assignment": 9,
+    "number": 2,
+    "question": "What is the sub-application area of fog computing in smart road transportation systems?",
+    "questionId": "pyq-2023-9-3"
+  },
+  {
+    "sourceId": "2023-10-1",
+    "decision": "added",
+    "questionId": "pyq-2023-10-1",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 10,
+    "number": 1,
+    "question": "Which of the following is/are available within the public network in an SDIIoT architecture?"
+  },
+  {
+    "sourceId": "2023-10-2",
+    "decision": "added",
+    "questionId": "pyq-2023-10-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 10,
+    "number": 2,
+    "question": "State true or false — In SDIIoT architecture, the industrial cloud focuses on the data center network."
+  },
+  {
+    "sourceId": "2023-10-3",
+    "decision": "added",
+    "questionId": "pyq-2023-10-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 10,
+    "number": 3,
+    "question": "Which of the following is addressed by a trustworthy IIoT?"
+  },
+  {
+    "sourceId": "2023-10-4",
+    "decision": "added",
+    "questionId": "pyq-2023-10-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 10,
+    "number": 4,
+    "question": "Fill in the blanks. The application layer of IIoT attack vectors includes ___________."
+  },
+  {
+    "sourceId": "2023-10-5",
+    "decision": "added",
+    "questionId": "pyq-2023-10-5",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 10,
+    "number": 5,
+    "question": "Which of the following is not a part of IIoT attack vectors in the physical layer?"
+  },
+  {
+    "sourceId": "2023-10-6",
+    "decision": "added",
+    "questionId": "pyq-2023-10-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 10,
+    "number": 6,
+    "question": "Which of the following risk(s) is/are involved in IIoT security risk management?"
+  },
+  {
+    "sourceId": "2023-10-7",
+    "decision": "added",
+    "questionId": "pyq-2023-10-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 10,
+    "number": 7,
+    "question": "State true or false — The data protection of IIoT security does not address confidentiality."
+  },
+  {
+    "sourceId": "2023-10-8",
+    "decision": "added",
+    "questionId": "pyq-2023-10-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 10,
+    "number": 8,
+    "question": "The building blocks of IIoT security include which of the following?"
+  },
+  {
+    "sourceId": "2023-10-9",
+    "decision": "added",
+    "questionId": "pyq-2023-10-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 10,
+    "number": 9,
+    "question": "Fill in the blanks. Security standards for IIoT should include requirements of _______ and _______."
+  },
+  {
+    "sourceId": "2023-10-10",
+    "decision": "added",
+    "questionId": "pyq-2023-10-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 10,
+    "number": 10,
+    "question": "Which of the following represents the benefits of a smart factory?"
+  },
+  {
+    "sourceId": "2023-10-11",
+    "decision": "added",
+    "questionId": "pyq-2023-10-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 10,
+    "number": 11,
+    "question": "Match the following. Features of Smart Factory Description 1. Connected i. Minimum manual intervention 2. Transparent ii. Continuous real-time data 3. Agile iii. Live metrics for quick decision 4. Optimized iv. Flexibility and adaptability"
+  },
+  {
+    "sourceId": "2023-10-12",
+    "decision": "added",
+    "questionId": "pyq-2023-10-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 10,
+    "number": 12,
+    "question": "Which of the following is false about Fanuc – Zero Downtime System?"
+  },
+  {
+    "sourceId": "2023-10-13",
+    "decision": "added",
+    "questionId": "pyq-2023-10-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 10,
+    "number": 13,
+    "question": "State true or false. CityCrop renders intelligent indoor gardens for growing fruits, herbs, vegetables, greens, and edible flowers."
+  },
+  {
+    "sourceId": "2023-10-14",
+    "decision": "added",
+    "questionId": "pyq-2023-10-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 10,
+    "number": 14,
+    "question": "Which of the following does not represent the characteristics of a smart factory?"
+  },
+  {
+    "sourceId": "2023-10-15",
+    "decision": "added",
+    "questionId": "pyq-2023-10-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 10,
+    "number": 15,
+    "question": "State true or false - As different persons and devices are associated with healthcare IoT systems, the risk of data tampering is high."
+  },
+  {
+    "sourceId": "2023-11-4",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w11-q2"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 11,
+    "number": 4,
+    "question": "Which of the following represents an intelligent asthma monitoring device?"
+  },
+  {
+    "sourceId": "2023-11-10",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w11-q8"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 11,
+    "number": 10,
+    "question": "Which of the following is represented through the following statement? Statement- It has an onboard battery for powering the IC but does not have an active transmitter. It relies on backscattering. However, it neither depends on signals from the reader for power nor creates additional noise."
+  },
+  {
+    "sourceId": "2023-11-6",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-4-13",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2023,
+    "assignment": 11,
+    "number": 6,
+    "question": "Fill in the blanks. ______ is the full form of SCDA.",
+    "questionId": "pyq-2023-4-13"
+  },
+  {
+    "sourceId": "2023-11-1",
+    "decision": "added",
+    "questionId": "pyq-2023-11-1",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 11,
+    "number": 1,
+    "question": "Which of the following is/are the major challenge(s) associated with the healthcare industry?"
+  },
+  {
+    "sourceId": "2023-11-2",
+    "decision": "added",
+    "questionId": "pyq-2023-11-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 11,
+    "number": 2,
+    "question": "Fill in the blanks. _________ is an example of a wireless ECG monitoring device."
+  },
+  {
+    "sourceId": "2023-11-3",
+    "decision": "added",
+    "questionId": "pyq-2023-11-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 11,
+    "number": 3,
+    "question": "Which of the following is a body temperature monitoring device?"
+  },
+  {
+    "sourceId": "2023-11-5",
+    "decision": "added",
+    "questionId": "pyq-2023-11-5",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 11,
+    "number": 5,
+    "question": "Which of the following does not represents the challenge of IIoT in a power plant?"
+  },
+  {
+    "sourceId": "2023-11-7",
+    "decision": "added",
+    "questionId": "pyq-2023-11-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 11,
+    "number": 7,
+    "question": "Which of the following does not represents communication networks?"
+  },
+  {
+    "sourceId": "2023-11-8",
+    "decision": "added",
+    "questionId": "pyq-2023-11-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 11,
+    "number": 8,
+    "question": "State true or false — RFID tagging system comprises of RFID tag, read/write devices, and a host system."
+  },
+  {
+    "sourceId": "2023-11-9",
+    "decision": "added",
+    "questionId": "pyq-2023-11-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 11,
+    "number": 9,
+    "question": "Which of the following is true about passive RFID tags?"
+  },
+  {
+    "sourceId": "2023-11-11",
+    "decision": "added",
+    "questionId": "pyq-2023-11-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 11,
+    "number": 11,
+    "question": "Match the following. Types of Network Security Description 1. Firewalls i. Provide access based on user identity 2. Intrusion prevention systems ii. Scan for malware detection and prevention 3. Access control iii. Barrier between the trusted internal network and the external networks 4. Antivirus and antimalware software iv. Detection and blocking attacks"
+  },
+  {
+    "sourceId": "2023-11-12",
+    "decision": "added",
+    "questionId": "pyq-2023-11-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 11,
+    "number": 12,
+    "question": "Which of the following is an example of augmented reality?"
+  },
+  {
+    "sourceId": "2023-11-13",
+    "decision": "added",
+    "questionId": "pyq-2023-11-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 11,
+    "number": 13,
+    "question": "Which of the following represents IoT applications in facility management?"
+  },
+  {
+    "sourceId": "2023-11-14",
+    "decision": "added",
+    "questionId": "pyq-2023-11-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 11,
+    "number": 14,
+    "question": "Which of the following does not represents the benefit of the IIoT applications in inventory management?"
+  },
+  {
+    "sourceId": "2023-11-15",
+    "decision": "added",
+    "questionId": "pyq-2023-11-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 11,
+    "number": 15,
+    "question": "Which of the following can be achieved by performing analytics in facility management?"
+  },
+  {
+    "sourceId": "2023-12-4",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w12-q2"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 12,
+    "number": 4,
+    "question": "Which of the following can be performed through predictive maintenance?"
+  },
+  {
+    "sourceId": "2023-12-5",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w12-q5"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 12,
+    "number": 5,
+    "question": "State true or false — Through the application of IoT in the Pharmaceutical industry, it is possible to examine drugs and detect adverse drug reactions."
+  },
+  {
+    "sourceId": "2023-12-7",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w12-q8",
+      "w12-q10",
+      "w12-q12"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 12,
+    "number": 7,
+    "question": "What is/are the application field(s) of UAVs?"
+  },
+  {
+    "sourceId": "2023-12-10",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w12-q8",
+      "w12-q9"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2023,
+    "assignment": 12,
+    "number": 10,
+    "question": "Which of the following does not represents the application of UAVs for energy management?"
+  },
+  {
+    "sourceId": "2023-12-11",
+    "decision": "duplicate",
+    "canonicalSourceId": "2024-12-8",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2023,
+    "assignment": 12,
+    "number": 11,
+    "question": "State true or false — One of the applications of UAVs in telecommunication is to perform tower inspection.",
+    "questionId": "pyq-2024-12-8"
+  },
+  {
+    "sourceId": "2023-12-1",
+    "decision": "added",
+    "questionId": "pyq-2023-12-1",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 12,
+    "number": 1,
+    "question": "What are the benefits of using IoT in Oil and Gas Industries?"
+  },
+  {
+    "sourceId": "2023-12-2",
+    "decision": "added",
+    "questionId": "pyq-2023-12-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 12,
+    "number": 2,
+    "question": "Which of the following statement does not represents the advantage of using IoT in the chemical industry?"
+  },
+  {
+    "sourceId": "2023-12-3",
+    "decision": "added",
+    "questionId": "pyq-2023-12-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 12,
+    "number": 3,
+    "question": "What is/are the advantages of using IoT in the Pharmaceutical industry?"
+  },
+  {
+    "sourceId": "2023-12-6",
+    "decision": "added",
+    "questionId": "pyq-2023-12-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 12,
+    "number": 6,
+    "question": "Which of the following is true about the features of second-generation UAVs?"
+  },
+  {
+    "sourceId": "2023-12-8",
+    "decision": "added",
+    "questionId": "pyq-2023-12-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 12,
+    "number": 8,
+    "question": "Which of the following does not represents an application of UAV in Agriculture?"
+  },
+  {
+    "sourceId": "2023-12-9",
+    "decision": "added",
+    "questionId": "pyq-2023-12-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 12,
+    "number": 9,
+    "question": "State true or false — Precision forestry and canopy mapping cannot be performed through the application of UAV in forestry."
+  },
+  {
+    "sourceId": "2023-12-12",
+    "decision": "added",
+    "questionId": "pyq-2023-12-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 12,
+    "number": 12,
+    "question": "Match the following. Sector Application of UAVs 1. Mining i. Scan a large number of items available in a warehouse 2. Healthcare ii. Regular surface survey for optimized blast design 3. Forestry iii. Delivery of medicines, vaccines, and snake bite serum 4. Warehousing iv. Display information about the forest species"
+  },
+  {
+    "sourceId": "2023-12-13",
+    "decision": "added",
+    "questionId": "pyq-2023-12-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 12,
+    "number": 13,
+    "question": "What is/are the application(s) of UAVs in oil and gas industry?"
+  },
+  {
+    "sourceId": "2023-12-14",
+    "decision": "added",
+    "questionId": "pyq-2023-12-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 12,
+    "number": 14,
+    "question": "State true or false - UAV-based light displays are generally more expensive than traditional firework displays and cannot be reused."
+  },
+  {
+    "sourceId": "2023-12-15",
+    "decision": "added",
+    "questionId": "pyq-2023-12-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2023,
+    "assignment": 12,
+    "number": 15,
+    "question": "Which of the following is/are true about the necessity of case studies?"
+  },
+  {
+    "sourceId": "2024-1-14",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w1-q05"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 1,
+    "number": 14,
+    "question": "CoAP works on Request/Response framework based on the _______ architecture."
+  },
+  {
+    "sourceId": "2024-1-1",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-1-1",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 1,
+    "number": 1,
+    "question": "What is a transducer?",
+    "questionId": "pyq-2023-1-1"
+  },
+  {
+    "sourceId": "2024-1-4",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-1-5",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 1,
+    "number": 4,
+    "question": "What does 'Actuator' primarily refer to in IIoT systems?",
+    "questionId": "pyq-2023-1-5"
+  },
+  {
+    "sourceId": "2024-1-10",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-1-7",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 1,
+    "number": 10,
+    "question": "What is the primary function of IEEE 802.15.4 in IoT?",
+    "questionId": "pyq-2023-1-7"
+  },
+  {
+    "sourceId": "2024-1-2",
+    "decision": "added",
+    "questionId": "pyq-2024-1-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 1,
+    "number": 2,
+    "question": "What does sensor accuracy refer to?"
+  },
+  {
+    "sourceId": "2024-1-3",
+    "decision": "added",
+    "questionId": "pyq-2024-1-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 1,
+    "number": 3,
+    "question": "What is an active sensor?"
+  },
+  {
+    "sourceId": "2024-1-5",
+    "decision": "added",
+    "questionId": "pyq-2024-1-5",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 1,
+    "number": 5,
+    "question": "Zigbee technology is popular for ______________."
+  },
+  {
+    "sourceId": "2024-1-6",
+    "decision": "added",
+    "questionId": "pyq-2024-1-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 1,
+    "number": 6,
+    "question": "Which of the following is true about 6LoWPAN?"
+  },
+  {
+    "sourceId": "2024-1-7",
+    "decision": "added",
+    "questionId": "pyq-2024-1-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 1,
+    "number": 7,
+    "question": "Near Field Communication (NFC) is typically used for:"
+  },
+  {
+    "sourceId": "2024-1-8",
+    "decision": "added",
+    "questionId": "pyq-2024-1-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 1,
+    "number": 8,
+    "question": "Which of the following actuators work on the principle of compression and decompression?"
+  },
+  {
+    "sourceId": "2024-1-9",
+    "decision": "added",
+    "questionId": "pyq-2024-1-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 1,
+    "number": 9,
+    "question": "ISA 100.11a is significant in IIoT because it _____________________."
+  },
+  {
+    "sourceId": "2024-1-11",
+    "decision": "added",
+    "questionId": "pyq-2024-1-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 1,
+    "number": 11,
+    "question": "Z-Wave technology is best suited for ___________________."
+  },
+  {
+    "sourceId": "2024-1-12",
+    "decision": "added",
+    "questionId": "pyq-2024-1-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 1,
+    "number": 12,
+    "question": "What is the maximum data rate possible in Wireless HART?"
+  },
+  {
+    "sourceId": "2024-1-13",
+    "decision": "added",
+    "questionId": "pyq-2024-1-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 1,
+    "number": 13,
+    "question": "QoS 2 in MQTT is also known as ____________."
+  },
+  {
+    "sourceId": "2024-1-15",
+    "decision": "added",
+    "questionId": "pyq-2024-1-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 1,
+    "number": 15,
+    "question": "Infra-red sensor is an example of _____________________."
+  },
+  {
+    "sourceId": "2024-2-1",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w2-q02"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 2,
+    "number": 1,
+    "question": "Which of the following is a key characteristic of the Fourth Industrial Revolution?"
+  },
+  {
+    "sourceId": "2024-2-5",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w2-q03"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 2,
+    "number": 5,
+    "question": "What role does ICT play in the manufacturing industry?"
+  },
+  {
+    "sourceId": "2024-2-3",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-2-4",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 2,
+    "number": 3,
+    "question": "How does Industry 4.0 enhance sustainability in manufacturing industries?",
+    "questionId": "pyq-2023-2-4"
+  },
+  {
+    "sourceId": "2024-2-9",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-2-8",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 2,
+    "number": 9,
+    "question": "The Lean Production System mainly focuses on the customer’s need. Which company is credited for the development of Lean Production System?",
+    "questionId": "pyq-2023-2-8"
+  },
+  {
+    "sourceId": "2024-2-13",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-10-10",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 2,
+    "number": 13,
+    "question": "What is a major advantage of smart factories?",
+    "questionId": "pyq-2023-10-10"
+  },
+  {
+    "sourceId": "2024-2-2",
+    "decision": "added",
+    "questionId": "pyq-2024-2-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 2,
+    "number": 2,
+    "question": "Which of the following is not a physical megatrend?"
+  },
+  {
+    "sourceId": "2024-2-4",
+    "decision": "added",
+    "questionId": "pyq-2024-2-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 2,
+    "number": 4,
+    "question": "What is a crucial aspect of Supply Chain Management (SCM) in sustainable manufacturing?"
+  },
+  {
+    "sourceId": "2024-2-6",
+    "decision": "added",
+    "questionId": "pyq-2024-2-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 2,
+    "number": 6,
+    "question": "What characterizes an emerging market in the context of Industry 4.0?"
+  },
+  {
+    "sourceId": "2024-2-7",
+    "decision": "added",
+    "questionId": "pyq-2024-2-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 2,
+    "number": 7,
+    "question": "What is the primary focus of the Lean Production System?"
+  },
+  {
+    "sourceId": "2024-2-8",
+    "decision": "added",
+    "questionId": "pyq-2024-2-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 2,
+    "number": 8,
+    "question": "Which among the following are aspects of socio-economic issues of sustainability in Industry 4.0?"
+  },
+  {
+    "sourceId": "2024-2-10",
+    "decision": "added",
+    "questionId": "pyq-2024-2-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 2,
+    "number": 10,
+    "question": "What is a major concern in implementing Lean Production in the context of Industry 4.0?"
+  },
+  {
+    "sourceId": "2024-2-11",
+    "decision": "added",
+    "questionId": "pyq-2024-2-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 2,
+    "number": 11,
+    "question": "Which of the following is not a benefit of smart and connected products?"
+  },
+  {
+    "sourceId": "2024-2-12",
+    "decision": "added",
+    "questionId": "pyq-2024-2-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 2,
+    "number": 12,
+    "question": "Which of the following is not a fundamental building block of a smart and connected business in the context of Industry 4.0?"
+  },
+  {
+    "sourceId": "2024-2-14",
+    "decision": "added",
+    "questionId": "pyq-2024-2-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 2,
+    "number": 14,
+    "question": "How is information technology utilized in smart factories?"
+  },
+  {
+    "sourceId": "2024-2-15",
+    "decision": "added",
+    "questionId": "pyq-2024-2-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 2,
+    "number": 15,
+    "question": "Communication, trust and capital with respect to the created values play an important role in IIoT business model."
+  },
+  {
+    "sourceId": "2024-3-3",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w3-q09"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 3,
+    "number": 3,
+    "question": "Which of the following is not a component of CPS's “5C Architecture” for Industry 4.0?"
+  },
+  {
+    "sourceId": "2024-3-1",
+    "decision": "added",
+    "questionId": "pyq-2024-3-1",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 3,
+    "number": 1,
+    "question": "Which of the following is not a feature of Cyber-Physical Systems?"
+  },
+  {
+    "sourceId": "2024-3-2",
+    "decision": "added",
+    "questionId": "pyq-2024-3-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 3,
+    "number": 2,
+    "question": "In the context of CPS in Smart Grid, what is the full form of DAU?"
+  },
+  {
+    "sourceId": "2024-3-4",
+    "decision": "added",
+    "questionId": "pyq-2024-3-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 3,
+    "number": 4,
+    "question": "What are the key parts enabling collaboration productivity in Industry 4.0?"
+  },
+  {
+    "sourceId": "2024-3-5",
+    "decision": "added",
+    "questionId": "pyq-2024-3-5",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 3,
+    "number": 5,
+    "question": "What does 'PLM' stand for in the context of Industry 4.0?"
+  },
+  {
+    "sourceId": "2024-3-6",
+    "decision": "added",
+    "questionId": "pyq-2024-3-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 3,
+    "number": 6,
+    "question": "What does the Technique 'ABC' in PLM stand for?"
+  },
+  {
+    "sourceId": "2024-3-7",
+    "decision": "added",
+    "questionId": "pyq-2024-3-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 3,
+    "number": 7,
+    "question": "In which fields are AR and VR used in Industry 4.0?"
+  },
+  {
+    "sourceId": "2024-3-8",
+    "decision": "added",
+    "questionId": "pyq-2024-3-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 3,
+    "number": 8,
+    "question": "Which among the following is one type of categorization of AR?"
+  },
+  {
+    "sourceId": "2024-3-9",
+    "decision": "added",
+    "questionId": "pyq-2024-3-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 3,
+    "number": 9,
+    "question": "Who first coined the term \"Augmented Reality\"?"
+  },
+  {
+    "sourceId": "2024-3-10",
+    "decision": "added",
+    "questionId": "pyq-2024-3-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 3,
+    "number": 10,
+    "question": "What type of AR uses visual markers for outcomes?"
+  },
+  {
+    "sourceId": "2024-3-11",
+    "decision": "added",
+    "questionId": "pyq-2024-3-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 3,
+    "number": 11,
+    "question": "What type of knowledge is used in AI techniques?"
+  },
+  {
+    "sourceId": "2024-3-12",
+    "decision": "added",
+    "questionId": "pyq-2024-3-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 3,
+    "number": 12,
+    "question": "What is the use of AI in IIoT?"
+  },
+  {
+    "sourceId": "2024-3-13",
+    "decision": "added",
+    "questionId": "pyq-2024-3-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 3,
+    "number": 13,
+    "question": "Which of the following characterizes Big Data?"
+  },
+  {
+    "sourceId": "2024-3-14",
+    "decision": "added",
+    "questionId": "pyq-2024-3-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 3,
+    "number": 14,
+    "question": "What does a distributed file system in Big Data ensure?"
+  },
+  {
+    "sourceId": "2024-3-15",
+    "decision": "added",
+    "questionId": "pyq-2024-3-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 3,
+    "number": 15,
+    "question": "Suppose you write a program which uses API to collect data continuously from LinkedIn and Facebook. You then wish to analyze such data. What type of big data source you are using?"
+  },
+  {
+    "sourceId": "2024-4-6",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w4-q10"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 4,
+    "number": 6,
+    "question": "How does IIoT benefit the mining industry?"
+  },
+  {
+    "sourceId": "2024-4-7",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w4-q04"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 4,
+    "number": 7,
+    "question": "What is the Third Wave in GE's industrial level innovation?"
+  },
+  {
+    "sourceId": "2024-4-1",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-4-1",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 4,
+    "number": 1,
+    "question": "What does Cybersecurity protect?",
+    "questionId": "pyq-2023-4-1"
+  },
+  {
+    "sourceId": "2024-4-2",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-4-2",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 4,
+    "number": 2,
+    "question": "What is the focus of Network Security?",
+    "questionId": "pyq-2023-4-2"
+  },
+  {
+    "sourceId": "2024-4-5",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-4-5",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 4,
+    "number": 5,
+    "question": "What are the benefits of deploying sensors and actuators in IIoT?",
+    "questionId": "pyq-2023-4-5"
+  },
+  {
+    "sourceId": "2024-4-9",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-4-8",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 4,
+    "number": 9,
+    "question": "What was the negative effect of the Industrial Revolution?",
+    "questionId": "pyq-2023-4-8"
+  },
+  {
+    "sourceId": "2024-4-10",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-4-9",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 4,
+    "number": 10,
+    "question": "Which of the following is not one of the three key elements of the Industrial Internet?",
+    "questionId": "pyq-2023-4-9"
+  },
+  {
+    "sourceId": "2024-4-3",
+    "decision": "added",
+    "questionId": "pyq-2024-4-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 4,
+    "number": 3,
+    "question": "What does the CIA Triad in Cybersecurity stand for?"
+  },
+  {
+    "sourceId": "2024-4-4",
+    "decision": "added",
+    "questionId": "pyq-2024-4-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 4,
+    "number": 4,
+    "question": "What are the key differences between IIoT and traditional Automation?"
+  },
+  {
+    "sourceId": "2024-4-8",
+    "decision": "added",
+    "questionId": "pyq-2024-4-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 4,
+    "number": 8,
+    "question": "Scarcity of non-renewable sources of energy pose a significant challenge with respect to energy consumption for the future smart industries and industrial internet?"
+  },
+  {
+    "sourceId": "2024-4-11",
+    "decision": "added",
+    "questionId": "pyq-2024-4-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 4,
+    "number": 11,
+    "question": "How is a smart sensor defined according to IEEE 1451 standard?"
+  },
+  {
+    "sourceId": "2024-4-12",
+    "decision": "added",
+    "questionId": "pyq-2024-4-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 4,
+    "number": 12,
+    "question": "What is the purpose of the MRAA library in Intel IoT devices?"
+  },
+  {
+    "sourceId": "2024-4-13",
+    "decision": "added",
+    "questionId": "pyq-2024-4-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 4,
+    "number": 13,
+    "question": "What is a key aspect of the design philosophy for IIoT in industrial processes?"
+  },
+  {
+    "sourceId": "2024-4-14",
+    "decision": "added",
+    "questionId": "pyq-2024-4-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 4,
+    "number": 14,
+    "question": "What is a feature of the Autonomous Pull Economy in Industrial Process 4.0?"
+  },
+  {
+    "sourceId": "2024-4-15",
+    "decision": "added",
+    "questionId": "pyq-2024-4-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 4,
+    "number": 15,
+    "question": "Considering the future architecture of the smart Industrial plant, which among the following layers is responsible for autonomous decision making , machine learning and decision support system?"
+  },
+  {
+    "sourceId": "2024-5-3",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w5-q02"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 5,
+    "number": 3,
+    "question": "Which of the following IIoT platforms is used by Hitachi?"
+  },
+  {
+    "sourceId": "2024-5-5",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-5-7",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 5,
+    "number": 5,
+    "question": "Which is an advantage of the Subscription Model in IoT?",
+    "questionId": "pyq-2023-5-7"
+  },
+  {
+    "sourceId": "2024-5-9",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-5-11",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 5,
+    "number": 9,
+    "question": "What is IIRA?",
+    "questionId": "pyq-2023-5-11"
+  },
+  {
+    "sourceId": "2024-5-12",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-5-14",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 5,
+    "number": 12,
+    "question": "What are the IIRA Viewpoints?",
+    "questionId": "pyq-2023-5-14"
+  },
+  {
+    "sourceId": "2024-5-1",
+    "decision": "added",
+    "questionId": "pyq-2024-5-1",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 5,
+    "number": 1,
+    "question": "What is a key technology driver in Amazon's Smart Warehousing?"
+  },
+  {
+    "sourceId": "2024-5-2",
+    "decision": "added",
+    "questionId": "pyq-2024-5-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 5,
+    "number": 2,
+    "question": "Which of the following is not covered under the domain of Industry 4.0?"
+  },
+  {
+    "sourceId": "2024-5-4",
+    "decision": "added",
+    "questionId": "pyq-2024-5-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 5,
+    "number": 4,
+    "question": "Which of the following is not a type of business model for IoT?"
+  },
+  {
+    "sourceId": "2024-5-6",
+    "decision": "added",
+    "questionId": "pyq-2024-5-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 5,
+    "number": 6,
+    "question": "Which is a critical challenge of the IoT-as-a-Service model?"
+  },
+  {
+    "sourceId": "2024-5-7",
+    "decision": "added",
+    "questionId": "pyq-2024-5-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 5,
+    "number": 7,
+    "question": "Which of the following is NOT offered by a Service-Oriented IIoT Business Model?"
+  },
+  {
+    "sourceId": "2024-5-8",
+    "decision": "added",
+    "questionId": "pyq-2024-5-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 5,
+    "number": 8,
+    "question": "Process Oriented Business Model is a _________ business model?"
+  },
+  {
+    "sourceId": "2024-5-10",
+    "decision": "added",
+    "questionId": "pyq-2024-5-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 5,
+    "number": 10,
+    "question": "Which of the following statements is incorrect about IIRA?"
+  },
+  {
+    "sourceId": "2024-5-11",
+    "decision": "added",
+    "questionId": "pyq-2024-5-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 5,
+    "number": 11,
+    "question": "Which of the following is not a component of the three-tier architecture pattern of IIRA?"
+  },
+  {
+    "sourceId": "2024-5-13",
+    "decision": "added",
+    "questionId": "pyq-2024-5-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 5,
+    "number": 13,
+    "question": "The elements of an activity in IIRA are __________."
+  },
+  {
+    "sourceId": "2024-5-14",
+    "decision": "added",
+    "questionId": "pyq-2024-5-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 5,
+    "number": 14,
+    "question": "In the Business Viewpoint of IIRA, what are fundamental capabilities?"
+  },
+  {
+    "sourceId": "2024-5-15",
+    "decision": "added",
+    "questionId": "pyq-2024-5-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 5,
+    "number": 15,
+    "question": "With respect to the IIRA functional domain, industrial actuation falls under which of the following domains?"
+  },
+  {
+    "sourceId": "2024-6-13",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w6-q11"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 6,
+    "number": 13,
+    "question": "In the context of DeviceNet, CAN is the acronym for _____________."
+  },
+  {
+    "sourceId": "2024-6-1",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-6-1",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 6,
+    "number": 1,
+    "question": "Which of the following temperature sensors generates an analog voltage proportional to the temperature?",
+    "questionId": "pyq-2023-6-1"
+  },
+  {
+    "sourceId": "2024-6-6",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-6-6",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 6,
+    "number": 6,
+    "question": "What is meant by the Sensitivity of a Gas Sensor?",
+    "questionId": "pyq-2023-6-6"
+  },
+  {
+    "sourceId": "2024-6-7",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-6-8",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 6,
+    "number": 7,
+    "question": "The ModBus-TCP protocol defines two units in the data frame. One of them is Protocol Data Unit. What is the other one?",
+    "questionId": "pyq-2023-6-8"
+  },
+  {
+    "sourceId": "2024-6-2",
+    "decision": "added",
+    "questionId": "pyq-2024-6-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 6,
+    "number": 2,
+    "question": "What are the key components of an IoT Sensing Device?"
+  },
+  {
+    "sourceId": "2024-6-3",
+    "decision": "added",
+    "questionId": "pyq-2024-6-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 6,
+    "number": 3,
+    "question": "What kind of sensor is ADXL335?"
+  },
+  {
+    "sourceId": "2024-6-4",
+    "decision": "added",
+    "questionId": "pyq-2024-6-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 6,
+    "number": 4,
+    "question": "“MOS gas sensor depend on the thermal energy for its operation which is supplied with a heater.” State True or False."
+  },
+  {
+    "sourceId": "2024-6-5",
+    "decision": "added",
+    "questionId": "pyq-2024-6-5",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 6,
+    "number": 5,
+    "question": "Which of the following is not a probable application of Gas Sensors?"
+  },
+  {
+    "sourceId": "2024-6-8",
+    "decision": "added",
+    "questionId": "pyq-2024-6-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 6,
+    "number": 8,
+    "question": "With respect to sensors, a camera which can simultaneously sense the ambient temperature as well as capture live video recordings is a type of __________ sensor."
+  },
+  {
+    "sourceId": "2024-6-9",
+    "decision": "added",
+    "questionId": "pyq-2024-6-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 6,
+    "number": 9,
+    "question": "EtherNet/IP defines two primary types of communications. What are those?"
+  },
+  {
+    "sourceId": "2024-6-10",
+    "decision": "added",
+    "questionId": "pyq-2024-6-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 6,
+    "number": 10,
+    "question": "Which of the following statements is incorrect about Profinet?"
+  },
+  {
+    "sourceId": "2024-6-11",
+    "decision": "added",
+    "questionId": "pyq-2024-6-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 6,
+    "number": 11,
+    "question": "Modbus-RTU is a serial protocol that follows the __________ architecture."
+  },
+  {
+    "sourceId": "2024-6-12",
+    "decision": "added",
+    "questionId": "pyq-2024-6-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 6,
+    "number": 12,
+    "question": "Which of the following network topologies is used by Profibus?"
+  },
+  {
+    "sourceId": "2024-6-14",
+    "decision": "added",
+    "questionId": "pyq-2024-6-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 6,
+    "number": 14,
+    "question": "How shorter TTL is achieved in uRLLC?"
+  },
+  {
+    "sourceId": "2024-6-15",
+    "decision": "added",
+    "questionId": "pyq-2024-6-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 6,
+    "number": 15,
+    "question": "What is the frequency spectrum of mmWave Communication?"
+  },
+  {
+    "sourceId": "2024-7-5",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-7-4",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 7,
+    "number": 5,
+    "question": "Which of the following topologies are supported by Zigbee?",
+    "questionId": "pyq-2023-7-4"
+  },
+  {
+    "sourceId": "2024-7-10",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-7-7",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 7,
+    "number": 10,
+    "question": "Which of the following is false about the rule-based engine?",
+    "questionId": "pyq-2023-7-7"
+  },
+  {
+    "sourceId": "2024-7-13",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-7-12",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 7,
+    "number": 13,
+    "question": "“iRobot-Factory is a cognitive manufacturing factory which applies cognitive intelligence and edge computing for improved manufacturing.” State true or false.",
+    "questionId": "pyq-2023-7-12"
+  },
+  {
+    "sourceId": "2024-7-15",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-4-13",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 7,
+    "number": 15,
+    "question": "Which of the following represents a type of Industrial Control System?",
+    "questionId": "pyq-2023-4-13"
+  },
+  {
+    "sourceId": "2024-7-1",
+    "decision": "added",
+    "questionId": "pyq-2024-7-1",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 7,
+    "number": 1,
+    "question": "Which of the following stands for LP in LPWAN?"
+  },
+  {
+    "sourceId": "2024-7-2",
+    "decision": "added",
+    "questionId": "pyq-2024-7-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 7,
+    "number": 2,
+    "question": "“We need to pay a license fee to use LoRa in the 868 MHz radio frequency band in Europe.” State True or False."
+  },
+  {
+    "sourceId": "2024-7-3",
+    "decision": "added",
+    "questionId": "pyq-2024-7-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 7,
+    "number": 3,
+    "question": "Which of the following is true about the SIGFOX network in terms of messages and payload?"
+  },
+  {
+    "sourceId": "2024-7-4",
+    "decision": "added",
+    "questionId": "pyq-2024-7-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 7,
+    "number": 4,
+    "question": "Which library (header file) is used for interfacing the DHT22 sensor, as demonstrated in the Hands On Industrial Environment Monitoring project?"
+  },
+  {
+    "sourceId": "2024-7-6",
+    "decision": "added",
+    "questionId": "pyq-2024-7-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 7,
+    "number": 6,
+    "question": "The physical and MAC layers of the Zigbee communication protocol is based on __________. Fill in the blanks."
+  },
+  {
+    "sourceId": "2024-7-7",
+    "decision": "added",
+    "questionId": "pyq-2024-7-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 7,
+    "number": 7,
+    "question": "“Xbee is a mesh communication protocol based on the IEEE 802.15.4 whereas Zigbee is the product that uses the Xbee communication protocol for radio communication.” State true or false."
+  },
+  {
+    "sourceId": "2024-7-8",
+    "decision": "added",
+    "questionId": "pyq-2024-7-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 7,
+    "number": 8,
+    "question": "Which of the following functions is performed by the coordinator node in a Zigbee network?"
+  },
+  {
+    "sourceId": "2024-7-9",
+    "decision": "added",
+    "questionId": "pyq-2024-7-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 7,
+    "number": 9,
+    "question": "Which of the following is/are the data characteristics of IIoT processing?"
+  },
+  {
+    "sourceId": "2024-7-11",
+    "decision": "added",
+    "questionId": "pyq-2024-7-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 7,
+    "number": 11,
+    "question": "Which of the following represents the limitation of current CEP systems?"
+  },
+  {
+    "sourceId": "2024-7-12",
+    "decision": "added",
+    "questionId": "pyq-2024-7-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 7,
+    "number": 12,
+    "question": "Which of the following options is false about the services rendered by the Smart Water Management System?"
+  },
+  {
+    "sourceId": "2024-7-14",
+    "decision": "added",
+    "questionId": "pyq-2024-7-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 7,
+    "number": 14,
+    "question": "Which of the following is false about the design of the SmartSantander?"
+  },
+  {
+    "sourceId": "2024-8-6",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w8-q03"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 8,
+    "number": 6,
+    "question": "In ___________, data points may belong to more than one cluster. Fill in the blanks."
+  },
+  {
+    "sourceId": "2024-8-7",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w8-q04"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 8,
+    "number": 7,
+    "question": "Which of the following supervised learning algorithms may be used when the output variable is a real number instead of a categorical value?"
+  },
+  {
+    "sourceId": "2024-8-8",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w8-q05"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 8,
+    "number": 8,
+    "question": "Which of the following statements about the reinforcement learning algorithm is false?"
+  },
+  {
+    "sourceId": "2024-8-14",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w2-q15"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 8,
+    "number": 14,
+    "question": "Which of the following does not represent the objective of Industry 4.0?"
+  },
+  {
+    "sourceId": "2024-8-1",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-8-2",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 8,
+    "number": 1,
+    "question": "Which of the following does not characterize big data analytics?",
+    "questionId": "pyq-2023-8-2"
+  },
+  {
+    "sourceId": "2024-8-3",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-8-8",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 8,
+    "number": 3,
+    "question": "“Which of the following is false about the deep learning models?",
+    "questionId": "pyq-2023-8-8"
+  },
+  {
+    "sourceId": "2024-8-5",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-8-4",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 8,
+    "number": 5,
+    "question": "Which of the following is an example of a classification algorithm?",
+    "questionId": "pyq-2023-8-4"
+  },
+  {
+    "sourceId": "2024-8-9",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-3-14",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 8,
+    "number": 9,
+    "question": "“Machine learning is a subset of deep learning that can learn automatically by finding the features of the object on its own.” State true or false.",
+    "questionId": "pyq-2023-3-14"
+  },
+  {
+    "sourceId": "2024-8-10",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-8-9",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 8,
+    "number": 10,
+    "question": "Why is cloud computing necessary for IIoT?",
+    "questionId": "pyq-2023-8-9"
+  },
+  {
+    "sourceId": "2024-8-2",
+    "decision": "added",
+    "questionId": "pyq-2024-8-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 8,
+    "number": 2,
+    "question": "Which of the following algorithms is useful when it is feasible to acquire training data for the different states (or classes) that need to be modeled?"
+  },
+  {
+    "sourceId": "2024-8-4",
+    "decision": "added",
+    "questionId": "pyq-2024-8-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 8,
+    "number": 4,
+    "question": "Which of the following software may be used for batch-oriented analytics?"
+  },
+  {
+    "sourceId": "2024-8-11",
+    "decision": "added",
+    "questionId": "pyq-2024-8-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 8,
+    "number": 11,
+    "question": "Which of the following is not true about Platform-as-a-service for IIoT?"
+  },
+  {
+    "sourceId": "2024-8-12",
+    "decision": "added",
+    "questionId": "pyq-2024-8-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 8,
+    "number": 12,
+    "question": "Who among the following does not provide Industrial Cloud Platform?"
+  },
+  {
+    "sourceId": "2024-8-13",
+    "decision": "added",
+    "questionId": "pyq-2024-8-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 8,
+    "number": 13,
+    "question": "Which of the following is/are the advantage(s) of using a Cloud simulator before real deployment?"
+  },
+  {
+    "sourceId": "2024-8-15",
+    "decision": "added",
+    "questionId": "pyq-2024-8-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 8,
+    "number": 15,
+    "question": "“K-medoid is a clustering algorithm that is used to maximize the distance between some randomly selected points in a cluster.” State true or false."
+  },
+  {
+    "sourceId": "2024-9-1",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-9-1",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 9,
+    "number": 1,
+    "question": "Which of the following is not a valid reason for employing fog computing in IIoT?",
+    "questionId": "pyq-2023-9-1"
+  },
+  {
+    "sourceId": "2024-9-7",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-9-9",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 9,
+    "number": 7,
+    "question": "Which of the following operands is used to create series of numbers for a vector in R programming?",
+    "questionId": "pyq-2023-9-9"
+  },
+  {
+    "sourceId": "2024-9-14",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-9-15",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 9,
+    "number": 14,
+    "question": "Which of the following protocols is used by the SDN?",
+    "questionId": "pyq-2023-9-15"
+  },
+  {
+    "sourceId": "2024-9-2",
+    "decision": "added",
+    "questionId": "pyq-2024-9-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 9,
+    "number": 2,
+    "question": "Which of the following statements is false about the fog-enabled IIoT for Smart Grid and Power Industry?"
+  },
+  {
+    "sourceId": "2024-9-3",
+    "decision": "added",
+    "questionId": "pyq-2024-9-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 9,
+    "number": 3,
+    "question": "Nebbiolo Technologies, who is one of the pioneers of Fog Computing, brought together IT and OT for real-time services and rendered optimized solutions with smarter decision making capability in lower cost. Which of the following products is not produced by Nebbiolo Technologies?"
+  },
+  {
+    "sourceId": "2024-9-4",
+    "decision": "added",
+    "questionId": "pyq-2024-9-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 9,
+    "number": 4,
+    "question": "SONM is a Decentralized Fog Computing Platform that renders distributed cloud services with fog as the backend. Which of the following facilities is not supported by SONM?"
+  },
+  {
+    "sourceId": "2024-9-5",
+    "decision": "added",
+    "questionId": "pyq-2024-9-5",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 9,
+    "number": 5,
+    "question": "“In R Programming, it is compulsory to specify the datatype at the time of variable declaration.” State true or false."
+  },
+  {
+    "sourceId": "2024-9-6",
+    "decision": "added",
+    "questionId": "pyq-2024-9-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 9,
+    "number": 6,
+    "question": "Which of the following can be used to calculate ab in R programming?"
+  },
+  {
+    "sourceId": "2024-9-8",
+    "decision": "added",
+    "questionId": "pyq-2024-9-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 9,
+    "number": 8,
+    "question": "Which of the following is/are supported by the Julia programming language?"
+  },
+  {
+    "sourceId": "2024-9-9",
+    "decision": "added",
+    "questionId": "pyq-2024-9-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 9,
+    "number": 9,
+    "question": "Which of the following represents the essential characteristics of cloud computing according to NIST?"
+  },
+  {
+    "sourceId": "2024-9-10",
+    "decision": "added",
+    "questionId": "pyq-2024-9-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 9,
+    "number": 10,
+    "question": "Why is it necessary to perform integration which is a part of data pre-processing in the context of Data management?"
+  },
+  {
+    "sourceId": "2024-9-11",
+    "decision": "added",
+    "questionId": "pyq-2024-9-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 9,
+    "number": 11,
+    "question": "“There are three main NoSQL databases. They are Key-value databases, column-oriented databases, and document-oriented databases.” State true or false."
+  },
+  {
+    "sourceId": "2024-9-12",
+    "decision": "added",
+    "questionId": "pyq-2024-9-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 9,
+    "number": 12,
+    "question": "“In Hadoop Master/Slave Architecture, the master serves read and write requests from the file system’s clients whereas slave executes operations like opening, closing, and renaming files and directories.” State true or false."
+  },
+  {
+    "sourceId": "2024-9-13",
+    "decision": "added",
+    "questionId": "pyq-2024-9-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 9,
+    "number": 13,
+    "question": "Which of the following is false about the BCube topology of the data center network."
+  },
+  {
+    "sourceId": "2024-9-15",
+    "decision": "added",
+    "questionId": "pyq-2024-9-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 9,
+    "number": 15,
+    "question": "Which of the following is incorrect about Software-defined networks (SDN)?"
+  },
+  {
+    "sourceId": "2024-10-3",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-10-2",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 10,
+    "number": 3,
+    "question": "Data processing is generally performed in __________ present in the SDIIoT architecture?",
+    "questionId": "pyq-2023-10-2"
+  },
+  {
+    "sourceId": "2024-10-7",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-10-8",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 10,
+    "number": 7,
+    "question": "Which of the following does not represent the building blocks of IIoT security framework?",
+    "questionId": "pyq-2023-10-8"
+  },
+  {
+    "sourceId": "2024-10-10",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-2-14",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 10,
+    "number": 10,
+    "question": "Which of the following is not a key feature of smart factory?",
+    "questionId": "pyq-2023-2-14"
+  },
+  {
+    "sourceId": "2024-10-1",
+    "decision": "added",
+    "questionId": "pyq-2024-10-1",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 10,
+    "number": 1,
+    "question": "Which of the following is not a part of the SDIIoT Architecture?"
+  },
+  {
+    "sourceId": "2024-10-2",
+    "decision": "added",
+    "questionId": "pyq-2024-10-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 10,
+    "number": 2,
+    "question": "Which of the following is not a part of the SDWSN platform in the context of Industry 4.0?"
+  },
+  {
+    "sourceId": "2024-10-4",
+    "decision": "added",
+    "questionId": "pyq-2024-10-4",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 10,
+    "number": 4,
+    "question": "R stands for ___________ in STRIDE Threat Model of IoT security. Fill in the blanks."
+  },
+  {
+    "sourceId": "2024-10-5",
+    "decision": "added",
+    "questionId": "pyq-2024-10-5",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 10,
+    "number": 5,
+    "question": "Application layer of the IoT attack surface is vulnerable to which of the following IIoT Attack Vectors?"
+  },
+  {
+    "sourceId": "2024-10-6",
+    "decision": "added",
+    "questionId": "pyq-2024-10-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 10,
+    "number": 6,
+    "question": "What does trust permeation aim to establish within the IIoT system?"
+  },
+  {
+    "sourceId": "2024-10-8",
+    "decision": "added",
+    "questionId": "pyq-2024-10-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 10,
+    "number": 8,
+    "question": "Which of the following standards is supported by the OT security of IIoT?"
+  },
+  {
+    "sourceId": "2024-10-9",
+    "decision": "added",
+    "questionId": "pyq-2024-10-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 10,
+    "number": 9,
+    "question": "Which of the following is not a key component of cloud security of IIoT framework?"
+  },
+  {
+    "sourceId": "2024-10-11",
+    "decision": "added",
+    "questionId": "pyq-2024-10-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 10,
+    "number": 11,
+    "question": "Which of the following is incorrect about Kuka – an IoT-Enabled Factory?"
+  },
+  {
+    "sourceId": "2024-10-12",
+    "decision": "added",
+    "questionId": "pyq-2024-10-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 10,
+    "number": 12,
+    "question": "____________ is carried out by Amazon – Robotic Shelves. Fill in the blanks."
+  },
+  {
+    "sourceId": "2024-10-13",
+    "decision": "added",
+    "questionId": "pyq-2024-10-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 10,
+    "number": 13,
+    "question": "Which of the following is incorrect about Maersk – Intelligent Shipping?"
+  },
+  {
+    "sourceId": "2024-10-14",
+    "decision": "added",
+    "questionId": "pyq-2024-10-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 10,
+    "number": 14,
+    "question": "Which of the following represents the applications of IoT in Livestock Barns?"
+  },
+  {
+    "sourceId": "2024-10-15",
+    "decision": "added",
+    "questionId": "pyq-2024-10-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 10,
+    "number": 15,
+    "question": "In the context of Agricultural IoT, what do we mean by LAI?"
+  },
+  {
+    "sourceId": "2024-11-4",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w11-q4"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 11,
+    "number": 4,
+    "question": "Optimization and Autonomy are the features of which among the following IIoT models in the Power sector?."
+  },
+  {
+    "sourceId": "2024-11-14",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w11-q14"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 11,
+    "number": 14,
+    "question": "Transponders and Beacons are types of what kind of RFID tags?"
+  },
+  {
+    "sourceId": "2024-11-6",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-1-13",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 11,
+    "number": 6,
+    "question": "Consider the following two statements with respect to Passive RFID tags and Active RFID tags. 1. Passive RFID tags have no internal power source whereas active RFID has a battery power source 2. Passive RFID tags have longer range than Active RFID tags",
+    "questionId": "pyq-2023-1-13"
+  },
+  {
+    "sourceId": "2024-11-1",
+    "decision": "added",
+    "questionId": "pyq-2024-11-1",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 11,
+    "number": 1,
+    "question": "Which of the following is/are a challenge faced by IoT in healthcare?"
+  },
+  {
+    "sourceId": "2024-11-2",
+    "decision": "added",
+    "questionId": "pyq-2024-11-2",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 11,
+    "number": 2,
+    "question": "What is the general action of healthcare body sensors in case some abnormalities are detected?"
+  },
+  {
+    "sourceId": "2024-11-3",
+    "decision": "added",
+    "questionId": "pyq-2024-11-3",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 11,
+    "number": 3,
+    "question": "Confidentiality, Integrity, ______________ and Availability are the four security cornerstones of IIoT based Healthcare monitoring and management."
+  },
+  {
+    "sourceId": "2024-11-5",
+    "decision": "added",
+    "questionId": "pyq-2024-11-5",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 11,
+    "number": 5,
+    "question": "In Smart grids supported by IIoT, data communication network is not integrated with the physical power transmission network?"
+  },
+  {
+    "sourceId": "2024-11-7",
+    "decision": "added",
+    "questionId": "pyq-2024-11-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 11,
+    "number": 7,
+    "question": "IIoT can be deployed in inventory management to automate which of the following activities?"
+  },
+  {
+    "sourceId": "2024-11-8",
+    "decision": "added",
+    "questionId": "pyq-2024-11-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 11,
+    "number": 8,
+    "question": "In the context of Network Security, what does behavioral analytics deal with?"
+  },
+  {
+    "sourceId": "2024-11-9",
+    "decision": "added",
+    "questionId": "pyq-2024-11-9",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 11,
+    "number": 9,
+    "question": "IP rights are a risk when using AR/VR?"
+  },
+  {
+    "sourceId": "2024-11-10",
+    "decision": "added",
+    "questionId": "pyq-2024-11-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 11,
+    "number": 10,
+    "question": "Which of the following is NOT a stakeholder in Facility Management?"
+  },
+  {
+    "sourceId": "2024-11-11",
+    "decision": "added",
+    "questionId": "pyq-2024-11-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 11,
+    "number": 11,
+    "question": "Which of the following challenges arise due to ageing of inventory?"
+  },
+  {
+    "sourceId": "2024-11-12",
+    "decision": "added",
+    "questionId": "pyq-2024-11-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 11,
+    "number": 12,
+    "question": "In IIoT enabled facility management, logically where do subcontractors are located?"
+  },
+  {
+    "sourceId": "2024-11-13",
+    "decision": "added",
+    "questionId": "pyq-2024-11-13",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 11,
+    "number": 13,
+    "question": "Optimized usage of which of the following resources is preferable?"
+  },
+  {
+    "sourceId": "2024-11-15",
+    "decision": "added",
+    "questionId": "pyq-2024-11-15",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 11,
+    "number": 15,
+    "question": "Real time and easy diagnosis are ______ of Healthcare IoT?"
+  },
+  {
+    "sourceId": "2024-12-2",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w12-q2"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 12,
+    "number": 2,
+    "question": "Which of the following is one of the primary goals of predictive maintenance?"
+  },
+  {
+    "sourceId": "2024-12-4",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w12-q5"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 12,
+    "number": 4,
+    "question": "“By applying IoT in the pharmaceutical industry, it is possible to detect Adverse Drugs Reaction (ADR), effects of pharmaceutical excipients, and allergies.” State true or false."
+  },
+  {
+    "sourceId": "2024-12-15",
+    "decision": "covered",
+    "weeklyQuestionIds": [
+      "w12-q8"
+    ],
+    "reason": "The same tested fact or distinction is already in these weekly exercises; wording/options may differ.",
+    "year": 2024,
+    "assignment": 12,
+    "number": 15,
+    "question": "Which of the following is false about the application of UAVs in agriculture?"
+  },
+  {
+    "sourceId": "2024-12-1",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-12-2",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 12,
+    "number": 1,
+    "question": "What are the advantages of implementing IoT in the chemical industry?",
+    "questionId": "pyq-2023-12-2"
+  },
+  {
+    "sourceId": "2024-12-3",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-12-3",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 12,
+    "number": 3,
+    "question": "What is/are the benefits of using IoT sensors in the Pharmaceutical Industry?",
+    "questionId": "pyq-2023-12-3"
+  },
+  {
+    "sourceId": "2024-12-9",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-12-12",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 12,
+    "number": 9,
+    "question": "“By using UAVs it is possible to scan a huge number of items in a warehouse, check the missing items and monitoring full inventory in a day.” State true or false.",
+    "questionId": "pyq-2023-12-12"
+  },
+  {
+    "sourceId": "2024-12-13",
+    "decision": "duplicate",
+    "canonicalSourceId": "2023-12-15",
+    "reason": "The same tested fact or distinction is retained once in the extra PYQ set; both sources are recorded.",
+    "year": 2024,
+    "assignment": 12,
+    "number": 13,
+    "question": "What is the primary purpose of case studies?",
+    "questionId": "pyq-2023-12-15"
+  },
+  {
+    "sourceId": "2024-12-5",
+    "decision": "added",
+    "questionId": "pyq-2024-12-5",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 12,
+    "number": 5,
+    "question": "UAVs are capable of performing which of the following operations?"
+  },
+  {
+    "sourceId": "2024-12-6",
+    "decision": "added",
+    "questionId": "pyq-2024-12-6",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 12,
+    "number": 6,
+    "question": "Which of the following is true about the first generation of the UAV technology?"
+  },
+  {
+    "sourceId": "2024-12-7",
+    "decision": "added",
+    "questionId": "pyq-2024-12-7",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 12,
+    "number": 7,
+    "question": "How is the application of UAVs in the construction site beneficial?"
+  },
+  {
+    "sourceId": "2024-12-8",
+    "decision": "added",
+    "questionId": "pyq-2024-12-8",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 12,
+    "number": 8,
+    "question": "What are the advantages of using UAVs in telecommunication?"
+  },
+  {
+    "sourceId": "2024-12-10",
+    "decision": "added",
+    "questionId": "pyq-2024-12-10",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 12,
+    "number": 10,
+    "question": "Which of the following can be performed by using UAVs in the forestry?"
+  },
+  {
+    "sourceId": "2024-12-11",
+    "decision": "added",
+    "questionId": "pyq-2024-12-11",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 12,
+    "number": 11,
+    "question": "Which of the following activities can be performed by using UAVs in the mining?"
+  },
+  {
+    "sourceId": "2024-12-12",
+    "decision": "added",
+    "questionId": "pyq-2024-12-12",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 12,
+    "number": 12,
+    "question": "“Case study enables a researcher to closely examine the data within a specific context by following certain procedures and providing quantitative and qualitative analysis of the data.” State true or false."
+  },
+  {
+    "sourceId": "2024-12-14",
+    "decision": "added",
+    "questionId": "pyq-2024-12-14",
+    "reason": "Adds a tested fact, application, example or distinction absent from the weekly assignment questions.",
+    "year": 2024,
+    "assignment": 12,
+    "number": 14,
+    "question": "What does IoD stand for in the context of IoT and IIoT?"
+  }
+]

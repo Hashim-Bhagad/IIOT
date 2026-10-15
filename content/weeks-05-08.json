@@ -1,0 +1,3389 @@
+[
+  {
+    "id": 5,
+    "title": "Business models & the IIoT blueprint",
+    "summary": "Connect real industrial examples to how IIoT earns money, then learn the IIRA viewpoints, implementation patterns and functional domains.",
+    "objectives": [
+      "Match the lecture’s company names to their IIoT applications.",
+      "Distinguish value propositions, revenue models and industry-oriented business models.",
+      "Classify leading and lagging safety indicators.",
+      "Use IIRA viewpoints and functional domains to explain a factory system."
+    ],
+    "sections": [
+      {
+        "id": "w5-case-studies",
+        "title": "Who is already using IIoT?",
+        "intro": "Remember the application first; attach the company name to it.",
+        "paragraphs": [
+          "A connected asset measures its condition, sends readings to an analytics system and receives useful decisions. The business result might be fewer breakdowns, safer workers, quicker assembly or better container routing. Predictive maintenance means using condition data to arrange a repair before failure, rather than waiting for a breakdown.",
+          "In the lecture, Caterpillar combines machine sensing with augmented reality; KUKA connects robots through middleware, a nearby fog node and cloud; Cisco and Fanuc use robotic sensor data and cloud analytics to reduce downtime. Boeing uses digital manufacturing for aircraft assembly, Magna Steyr maps the production timeline, and Gehring streams machine information to customers.",
+          "The three names used directly in the assignment are Kaeser Kompressoren, Hitachi and Maersk. Kaeser sells the compressed-air outcome per cubic metre, Hitachi supplies the Lumada analytics platform, and Maersk monitors shipping containers and optimizes logistics."
+        ],
+        "keyPoints": [
+          "Amazon: automated warehousing, supply-chain and fleet coordination; Bosch: tracking/tracing parts and tools, tools-as-a-service.",
+          "John Deere: GPS, machine-health telematics, precision agriculture and autonomous tractors; Shell: digital oilfield with sensed machinery, valves and pumps.",
+          "RTI: Connext DDS for energy-management communication; Hitachi: Lumada for AI-based industrial analytics.",
+          "Komatsu: predictive machinery monitoring and autonomous mining trucks; Rio Tinto: AHS autonomous haulage and ADS automated drilling.",
+          "ICP DAS: energy, M2M, manufacturing and safety; Stanley Black and Decker: infrastructure/pipeline monitoring; North Star BlueScope: wearable worker-safety devices."
+        ],
+        "terms": [
+          {
+            "term": "Predictive maintenance",
+            "meaning": "Use measured asset condition to anticipate faults and plan maintenance."
+          },
+          {
+            "term": "Telematics",
+            "meaning": "Send machine location and condition information over a communication link."
+          },
+          {
+            "term": "Air-as-a-Service",
+            "meaning": "Buy compressed air as a metered outcome instead of owning a compressor."
+          }
+        ],
+        "traps": [
+          "Lumada belongs to Hitachi; Predix is associated with GE and Connext DDS with RTI in these course notes.",
+          "Company/platform examples describe the lecture’s case studies, not verified current product availability.",
+          "The historical worker-fatality statistic in the source is not needed to answer this week’s quiz and is not a current rate."
+        ],
+        "comparison": {
+          "headers": [
+            "Company",
+            "Exam association"
+          ],
+          "rows": [
+            [
+              "Kaeser Kompressoren",
+              "Air-as-a-Service; pay per cubic metre"
+            ],
+            [
+              "Hitachi",
+              "Lumada; AI analytics"
+            ],
+            [
+              "Maersk",
+              "Container monitoring; route/fuel optimization"
+            ],
+            [
+              "RTI",
+              "Connext DDS"
+            ],
+            [
+              "Rio Tinto",
+              "AHS + ADS"
+            ],
+            [
+              "Bosch",
+              "Tracking/tracing + tools-as-a-service"
+            ]
+          ]
+        },
+        "diagram": {
+          "type": "flow",
+          "title": "A compressor becomes a service",
+          "nodes": [
+            {
+              "label": "Compressor",
+              "detail": "Supplier owns the machine"
+            },
+            {
+              "label": "Sensors",
+              "detail": "Measure condition and output"
+            },
+            {
+              "label": "Analytics",
+              "detail": "Anticipate maintenance"
+            },
+            {
+              "label": "Metered air",
+              "detail": "Customer pays per cubic metre"
+            }
+          ],
+          "caption": "The customer buys useful output; sensing makes the service measurable and maintainable."
+        },
+        "example": {
+          "title": "An air supply for a packaging line",
+          "steps": [
+            "The factory needs compressed air for pneumatic actuators.",
+            "The supplier installs and maintains a connected compressor.",
+            "A meter records delivered air; condition sensors warn of a failing component.",
+            "The factory pays for air delivered, while the supplier manages the equipment."
+          ]
+        }
+      },
+      {
+        "id": "w5-business-basics",
+        "title": "The six building blocks of a business",
+        "intro": "A business model explains value creation, delivery and financial return.",
+        "paragraphs": [
+          "The value proposition is the benefit promised to customers. A quantitative benefit can be expressed numerically: lower price, better performance or lower running costs after purchase. A qualitative benefit concerns design, customization, brand perception or customer experience. Post-purchase cost reduction is quantitative because it can be measured in money.",
+          "A market segment identifies whom the business serves. Mass markets are broad; niche markets are narrow; segmented markets contain related groups with different needs; diversified markets include substantially different customer groups; multi-sided markets bring together groups that need each other.",
+          "The value chain combines resources and activities. Resources may be physical, intellectual, human or financial and can be owned, leased or supplied by partners. The activity categories here are production, problem solving and platform/network management. Revenue and margins describe income and costs; the value network identifies partners; competitive strategy explains cost leadership, differentiation or focus."
+        ],
+        "keyPoints": [
+          "Six blocks: value proposition; market segment; value chain structure; revenue generation/margins; position in the value network; competitive strategy.",
+          "Transaction revenue comes from individual sales; recurring revenue comes repeatedly, such as a monthly subscription.",
+          "Revenue sources include asset sales, subscriptions, usage, leasing, licensing, brokerage and advertising; pricing can be fixed or dynamic.",
+          "Alliances can reduce risk, acquire resources and optimize a business model."
+        ],
+        "terms": [
+          {
+            "term": "Value proposition",
+            "meaning": "The useful benefit delivered to a customer."
+          },
+          {
+            "term": "Margin",
+            "meaning": "Income remaining after the relevant costs are subtracted."
+          },
+          {
+            "term": "Value network",
+            "meaning": "Suppliers, partners and other parties through which value moves."
+          }
+        ],
+        "traps": [
+          "Philanthropy may be a real company activity, but it is not one of the three fundamental business-model activity categories listed in this lecture.",
+          "Do not confuse the six general business-model blocks with the four IIoT components introduced later."
+        ],
+        "comparison": {
+          "headers": [
+            "Concept",
+            "Factory example"
+          ],
+          "rows": [
+            [
+              "Quantitative value",
+              "Reduce yearly electricity cost by a measured amount"
+            ],
+            [
+              "Qualitative value",
+              "Make the operator interface easier and more pleasant"
+            ],
+            [
+              "Cost leadership",
+              "Deliver comparable output at lower cost"
+            ],
+            [
+              "Differentiation",
+              "Provide a unique predictive-maintenance service"
+            ],
+            [
+              "Focus",
+              "Serve only pharmaceutical packaging plants"
+            ]
+          ]
+        },
+        "example": {
+          "title": "A motor-monitoring business",
+          "steps": [
+            "Value: customers lose fewer production hours.",
+            "Segment: small factories using electric motors.",
+            "Resources and activities: vibration sensors, analytics engineers and problem solving.",
+            "Revenue: a monthly monitoring fee; partners: sensor suppliers; strategy: specialist service for this niche."
+          ]
+        }
+      },
+      {
+        "id": "w5-iot-models",
+        "title": "Four ways to monetize connected assets",
+        "intro": "Ask what the customer pays for: access, an outcome, shared use or an IoT service.",
+        "paragraphs": [
+          "A subscription charges periodically for a continuing service. It can give predictable revenue and a continuing customer relationship, but requires account management, invoicing, plan management, skilled support and updates. Freemium means a basic service is free while premium capabilities are paid; the lecture associates this with subscriptions.",
+          "An outcome-based model charges for the delivered result, relieving the customer of some ownership and maintenance burdens. An asset-sharing model lets several customers use an otherwise idle asset, charging by time or usage. IoT-as-a-Service leases connected hardware, software, data or analysis, with charges based on data volume, resource use or service quality.",
+          "The two additional models use an IoT product either to encourage another product sale, such as automatic consumable refills, or to collect data that can be monetized. Data monetization needs transparent data-use and privacy arrangements. Connected business ecosystems include several stakeholders, so the value proposition and value flow must be clear to all of them."
+        ],
+        "keyPoints": [
+          "Outcome-based: pay per result; main challenge is defining, pricing and reliably delivering the outcome.",
+          "Asset-sharing: minimize idle time and maximize utilization; challenges include physical security, agreements, configuration and synchronization.",
+          "IoT-as-a-Service: lower upfront/licensing burdens and provider maintenance; challenges include compatibility, data accuracy and security.",
+          "IoT business challenges in the lecture: diverse objects, immature technology and unstructured ecosystems; data itself is an asset."
+        ],
+        "terms": [
+          {
+            "term": "Utilization",
+            "meaning": "How much of an asset’s available capacity is actually used."
+          },
+          {
+            "term": "Freemium",
+            "meaning": "Basic access is free; premium capabilities are paid."
+          }
+        ],
+        "traps": [
+          "Sharing an idle asset is the asset-sharing model; paying only for its output is outcome-based.",
+          "Predicted profit, satisfaction or risk improvements are potential benefits, not guarantees."
+        ],
+        "comparison": {
+          "headers": [
+            "Model",
+            "Payment target",
+            "Memory example"
+          ],
+          "rows": [
+            [
+              "Subscription",
+              "Repeated access",
+              "Monthly condition-monitoring dashboard"
+            ],
+            [
+              "Outcome-based",
+              "Delivered result",
+              "Compressed air delivered"
+            ],
+            [
+              "Asset-sharing",
+              "Shared asset usage",
+              "Tractor hired during idle periods"
+            ],
+            [
+              "IoT-as-a-Service",
+              "Connected capability",
+              "Sensors plus analysis leased as a service"
+            ]
+          ]
+        },
+        "diagram": {
+          "type": "branch",
+          "title": "What is the customer paying for?",
+          "nodes": [
+            {
+              "label": "Payment target",
+              "detail": "Identify the purchased value"
+            },
+            {
+              "label": "Recurring access",
+              "detail": "Subscription"
+            },
+            {
+              "label": "Delivered result",
+              "detail": "Outcome-based"
+            },
+            {
+              "label": "Shared usage",
+              "detail": "Asset-sharing"
+            },
+            {
+              "label": "IoT capability",
+              "detail": "IoT-as-a-Service"
+            }
+          ],
+          "caption": "These are different business-model lenses; one real offering can combine more than one."
+        }
+      },
+      {
+        "id": "w5-industry-models",
+        "title": "Three IIoT business models work together",
+        "intro": "Infrastructure supports information services, and information supports process improvement.",
+        "paragraphs": [
+          "The industry-specific model has four components: value proposition, value capturing mechanism, value network and value communication. Capturing value means turning the useful capability of assets into financial return. Communicating value means explaining that benefit across customer groups and partners.",
+          "A cloud-based business provides computing, storage and development resources on demand. IaaS rents infrastructure; PaaS supplies a platform for developing and integrating applications; SaaS provides finished software. Customers can include startups, educational institutions, software vendors and SMEs. The provider needs technical expertise, hardware/software resources and a partner network.",
+          "A service-oriented business aggregates and analyzes data and delivers the resulting information as a service. AmbuSens is the lecture’s ambulance-healthcare example. A process-oriented business uses information to reduce machinery downtime and improve availability across production processes; its target includes machine and plant engineering. The cloud supplies infrastructure, the service extracts information and the process model uses it for operational improvement."
+        ],
+        "keyPoints": [
+          "Entrepreneurship theory emphasizes opportunity; transaction cost theory emphasizes costs and risks such as performance and non-ownership contracts.",
+          "Service-oriented value: utilization, aggregation and analysis of data; revenue can monetize information directly or indirectly.",
+          "Process-oriented value: machinery availability and reduced downtime; configuration spans complex production processes.",
+          "Shared challenges: interoperability, data governance/privacy, cost, complexity, untested technology and shortage of digital skills."
+        ],
+        "terms": [
+          {
+            "term": "Value capturing mechanism",
+            "meaning": "Convert the value of assets and services into money."
+          },
+          {
+            "term": "PaaS",
+            "meaning": "A development/runtime platform for building and integrating applications."
+          },
+          {
+            "term": "AmbuSens",
+            "meaning": "The course’s cloud-supported ambulance-monitoring service example."
+          }
+        ],
+        "traps": [
+          "A platform for integrating applications is PaaS; finished software is SaaS.",
+          "A service-oriented business model is a business classification; SOA later in the course is a software architecture."
+        ],
+        "comparison": {
+          "headers": [
+            "Service model",
+            "What you receive",
+            "What you do"
+          ],
+          "rows": [
+            [
+              "IaaS",
+              "Computing, storage and network resources",
+              "Configure and operate your software"
+            ],
+            [
+              "PaaS",
+              "Development tools, runtime and integration platform",
+              "Build and deploy applications"
+            ],
+            [
+              "SaaS",
+              "Finished application",
+              "Use the application"
+            ]
+          ]
+        },
+        "diagram": {
+          "type": "flow",
+          "title": "Infrastructure → information → improvement",
+          "nodes": [
+            {
+              "label": "Cloud-based",
+              "detail": "Rent computing and storage"
+            },
+            {
+              "label": "Service-oriented",
+              "detail": "Collect and analyze data"
+            },
+            {
+              "label": "Process-oriented",
+              "detail": "Optimize availability and flow"
+            }
+          ],
+          "caption": "The lecture’s three model types are interdependent rather than isolated alternatives."
+        }
+      },
+      {
+        "id": "w5-safety-iic",
+        "title": "Safety indicators & IIC testbeds",
+        "intro": "Prevent harm first, then use evidence to evaluate the system.",
+        "paragraphs": [
+          "IIRA stands for Industrial Internet Reference Architecture. In these notes it is the IIC Technology Working Group’s common blueprint for mapping business needs to technical solutions and supporting interoperability. A reference architecture guides design; it is not a finished implementation or a particular product.",
+          "Safety concerns unexpected physical harm to people, property or the environment from system malfunction. Security concerns protection of information and systems against threats. The lecture emphasizes safety and security together. Occupational Safety and Health performance can be tracked using leading and lagging KPIs.",
+          "Leading indicators track preventive inputs before harm occurs, such as training coverage, safety audits and observed unsafe behavior. Lagging indicators measure outcomes that have already happened, such as fatalities, lost-time incidents and sickness-related lost production days. IIC testbeds provide environments to initiate, conceptualize and rigorously test an innovation before market launch."
+        ],
+        "keyPoints": [
+          "Leading KPI: input/prevention-oriented; lagging KPI: output/outcome-oriented.",
+          "Fatality count is lagging because the harm has already occurred.",
+          "Stakeholder: person, team or organization interested in the system; viewpoint: a way of organizing stakeholder concerns.",
+          "Architectural frame: methods for identifying and analyzing those concerns; architectural representation: resulting views."
+        ],
+        "terms": [
+          {
+            "term": "KPI",
+            "meaning": "Key Performance Indicator: a measurable sign of performance."
+          },
+          {
+            "term": "Testbed",
+            "meaning": "A controlled environment for trying and evaluating a system before wider release."
+          },
+          {
+            "term": "Interoperability",
+            "meaning": "Different systems can exchange and use information effectively."
+          }
+        ],
+        "traps": [
+          "The notes call IIRA v1.8 current; treat 1.8 as the lecture’s version reference, not a verified current version.",
+          "A near-miss is recorded after an event in this lecture’s lagging list; different safety programs may classify near-miss reporting differently."
+        ],
+        "comparison": {
+          "headers": [
+            "Leading indicators",
+            "Lagging indicators"
+          ],
+          "rows": [
+            [
+              "Percentage of trained workers",
+              "Number of fatalities"
+            ],
+            [
+              "Number of safety audits",
+              "Lost-time incident frequency"
+            ],
+            [
+              "Frequency of observed unsafe behavior",
+              "Production days lost to illness/incidents"
+            ]
+          ]
+        },
+        "example": {
+          "title": "Testing a worker-safety wearable",
+          "steps": [
+            "Trial the wearable in a testbed before deploying it across a plant.",
+            "Check that alarms are timely and do not interfere with machine operations.",
+            "Track training coverage as a leading indicator.",
+            "Track injuries or fatalities as lagging outcome indicators."
+          ]
+        }
+      },
+      {
+        "id": "w5-patterns",
+        "title": "Three reusable implementation patterns",
+        "intro": "Choose a pattern for how devices, local systems and enterprise applications connect.",
+        "paragraphs": [
+          "The three-tier pattern separates edge, platform and enterprise concerns. The edge collects data from devices and gateways. The platform processes, stores and forwards data and relays control commands. The enterprise provides domain applications, decisions and end-user interfaces. Measurements usually move upward; decisions and control instructions move downward.",
+          "Gateway-mediated connectivity joins a local edge network to a wide-area network. The gateway can transfer, process and analyze readings, while also managing local devices. A star network concentrates connections at a hub; a mesh offers multiple paths and possible redundancy.",
+          "The layered databus pattern connects devices and applications through shared communication buses at several levels: smart machines, systems of systems and the industrial internet. It supports local integration, hierarchical subsystem isolation, automatic delivery and scaling. A databus is communication infrastructure; it is not merely a storage database."
+        ],
+        "keyPoints": [
+          "Three-tier: edge → platform → enterprise.",
+          "Gateway-mediated edge: local devices → gateway → wide-area network.",
+          "Layered databus: machine-local integration plus larger system-level integration.",
+          "Redundant paths can improve availability; they still need correct network and failure management."
+        ],
+        "terms": [
+          {
+            "term": "Gateway",
+            "meaning": "A connection and management point between networks or device groups."
+          },
+          {
+            "term": "Databus",
+            "meaning": "Shared communication infrastructure used by devices and applications."
+          }
+        ],
+        "traps": [
+          "The three tiers are an implementation pattern; they are not the five functional domains or four viewpoints."
+        ],
+        "diagram": {
+          "type": "layers",
+          "title": "Three tiers, two directions",
+          "nodes": [
+            {
+              "label": "Enterprise",
+              "detail": "Business applications and decisions"
+            },
+            {
+              "label": "Platform",
+              "detail": "Processing, storage and command relay"
+            },
+            {
+              "label": "Edge",
+              "detail": "Sensors, actuators and gateways"
+            }
+          ],
+          "caption": "Data rises from edge to enterprise; control decisions return toward the physical process."
+        },
+        "example": {
+          "title": "A connected production cell",
+          "steps": [
+            "Edge: read vibration and motor temperature.",
+            "Platform: aggregate readings and detect unusual trends.",
+            "Enterprise: show maintenance recommendations and schedule a repair.",
+            "Send an approved operational command back through the platform to the edge controller."
+          ]
+        }
+      },
+      {
+        "id": "w5-viewpoints",
+        "title": "Four viewpoints on one factory",
+        "intro": "Owner, operator, engineer and implementer ask different questions about the same system.",
+        "paragraphs": [
+          "The business viewpoint asks why the system exists: value, ROI, maintenance cost and liability. Vision describes the desired future; values supply the reasoning for the merit of that vision. Measurable, time-bound key objectives lead to fundamental capabilities, which lead to system requirements.",
+          "The usage viewpoint asks how people and organizations use the system. A role is a set of capacities assumed by an entity; a task is a basic unit of work carried out in a role; an activity coordinates tasks to realize a use of the system. Every activity has a trigger, workflow, effect and constraints.",
+          "The functional viewpoint asks what functions the system provides. The implementation viewpoint asks how those functions are realized technically: structure, distribution, topology and mapping activities to concrete components. All four viewpoints should agree: a technical choice should support the intended use and business objective."
+        ],
+        "keyPoints": [
+          "Business = why; usage = who does what; functional = what the system does; implementation = how it is built.",
+          "Trigger starts an activity; workflow orders tasks; effect is the successful resulting system state; constraints must hold during execution.",
+          "Workflows may be sequential, parallel, conditional or iterative.",
+          "Values justify vision; key objectives turn ambition into measurable business outcomes."
+        ],
+        "terms": [
+          {
+            "term": "ROI",
+            "meaning": "Return on investment: financial benefit compared with investment."
+          },
+          {
+            "term": "Effect",
+            "meaning": "The IIoT system state after an activity completes successfully."
+          },
+          {
+            "term": "Constraint",
+            "meaning": "A requirement that must remain satisfied during execution."
+          }
+        ],
+        "traps": [
+          "Effect is the result after successful completion; trigger is the condition that starts the activity.",
+          "Values justify the vision; objectives and capabilities describe desired outcomes and required abilities."
+        ],
+        "example": {
+          "title": "Respond to an overheating motor",
+          "steps": [
+            "Business objective: reduce unplanned downtime.",
+            "Usage trigger: a temperature warning; role: operator; task: inspect the motor.",
+            "Workflow: verify warning, reduce load and schedule repair; effect: the motor is operating safely.",
+            "Constraint: preserve the required safety conditions throughout; implementation: choose sensors, controller and dashboard."
+          ]
+        }
+      },
+      {
+        "id": "w5-functional-domains",
+        "title": "Five domains: where does each function belong?",
+        "intro": "Classify a function by its job, rather than by the physical computer it runs on.",
+        "paragraphs": [
+          "The control domain handles sensing, actuation and communication around the physical process. The operations domain provisions, deploys and manages assets, monitors their condition, diagnoses issues, predicts failures and optimizes performance.",
+          "The information domain turns data into usable information: checking quality, converting syntax and meaning, storing/persisting data, distributing it and supporting modeling and analysis. A syntactic transformation changes the representation; a semantic transformation reconciles what values mean, such as units or asset identities.",
+          "The application domain applies business-specific logic and rules and exposes APIs or user interfaces. The business domain integrates the overall system with business processes and procedures. One machine may host functions from several domains; these are logical responsibilities, not mandatory separate boxes."
+        ],
+        "keyPoints": [
+          "Provisioning/deployment/asset management → operations.",
+          "Semantic and syntactic data transformation → information.",
+          "Rules for realizing a business function, APIs and UIs → application.",
+          "Sensing/actuation → control; end-to-end business process integration → business."
+        ],
+        "terms": [
+          {
+            "term": "Provisioning",
+            "meaning": "Prepare and register an asset so it can operate in the system."
+          },
+          {
+            "term": "Semantic transformation",
+            "meaning": "Convert data while preserving or reconciling its meaning."
+          },
+          {
+            "term": "API",
+            "meaning": "An interface through which software components interact."
+          }
+        ],
+        "traps": [
+          "Operations manages assets; information manages data meaning and representation.",
+          "A question asking for transformation followed by business rules needs information domain followed by application domain."
+        ],
+        "comparison": {
+          "headers": [
+            "Function",
+            "Domain"
+          ],
+          "rows": [
+            [
+              "Connect a sensor reading to physical actuation",
+              "Control"
+            ],
+            [
+              "Deploy a new device and monitor asset health",
+              "Operations"
+            ],
+            [
+              "Normalize data units and store records",
+              "Information"
+            ],
+            [
+              "Apply a maintenance rule and display it",
+              "Application"
+            ],
+            [
+              "Connect maintenance to company procedures",
+              "Business"
+            ]
+          ]
+        },
+        "diagram": {
+          "type": "layers",
+          "title": "The IIRA functional domains",
+          "nodes": [
+            {
+              "label": "Business",
+              "detail": "Integrate business processes"
+            },
+            {
+              "label": "Application",
+              "detail": "Business rules, APIs and UIs"
+            },
+            {
+              "label": "Information",
+              "detail": "Transform, store and analyze data"
+            },
+            {
+              "label": "Operations",
+              "detail": "Provision and manage assets"
+            },
+            {
+              "label": "Control",
+              "detail": "Sense, communicate and actuate"
+            }
+          ],
+          "caption": "These are logical domains; cross-domain communication is needed to deliver an industrial application."
+        }
+      }
+    ],
+    "quiz": [
+      {
+        "id": "w5-q01",
+        "question": "Which company’s Air-as-a-Service model charges per cubic metre of compressed air?",
+        "options": [
+          "Kaeser Kompressoren",
+          "John Deere",
+          "Maersk",
+          "Hitachi"
+        ],
+        "correctIndex": 0,
+        "explanation": "Kaeser sells metered compressed air rather than compressor ownership. Hitachi is the Lumada analytics association, not the air-service example.",
+        "sectionId": "w5-case-studies"
+      },
+      {
+        "id": "w5-q02",
+        "question": "What is Hitachi’s core IoT platform for AI-based analytics in the lecture?",
+        "options": [
+          "Predix",
+          "Connext DDS",
+          "Lumada",
+          "MindSphere"
+        ],
+        "correctIndex": 2,
+        "explanation": "Lumada is the Hitachi platform in the notes. Predix is associated with GE; Connext DDS with RTI; MindSphere with Siemens.",
+        "sectionId": "w5-case-studies",
+        "sourceNote": "Platform associations follow the supplied course notes and are not current product-status claims."
+      },
+      {
+        "id": "w5-q03",
+        "question": "Which company is linked to smart logistics and remote monitoring of refrigerated and dry cargo containers?",
+        "options": [
+          "Boeing",
+          "Maersk",
+          "KUKA",
+          "Kaeser Kompressoren"
+        ],
+        "correctIndex": 1,
+        "explanation": "Maersk is the container-monitoring and logistics example. Boeing’s example is digital aircraft manufacturing, not container operations.",
+        "sectionId": "w5-case-studies"
+      },
+      {
+        "id": "w5-q04",
+        "question": "Which is a quantitative value proposition?",
+        "options": [
+          "Improved brand perception",
+          "More attractive design",
+          "Better customer experience",
+          "Post-purchase cost reduction"
+        ],
+        "correctIndex": 3,
+        "explanation": "Cost reduction is measurable in money, so it is quantitative. Customer experience is qualitative in this lecture’s classification, even though a business may measure aspects of it.",
+        "sectionId": "w5-business-basics"
+      },
+      {
+        "id": "w5-q05",
+        "question": "Which model shares IoT assets among customers to minimize downtime and maximize utilization?",
+        "options": [
+          "Outcome-based model",
+          "Asset-sharing model",
+          "Subscription model",
+          "Data monetization model"
+        ],
+        "correctIndex": 1,
+        "explanation": "Asset-sharing makes an otherwise idle asset available to multiple users. Outcome-based charging is for a delivered result, not specifically for shared asset use.",
+        "sectionId": "w5-iot-models"
+      },
+      {
+        "id": "w5-q06",
+        "question": "Which cloud offering provides development platforms for integrating applications?",
+        "options": [
+          "IaaS",
+          "SaaS",
+          "PaaS",
+          "An asset-sale model"
+        ],
+        "correctIndex": 2,
+        "explanation": "PaaS provides the development/runtime platform. IaaS supplies infrastructure; SaaS supplies an already-built application.",
+        "sectionId": "w5-industry-models"
+      },
+      {
+        "id": "w5-q07",
+        "question": "Which IIoT business model uses cloud models to gather data, analyze it and sell the result as a service?",
+        "options": [
+          "Service-oriented business model",
+          "Process-oriented business model",
+          "Asset-sharing model",
+          "Pure hardware-sales model"
+        ],
+        "correctIndex": 0,
+        "explanation": "The service-oriented model monetizes analyzed data/information. The process-oriented model uses such information to improve process flow and machinery availability.",
+        "sectionId": "w5-industry-models"
+      },
+      {
+        "id": "w5-q08",
+        "question": "Which is a lagging Occupational Safety and Health KPI?",
+        "options": [
+          "Number of safety audits",
+          "Percentage of workers trained",
+          "Observed unsafe-behavior frequency",
+          "Number of fatalities"
+        ],
+        "correctIndex": 3,
+        "explanation": "Fatalities count a harmful outcome after it happens. Safety training and audits are preventive inputs, so they are leading indicators in the lecture.",
+        "sectionId": "w5-safety-iic"
+      },
+      {
+        "id": "w5-q09",
+        "question": "What is the purpose of IIC testbeds?",
+        "options": [
+          "Initiate, conceptualize and rigorously test innovations before market launch",
+          "Replace all industrial communication standards",
+          "Eliminate the need to validate prototypes",
+          "Sell finished systems without trials"
+        ],
+        "correctIndex": 0,
+        "explanation": "A testbed lets an innovation be tried and rigorously evaluated before market release. It does not remove validation; validation is its purpose.",
+        "sectionId": "w5-safety-iic"
+      },
+      {
+        "id": "w5-q10",
+        "question": "In the IIRA business viewpoint, what provides the logic regarding the merit of the vision?",
+        "options": [
+          "System requirements",
+          "Fundamental capabilities",
+          "Values",
+          "Implementation topology"
+        ],
+        "correctIndex": 2,
+        "explanation": "Values express the rationale stakeholders recognize in the vision. Capabilities describe necessary abilities; requirements translate those abilities into system needs.",
+        "sectionId": "w5-viewpoints"
+      },
+      {
+        "id": "w5-q11",
+        "question": "In the usage viewpoint, what names the system’s state after an activity completes successfully?",
+        "options": [
+          "Trigger",
+          "Workflow",
+          "Constraint",
+          "Effect"
+        ],
+        "correctIndex": 3,
+        "explanation": "Effect is the resulting state. A trigger starts the activity, workflow orders its tasks and constraints must hold while it runs.",
+        "sectionId": "w5-viewpoints"
+      },
+      {
+        "id": "w5-q12",
+        "question": "Which functional domain provisions, deploys and manages assets?",
+        "options": [
+          "Control domain",
+          "Operations domain",
+          "Information domain",
+          "Application domain"
+        ],
+        "correctIndex": 1,
+        "explanation": "Operations is responsible for the asset lifecycle and condition. Information is about data transformation/storage, rather than deploying the assets themselves.",
+        "sectionId": "w5-functional-domains"
+      },
+      {
+        "id": "w5-q13",
+        "question": "Which domains respectively perform semantic data transformation and apply rules to realize a business function?",
+        "options": [
+          "Information domain, then Application domain",
+          "Operations domain, then Control domain",
+          "Application domain, then Information domain",
+          "Control domain, then Operations domain"
+        ],
+        "correctIndex": 0,
+        "explanation": "Information reconciles data meaning; Application applies business-specific rules. Reversing them assigns data transformation to the wrong logical responsibility.",
+        "sectionId": "w5-functional-domains"
+      },
+      {
+        "id": "w5-q14",
+        "question": "Which is NOT a fundamental business-model activity category listed in the lecture?",
+        "options": [
+          "Production",
+          "Problem solving",
+          "Platform/network management",
+          "Philanthropy"
+        ],
+        "correctIndex": 3,
+        "explanation": "The three listed categories are production, problem solving and platform/network management. Philanthropy can exist in a company but is outside this particular classification.",
+        "sectionId": "w5-business-basics"
+      },
+      {
+        "id": "w5-q15",
+        "question": "What mechanism converts the value of assets into financial value?",
+        "options": [
+          "Value communication",
+          "Value proposition",
+          "Value capturing mechanism",
+          "Value network"
+        ],
+        "correctIndex": 2,
+        "explanation": "Value capturing explains how useful assets/services generate financial return. The proposition promises a benefit; communication explains it; the network connects participants.",
+        "sectionId": "w5-industry-models"
+      }
+    ],
+    "revision": [
+      "Kaeser = air per cubic metre; Hitachi = Lumada; Maersk = container logistics.",
+      "Quantitative: price, performance, running-cost reduction. Qualitative: design, brand, experience.",
+      "Production, problem solving and platform management are the fundamental activity categories.",
+      "Subscription = recurring access; outcome = result; sharing = utilization; IoT-as-a-Service = leased capability.",
+      "Value capture turns benefit into money; cloud → service → process models support one another.",
+      "IaaS = infrastructure; PaaS = build/integrate; SaaS = use a finished application.",
+      "Leading indicators track prevention; lagging indicators track outcomes; fatalities are lagging.",
+      "Testbeds evaluate innovations before market launch.",
+      "Four viewpoints: business, usage, functional, implementation. Values justify vision; effect is the resulting state.",
+      "Five domains: control, operations, information, application, business. Operations manages assets; information transforms data; application applies rules."
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Industrial sensing & communication",
+    "summary": "Learn how real sensors produce readings, how gas sensors react, and how legacy factory protocols connect to modern 5G networks.",
+    "objectives": [
+      "Identify the sensor that fits a measured physical quantity.",
+      "Explain MOS gas sensing and distinguish selectivity, sensitivity and timing.",
+      "Recognize industrial Ethernet and fieldbus protocols by their defining features.",
+      "Explain 5G service classes, D2D, tactile internet and mmWave trade-offs."
+    ],
+    "sections": [
+      {
+        "id": "w6-sensing-chain",
+        "title": "From a physical change to a useful reading",
+        "intro": "A factory cannot react to a condition it has not measured.",
+        "paragraphs": [
+          "A sensor converts a physical quantity, such as temperature, pressure, vibration or gas concentration, into an electrical reading. A sensing device includes the sensor, a processor, a power-management unit and a communication module. The processor may convert or filter the reading before transmitting it.",
+          "In a smart manufacturing line, sensors support production, quality testing, counting, packaging and loading. Their readings give the central system visibility of machine status and product flow. Monitoring can reveal an emerging fault, improve safety and quality, and support remote diagnosis instead of relying only on manual inspection.",
+          "Readings can go first to a nearby edge node or directly to a central processor. Local processing usually shortens the response path but has limited computing resources. A central processor can run heavier analysis, but sending every reading to it can increase network load and response delay."
+        ],
+        "keyPoints": [
+          "IIoT chain: sensing → connectivity → processing → actuation/control.",
+          "Typical data route: sensor → edge/gateway → IP backbone → data center/cloud.",
+          "Industry benefits: visibility, real-time monitoring, productivity, product quality, safety, less downtime and failure prediction.",
+          "Communication may be wired, wireless or mixed; industrial devices also need suitable power and environmental protection."
+        ],
+        "terms": [
+          {
+            "term": "Sensor",
+            "meaning": "A device that converts a physical condition into a measurable signal."
+          },
+          {
+            "term": "ADC",
+            "meaning": "Analog-to-digital converter: changes a measured voltage into a number."
+          },
+          {
+            "term": "Edge node",
+            "meaning": "A computing device near the measurement source."
+          }
+        ],
+        "traps": [
+          "Improved visibility is a benefit of sensing; higher latency and reduced production are not intended benefits."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "The sensing-to-cloud path",
+          "nodes": [
+            {
+              "label": "Physical process",
+              "detail": "Temperature, pressure or vibration"
+            },
+            {
+              "label": "Sensor device",
+              "detail": "Sensor + processor + power + radio"
+            },
+            {
+              "label": "Gateway / edge",
+              "detail": "Local checks and forwarding"
+            },
+            {
+              "label": "Cloud / data center",
+              "detail": "Storage and heavier analytics"
+            }
+          ],
+          "caption": "Local processing can trigger a quick response while useful measurements continue to the central system."
+        },
+        "example": {
+          "title": "Quality control on a conveyor",
+          "steps": [
+            "A sensor checks each part and a counter records how many parts pass.",
+            "The edge device flags a defect while the part is still on the belt.",
+            "The controller sends an actuator command to reject that part.",
+            "The cloud retains defect statistics so engineers can improve the process."
+          ]
+        }
+      },
+      {
+        "id": "w6-sensor-types",
+        "title": "Know what each sensor measures",
+        "intro": "Separate analog voltages from digital bus messages.",
+        "paragraphs": [
+          "The LM35 is an analog temperature sensor whose voltage is proportional to temperature in Celsius. Its basic connections are supply, ground and signal; the signal is read by an ADC. The DS1621 is a digital temperature sensor: the lecture specifies 9-bit temperature data and a 2.7–5.5 V supply. It communicates over I2C, using SCL for clock and SDA for data.",
+          "I2C pull-up resistors, specified as 4.7–10 kilo-ohms in the demonstration, allow the bus lines to return high. Address pins distinguish several DS1621 devices on a shared bus. The ADXL335 supplies three analog accelerometer outputs, X, Y and Z, so a microcontroller needs three ADC channels as well as power and ground.",
+          "The MQ-2 demonstration reads an analog gas output for gases such as LPG, propane and hydrogen; breakout modules may also offer a threshold-based digital output. Magnetostrictive sensing uses a magnetic/mechanical interaction to inspect stress or strain in ferromagnetic materials, such as steel pipes. PIR detects changing infrared radiation associated with people; ultrasonic sensing uses sound echoes for distance, object presence or liquid level."
+        ],
+        "keyPoints": [
+          "DS1621 = digital temperature, 9-bit data, I2C; LM35 = temperature-proportional analog voltage.",
+          "ADXL335 = acceleration along three axes; MQ-2 = gas detection.",
+          "Magnetostrictive = steel-pipe inspection and stress/strain in ferromagnetic material.",
+          "Other measured quantities: torque, pressure, vacuum, speed, radiation, level, flow, touch and images.",
+          "Temperature monitoring is useful in petrochemical, automotive, aerospace, defense, consumer-electronics and pharmaceutical systems."
+        ],
+        "terms": [
+          {
+            "term": "I2C",
+            "meaning": "A digital bus with clock and data lines, allowing addressed devices to share wiring."
+          },
+          {
+            "term": "Ferromagnetic",
+            "meaning": "A material with a strong magnetic response, such as many steels."
+          },
+          {
+            "term": "Pull-up resistor",
+            "meaning": "A resistor that brings a signal line to a high voltage when no device drives it low."
+          }
+        ],
+        "traps": [
+          "Use the actual part’s datasheet and pinout before wiring: the lecture demonstration is not a universal voltage or pin-order specification.",
+          "A three-axis accelerometer needs three measurement channels, not a single temperature reading."
+        ],
+        "comparison": {
+          "headers": [
+            "Device",
+            "Quantity",
+            "Reading / interface"
+          ],
+          "rows": [
+            [
+              "LM35",
+              "Temperature",
+              "Analog voltage → ADC"
+            ],
+            [
+              "DS1621",
+              "Temperature",
+              "9-bit digital data → I2C"
+            ],
+            [
+              "ADXL335",
+              "Acceleration",
+              "X/Y/Z analog voltages"
+            ],
+            [
+              "MQ-2",
+              "Gas presence/concentration response",
+              "Analog output; some modules also give digital threshold"
+            ],
+            [
+              "Magnetostrictive",
+              "Stress / strain in ferromagnetic material",
+              "Inspection/condition monitoring"
+            ],
+            [
+              "PIR",
+              "Human presence / movement",
+              "Infrared change"
+            ],
+            [
+              "Ultrasonic",
+              "Distance / level",
+              "Sound echo timing"
+            ]
+          ]
+        },
+        "example": {
+          "title": "Choosing sensors for a steel-treatment plant",
+          "steps": [
+            "Use a temperature sensor to monitor a chamber.",
+            "Use an accelerometer to detect abnormal machine vibration.",
+            "Use a magnetostrictive sensor when the inspection concerns stress/strain in a steel pipe.",
+            "Use gas sensing around areas where flammable gases might leak."
+          ]
+        }
+      },
+      {
+        "id": "w6-gas-principle",
+        "title": "MOS gas sensing: a chemical change becomes resistance",
+        "intro": "A heater puts the sensing material at a useful operating temperature.",
+        "paragraphs": [
+          "Gas can be measured by optical, acoustic, chromatographic or calorimetric methods, or with electrically sensitive materials such as polymers, carbon nanotubes and metal-oxide semiconductors. This lecture focuses on chemi-resistive MOS sensors: exposure to a gas changes the material’s electrical resistance.",
+          "Baseline resistance, Ra, is measured in air without the target gas; Rg is resistance during gas exposure. A heater supplies thermal energy because the surface reaction depends on temperature. The optimum operating temperature is where the desired gas response is strongest under the tested conditions. Different materials and dopants can favor particular gases.",
+          "For the reducing-gas case taught here, n-type material shows decreasing resistance and p-type material increasing resistance. Selectivity means distinguishing a particular gas in a mixture; sensitivity means output change per unit concentration change. A sensor can be very sensitive yet poorly selective if many gases produce similar outputs."
+        ],
+        "keyPoints": [
+          "Response time: time to reach a specified fraction of the final response, for example 80% or 90%.",
+          "Recovery time: time to return toward baseline after gas removal; reversibility: ability to return to baseline.",
+          "Stability: sensing behavior remains consistent over time and harsh conditions.",
+          "Relative resistance response in the notes: (Ra − Rg) / Ra. To express this as a percentage, multiply by 100.",
+          "Applications: air-quality monitoring, toxic/flammable leak detection, vehicle exhaust and breath testing."
+        ],
+        "terms": [
+          {
+            "term": "MOS",
+            "meaning": "Metal-oxide semiconductor used as the gas-sensitive material."
+          },
+          {
+            "term": "Chemi-resistive",
+            "meaning": "A chemical interaction changes electrical resistance."
+          },
+          {
+            "term": "Selectivity",
+            "meaning": "Ability to distinguish the target gas in a mixture."
+          },
+          {
+            "term": "Sensitivity",
+            "meaning": "Output change for a unit input-concentration change."
+          }
+        ],
+        "traps": [
+          "The resistance direction depends on semiconductor type and gas chemistry; the n-type down / p-type up rule here is for reducing gases.",
+          "The source labels (Ra − Rg) / Ra a percentage but omits ×100; the ratio itself is dimensionless.",
+          "Selectivity is about which gas is detected; sensitivity is about how much the output changes."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "How a gas leak becomes an alarm",
+          "nodes": [
+            {
+              "label": "Gas exposure",
+              "detail": "Target gas reaches the material"
+            },
+            {
+              "label": "Heated MOS",
+              "detail": "Surface reaction changes resistance"
+            },
+            {
+              "label": "Measurement",
+              "detail": "Compare Rg with air baseline Ra"
+            },
+            {
+              "label": "Controller",
+              "detail": "Apply concentration/alarm logic"
+            },
+            {
+              "label": "Buzzer",
+              "detail": "Warn the operator"
+            }
+          ],
+          "caption": "For an n-type sensor exposed to a reducing gas, the measured resistance decreases."
+        },
+        "example": {
+          "title": "Compute an n-type sensor response",
+          "steps": [
+            "Air baseline Ra = 100 kilo-ohms.",
+            "Gas exposure lowers Rg to 70 kilo-ohms.",
+            "Relative change = (100 − 70) / 100 = 0.30.",
+            "Percentage response = 0.30 × 100 = 30%; this is not the response time."
+          ]
+        }
+      },
+      {
+        "id": "w6-gas-lab",
+        "title": "How a gas sensor is tested",
+        "intro": "Change one condition at a time to find what actually causes the response.",
+        "paragraphs": [
+          "The IIT Kharagpur lab example uses gas cylinders, a manifold and mass-flow controllers to produce known gas concentrations. A humidity chamber changes moisture conditions. Inside a gas-proof sensing chamber, the heater sets temperature, two probes read resistance and a thermocouple measures the actual temperature.",
+          "An isothermal test holds temperature constant while changing gas concentration. A second test fixes the gas and varies temperature to locate an optimum response. A third adds humidity to reveal cross-sensitivity or environmental effects. DC electrometers, an AC impedance analyzer and noise-spectroscopy equipment observe different electrical properties.",
+          "Nanostructures such as nanotubes, films, nanorods or hollow structures change accessible surface area and gas diffusion. Adding another material, such as indium to zinc oxide in the example, can improve selectivity. A static chamber complements flowing-gas tests because the deployment environment may have little forced flow. The VOC demo uses a p-type copper-oxide thin film, a nichrome heater, an NTC thermistor and PID temperature control."
+        ],
+        "keyPoints": [
+          "Mass-flow control helps set concentration in parts per million (PPM).",
+          "System elements: sensing module, heater controller, microcontroller, buzzer and monitoring PC.",
+          "Constant temperature + changing gas isolates concentration effects; constant gas + changing temperature finds temperature dependence.",
+          "The VOC demo detects ethanol from room freshener; gas alarms also serve oil/gas and fabrication plants."
+        ],
+        "terms": [
+          {
+            "term": "PPM",
+            "meaning": "Parts per million: a way to state a small concentration."
+          },
+          {
+            "term": "Isothermal",
+            "meaning": "Held at a constant temperature."
+          },
+          {
+            "term": "PID",
+            "meaning": "A feedback-control method using proportional, integral and derivative terms."
+          },
+          {
+            "term": "NTC thermistor",
+            "meaning": "A resistor whose resistance falls as temperature rises."
+          }
+        ],
+        "traps": [
+          "The demo’s falling voltage does not alone prove falling sensor resistance; voltage depends on the measurement circuit.",
+          "Optimum temperature, selectivity and response are material- and condition-specific, not universal constants."
+        ],
+        "comparison": {
+          "headers": [
+            "Test",
+            "Held fixed",
+            "Changed / observed"
+          ],
+          "rows": [
+            [
+              "Isothermal",
+              "Temperature",
+              "Gas concentration; resistance over time"
+            ],
+            [
+              "Temperature sweep",
+              "Gas exposure",
+              "Temperature; response curve"
+            ],
+            [
+              "Humidity test",
+              "Chosen operating conditions",
+              "Humidity; change in sensor response"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "w6-ethernet",
+        "title": "Industrial Ethernet: timely messages matter",
+        "intro": "A factory needs predictable communication, not merely a high average data rate.",
+        "paragraphs": [
+          "Latency is message delay; jitter is variation in that delay. A controller can tolerate neither arbitrary lateness nor unpredictable timing when synchronizing machines. Some battery-powered sensors also need a low duty cycle, sleeping between short communication periods. IIoT commonly extends existing industrial networks rather than replacing every legacy controller.",
+          "Modbus TCP carries a Modbus request/response over TCP/IP and Ethernet. The PDU contains a function code and data; the ADU adds protocol/framing information. Its MBAP header has seven bytes: two each for transaction ID, protocol ID and length, plus one unit ID. A bridge can join Ethernet controllers to serial Modbus devices.",
+          "EtherCAT targets fast, synchronized control using Ethernet process-data telegrams, CRC checks and varied topologies. EtherNet/IP carries CIP over Ethernet: explicit messages are for general/non-time-critical exchanges, while implicit messaging handles cyclic real-time I/O. PROFINET supports non-real-time, RT and clock-synchronized IRT traffic. TSN uses Ethernet time synchronization and scheduling features to make communication more deterministic."
+        ],
+        "keyPoints": [
+          "Industrial Ethernet family: Modbus TCP, EtherCAT, EtherNet/IP, PROFINET and TSN.",
+          "EtherNet/IP = Common Industrial Protocol (CIP) over Ethernet; implicit = real-time I/O; explicit = general messaging.",
+          "TSN is associated with IEEE 802.1Q bridges/VLAN framework and Ethernet; learn 802.1Q for the assignment.",
+          "PROFINET IRT suits synchronized motion-control applications.",
+          "The supplied Modbus TCP assignment expects up to 10 active sockets; that is a course/device-example value, not a universal TCP/Modbus limit."
+        ],
+        "terms": [
+          {
+            "term": "Latency",
+            "meaning": "Elapsed delay from sending a message to useful receipt/response."
+          },
+          {
+            "term": "Jitter",
+            "meaning": "Variation of delay from message to message."
+          },
+          {
+            "term": "Deterministic",
+            "meaning": "Predictable enough to meet specified timing behavior."
+          },
+          {
+            "term": "PDU / ADU",
+            "meaning": "Protocol Data Unit / Application Data Unit."
+          }
+        ],
+        "traps": [
+          "Jitter is delay variation; the notes’ wording “rate of change of delay” is a simplification.",
+          "The EtherCAT source includes unusually broad speed and 4-GB telegram claims; do not treat those as Ethernet frame-size specifications.",
+          "Implicit does not mean hidden: in this context it identifies real-time I/O messaging."
+        ],
+        "comparison": {
+          "headers": [
+            "Protocol",
+            "Signature feature",
+            "Remember"
+          ],
+          "rows": [
+            [
+              "Modbus TCP",
+              "Client/server over TCP/IP",
+              "7-byte MBAP header; key says 10 sockets"
+            ],
+            [
+              "EtherCAT",
+              "Fast synchronized process-data exchange",
+              "EtherCAT Technology Group; PDO/telegram"
+            ],
+            [
+              "EtherNet/IP",
+              "CIP over Ethernet",
+              "Implicit = cyclic I/O; explicit = general"
+            ],
+            [
+              "PROFINET",
+              "NRT, RT and IRT",
+              "IRT for synchronized motion"
+            ],
+            [
+              "TSN",
+              "Time-aware Ethernet mechanisms",
+              "IEEE 802.1Q; scheduling minimizes jitter"
+            ]
+          ]
+        },
+        "diagram": {
+          "type": "flow",
+          "title": "A legacy device joins an Ethernet system",
+          "nodes": [
+            {
+              "label": "PLC / HMI / SCADA",
+              "detail": "Modbus TCP client"
+            },
+            {
+              "label": "Ethernet / TCP-IP",
+              "detail": "Carry requests and responses"
+            },
+            {
+              "label": "Gateway",
+              "detail": "Translate / bridge the link"
+            },
+            {
+              "label": "RS-232 / RS-485",
+              "detail": "Serial Modbus RTU segment"
+            },
+            {
+              "label": "Field device",
+              "detail": "Read measurements or drive outputs"
+            }
+          ],
+          "caption": "A gateway lets a factory retain useful serial devices while adding Ethernet connectivity."
+        }
+      },
+      {
+        "id": "w6-fieldbus",
+        "title": "Fieldbus: match the protocol to its signature",
+        "intro": "Learn the families, then focus on the assignment’s distinctive facts.",
+        "paragraphs": [
+          "Fieldbus connects field instruments, sensors, actuators and controllers. Modbus RTU is serial request/response over links such as RS-232 or RS-485; its serial ADU includes addressing and an error check. PROFIBUS FMS connects PCs/PLCs; DP means Decentralized Peripherals and commonly uses RS-485; PA means Process Automation and uses Manchester Bus Power for data and power in process environments.",
+          "Interbus, associated with Phoenix Contact and 1987 in the lecture, uses a ring arrangement for distributed I/O. The course facts are up to 512 subscribers, 13 km total bus length and 500 kbps. CC-Link is associated with Mitsubishi and interoperability among manufacturers. Variants in the notes are standard, LT, Safety and Industrial Ethernet (IE).",
+          "DeviceNet builds on CAN and connects industrial devices to controllers. The classical base CAN frame example has an 11-bit identifier and up to eight data bytes. Arbitration allows a higher-priority identifier to win when senders compete, without destroying the winning message; the notes call this CSMA/NBA."
+        ],
+        "keyPoints": [
+          "PROFIBUS DP: assignment answer 32 devices without repeaters; read this as the relevant RS-485 segment limit in the example.",
+          "PROFIBUS PA: around 31.25 kbps, MBP carries power/data; DP rates and reach depend on wiring, speed and repeaters.",
+          "CC-Link course variant rates: standard 10 Mbps; LT 2.5 Mbps; Safety 10 Mbps; IE 1 Gbps.",
+          "DeviceNet = CAN; Interbus = ring; PROFIBUS DP = RS-485; Modbus RTU = serial request/response.",
+          "The supplied assignment associates CC-Link with 13.56 MHz; that wording resembles an RFID frequency and is not a general CC-Link operating-frequency rule."
+        ],
+        "terms": [
+          {
+            "term": "CAN",
+            "meaning": "Controller Area Network: a message bus with priority arbitration."
+          },
+          {
+            "term": "Fieldbus",
+            "meaning": "An industrial network connecting field devices and control equipment."
+          },
+          {
+            "term": "RS-485",
+            "meaning": "An electrical signaling standard often used on industrial serial networks."
+          },
+          {
+            "term": "MBP",
+            "meaning": "Manchester Bus Power: process-network signaling carrying power and data."
+          }
+        ],
+        "traps": [
+          "CC-Link 13.56 MHz is preserved only as the supplied assignment-key answer; the source also mixes RFID compatibility wording with fieldbus claims.",
+          "A segment limit is not necessarily the maximum size of a whole network with repeaters.",
+          "The error-check field is part of the Modbus RTU serial frame/ADU, not an intrinsic part of the Modbus PDU."
+        ],
+        "comparison": {
+          "headers": [
+            "Protocol / variant",
+            "Course association",
+            "Distinguishing fact"
+          ],
+          "rows": [
+            [
+              "PROFIBUS FMS",
+              "Fieldbus Message Specification",
+              "PC/PLC communication"
+            ],
+            [
+              "PROFIBUS DP",
+              "Decentralized Peripherals",
+              "RS-485; 32 on the stated segment"
+            ],
+            [
+              "PROFIBUS PA",
+              "Process Automation",
+              "MBP; hazardous process settings"
+            ],
+            [
+              "Interbus",
+              "Phoenix Contact",
+              "Ring; 512 subscribers; 500 kbps"
+            ],
+            [
+              "CC-Link",
+              "Mitsubishi",
+              "Standard / LT / Safety / IE variants"
+            ],
+            [
+              "DeviceNet",
+              "CAN",
+              "Classical 11-bit ID and 8-byte data example"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "w6-links",
+        "title": "Other links: wired access, industrial wireless and satellites",
+        "intro": "Coverage, direction, timing and reliability determine the useful link.",
+        "paragraphs": [
+          "DSL sends data over telephone wiring. ADSL is asymmetric, with different upload and download rates; SDSL is symmetric. A modem modulates digital information into a signal suitable for a link and demodulates received signals. Simplex is one-way, half-duplex allows both directions at different times, and full-duplex allows simultaneous two-way communication.",
+          "A synchronous modem uses synchronized timing; an asynchronous example identifies characters with start and stop bits. PSTN is the traditional circuit-switched telephone network. These legacy technologies explain how older industrial sites may reach outside networks.",
+          "WIA-PA is the wireless industrial process-automation network discussed alongside ISA100 and LPWAN. Its adaptive frequency hopping changes channels to reduce the impact of interference; the lecture also highlights aggregation and flexible routing. Satellite links can reach remote sites over large areas but have high cost, propagation delay and maintenance/diagnostic challenges."
+        ],
+        "keyPoints": [
+          "WIA-PA assignment association: adaptive frequency hopping (AFH); the notes associate its process-automation standard with IEC PAS 62601 and the IEEE 802.15 family.",
+          "ADSL: upload and download differ; SDSL: symmetric directions.",
+          "Synchronous timing and communication direction are separate classifications.",
+          "Satellite suits remote coverage, but delay makes it a poor substitute for a very fast local control loop."
+        ],
+        "terms": [
+          {
+            "term": "AFH",
+            "meaning": "Adaptive Frequency Hopping: adapt channel use when interference conditions change."
+          },
+          {
+            "term": "Duplex",
+            "meaning": "Communication in both directions; full-duplex is simultaneous."
+          },
+          {
+            "term": "Propagation delay",
+            "meaning": "Time a signal needs to travel over the physical distance."
+          }
+        ],
+        "traps": [
+          "Frequency hopping improves resilience to interference; it does not by itself replace authentication or encryption.",
+          "Bandwidth, data rate and frequency are different quantities."
+        ],
+        "comparison": {
+          "headers": [
+            "Link",
+            "Useful property",
+            "Main trade-off"
+          ],
+          "rows": [
+            [
+              "DSL",
+              "Reuse telephone wiring",
+              "Rate/distance and service constraints"
+            ],
+            [
+              "WIA-PA",
+              "Industrial wireless with hopping",
+              "Wireless interference and planning"
+            ],
+            [
+              "Satellite",
+              "Large-area remote connectivity",
+              "Cost and propagation delay"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "w6-5g",
+        "title": "5G, D2D, tactile internet & URLLC",
+        "intro": "Modern wireless aims to connect many devices while supporting time-critical industrial work.",
+        "paragraphs": [
+          "5G New Radio is the radio interface associated with three service classes: eMBB for high data rates, mMTC for massive numbers of devices and URLLC for reliable low-latency communication. The lecture links 3GPP Release 15 to industrial requirements, Release 16 to factories of the future, and 5G-ACIA to collaboration among OT, ICT and academia. Private factory networks and small cells can improve local coverage and reduce pressure on the backhaul.",
+          "D2D means nearby devices communicate directly rather than always routing each exchange through a central/core-network path. It can reduce delay, increase local throughput and offload the core network. The assignment uses “eliminating the load on the core network” for these direct exchanges; it does not mean that a whole deployment no longer needs a core.",
+          "Tactile internet transmits haptic/touch interactions for responsive remote control. The notes cite a below-1-ms round-trip aspiration and human interface → core network → remote machine structure, supported by SDN, MIMO, mobile edge computing and NFV. URLLC combines short packets and transmission intervals with high reliability. Millimetre waves offer large bandwidth and compact beamforming antennas but suffer penetration loss and shadowing."
+        ],
+        "keyPoints": [
+          "URLLC course targets: six-nines availability (99.9999%), approximately 1 ms latency, outage probability below 10^-5 and 30–200-byte packets.",
+          "Short TTI and fast HARQ reduce delay; reliability/retransmission and false predictions create trade-offs.",
+          "Small cells, heterogeneous macro/small-cell networks, separate control/data channels and edge intelligence support local services.",
+          "Release 16 use cases in the notes: rail transit, buildings, healthcare, cities, factories, farming, power generation/distribution and production of media/events.",
+          "mmWave textbook band: roughly 30–300 GHz, wavelength 1–10 mm; 5G high-band terminology can include frequencies below 30 GHz.",
+          "mmWave drawbacks: high penetration loss, shadowing and need for directional/high-gain antennas."
+        ],
+        "terms": [
+          {
+            "term": "URLLC",
+            "meaning": "Ultra-Reliable Low Latency Communication."
+          },
+          {
+            "term": "D2D",
+            "meaning": "Device-to-device communication over a direct local link."
+          },
+          {
+            "term": "Haptic",
+            "meaning": "Relating to the sense of touch."
+          },
+          {
+            "term": "HARQ",
+            "meaning": "Hybrid Automatic Repeat reQuest: combine error correction with retransmission."
+          },
+          {
+            "term": "TTI",
+            "meaning": "Transmission Time Interval: the scheduling/transmission duration."
+          }
+        ],
+        "traps": [
+          "Six nines is 99.9999%, not 99.99% or 99.9%.",
+          "Availability, per-packet reliability and outage probability refer to different measures; do not assume the lecture numbers are interchangeable or universal guarantees.",
+          "The tactile latency number is an aspiration in the course example, not a guarantee for every remote connection.",
+          "D2D reduces the core load for direct traffic; infrastructure may still handle control and other traffic."
+        ],
+        "diagram": {
+          "type": "branch",
+          "title": "Choose the 5G service emphasis",
+          "nodes": [
+            {
+              "label": "Industrial requirement",
+              "detail": "What matters most?"
+            },
+            {
+              "label": "eMBB",
+              "detail": "High data rate"
+            },
+            {
+              "label": "mMTC",
+              "detail": "Very many devices"
+            },
+            {
+              "label": "URLLC",
+              "detail": "Reliable, low-delay exchange"
+            }
+          ],
+          "caption": "A plant may use several service classes: high-rate cameras, many meters and time-sensitive controllers."
+        },
+        "example": {
+          "title": "A wireless robot cell",
+          "steps": [
+            "Use local/edge control so a response does not wait for a distant cloud.",
+            "A direct device link can offload exchanges between nearby machines.",
+            "A camera stream emphasizes bandwidth; coordinated actuation emphasizes timing and reliability.",
+            "Plan line-of-sight and obstructions before depending on a directional mmWave link."
+          ]
+        }
+      }
+    ],
+    "quiz": [
+      {
+        "id": "w6-q01",
+        "question": "Which is a benefit of sensors in industry?",
+        "options": [
+          "Improving visibility of machine and process status",
+          "Replacing all inspection with higher latency",
+          "Lowering production by design",
+          "Increasing control delay"
+        ],
+        "correctIndex": 0,
+        "explanation": "Sensing makes machine and process conditions visible to monitoring/control systems. Higher latency is a communication problem, not an intended sensing benefit.",
+        "sectionId": "w6-sensing-chain"
+      },
+      {
+        "id": "w6-q02",
+        "question": "Which sensor is associated with steel-pipe inspection and stress/strain in ferromagnetic materials?",
+        "options": [
+          "PIR sensor",
+          "Ultrasonic level sensor",
+          "Magnetostrictive sensor",
+          "LM35 temperature sensor"
+        ],
+        "correctIndex": 2,
+        "explanation": "Magnetostrictive sensing is the specific steel/stress association in the lecture. Ultrasonic techniques can inspect materials too, but the question’s ferromagnetic stress/strain wording identifies magnetostrictive sensing.",
+        "sectionId": "w6-sensor-types"
+      },
+      {
+        "id": "w6-q03",
+        "question": "What temperature-data size does the lecture specify for DS1621?",
+        "options": [
+          "3 bits",
+          "8 bits",
+          "16 bits",
+          "9 bits"
+        ],
+        "correctIndex": 3,
+        "explanation": "The supplied DS1621 example generates 9-bit digital temperature data over I2C. Three address bits select a device address; they are not the temperature-data size.",
+        "sectionId": "w6-sensor-types"
+      },
+      {
+        "id": "w6-q04",
+        "question": "What does selectivity mean for a gas sensor?",
+        "options": [
+          "Detecting a particular gas in a mixture of different gases",
+          "Returning to baseline after gas removal",
+          "Changing output per unit concentration change",
+          "Reaching the final output quickly"
+        ],
+        "correctIndex": 0,
+        "explanation": "Selectivity distinguishes a target gas from others. Sensitivity is output change per unit concentration; reversibility and response time describe different properties.",
+        "sectionId": "w6-gas-principle"
+      },
+      {
+        "id": "w6-q05",
+        "question": "What happens to an n-type MOS sensor’s resistance when exposed to a reducing gas in the course example?",
+        "options": [
+          "It always stays constant",
+          "It increases",
+          "It decreases",
+          "It becomes the heater temperature"
+        ],
+        "correctIndex": 2,
+        "explanation": "The n-type reducing-gas example lowers resistance. The contrasting p-type example raises resistance; the gas chemistry and material type matter.",
+        "sectionId": "w6-gas-principle",
+        "sourceNote": "The resistance-direction rule is scoped to reducing-gas exposure, not every possible gas."
+      },
+      {
+        "id": "w6-q06",
+        "question": "How many active Modbus TCP connections does the supplied lecture example support?",
+        "options": [
+          "Exactly one",
+          "Up to 10",
+          "Up to 32",
+          "Up to 512"
+        ],
+        "correctIndex": 1,
+        "explanation": "The supplied assignment expects up to 10 sockets. The 32 and 512 figures belong to the lecture’s PROFIBUS DP and Interbus examples.",
+        "sectionId": "w6-ethernet",
+        "sourceNote": "This is the course/device-example answer. Modbus TCP does not impose a universal 10-connection maximum."
+      },
+      {
+        "id": "w6-q07",
+        "question": "Which EtherNet/IP communication type handles real-time I/O with continuous messaging?",
+        "options": [
+          "Implicit",
+          "Explicit",
+          "Asynchronous configuration only",
+          "Serial Modbus RTU"
+        ],
+        "correctIndex": 0,
+        "explanation": "Implicit messaging is the real-time I/O association. Explicit messaging handles general/non-time-critical request-response information.",
+        "sectionId": "w6-ethernet"
+      },
+      {
+        "id": "w6-q08",
+        "question": "Which IEEE standard is the assignment’s key association for TSN?",
+        "options": [
+          "IEEE 802.15.4",
+          "IEEE 802.1Q",
+          "IEEE 802.11",
+          "IEEE 802.16"
+        ],
+        "correctIndex": 1,
+        "explanation": "The lecture associates TSN with the IEEE 802.1Q Ethernet bridge/VLAN framework. IEEE 802.15.4 is the low-rate wireless basis associated with ZigBee, not TSN.",
+        "sectionId": "w6-ethernet"
+      },
+      {
+        "id": "w6-q09",
+        "question": "How many PROFIBUS DP devices does the course specify without repeaters?",
+        "options": [
+          "10",
+          "64",
+          "512",
+          "32"
+        ],
+        "correctIndex": 3,
+        "explanation": "The expected number is 32 for the stated RS-485 segment example. Interbus is the protocol associated with 512 subscribers in these notes.",
+        "sectionId": "w6-fieldbus",
+        "sourceNote": "Segment limits depend on physical implementation; this is not the maximum of every network using repeaters."
+      },
+      {
+        "id": "w6-q10",
+        "question": "Which operating-frequency value is associated with CC-Link in the supplied assignment key?",
+        "options": [
+          "2.4 GHz",
+          "915 MHz",
+          "13.56 MHz",
+          "30 GHz"
+        ],
+        "correctIndex": 2,
+        "explanation": "The supplied assignment key says 13.56 MHz. The other values refer to different wireless-band examples, not that key association.",
+        "sectionId": "w6-fieldbus",
+        "sourceNote": "Source-specific and questionable: 13.56 MHz and the linked ISO wording resemble RFID claims. Do not treat this as a general wired CC-Link frequency specification."
+      },
+      {
+        "id": "w6-q11",
+        "question": "DeviceNet is based on which protocol?",
+        "options": [
+          "CAN (Controller Area Network)",
+          "I2C",
+          "LoRaWAN",
+          "HTTP"
+        ],
+        "correctIndex": 0,
+        "explanation": "DeviceNet builds on CAN for industrial device communication. I2C is a local digital sensor bus, not the DeviceNet networking base.",
+        "sectionId": "w6-fieldbus"
+      },
+      {
+        "id": "w6-q12",
+        "question": "Which feature is an advantage of WIA-PA in the lecture?",
+        "options": [
+          "Mandatory satellite relaying",
+          "Adaptive Frequency Hopping (AFH)",
+          "Only fixed-channel operation",
+          "No routing capability"
+        ],
+        "correctIndex": 1,
+        "explanation": "WIA-PA supports AFH, adapting channel use to interference conditions. Fixed-channel-only operation is the opposite of this cited advantage.",
+        "sectionId": "w6-links"
+      },
+      {
+        "id": "w6-q13",
+        "question": "What availability target is quoted for URLLC in the supplied notes?",
+        "options": [
+          "99%",
+          "99.9%",
+          "99.99%",
+          "99.9999% (six nines)"
+        ],
+        "correctIndex": 3,
+        "explanation": "Six nines means 99.9999%. The nines terminology counts the digits 9; 99.99% contains only four.",
+        "sectionId": "w6-5g",
+        "sourceNote": "This is the availability target quoted in the lecture. It is not a universal guarantee or the same metric as every packet-reliability target."
+      },
+      {
+        "id": "w6-q14",
+        "question": "Which objective does the lecture assign to D2D communication?",
+        "options": [
+          "Increase dependence on the core path for every local exchange",
+          "Eliminate the load on the core network for direct device exchanges",
+          "Increase the number of required remote hops",
+          "Prevent devices from communicating locally"
+        ],
+        "correctIndex": 1,
+        "explanation": "A direct device exchange can bypass the usual core path and offload that traffic. Requiring more remote hops would undermine the low-delay objective.",
+        "sectionId": "w6-5g",
+        "sourceNote": "The original key says “eliminating the load on the core network”; scope that wording to traffic carried directly, not the entire network."
+      },
+      {
+        "id": "w6-q15",
+        "question": "Which is a disadvantage of mmWave communication?",
+        "options": [
+          "Inability to use small antenna elements",
+          "Unlimited penetration through buildings",
+          "High penetration loss and shadowing",
+          "A requirement for very low data rates"
+        ],
+        "correctIndex": 2,
+        "explanation": "mmWave signals can be strongly weakened by obstacles, causing penetration loss and shadowing. Small antenna elements and directional beamforming are useful properties, not the stated drawback.",
+        "sectionId": "w6-5g"
+      }
+    ],
+    "revision": [
+      "Sensing creates visibility; sensor device = sensor + processor + power + communication.",
+      "LM35 analog temperature; DS1621 digital temperature / 9 bits / I2C; ADXL335 X-Y-Z; MQ-2 gas.",
+      "Magnetostrictive = stress/strain in ferromagnetic steel; PIR = infrared presence; ultrasonic = sound-echo distance.",
+      "Selectivity picks the gas; sensitivity measures output change; response is rise timing; recovery returns toward baseline.",
+      "Reducing gas: n-type resistance down, p-type up. Percentage response = (Ra − Rg) / Ra ×100.",
+      "Modbus TCP: 7-byte MBAP; course answer 10 sockets. EtherNet/IP: implicit real-time I/O; explicit general messages.",
+      "TSN → IEEE 802.1Q. PROFIBUS DP → 32 on the stated segment. DeviceNet → CAN. WIA-PA → AFH.",
+      "CC-Link → Mitsubishi; supplied key says 13.56 MHz, with a source caveat.",
+      "5G: eMBB bandwidth, mMTC many devices, URLLC reliable short-delay communication.",
+      "URLLC course availability = 99.9999%; D2D offloads direct traffic from the core; mmWave suffers penetration loss/shadowing."
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Long-range links, processing & control",
+    "summary": "Move a reading across LoRa or ZigBee, turn streams into decisions, and close the loop with PLCs, DCS and SCADA.",
+    "objectives": [
+      "Compare LoRa, SIGFOX and ZigBee and explain the demonstrations.",
+      "Distinguish processing locations and descriptive/predictive/prescriptive analytics.",
+      "Identify the components responsible for decisions in the application case studies.",
+      "Explain process variables, set points, open/closed loops and industrial controllers."
+    ],
+    "sections": [
+      {
+        "id": "w7-lpwan",
+        "title": "LoRa & SIGFOX: small messages over long distances",
+        "intro": "LPWAN trades data rate for coverage and battery-friendly operation.",
+        "paragraphs": [
+          "A far-away meter often sends only an occasional small reading. It does not need camera-stream bandwidth, but it does need a useful radio range and modest power consumption. LPWAN means Low Power Wide Area Network. LoRa and SIGFOX are the lecture’s two examples.",
+          "LoRa uses Chirp Spread Spectrum (CSS) modulation; LoRaWAN describes networking for LoRa devices. The notes list sub-GHz bands such as 169, 433, 868 and 915 MHz, selected by region. SIGFOX is presented as an ultra-narrowband M2M option with BPSK, up to 100 bits/s, a 12-byte payload and up to 140 messages/day in the cited service example.",
+          "The LoRa demonstration connects a DHT22 temperature/humidity sensor to a NodeMCU transmitter and radio. A second NodeMCU/radio receives the reading, lights an LED and sends an acknowledgment. The LED stands in for a real actuator. The sender uses the Adafruit DHT library and RadioHead radio library, and the demonstration sets 915 MHz."
+        ],
+        "keyPoints": [
+          "LoRa course comparison: CSS; 125/250 kHz bandwidth; about 50 kbps; more frequent transmissions.",
+          "SIGFOX course comparison: BPSK; 100 Hz bandwidth; 100 bps; tiny infrequent messages.",
+          "NodeMCU is an ESP-12-family board programmed through an Arduino-compatible workflow.",
+          "DHT22 demo pins: power, data, unused pin and ground; data connects to GPIO4.",
+          "The LoRa interface uses SPI signal names SCK, MISO, MOSI and CS, plus reset, interrupt, supply and ground; verify the chosen board pinout before wiring."
+        ],
+        "terms": [
+          {
+            "term": "LPWAN",
+            "meaning": "Low Power Wide Area Network for small-data, long-range communication."
+          },
+          {
+            "term": "CSS",
+            "meaning": "Chirp Spread Spectrum: LoRa’s modulation method."
+          },
+          {
+            "term": "BPSK",
+            "meaning": "Binary Phase Shift Keying: the modulation association in this SIGFOX example."
+          },
+          {
+            "term": "Acknowledgment",
+            "meaning": "A return message confirming that a receiver obtained a transmission."
+          }
+        ],
+        "traps": [
+          "The exam’s SIGFOX unit is bits per second, not kilobits per second or bytes per second.",
+          "Listed frequencies, rates, message limits and costs describe the course examples; real configurations and regional radio rules vary.",
+          "LoRa is the radio/modulation technology; LoRaWAN is the networking layer.",
+          "A long-range low-rate link is not suited to streaming high-rate video or assuming deterministic motion control."
+        ],
+        "comparison": {
+          "headers": [
+            "Property",
+            "LoRa: lecture example",
+            "SIGFOX: lecture example"
+          ],
+          "rows": [
+            [
+              "Modulation",
+              "CSS",
+              "BPSK"
+            ],
+            [
+              "Channel bandwidth",
+              "125 / 250 kHz",
+              "100 Hz"
+            ],
+            [
+              "Rate",
+              "About 50 kbps",
+              "Up to 100 bps"
+            ],
+            [
+              "Pattern",
+              "More frequent readings",
+              "Infrequent tiny readings"
+            ],
+            [
+              "Example message limit",
+              "Configuration-dependent",
+              "140/day, 12-byte payload"
+            ],
+            [
+              "Relative cost in notes",
+              "Higher",
+              "Lower"
+            ]
+          ]
+        },
+        "diagram": {
+          "type": "flow",
+          "title": "A remote reading becomes an action",
+          "nodes": [
+            {
+              "label": "DHT22 sensor",
+              "detail": "Temperature and humidity"
+            },
+            {
+              "label": "NodeMCU + LoRa",
+              "detail": "Format and transmit reading"
+            },
+            {
+              "label": "LoRa receiver",
+              "detail": "Decode message and acknowledge"
+            },
+            {
+              "label": "LED / actuator",
+              "detail": "Act when the message arrives"
+            }
+          ],
+          "caption": "The demo illustrates the sensing → connectivity → processing → actuation chain."
+        },
+        "example": {
+          "title": "A distant storage-shed alarm",
+          "steps": [
+            "Read temperature in a shed outside the main factory.",
+            "Send a compact reading over a low-power long-range radio.",
+            "Let a nearby receiver evaluate the warning threshold.",
+            "Trigger an alarm or cooler and acknowledge the received message."
+          ]
+        }
+      },
+      {
+        "id": "w7-zigbee",
+        "title": "ZigBee roles & the XBee demonstration",
+        "intro": "ZigBee is a protocol; XBee is a family of hardware modules.",
+        "paragraphs": [
+          "ZigBee uses the IEEE 802.15.4 low-rate wireless foundation and supports low-power personal-area networking. The lecture cites a typical 10–100 m range and star, tree or mesh topologies. Range depends on radio hardware, obstacles and line-of-sight; it is not a fixed protocol guarantee.",
+          "A coordinator establishes/root-manages the network in the lecture’s simplified description. A router forwards messages for other nodes. An end device communicates through its parent and does not relay other nodes’ traffic, allowing simpler low-power operation.",
+          "Digi’s XBee modules can support different protocol variants, including Digi-Mesh. XCTU is the software used to discover and configure modules and inspect port IDs/MAC addresses. In the demo, two USB-connected modules exchange a “hello world” message using Python programs and the appropriate module library: sender selects a destination, receiver listens for frames. Broadcast is the default destination described in the notes."
+        ],
+        "keyPoints": [
+          "Assignment range: 10–100 metres.",
+          "Router relays; end device does not relay; coordinator is the root role.",
+          "XCTU discovers/configures modules; it is not the ZigBee protocol itself.",
+          "Port identifies the local connection; a radio/MAC address identifies the remote module."
+        ],
+        "terms": [
+          {
+            "term": "Router",
+            "meaning": "A node that forwards traffic for other network nodes."
+          },
+          {
+            "term": "End device",
+            "meaning": "A leaf device that communicates through a parent without relaying traffic."
+          },
+          {
+            "term": "XCTU",
+            "meaning": "Digi’s configuration/discovery tool for compatible XBee modules."
+          },
+          {
+            "term": "Broadcast",
+            "meaning": "Send to all eligible receivers rather than one specified recipient."
+          }
+        ],
+        "traps": [
+          "Different weeks quote different approximate ZigBee ranges; use 10–100 m for this assignment and understand why physical conditions change it.",
+          "Not every XBee module uses ZigBee, and Digi-Mesh is a distinct protocol.",
+          "The source’s interpretation of a Python “u” prefix is imprecise: in the older Python demo it denotes a Unicode string, not a special radio code."
+        ],
+        "comparison": {
+          "headers": [
+            "Device role",
+            "Job",
+            "Relays others’ messages?"
+          ],
+          "rows": [
+            [
+              "Coordinator",
+              "Establish/root-manage network",
+              "May coordinate/route, depending on stack"
+            ],
+            [
+              "Router",
+              "Forward traffic",
+              "Yes"
+            ],
+            [
+              "End device",
+              "Sense/act through parent",
+              "No"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "w7-processing",
+        "title": "Process streams before they lose their value",
+        "intro": "The important result is a timely pattern or decision, not a pile of raw readings.",
+        "paragraphs": [
+          "Industrial data is heterogeneous: different sensors use different formats, precision and rates. This variety can change over time. A useful engine must relate events by time, location and cause, while respecting physical process timing. The autonomous-car example combines cameras, LiDAR, radar, sonar and GPS to show why processing can become a large workload.",
+          "Complex Event Processing (CEP) consumes event streams, filters irrelevant events, detects meaningful patterns and adds context. A single reading may look harmless; several correlated readings can signal a fault. CEP may analyze an event before storage so an alert is still useful in real time.",
+          "Processing can be centralized in the cloud, split between edge and cloud, or kept entirely at the edge for a small local task. A common deployment configures rules in the cloud, deploys them to edge devices, sends sensor readings to the edge agent, filters/aggregates/applies rules locally and forwards selected information for further cloud analysis."
+        ],
+        "keyPoints": [
+          "Data traits: massive variety/polymorphism, real-time needs, changing heterogeneity and causal/temporal relationships.",
+          "CEP: filter → detect patterns → add context → trigger/store a useful result.",
+          "Edge placement reduces network travel for urgent work; cloud placement offers more shared computing resources.",
+          "Course car-rate examples: GPS about 50 kbps; sonar/radar 10–100 kbps; LiDAR 10–70 Mbps; cameras 20–40 Mbps. They illustrate scale, not a universal vehicle specification."
+        ],
+        "terms": [
+          {
+            "term": "Event",
+            "meaning": "A recorded occurrence or change that may require processing."
+          },
+          {
+            "term": "CEP",
+            "meaning": "Complex Event Processing: correlate streams into meaningful higher-level events."
+          },
+          {
+            "term": "Temporal relationship",
+            "meaning": "How events relate in time."
+          },
+          {
+            "term": "Context",
+            "meaning": "Operating conditions that change how a reading should be interpreted."
+          }
+        ],
+        "traps": [
+          "Correlation alone does not establish a causal explanation; physical/process context is needed.",
+          "“Distributed” can mean several processing locations; it does not require every task to run in the cloud."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "An event stream becomes a fault warning",
+          "nodes": [
+            {
+              "label": "Sensor events",
+              "detail": "Temperature, load and vibration"
+            },
+            {
+              "label": "Filter",
+              "detail": "Remove irrelevant/noisy events"
+            },
+            {
+              "label": "Pattern + context",
+              "detail": "Correlate changes under high load"
+            },
+            {
+              "label": "Action",
+              "detail": "Issue a useful warning or command"
+            },
+            {
+              "label": "Cloud history",
+              "detail": "Retain evidence and improve rules"
+            }
+          ],
+          "caption": "The context prevents an isolated reading from being treated as a complete explanation."
+        },
+        "example": {
+          "title": "Detect an overloaded bearing",
+          "steps": [
+            "A vibration spike alone may be a transient event.",
+            "CEP combines sustained vibration, rising temperature and high motor load.",
+            "The contextual rule flags a likely bearing problem locally.",
+            "The operator receives an alert and the cloud retains the event sequence."
+          ]
+        }
+      },
+      {
+        "id": "w7-analytics-middleware",
+        "title": "Analytics asks a question; middleware connects the pieces",
+        "intro": "Descriptive, predictive and prescriptive describe the purpose of analysis.",
+        "paragraphs": [
+          "Descriptive analytics asks what happened and what is happening, using dashboards, reports or scorecards. Predictive analytics asks what may happen, using forecasting and pattern models. Prescriptive analytics asks what action should be taken, using optimization, simulation or decision models. A report of yesterday’s production is descriptive even if it appears on a sophisticated dashboard.",
+          "Middleware sits between infrastructure and applications. It hides device differences, exposes useful services and can support security and consistent data access. Many examples use Service-Oriented Architecture (SOA): capabilities are available through service interfaces so applications do not have to manage every low-level device detail.",
+          "The research tour demonstrates several processing designs rather than one mandatory architecture. Content-aware methods can exploit source correlation and energy models; context-aware methods adapt event decisions; message-broker hierarchies improve scaling; semantic rule engines give an abstraction over heterogeneous devices. Across these designs, raw data becomes information, then actionable knowledge."
+        ],
+        "keyPoints": [
+          "Descriptive = happened/happening; predictive = forecast; prescriptive = best action.",
+          "Middleware is often SOA-based in the assignment.",
+          "Dey’s broker examples use MQTT/Apache Kafka and sensor/room/floor topologies; a single shared queue can become a bottleneck.",
+          "Theorin’s LISA is event-driven: event component, message bus, communication endpoint and service endpoint."
+        ],
+        "terms": [
+          {
+            "term": "SOA",
+            "meaning": "Service-Oriented Architecture: expose capabilities as reusable services."
+          },
+          {
+            "term": "Middleware",
+            "meaning": "Software between underlying infrastructure and applications."
+          },
+          {
+            "term": "Message broker",
+            "meaning": "Software that receives and routes messages between producers and consumers."
+          }
+        ],
+        "traps": [
+          "A dashboard describing past/current conditions is descriptive, not automatically predictive.",
+          "SOA is the middleware architecture association; it is different from the service-oriented business model in Week 5."
+        ],
+        "comparison": {
+          "headers": [
+            "Work in the lecture",
+            "Core idea"
+          ],
+          "rows": [
+            [
+              "Colombo",
+              "Service cloud; remote supervisory control; production → sensors/actuators → control → SCADA → MES → ERP"
+            ],
+            [
+              "MIDAS",
+              "Modular secure IoT/M2M; premises or cloud; runtime and batch"
+            ],
+            [
+              "Zhou",
+              "Content-aware distributed processing; transmission/processing energy"
+            ],
+            [
+              "Akbar",
+              "Context-aware micro-CEP with adaptive clustering"
+            ],
+            [
+              "Dey",
+              "Message-broker topologies for scaling"
+            ],
+            [
+              "Kaed",
+              "Semantic rule engines at gateways/edges"
+            ],
+            [
+              "Wang: maritime BDA-IIoT",
+              "Vessel-level and land-level analytics"
+            ],
+            [
+              "Karnouskos",
+              "Service, calculation and filtering engine with CEP"
+            ],
+            [
+              "Hossain",
+              "Wearable healthcare readings → gateway → cloud"
+            ],
+            [
+              "Wang: factory",
+              "Multi-agent smart-factory system"
+            ],
+            [
+              "Theorin / LISA",
+              "Event-driven manufacturing information architecture"
+            ]
+          ]
+        },
+        "example": {
+          "title": "Three views of the same maintenance data",
+          "steps": [
+            "Descriptive: show how often the motor overheated last week.",
+            "Predictive: estimate whether it may fail during the next shift.",
+            "Prescriptive: recommend reducing load and scheduling a repair.",
+            "Middleware supplies a consistent motor-data service to each application."
+          ]
+        }
+      },
+      {
+        "id": "w7-agriculture",
+        "title": "Agriculture: locate the component making the decision",
+        "intro": "Follow data from sensing to the precise action, then remember the named module.",
+        "paragraphs": [
+          "FarmBeats combines soil sensors, cameras, UAVs, weather stations, gateways, a base station and cloud services for precision agriculture. Data supports decisions about irrigation, fertilization and field conditions. The supplied assignment places weather-aware decisions and UAV flight planning at the IoT gateway; memorize that component association for this question.",
+          "SWAMP, the Smart Water Management Platform, adapts irrigation to crop type, climate and regional conditions. Sensor readings support virtual entities, storage, analytics and customizable water-management/distribution services. Vineyard monitoring applies similar ideas to climate/soil differences, yield, water use, disease and fertilizer decisions.",
+          "In the AR-drone weed-spraying case, the drone captures field imagery. The video-processing module on a laptop detects weeds and calculates their coordinates. A tractor’s precision sprayer uses those locations to apply treatment only where needed. The drone is the observation source; the processing module makes the location decision."
+        ],
+        "keyPoints": [
+          "FarmBeats assignment hook: IoT gateway → weather-aware decisions and UAV flight planning.",
+          "SWAMP → irrigation and water management.",
+          "AR-drone video-processing module → weed detection and coordinates.",
+          "Vineyard → plant-health monitoring, predictions, visualization and alerts."
+        ],
+        "terms": [
+          {
+            "term": "Precision agriculture",
+            "meaning": "Use measured local conditions to apply water, fertilizer or treatment precisely."
+          },
+          {
+            "term": "UAV",
+            "meaning": "Uncrewed aerial vehicle, such as a sensing drone."
+          },
+          {
+            "term": "Computer vision",
+            "meaning": "Software interpreting image/video content."
+          }
+        ],
+        "traps": [
+          "The FarmBeats gateway association is taken from the supplied assignment key; implementations can distribute decisions differently.",
+          "Cloud storage is not the same role as the video module that identifies weed locations."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "Spray the weed, not the whole field",
+          "nodes": [
+            {
+              "label": "Drone images",
+              "detail": "Observe the field"
+            },
+            {
+              "label": "Video processing",
+              "detail": "Find weeds and coordinates"
+            },
+            {
+              "label": "Tractor controller",
+              "detail": "Receive target positions"
+            },
+            {
+              "label": "Precision sprayer",
+              "detail": "Apply treatment at targets"
+            }
+          ],
+          "caption": "The video-processing module is the decision component asked about in the assignment."
+        }
+      },
+      {
+        "id": "w7-city-factory",
+        "title": "City, cognitive factory & warehouse examples",
+        "intro": "Different applications reuse the same sensing → network → processing → insight pattern.",
+        "paragraphs": [
+          "SmartSantander is the lecture’s large-scale smart-city testbed. It combines IoT nodes, gateways and a testbed server, with authentication/authorization/accounting, management, experimentation and application support. Its design considers scale, realism, heterogeneity, mobility, reliability and user involvement.",
+          "The iRobot-Factory example combines intelligent terminals, edge computation and an intelligent decision unit, a cloud cognitive engine, a production-line layer and system management. The cognitive engine is responsible for high-performance long-term AI analytics. In the Big Data Driven Smart Manufacturing example, Phase 1 integrates data/context, Phase 2 synthesizes/analyzes it to build knowledge, and Phase 3 uses knowledge for process/production innovation.",
+          "Smart Warehousing has a collection module that identifies objects with RFID/sensors, a database for records and secure access, and an administrative module that organizes/processes data, generates real-time events and supports history-based decisions. Tao’s cloud/IoT manufacturing framework adds providers, consumers and operators: collect offerings, virtualize/allocate/manage services, then process on-demand services."
+        ],
+        "keyPoints": [
+          "iRobot-Factory: cognitive engine = long-term AI analytics; edge node = local quick processing.",
+          "Smart manufacturing phases: integration → synthesis/analysis/knowledge → innovation.",
+          "Smart warehouse administrative module = data processing and history-based decisions.",
+          "Tao framework layers: application, service, IoT; cross-cutting support includes knowledge, cloud security and internet."
+        ],
+        "terms": [
+          {
+            "term": "Cognitive engine",
+            "meaning": "The AI analytics component of the lecture’s cognitive-factory example."
+          },
+          {
+            "term": "RFID",
+            "meaning": "Radio-frequency identification for recognizing tagged objects."
+          },
+          {
+            "term": "Synthesis",
+            "meaning": "Combine data and context into a coherent useful understanding."
+          }
+        ],
+        "traps": [
+          "The warehouse database stores records; the administrative module is the named processing/decision component.",
+          "Phase 2 builds knowledge from analysis; Phase 1 is integration and Phase 3 is innovation."
+        ],
+        "comparison": {
+          "headers": [
+            "Case study",
+            "Component to remember",
+            "Job"
+          ],
+          "rows": [
+            [
+              "SmartSantander",
+              "Gateway + testbed server",
+              "Connect and support city experiments"
+            ],
+            [
+              "iRobot-Factory",
+              "Cognitive Engine",
+              "Long-term AI analytics"
+            ],
+            [
+              "Big-data smart manufacturing",
+              "Phase 2",
+              "Synthesis/analysis builds knowledge"
+            ],
+            [
+              "Smart Warehousing",
+              "Administrative module",
+              "Process data; use historical records"
+            ],
+            [
+              "Tao manufacturing",
+              "Service virtualization/allocation",
+              "Provide manufacturing capabilities on demand"
+            ]
+          ]
+        },
+        "example": {
+          "title": "Choose a warehouse replenishment",
+          "steps": [
+            "RFID identifies each arriving and departing item.",
+            "The database retains item movements and access-controlled records.",
+            "The administrative module compares current stock with historical usage.",
+            "It generates a replenishment event; the collection module alone does not make this decision."
+          ]
+        }
+      },
+      {
+        "id": "w7-control",
+        "title": "Set point, measured value & feedback",
+        "intro": "Control changes the physical process to move it toward a desired condition.",
+        "paragraphs": [
+          "The process variable (PV) is what is measured, such as tank level or room temperature. The set point (SP) is the desired/reference value for controlled operation. A controller compares measurement with the target and chooses an action. The manipulated variable is the quantity it adjusts, such as valve opening or heater power.",
+          "An open-loop controller chooses an action independently of the measured PV: a timed conveyor or toaster runs for a predefined duration without checking the outcome. A closed-loop controller uses measured feedback to adjust its action. A thermostat continues checking temperature and changes cooling or heating to approach the set point.",
+          "Feedback is essential when disturbances affect the process. If a tank loses water unexpectedly, a level measurement allows the controller to react. The loop is controller → actuator → process → measurement → controller. The controller itself is not the actuator: it decides; the actuator physically changes flow, motion or energy."
+        ],
+        "keyPoints": [
+          "PV = measured value; SP = target/reference value; manipulated variable = adjustable control input.",
+          "Open loop: decisions independent of measured process output.",
+          "Closed loop: measured output feeds back into decisions.",
+          "A common comparison is error = SP − PV; the appropriate action depends on the process/control design."
+        ],
+        "terms": [
+          {
+            "term": "PV",
+            "meaning": "Process Variable: the measured process condition."
+          },
+          {
+            "term": "SP",
+            "meaning": "Set Point: the desired/reference process value."
+          },
+          {
+            "term": "Manipulated variable",
+            "meaning": "The adjustable input used to influence the process."
+          },
+          {
+            "term": "Feedback",
+            "meaning": "Return measured process information to the controller."
+          }
+        ],
+        "traps": [
+          "Set point is the target, not the measured value.",
+          "Open loop can still contain sensors used for monitoring; the defining point is that the relevant control decision does not use output feedback.",
+          "The source loosely calls manipulated variables process variables; distinguish the adjusted input from the controlled measurement."
+        ],
+        "diagram": {
+          "type": "loop",
+          "title": "Closed-loop tank-level control",
+          "nodes": [
+            {
+              "label": "Controller",
+              "detail": "Compare measured level with target"
+            },
+            {
+              "label": "Valve actuator",
+              "detail": "Change the inlet opening"
+            },
+            {
+              "label": "Tank process",
+              "detail": "Water level changes"
+            },
+            {
+              "label": "Level sensor",
+              "detail": "Measure and return the new PV"
+            }
+          ],
+          "caption": "The set point is the desired level; the measured level closes the feedback loop."
+        },
+        "example": {
+          "title": "Keep a tank near its target level",
+          "steps": [
+            "SP is 2 metres; the level sensor reports PV of 1.5 metres.",
+            "The controller detects the level is below target.",
+            "The inlet-valve opening is increased: this is the manipulated variable.",
+            "The sensor reports new levels, so the controller can reduce inflow when the target is approached."
+          ]
+        }
+      },
+      {
+        "id": "w7-plc-scada",
+        "title": "PLC, DCS & SCADA in a water network",
+        "intro": "Fast local control and broad supervisory visibility serve different responsibilities.",
+        "paragraphs": [
+          "A PLC is a rugged industrial controller executing a predefined program. It contains processor, memory, power supply and communication/I/O modules and is common in assembly lines and robotic manufacturing. Analog I/O modules can convert sensor signals to digital values and digital commands to actuator-compatible outputs.",
+          "A DCS distributes many control loops across a plant, with supervisory functions, distributed controllers, field devices and a communication backbone. Distribution can improve resilience by avoiding a single controller for every loop. SCADA provides supervisory control and data acquisition over connected sites: field PLCs/RTUs send data to a master system and operators use an HMI.",
+          "The IIT Kharagpur water-network testbed measures junction pressure and demand-node flow and remotely operates valves. SCADA shows the network graphically; the PLC performs local I/O/control. Artificial leaks allow software to estimate leak position and volume. A totalizer records accumulated flow for usage/billing; geo-tagged quality sensors can add chlorine, pH, ORP and TDS measurements."
+        ],
+        "keyPoints": [
+          "PLC = local programmed industrial control; DCS = distributed plant control; SCADA = supervisory monitoring/control.",
+          "SCADA components in the notes: sensors, relays, RTUs, master units, HMI and communication infrastructure.",
+          "Assignment’s named SCADA component: Remote Telemetry Units (RTUs).",
+          "SCADA application examples: water distribution, power grids and traffic management.",
+          "Water-testbed flow devices include paddle-wheel and electromagnetic meters; demand/leak conditions are created through valves."
+        ],
+        "terms": [
+          {
+            "term": "RTU",
+            "meaning": "Remote Telemetry Unit: field equipment gathering data and exchanging commands with a supervisory system."
+          },
+          {
+            "term": "HMI",
+            "meaning": "Human-Machine Interface: operator display and controls."
+          },
+          {
+            "term": "DCS",
+            "meaning": "Distributed Control System."
+          },
+          {
+            "term": "Totalizer",
+            "meaning": "A counter accumulating total quantity, such as water volume over time."
+          }
+        ],
+        "traps": [
+          "SCADA does not imply the distant master performs every fast local control loop; PLCs/RTUs handle field responsibilities.",
+          "Analog/digital conversion occurs in relevant I/O hardware, not necessarily in the SCADA master itself.",
+          "The water-loss percentage and “first facility” statement are historical course claims, not verified current national statistics."
+        ],
+        "diagram": {
+          "type": "layers",
+          "title": "From the control room to field devices",
+          "nodes": [
+            {
+              "label": "HMI / operator",
+              "detail": "View network state and request actions"
+            },
+            {
+              "label": "SCADA master",
+              "detail": "Collect data and coordinate supervision"
+            },
+            {
+              "label": "Communication network",
+              "detail": "Carry measurements and commands"
+            },
+            {
+              "label": "PLC / RTU",
+              "detail": "Field data acquisition and local control"
+            },
+            {
+              "label": "Sensors / actuators",
+              "detail": "Pressure, flow and valves"
+            }
+          ],
+          "caption": "Measurements travel toward supervision; control commands travel back to field equipment."
+        },
+        "example": {
+          "title": "Locate a simulated leak",
+          "steps": [
+            "An HMI command opens a valve to simulate a leak.",
+            "Pressure and flow sensors report the resulting changes.",
+            "A PLC acquires readings and SCADA displays the affected network.",
+            "Analysis estimates where water is escaping; operators can test a corrective action."
+          ]
+        }
+      }
+    ],
+    "quiz": [
+      {
+        "id": "w7-q01",
+        "question": "Which modulation does LoRa use?",
+        "options": [
+          "Binary Phase Shift Keying (BPSK)",
+          "Amplitude-only modulation",
+          "Chirp Spread Spectrum (CSS)",
+          "Time Sensitive Networking"
+        ],
+        "correctIndex": 2,
+        "explanation": "LoRa uses CSS. BPSK is the modulation association for the SIGFOX example, while TSN is a time-aware Ethernet family.",
+        "sectionId": "w7-lpwan"
+      },
+      {
+        "id": "w7-q02",
+        "question": "What maximum SIGFOX throughput is given in the supplied lecture example?",
+        "options": [
+          "Up to 100 bits per second",
+          "Up to 100 kilobits per second",
+          "Up to 50 megabits per second",
+          "Up to 1 gigabit per second"
+        ],
+        "correctIndex": 0,
+        "explanation": "The course value is 100 bps: bits per second. Confusing bps with kbps makes the answer one thousand times larger.",
+        "sectionId": "w7-lpwan",
+        "sourceNote": "A course/service-example rate; actual regional/configuration details are not specified in the source."
+      },
+      {
+        "id": "w7-q03",
+        "question": "What typical ZigBee range is given for this week’s assignment?",
+        "options": [
+          "1–2 metres",
+          "10–100 metres",
+          "10–100 kilometres",
+          "Exactly 1 kilometre"
+        ],
+        "correctIndex": 1,
+        "explanation": "Week 7 cites 10–100 m. The much larger kilometre ranges would be inappropriate as this lecture’s personal-area-network range answer.",
+        "sectionId": "w7-zigbee",
+        "sourceNote": "Approximate course range; hardware, obstructions and line-of-sight affect actual reach."
+      },
+      {
+        "id": "w7-q04",
+        "question": "Which ZigBee device role relays information to other nodes?",
+        "options": [
+          "End device",
+          "Unconnected sensor",
+          "Cloud account",
+          "Router"
+        ],
+        "correctIndex": 3,
+        "explanation": "The router forwards traffic. An end device uses its parent connection and does not relay other nodes’ messages.",
+        "sectionId": "w7-zigbee"
+      },
+      {
+        "id": "w7-q05",
+        "question": "Which software discovers and configures XBee modules in the demo?",
+        "options": [
+          "XCTU",
+          "SCADA",
+          "Apache Storm",
+          "RadioHead"
+        ],
+        "correctIndex": 0,
+        "explanation": "XCTU is the XBee discovery/configuration tool. RadioHead is the radio library used in the LoRa demonstration, not the XBee configuration software.",
+        "sectionId": "w7-zigbee"
+      },
+      {
+        "id": "w7-q06",
+        "question": "Which analytics describes what has happened and what is happening using dashboards and reports?",
+        "options": [
+          "Prescriptive analytics",
+          "Prognostic analytics",
+          "Descriptive analytics",
+          "Predictive analytics"
+        ],
+        "correctIndex": 2,
+        "explanation": "Descriptive analytics summarizes observed conditions. Predictive analytics forecasts future conditions; prescriptive recommends action.",
+        "sectionId": "w7-analytics-middleware"
+      },
+      {
+        "id": "w7-q07",
+        "question": "IIoT processing middleware is often based on which architecture in the lecture?",
+        "options": [
+          "Service-Oriented Architecture (SOA)",
+          "Only a fixed physical pin layout",
+          "Only a satellite network",
+          "An outcome-based pricing contract"
+        ],
+        "correctIndex": 0,
+        "explanation": "SOA exposes reusable capabilities as software services, helping middleware hide infrastructure heterogeneity. Outcome-based pricing is a business model, not a software architecture.",
+        "sectionId": "w7-analytics-middleware"
+      },
+      {
+        "id": "w7-q08",
+        "question": "Which FarmBeats component does the supplied key associate with weather-aware decisions and UAV flight planning?",
+        "options": [
+          "Soil sensor",
+          "Base-station antenna",
+          "Cloud storage alone",
+          "IoT gateway"
+        ],
+        "correctIndex": 3,
+        "explanation": "The supplied assignment assigns those decisions to the IoT gateway. A soil sensor supplies measurements; it does not perform the named gateway decision role.",
+        "sectionId": "w7-agriculture",
+        "sourceNote": "This component attribution follows the supplied assignment key; real deployments may distribute processing differently."
+      },
+      {
+        "id": "w7-q09",
+        "question": "What does the video-processing module do in the AR-drone weed-spraying system?",
+        "options": [
+          "Measure only the tractor’s fuel",
+          "Detect weeds and generate their coordinates",
+          "Replace the field with a cloud database",
+          "Spray every part of the field continuously"
+        ],
+        "correctIndex": 1,
+        "explanation": "The processing module identifies weeds and outputs locations for the sprayer. The drone provides images; the sprayer executes the location-based physical action.",
+        "sectionId": "w7-agriculture"
+      },
+      {
+        "id": "w7-q10",
+        "question": "Which iRobot-Factory component performs high-performance long-term analytics using AI?",
+        "options": [
+          "Production-line mechanical arm",
+          "Intelligent terminal alone",
+          "Cognitive Engine",
+          "Only the field sensor"
+        ],
+        "correctIndex": 2,
+        "explanation": "The cognitive engine is the cloud/high-performance long-term analytics component. An edge node handles nearby quick work, while the terminal gathers user-related input.",
+        "sectionId": "w7-city-factory"
+      },
+      {
+        "id": "w7-q11",
+        "question": "What is the primary focus of Phase 2 in Big Data Driven Smart Manufacturing?",
+        "options": [
+          "Only raw-data integration",
+          "Only installing additional sensors",
+          "Innovation without analysis",
+          "Synthesis and analysis to build knowledge for decision making"
+        ],
+        "correctIndex": 3,
+        "explanation": "Phase 2 analyzes and synthesizes the integrated data into knowledge. Integration is Phase 1; process/production innovation is Phase 3.",
+        "sectionId": "w7-city-factory"
+      },
+      {
+        "id": "w7-q12",
+        "question": "Which Smart Warehousing module organizes/processes data and makes history-based decisions?",
+        "options": [
+          "Administrative module",
+          "Data collection module",
+          "RFID tag alone",
+          "Radio antenna"
+        ],
+        "correctIndex": 0,
+        "explanation": "The administrative module processes data and supports decisions. The collection module identifies objects and captures readings; the database stores information.",
+        "sectionId": "w7-city-factory"
+      },
+      {
+        "id": "w7-q13",
+        "question": "What is a set point in process control?",
+        "options": [
+          "The latest measured sensor value",
+          "The standard/target value of a process parameter for controlled operation",
+          "The actuator’s physical dimensions",
+          "The communication delay"
+        ],
+        "correctIndex": 1,
+        "explanation": "The set point is the target/reference. The latest measured value is the process variable, which is compared with that target.",
+        "sectionId": "w7-control"
+      },
+      {
+        "id": "w7-q14",
+        "question": "Which control loop makes its relevant decision independently of the measured process variable?",
+        "options": [
+          "Closed-loop control",
+          "Feedback control",
+          "Open-loop control",
+          "A thermostat using temperature feedback"
+        ],
+        "correctIndex": 2,
+        "explanation": "Open-loop control does not use the output measurement to correct that control action. Closed-loop feedback does use it, as a thermostat does.",
+        "sectionId": "w7-control"
+      },
+      {
+        "id": "w7-q15",
+        "question": "Which is a primary SCADA component among these choices?",
+        "options": [
+          "A UAV only",
+          "A complex-event processor only",
+          "A cloud subscription only",
+          "Remote Telemetry Units (RTUs)"
+        ],
+        "correctIndex": 3,
+        "explanation": "RTUs are field units in a SCADA system, exchanging measurements and commands. A cloud or CEP engine can be added to a wider application but is not the named core component in this assignment.",
+        "sectionId": "w7-plc-scada"
+      }
+    ],
+    "revision": [
+      "LoRa = CSS; SIGFOX = BPSK / 100 bps / 12-byte payload / 140 messages per day in the lecture example.",
+      "ZigBee = IEEE 802.15.4, typical 10–100 m; router relays, end device does not; XBee is hardware, XCTU configures it.",
+      "CEP filters events, detects patterns and adds context; edge and cloud can share processing.",
+      "Descriptive = what happened; predictive = what may happen; prescriptive = what to do. Middleware is often SOA-based.",
+      "FarmBeats key: IoT gateway handles weather-aware decisions/UAV planning. Drone video processing finds weeds and coordinates.",
+      "iRobot-Factory = Cognitive Engine for long-term AI analysis.",
+      "Smart manufacturing: Phase 1 integration, Phase 2 synthesis/analysis, Phase 3 innovation.",
+      "Smart warehouse administrative module processes information and makes history-based decisions.",
+      "PV measured; SP target; manipulated variable adjusted. Open loop ignores output feedback; closed loop uses it.",
+      "PLC = local program; DCS = distributed loops; SCADA = supervision with RTUs, master, HMI and communications."
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Analytics, learning & the cloud",
+    "summary": "Turn measurements into insight, distinguish machine-learning tasks, and choose cloud/edge responsibilities with manageable devices and measurable service promises.",
+    "objectives": [
+      "Recognize descriptive, predictive, prescriptive, diagnostic and prognostic questions.",
+      "Choose clustering, classification, regression or reinforcement learning from the required result.",
+      "Explain automatic feature learning and cloud-training/edge-inference.",
+      "Distinguish cloud models, device management, SLAs and fog processing."
+    ],
+    "sections": [
+      {
+        "id": "w8-analytics",
+        "title": "Analytics: data becomes a useful decision",
+        "intro": "Two different classifications describe purpose and timescale.",
+        "paragraphs": [
+          "Raw readings tell little until they are interpreted. Analytics turns them into information about operational state, performance and environment, then into decisions for people, ERP systems and physical machines. The repeated sensing → connectivity → computing → control cycle can reduce inefficiency, operating cost and unexpected downtime.",
+          "By purpose, descriptive analytics reports observed conditions; predictive analytics estimates future conditions; prescriptive analytics recommends action. By the course’s timescale classification, baseline analytics quickly detects irregularity in milliseconds, diagnostic analytics investigates root cause in minutes and prognostic analytics estimates remaining useful life over hours. These labels are different lenses: a prognostic result is also a kind of prediction.",
+          "Stream analytics evaluates readings as they arrive, using rules, pattern matching, aggregation and down-sampling. The notes list Apache Storm and Esper as real-time/CEP examples. Batch analytics examines stored data, such as monthly temperature or yearly energy use; Hadoop and Spark support distributed processing. GMM is the anomaly-detection example, SVM classification, and Bayesian regression numeric prediction."
+        ],
+        "keyPoints": [
+          "Baseline often runs at the source; baseline/diagnostic at the edge; diagnostic/prognostic at cloud scale in the course architecture.",
+          "Model lifecycle: train → test/validate on unseen data → deploy to real streams.",
+          "Challenges: correctness, causality, automation, streaming, semantics, distribution, safety, timing and operating context.",
+          "Big-data characteristics: volume, velocity, variety, variability and veracity; not every useful industrial reading is unstructured.",
+          "Applications span product R&D, maintenance/parameter tuning, logistics/fuel use and marketing/product upgrades; aircraft data illustrates prediction and action planning."
+        ],
+        "terms": [
+          {
+            "term": "Prognostics",
+            "meaning": "Estimate how an asset’s condition will evolve, including remaining useful life."
+          },
+          {
+            "term": "Diagnostics",
+            "meaning": "Investigate the causes of observed problems."
+          },
+          {
+            "term": "Down-sampling",
+            "meaning": "Keep fewer samples when the task permits reduced detail."
+          },
+          {
+            "term": "Veracity",
+            "meaning": "Trustworthiness and quality of the available data."
+          }
+        ],
+        "traps": [
+          "Prognostic is the assignment answer for remaining useful life; diagnostic is root-cause analysis.",
+          "The millisecond/minute/hour labels are the lecture’s illustrative timescales, not immutable definitions.",
+          "Apache Storm is a stream-processing framework; the course lists it as a CEP implementation option, rather than making it synonymous with all CEP."
+        ],
+        "comparison": {
+          "headers": [
+            "Question",
+            "Analytics label",
+            "Course association"
+          ],
+          "rows": [
+            [
+              "What happened / is happening?",
+              "Descriptive",
+              "Reports, dashboards, statistics"
+            ],
+            [
+              "What may happen?",
+              "Predictive",
+              "Forecasting models"
+            ],
+            [
+              "What should we do?",
+              "Prescriptive",
+              "Optimization and decision models"
+            ],
+            [
+              "Is this behavior irregular?",
+              "Baseline",
+              "Milliseconds"
+            ],
+            [
+              "What caused the anomaly?",
+              "Diagnostic",
+              "Minutes"
+            ],
+            [
+              "How long can the asset remain useful?",
+              "Prognostic",
+              "Hours; remaining useful life"
+            ]
+          ]
+        },
+        "diagram": {
+          "type": "loop",
+          "title": "The analytics feedback cycle",
+          "nodes": [
+            {
+              "label": "Sense",
+              "detail": "Read asset condition"
+            },
+            {
+              "label": "Connect",
+              "detail": "Transmit readings"
+            },
+            {
+              "label": "Analyze",
+              "detail": "Interpret condition and forecast"
+            },
+            {
+              "label": "Control",
+              "detail": "Act on the physical process"
+            }
+          ],
+          "caption": "The next sensor readings reveal the effect of the action, so the cycle continues."
+        },
+        "example": {
+          "title": "A pump starts to deteriorate",
+          "steps": [
+            "Descriptive: vibration is higher than last week.",
+            "Baseline: the local system flags an unusual vibration pattern.",
+            "Diagnostic: analysis identifies a likely bearing issue.",
+            "Prognostic: a model estimates remaining useful life; prescriptive: choose a repair time before failure."
+          ]
+        }
+      },
+      {
+        "id": "w8-ml",
+        "title": "Machine learning: labels, groups or numeric predictions?",
+        "intro": "Choose the learning task by the kind of feedback and output available.",
+        "paragraphs": [
+          "Machine learning is a subset of AI that learns patterns from examples rather than relying only on hand-written rules. Data science combines mathematical/statistical methods, computing and domain knowledge to ask and answer useful questions. A trained model learns from known data and is evaluated on new data to check whether it generalizes.",
+          "Supervised learning has example inputs and corresponding target labels/values. Classification predicts a category, such as defective or acceptable; regression predicts a number, such as pressure or remaining hours. A decision tree tests attributes at decision nodes and returns a result at a leaf. Linear regression fits Y = B0 + B1X + e, where B0 is the intercept, B1 the slope and e the residual/error term.",
+          "Unsupervised learning finds structure without target labels. K-means is hard clustering: each point is assigned to one closest centroid, then centroids are recomputed until assignments/centers stabilize sufficiently. Fuzzy c-means is soft clustering: a point can have degrees of membership in more than one cluster. This overlap, not an unconditional speed claim, is the key distinction."
+        ],
+        "keyPoints": [
+          "Supervised = labeled examples; unsupervised = no supplied target labels.",
+          "Classification output = category; regression output = real-valued number.",
+          "K-means: choose K/initial centers → assign nearest center → recompute centers → repeat.",
+          "Fuzzy c-means uses soft memberships; a borderline point need not be forced into one group.",
+          "Validation data must not simply repeat the examples used to fit the model."
+        ],
+        "terms": [
+          {
+            "term": "Label",
+            "meaning": "A known target answer attached to a training example."
+          },
+          {
+            "term": "Feature",
+            "meaning": "A measurable input characteristic supplied to or learned by a model."
+          },
+          {
+            "term": "Centroid",
+            "meaning": "A representative center of a cluster."
+          },
+          {
+            "term": "Regression",
+            "meaning": "Prediction of a numeric value."
+          },
+          {
+            "term": "Generalization",
+            "meaning": "Useful performance on examples not used for fitting."
+          }
+        ],
+        "traps": [
+          "A numerical input does not make the task regression; it is the output that matters.",
+          "The source claims FCM is much faster than K-means; runtime depends on implementation and data, so do not treat that as a universal property.",
+          "Hard clustering and hard-coded programming are different concepts."
+        ],
+        "comparison": {
+          "headers": [
+            "Method",
+            "Training information",
+            "Result / example"
+          ],
+          "rows": [
+            [
+              "Supervised classification",
+              "Known target classes",
+              "Defective vs acceptable; decision tree"
+            ],
+            [
+              "Supervised regression",
+              "Known numeric targets",
+              "Predicted pressure; linear regression"
+            ],
+            [
+              "K-means clustering",
+              "Unlabeled data",
+              "One cluster per point"
+            ],
+            [
+              "Fuzzy c-means",
+              "Unlabeled data",
+              "Overlapping membership across clusters"
+            ]
+          ]
+        },
+        "diagram": {
+          "type": "loop",
+          "title": "How K-means refines a grouping",
+          "nodes": [
+            {
+              "label": "Current centers",
+              "detail": "Begin with K initialized centroids"
+            },
+            {
+              "label": "Assign points",
+              "detail": "Select the nearest centroid"
+            },
+            {
+              "label": "Update centers",
+              "detail": "Recompute each cluster center"
+            },
+            {
+              "label": "Check stability",
+              "detail": "Continue with updated centers if needed"
+            }
+          ],
+          "caption": "After initialization, the assign/update/check steps repeat; stop when the convergence rule is satisfied."
+        },
+        "example": {
+          "title": "Inspect manufactured parts",
+          "steps": [
+            "Past parts have images and known acceptable/defective labels: use supervised classification.",
+            "Past temperature/load readings have known numeric energy consumption: use regression.",
+            "Unlabeled vibration readings need grouping into recurring operating modes: use clustering.",
+            "A reading between two operating modes can have soft membership in both with fuzzy c-means."
+          ]
+        }
+      },
+      {
+        "id": "w8-rl",
+        "title": "Reinforcement learning: action, state & reward",
+        "intro": "The learner improves behavior by observing what its actions achieve.",
+        "paragraphs": [
+          "An agent interacts with an environment. It observes a state, chooses an action, receives a reward/penalty and a new state, then uses those outcomes to improve future behavior. The goal is effective behavior over a sequence of decisions, often measured by accumulated reward rather than a one-time correct label.",
+          "The important assignment distinction is the reward function. Supervised learning learns from supplied target answers; reinforcement learning receives evaluative feedback about actions and their consequences. Both the reward and resulting state matter for the next decision. Q-learning is a reinforcement-learning method named in the lecture.",
+          "The course’s broader ML examples include drug discovery and personalized treatment, fraud detection, retail recommendations, travel pricing/sentiment, face tagging and job suggestions. Industrial examples include ThingWorx condition monitoring and prediction and Toumetis anomaly analysis for oil and gas. These illustrate applications rather than a guarantee that every application uses one particular algorithm."
+        ],
+        "keyPoints": [
+          "Agent = decision-maker; environment = system it acts on; state = observed situation; reward = feedback signal.",
+          "Reinforcement learning uses rewards/penalties; supervised learning uses target labels.",
+          "Unsupervised learning finds structure without either a target label or an action-reward interaction.",
+          "Historical lecture associations: Pfizer/IBM Watson, Genentech treatment, Facebook face tagging, LinkedIn job suggestions."
+        ],
+        "terms": [
+          {
+            "term": "Agent",
+            "meaning": "A learner selecting actions."
+          },
+          {
+            "term": "Reward function",
+            "meaning": "A rule assigning feedback to an outcome or action."
+          },
+          {
+            "term": "State",
+            "meaning": "Information describing the environment for a decision."
+          },
+          {
+            "term": "Q-learning",
+            "meaning": "A reinforcement-learning method estimating the value of state-action choices."
+          }
+        ],
+        "traps": [
+          "A reward function is the key distinction asked for, not the absence of any training process.",
+          "A trial-and-error example does not automatically justify unsafe experimentation on live machinery; the learning setting still needs the relevant operating constraints."
+        ],
+        "diagram": {
+          "type": "loop",
+          "title": "Learning from action feedback",
+          "nodes": [
+            {
+              "label": "Agent",
+              "detail": "Observe the current state"
+            },
+            {
+              "label": "Action",
+              "detail": "Choose a control or scheduling decision"
+            },
+            {
+              "label": "Environment",
+              "detail": "Process changes in response"
+            },
+            {
+              "label": "Reward + state",
+              "detail": "Evaluate the result and update the learner"
+            }
+          ],
+          "caption": "Feedback concerns the outcome of the action; it is not just an answer label for a stored input."
+        },
+        "example": {
+          "title": "Optimize a simulated production schedule",
+          "steps": [
+            "State: current jobs, machine availability and queue lengths.",
+            "Action: assign the next job to a machine.",
+            "Reward: benefit for timely completion, penalties for wasted energy or delays.",
+            "New state: changed queue and machine status; use the experience to improve future scheduling."
+          ]
+        }
+      },
+      {
+        "id": "w8-deep-learning",
+        "title": "Deep learning learns intermediate features",
+        "intro": "AI contains ML; ML contains deep learning.",
+        "paragraphs": [
+          "Deep learning is a machine-learning family using multi-layer neural networks. A network has an input, learned intermediate/hidden transformations and an output. Weights determine how inputs influence later representations. For an image, early layers may respond to simple patterns and later layers combine them into more complex representations.",
+          "The lecture contrasts a traditional workflow with manually designed features against an end-to-end deep-learning workflow that learns useful features from raw or lightly prepared data. This does not mean there is no data preparation, architecture choice or validation. Deep learning often needs substantial data and computing, such as GPUs; it is not automatically the best method for a small tabular dataset.",
+          "Toshiba is the course association for collaborative cloud/edge deep learning: computationally heavy training occurs in the cloud, while deployed edge devices perform inference near the process. Applications in the notes include semiconductor yield, power-line inspection, worker-behavior inference and solar forecasting. H2O is a framework example, Intel Nervana a historical processor example and Zebra Medical Vision a healthcare example."
+        ],
+        "keyPoints": [
+          "AI ⊃ ML ⊃ DL; deep learning is not separate from machine learning.",
+          "The lecture dates waves of popularity to AI in the 1950s, ML in the 1980s and DL around 2006–2007; this is historical context rather than precise invention dates.",
+          "Training learns model parameters; inference uses a trained model on new inputs.",
+          "The assignment’s defining DL answer: end-to-end learning extracts features automatically.",
+          "Cloud training + edge inference combines central computing capacity with nearby response.",
+          "IIoT/DL applications: optimize production and energy, transport, recognition and prediction; benefits depend on the actual model and data."
+        ],
+        "terms": [
+          {
+            "term": "Hidden layer",
+            "meaning": "An intermediate learned transformation inside a neural network."
+          },
+          {
+            "term": "End-to-end learning",
+            "meaning": "Train the chain from input to desired output, including learned intermediate features."
+          },
+          {
+            "term": "Inference",
+            "meaning": "Use an already-trained model to produce an output for a new input."
+          },
+          {
+            "term": "GPU",
+            "meaning": "A processor suited to parallel numerical computation."
+          }
+        ],
+        "traps": [
+          "The source’s “up to 150 hidden layers” is an example, not a universal maximum or definition of deep learning.",
+          "Deep learning remains machine learning; some non-deep methods also learn representations.",
+          "The notes’ claims that ML always stagnates while DL always improves, or that more layers guarantee accuracy, are oversimplifications.",
+          "Historical platform/processor names are course associations, not verified current product claims."
+        ],
+        "comparison": {
+          "headers": [
+            "Course contrast",
+            "Traditional feature-based ML",
+            "Deep learning"
+          ],
+          "rows": [
+            [
+              "Feature handling",
+              "Features often manually designed",
+              "Features can be learned jointly"
+            ],
+            [
+              "Data/computation",
+              "Often works with smaller resources",
+              "Frequently needs more data/compute"
+            ],
+            [
+              "Pipeline",
+              "Feature engineering → model",
+              "Learn input-to-output representations"
+            ],
+            [
+              "Important limit",
+              "Depends on model and features",
+              "More layers/data do not guarantee accuracy"
+            ]
+          ]
+        },
+        "diagram": {
+          "type": "flow",
+          "title": "Train centrally, infer near the machine",
+          "nodes": [
+            {
+              "label": "Training data",
+              "detail": "Historical sensor readings or images"
+            },
+            {
+              "label": "Cloud training",
+              "detail": "Fit and validate learned features"
+            },
+            {
+              "label": "Deploy model",
+              "detail": "Transfer the trained parameters"
+            },
+            {
+              "label": "Edge inference",
+              "detail": "Evaluate new local readings"
+            },
+            {
+              "label": "Decision",
+              "detail": "Flag defect or recommend action"
+            }
+          ],
+          "caption": "Toshiba is the company association used for this distributed learning pattern in the supplied quiz."
+        }
+      },
+      {
+        "id": "w8-cloud-models",
+        "title": "Cloud computing: rent the level you need",
+        "intro": "Service models describe what is managed; deployment models describe how clouds are organized.",
+        "paragraphs": [
+          "Cloud offers computing as an on-demand utility. Instead of buying all servers upfront, a factory can rent processing, storage and network capacity and scale use as needed. Large IIoT data volumes and computationally expensive analytics benefit from this shared capacity. The actual reliability, security and privacy depend on architecture, configuration and the provider agreement.",
+          "IaaS supplies infrastructure such as virtual machines, storage and networking. PaaS supplies a development/runtime platform so the customer can build applications. SaaS supplies ready-made software. The course’s industrial SaaS example is Industrial Machinery Catalyst from Siemens; Predix, MindSphere and Sentience are its PaaS examples.",
+          "Public clouds serve a broad customer base; a private cloud is for an organization’s use; hybrid cloud connects distinct clouds so workloads/data can move or be coordinated across them. The simple architecture is devices → gateway → cloud acquisition/processing → industrial applications. Industrial priorities include robust access/security, quality of service and ROI, especially where operational consequences are serious."
+        ],
+        "keyPoints": [
+          "SaaS: use the application. PaaS: build/deploy the application. IaaS: configure software on rented infrastructure.",
+          "The assignment defines hybrid as combining two or more unique clouds with flexibility of data/application movement.",
+          "Cloud supports storage, analytics, failure prediction, remote device configuration and monitored secure access.",
+          "Provider names like AWS and Azure offer several service categories; do not assume their entire catalog is only IaaS."
+        ],
+        "terms": [
+          {
+            "term": "Elasticity",
+            "meaning": "Adjust computing capacity to changing demand."
+          },
+          {
+            "term": "Hybrid cloud",
+            "meaning": "Integrated use of distinct cloud environments."
+          },
+          {
+            "term": "QoS",
+            "meaning": "Quality of Service: required performance characteristics such as timing or availability."
+          }
+        ],
+        "traps": [
+          "Hybrid/public/private and SaaS/PaaS/IaaS are separate classification axes.",
+          "Cloud is not automatically secure or zero-latency simply because it has many servers.",
+          "The industrial/consumer comparison in the source expresses relative priorities; consumer services also require security and useful QoS."
+        ],
+        "comparison": {
+          "headers": [
+            "Classification",
+            "Type",
+            "Course example / meaning"
+          ],
+          "rows": [
+            [
+              "Service model",
+              "SaaS",
+              "Finished application; Industrial Machinery Catalyst"
+            ],
+            [
+              "Service model",
+              "PaaS",
+              "Development platform; Predix, MindSphere, Sentience"
+            ],
+            [
+              "Service model",
+              "IaaS",
+              "CPU/storage/network; infrastructure services"
+            ],
+            [
+              "Deployment model",
+              "Public",
+              "Available to broad customers"
+            ],
+            [
+              "Deployment model",
+              "Private",
+              "Organization-specific cloud"
+            ],
+            [
+              "Deployment model",
+              "Hybrid",
+              "Connect distinct clouds and move/co-ordinate workloads"
+            ]
+          ]
+        },
+        "example": {
+          "title": "Keep sensitive production records local",
+          "steps": [
+            "Retain selected data in the company’s private environment.",
+            "Use public-cloud capacity for approved heavy analytics.",
+            "Connect the environments through controlled data/workload exchange.",
+            "This is a hybrid deployment; whether it uses SaaS or PaaS is a separate question."
+          ]
+        }
+      },
+      {
+        "id": "w8-platforms",
+        "title": "Industrial platforms: learn the quiz associations",
+        "intro": "Use named examples to anchor the concept, while recognizing course-era product names.",
+        "paragraphs": [
+          "Predix is associated with GE and digital-twin support in the lecture. A digital twin is a data-linked representation/model of a physical asset used to observe, estimate or optimize its behavior. The platform combines industrial analytics, data fabric, distributed intelligence and development functions with IT/OT integration.",
+          "MindSphere is the Siemens open-cloud/PaaS association for factory, product and machine data with secure services/APIs. Honeywell’s examples emphasize oil/gas analytics, control/management and IoT enablement. The lecture also names ThingWorx, Cumulocity, Uptake, C3 IoT and Meshify as software-led industrial offerings.",
+          "C3 IoT provides AI/ML analytics, authentication/authorization and a C3 Data Lake. The source says the lake is managed in a “RESTful format”; interpret RESTful as its access/API style rather than a file encoding. Meshify’s components in the notes are Now for asset tracking, Tracker for deployment/monitoring/visualization and Enterprise for configurable full-stack solutions. Uptake is the enterprise/industry-specific analytics example."
+        ],
+        "keyPoints": [
+          "Quiz: digital twin → GE Predix.",
+          "Quiz: C3 Data Lake → “RESTful format” in the supplied wording.",
+          "Quiz: Now + Tracker → Meshify.",
+          "C3 tools named in notes: Data Integrator, IDE, Data Explorer, Analytics Designer, EX Machina, Data Science Notebook and Type Designer.",
+          "C3 application examples: maintenance, inventory/supply-network optimization, energy, fraud and sensor health."
+        ],
+        "terms": [
+          {
+            "term": "Digital twin",
+            "meaning": "A data-linked model/representation of a physical asset or process."
+          },
+          {
+            "term": "RESTful",
+            "meaning": "An API design/access style based on REST principles, not a storage file format."
+          },
+          {
+            "term": "Authentication / authorization",
+            "meaning": "Verify identity / determine the allowed actions."
+          }
+        ],
+        "traps": [
+          "REST is not a binary or text file format; “RESTful format” is the wording to recognize from the course key.",
+          "Product names/features may have changed since the lecture; this page preserves the supplied exam associations.",
+          "A digital twin needs a meaningful link/model of the asset; a static picture alone is not the full concept."
+        ],
+        "comparison": {
+          "headers": [
+            "Named platform",
+            "Association in the source"
+          ],
+          "rows": [
+            [
+              "GE Predix",
+              "Digital twin; industrial PaaS"
+            ],
+            [
+              "Siemens MindSphere",
+              "Open IoT PaaS; machine/factory data"
+            ],
+            [
+              "Honeywell / Sentience",
+              "Industrial cloud; oil/gas examples"
+            ],
+            [
+              "C3 IoT",
+              "C3 Data Lake; RESTful access; AI/ML"
+            ],
+            [
+              "Meshify",
+              "Now, Tracker, Enterprise"
+            ],
+            [
+              "Uptake",
+              "Industry-specific enterprise analytics"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "w8-management-sla",
+        "title": "Device lifecycle & service promises",
+        "intro": "A thousand devices need lifecycle management; a provider promise needs measurable criteria.",
+        "paragraphs": [
+          "Device management begins with provisioning and authentication, then includes monitoring, fault diagnosis, configuration, control, updates, security patches and maintenance. Commissioning brings a device into operational service; decommissioning removes it safely from that service. The assignment highlights device decommission as a valid management feature.",
+          "The lecture names Bosch IoT Remote Manager, AWS IoT Device Management, Verismic Cloud Management Suite, ICP IoTstar and Cumulocity as examples. A platform must support a fleet with changing standards, faulty devices and new requirements while maintaining identity and access controls. Management is more than collecting measurements.",
+          "A Service Level Agreement (SLA) states service expectations between provider and consumer: goals, schedule, deliverables and cost arrangements. A meaningful SLA is achievable, meaningful, quantifiable, controllable, mutually acceptable and affordable. Quantifiable means the parties can measure whether the promise was met, rather than argue about vague words such as “fast.”"
+        ],
+        "keyPoints": [
+          "Device decommissioning is part of the lifecycle, not a failure of device management.",
+          "Good SLA: achievable + meaningful + quantifiable + controllable + mutually acceptable + affordable.",
+          "Vendor selection: capacity/scaling, bandwidth, MQTT/AMQP/HTTP support, security, interoperability, edge intelligence and management.",
+          "The source describes IIoT SLA lifecycle/enforcement as immature at the lecture’s time; that is historical context."
+        ],
+        "terms": [
+          {
+            "term": "Provisioning",
+            "meaning": "Register and configure a device for operation."
+          },
+          {
+            "term": "Decommissioning",
+            "meaning": "Remove a device from service and its operational access."
+          },
+          {
+            "term": "SLA",
+            "meaning": "Service Level Agreement: documented measurable service commitments."
+          }
+        ],
+        "traps": [
+          "Quantifiable is the meaningful-SLA answer; subjective/uncontrollable/unachievable promises fail the cited criteria.",
+          "The source contrasts device management with manual data provisioning; it does not imply every manual configuration step is forbidden."
+        ],
+        "comparison": {
+          "headers": [
+            "Vague promise",
+            "Measurable SLA-style wording"
+          ],
+          "rows": [
+            [
+              "The service is usually available",
+              "Specify availability measure, target and observation period"
+            ],
+            [
+              "Alerts are fast",
+              "Specify end-to-end alert-delay measure and target"
+            ],
+            [
+              "Support is good",
+              "Specify response times and support scope"
+            ],
+            [
+              "Devices are managed",
+              "Specify provisioning, updates, diagnostics and removal responsibilities"
+            ]
+          ]
+        },
+        "example": {
+          "title": "Retire a factory sensor",
+          "steps": [
+            "Stop its operational use and record which asset it belonged to.",
+            "Remove or revoke its system credentials and update fleet records.",
+            "Preserve required readings in the retained history.",
+            "Check the provider’s agreement for who performs and verifies removal."
+          ]
+        }
+      },
+      {
+        "id": "w8-fog",
+        "title": "Fog: process the useful part close to the source",
+        "intro": "Do urgent local work nearby; send selected information for heavier analysis.",
+        "paragraphs": [
+          "A centralized cloud receives large data streams over a distant network. That can consume bandwidth and add round-trip delay. Mobility, network scale, security boundaries and time-critical operation complicate a cloud-only design. The physical location of computing matters when a process needs a quick decision.",
+          "Fog places computing nodes between endpoint devices and the remote cloud, often near the data source. A fog node can filter, aggregate and translate readings and process time-sensitive information. It does not have to send every raw sample onward, and it does not replace every cloud function.",
+          "The assignment asks how fog addresses centralized-cloud limits: identify useful data and reduce the amount of raw data sent to the cloud. A local gateway might send an hourly summary plus abnormal events while making a quick local warning. The cloud still runs historical fleet analysis and other heavier tasks. Edge and fog terminology overlap in practice; this course presents fog as the intermediary layer."
+        ],
+        "keyPoints": [
+          "Edge devices generate/act on readings; fog intermediaries process nearby; cloud handles larger shared workloads.",
+          "Fog roles: filtering, aggregation, protocol/data translation and time-sensitive analysis.",
+          "Less raw data sent upstream can reduce bandwidth load and central processing demand.",
+          "Responsibility placement depends on task size, timing requirements and available resources."
+        ],
+        "terms": [
+          {
+            "term": "Fog node",
+            "meaning": "An intermediary computing node near devices, between endpoints and remote cloud."
+          },
+          {
+            "term": "Aggregation",
+            "meaning": "Combine many readings into a useful summary."
+          },
+          {
+            "term": "Centralized cloud",
+            "meaning": "Processing concentrated in remote central infrastructure."
+          }
+        ],
+        "traps": [
+          "Fog reduces selected upstream traffic; it does not eliminate communication or guarantee zero delay.",
+          "The flow figure summarizes responsibilities; local action and cloud upload may occur in parallel.",
+          "Fog complements cloud; it is not merely another name for cloud storage."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "Keep urgent analysis nearby",
+          "nodes": [
+            {
+              "label": "Sensors",
+              "detail": "Generate continuous samples"
+            },
+            {
+              "label": "Fog / gateway",
+              "detail": "Filter, aggregate and act locally"
+            },
+            {
+              "label": "Cloud",
+              "detail": "Analyze selected events and history"
+            }
+          ],
+          "caption": "The local response and cloud upload are separate outputs of fog processing; the cloud does not wait to authorize every local check."
+        },
+        "example": {
+          "title": "Monitor a machine’s temperature stream",
+          "steps": [
+            "A sensor produces many closely spaced temperature readings.",
+            "Fog detects a threshold crossing locally and issues a warning.",
+            "Fog sends useful summaries and the abnormal event to the cloud.",
+            "The cloud compares long-term patterns across machines rather than receiving every routine sample."
+          ]
+        }
+      }
+    ],
+    "quiz": [
+      {
+        "id": "w8-q01",
+        "question": "Which analytics estimates remaining useful life on the course’s timescale of hours?",
+        "options": [
+          "Prognostic analytics",
+          "Diagnostic analytics",
+          "Baseline analytics",
+          "Descriptive reporting only"
+        ],
+        "correctIndex": 0,
+        "explanation": "Prognostics estimates future useful life. Diagnostics investigates the cause of a current anomaly; baseline detection flags irregular behavior quickly.",
+        "sectionId": "w8-analytics",
+        "sourceNote": "The time labels follow the lecture’s illustrative classification."
+      },
+      {
+        "id": "w8-q02",
+        "question": "Which software is listed for real-time stream/CEP analytics in the supplied notes?",
+        "options": [
+          "Apache Hadoop batch MapReduce",
+          "Apache Storm",
+          "XCTU",
+          "Arduino IDE"
+        ],
+        "correctIndex": 1,
+        "explanation": "Apache Storm is the stream-processing option listed with Esper. XCTU configures XBee modules; it is not the lecture’s stream/CEP analytics tool.",
+        "sectionId": "w8-analytics"
+      },
+      {
+        "id": "w8-q03",
+        "question": "What distinguishes fuzzy c-means from K-means?",
+        "options": [
+          "FCM requires every point to be in exactly one cluster",
+          "FCM is only supervised classification",
+          "FCM allows a point to have membership in more than one cluster",
+          "K-means never updates a centroid"
+        ],
+        "correctIndex": 2,
+        "explanation": "FCM uses soft/overlapping memberships. K-means uses hard assignment to one cluster and updates centroids during its iteration.",
+        "sectionId": "w8-ml"
+      },
+      {
+        "id": "w8-q04",
+        "question": "Which supervised-learning task is appropriate when the required output is a real number?",
+        "options": [
+          "Clustering",
+          "Category classification",
+          "Only pattern grouping",
+          "Regression"
+        ],
+        "correctIndex": 3,
+        "explanation": "Regression predicts numeric values. Classification predicts categories, even when its input measurements are numbers.",
+        "sectionId": "w8-ml"
+      },
+      {
+        "id": "w8-q05",
+        "question": "What key difference separates reinforcement learning from supervised learning in the lecture?",
+        "options": [
+          "RL uses a reward function as feedback to the agent",
+          "RL always uses a supplied correct label for each input",
+          "RL never observes a state",
+          "RL has no feedback"
+        ],
+        "correctIndex": 0,
+        "explanation": "Reinforcement learning evaluates action consequences using rewards/penalties and state transitions. Supervised learning learns from supplied target answers instead.",
+        "sectionId": "w8-rl"
+      },
+      {
+        "id": "w8-q06",
+        "question": "Which statement describes the lecture’s defining deep-learning difference?",
+        "options": [
+          "It always needs all features manually specified by experts",
+          "It is an end-to-end process that learns/extracts features automatically",
+          "It contains no hidden transformations",
+          "It never needs model validation"
+        ],
+        "correctIndex": 1,
+        "explanation": "Deep learning can learn intermediate features as part of the input-to-output model. It still needs suitable data, design and validation; automatic features do not remove those steps.",
+        "sectionId": "w8-deep-learning",
+        "sourceNote": "This is the course contrast with traditional feature-based ML; deep learning is itself a subset of machine learning."
+      },
+      {
+        "id": "w8-q07",
+        "question": "Which company is associated with collaborative distributed deep learning: cloud learning and edge inference?",
+        "options": [
+          "Maersk",
+          "Kaeser Kompressoren",
+          "Toshiba",
+          "Rio Tinto"
+        ],
+        "correctIndex": 2,
+        "explanation": "Toshiba is the lecture’s cloud-training/edge-inference example. Maersk is the container-logistics association, not this deep-learning case.",
+        "sectionId": "w8-deep-learning"
+      },
+      {
+        "id": "w8-q08",
+        "question": "Which is the industrial SaaS application named in the assignment?",
+        "options": [
+          "GE Predix development platform",
+          "Siemens MindSphere platform",
+          "A rented virtual machine",
+          "Industrial Machinery Catalyst from Siemens"
+        ],
+        "correctIndex": 3,
+        "explanation": "The supplied key names Industrial Machinery Catalyst as the SaaS example. Predix and MindSphere are PaaS examples in these notes, and a virtual machine is infrastructure.",
+        "sectionId": "w8-cloud-models",
+        "sourceNote": "These names and classifications follow the supplied lecture-era examples."
+      },
+      {
+        "id": "w8-q09",
+        "question": "Which cloud deployment combines two or more unique clouds with flexible data/application movement?",
+        "options": [
+          "Hybrid cloud",
+          "A single private cloud",
+          "A single public cloud",
+          "An analog sensor bus"
+        ],
+        "correctIndex": 0,
+        "explanation": "Hybrid cloud connects distinct cloud environments. A single private or public cloud alone does not describe that combination.",
+        "sectionId": "w8-cloud-models"
+      },
+      {
+        "id": "w8-q10",
+        "question": "Which industrial cloud platform is associated with Digital Twin technology in the course?",
+        "options": [
+          "RTI Connext DDS",
+          "GE Predix",
+          "XCTU",
+          "Modbus RTU"
+        ],
+        "correctIndex": 1,
+        "explanation": "GE Predix is the digital-twin platform association. Connext DDS is a communications middleware association; Modbus RTU is a serial protocol.",
+        "sectionId": "w8-platforms",
+        "sourceNote": "Historical course-platform association; current product availability/features are not asserted."
+      },
+      {
+        "id": "w8-q11",
+        "question": "What “format” wording does the supplied assignment use for the C3 Data Lake?",
+        "options": [
+          "CAN-frame format",
+          "MBAP-header format",
+          "RESTful format",
+          "I2C-clock format"
+        ],
+        "correctIndex": 2,
+        "explanation": "The supplied assignment calls it “RESTful format.” The other choices are communication/frame concepts from other topics and are not the C3 key association.",
+        "sectionId": "w8-platforms",
+        "sourceNote": "RESTful describes API/access architecture, not a storage file encoding. The quoted wording is retained to match the supplied key."
+      },
+      {
+        "id": "w8-q12",
+        "question": "Which platform provides the Now and Tracker solutions for real-time asset tracking in the notes?",
+        "options": [
+          "Predix",
+          "Lumada",
+          "SWAMP",
+          "Meshify"
+        ],
+        "correctIndex": 3,
+        "explanation": "Meshify is associated with Now, Tracker and Enterprise. SWAMP is the Smart Water Management Platform for irrigation, not the asset-tracking product family.",
+        "sectionId": "w8-platforms",
+        "sourceNote": "The named products follow the lecture-era source, not a verified current catalog."
+      },
+      {
+        "id": "w8-q13",
+        "question": "Which is a valid crucial device-management feature highlighted by the assignment?",
+        "options": [
+          "Device decommissioning",
+          "Keeping obsolete credentials active forever",
+          "Avoiding device registration",
+          "Only displaying manual data-entry forms"
+        ],
+        "correctIndex": 0,
+        "explanation": "Decommissioning safely removes a device from service and access. Retaining obsolete access indefinitely undermines lifecycle management.",
+        "sectionId": "w8-management-sla"
+      },
+      {
+        "id": "w8-q14",
+        "question": "Which is a characteristic of a meaningful SLA?",
+        "options": [
+          "Subjective",
+          "Quantifiable",
+          "Uncontrollable",
+          "Unachievable"
+        ],
+        "correctIndex": 1,
+        "explanation": "A quantifiable promise can be measured and checked. A subjective statement such as “good performance” does not give the parties a clear compliance measure.",
+        "sectionId": "w8-management-sla"
+      },
+      {
+        "id": "w8-q15",
+        "question": "How does fog address the limits of a centralized cloud approach?",
+        "options": [
+          "By sending every raw sample repeatedly to the remote cloud",
+          "By removing all local processing",
+          "By identifying useful data and reducing raw data sent to the cloud",
+          "By eliminating all network communication"
+        ],
+        "correctIndex": 2,
+        "explanation": "Fog filters/aggregates useful information nearby, reducing upstream raw traffic and allowing local time-sensitive processing. It still exchanges selected information with the cloud.",
+        "sectionId": "w8-fog"
+      }
+    ],
+    "revision": [
+      "Descriptive = observed conditions; predictive = future; prescriptive = action.",
+      "Baseline = quick irregularity; diagnostic = root cause; prognostic = remaining useful life.",
+      "Apache Storm / Esper = stream/CEP examples; Hadoop / Spark = distributed processing.",
+      "Supervised has labels; unsupervised finds structure; reinforcement receives reward/state feedback.",
+      "K-means is hard clustering; fuzzy c-means allows overlapping membership.",
+      "Classification output is a category; regression output is a number.",
+      "AI contains ML contains DL; DL learns features end to end; Toshiba = cloud training, edge inference.",
+      "SaaS uses software; PaaS develops apps; IaaS rents infrastructure. Hybrid combines cloud environments.",
+      "Course hooks: Industrial Machinery Catalyst = SaaS; Predix = twin; C3 = “RESTful”; Meshify = Now/Tracker.",
+      "Device management includes decommissioning; a good SLA is quantifiable; fog filters useful data before cloud upload."
+    ]
+  }
+]

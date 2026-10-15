@@ -1,0 +1,965 @@
+[
+  {
+    "id": 12,
+    "title": "Industrial applications, UAVs & real-world case studies",
+    "summary": "Apply the IIoT toolbox to oil, chemicals and pharmaceuticals, then follow UAV applications and factory case studies. Use the assignment cues to connect sensing, analytics and feedback—and keep the supplied key discrepancies visible.",
+    "objectives": [
+      "Trace the oil/gas workflow and explain why ETL precedes cloud analytics.",
+      "Recall chemical-industry monitoring targets and pharmaceutical applications.",
+      "Explain UAV sensing, SCADA communication and the industry–task pairs tested in the assignment.",
+      "Assess existing dairy, plastics and metal processes for sensing, connectivity, interoperability and feedback.",
+      "Distinguish VR training, online FSW control and post-process analysis.",
+      "Answer all 15 supplied assignment prompts, including the generation-key discrepancy and conveyor supplement."
+    ],
+    "sections": [
+      {
+        "id": "w12-oil",
+        "title": "Oil & gas: prepare data before cloud analytics",
+        "intro": "A pipeline becomes easier to maintain when its measurements become useful information. The course workflow places ETL immediately before cloud analytics.",
+        "paragraphs": [
+          "Week 12 applies the same IIoT toolbox to oil and gas, chemicals and pharmaceuticals. Sensors change with the industry, while sensing, connectivity, storage, analytics and feedback stay familiar. Application requirements determine what to measure and how to use the result. The aim is better efficiency, reliability, safety, security and maintenance with less cost and downtime.",
+          "The notes quote Deloitte’s central idea: IoT creates a new business asset—information about equipment, supply chains and customers. A pressure reading on its own is only data; readings connected to a pipeline segment, time and operating state can help locate a leak or prioritize an inspection.",
+          "Learn the lecture’s sequence: set a predictive-analytics goal → deploy IoT at different locations → generate on-premises simulated data alongside real data → extract, transform and load (ETL) → cloud analytics → identify required maintenance. ETL gathers data, reshapes or cleans it and loads it for analysis. The assignment asks specifically what happens just before the cloud stage.",
+          "The machine-learning/cloud roadmap begins by examining the current architecture, identifying data types, assumptions and constraints, choosing an algorithm and cloud platform, and analysing and evaluating data. A top-down review then explains context, limitations and solutions and turns them into an adoption roadmap. Choosing a cloud platform alone is not a maintenance strategy."
+        ],
+        "keyPoints": [
+          "Operational excellence includes predictive maintenance, location intelligence, pipeline/equipment monitoring and real-time machine or fleet monitoring.",
+          "Leakage detection is a classic application because a long pipeline may leak at many possible locations.",
+          "The expected benefits are better production, cost/time savings, asset maintenance, worker safety and supply-chain planning.",
+          "Customer-facing applications can connect vehicle information and energy-consumption profiles to services and customer loyalty."
+        ],
+        "terms": [
+          {
+            "term": "ETL",
+            "meaning": "Extract data from sources, transform it into a usable form, and load it for downstream use."
+          },
+          {
+            "term": "Predictive maintenance",
+            "meaning": "Use equipment-condition information and analysis to anticipate maintenance needs and reduce breakdowns."
+          }
+        ],
+        "traps": [
+          "The course sequence starts with the analytics goal; that does not mean useful prediction occurs before sensors collect data.",
+          "Do not replace ETL with cloud analytics when the question says “before data moves to the cloud”."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "From analytics goal to maintenance decision",
+          "nodes": [
+            {
+              "label": "Set the goal",
+              "detail": "Decide what maintenance outcome the analytics should support."
+            },
+            {
+              "label": "Deploy IoT",
+              "detail": "Collect measurements at the required locations."
+            },
+            {
+              "label": "Prepare data",
+              "detail": "Use real and simulated on-premises data."
+            },
+            {
+              "label": "ETL",
+              "detail": "Extract, transform and load before the cloud stage."
+            },
+            {
+              "label": "Cloud analytics",
+              "detail": "Analyse the prepared information."
+            },
+            {
+              "label": "Maintenance",
+              "detail": "Identify the required intervention."
+            }
+          ],
+          "caption": "This is the sequence in the supplied Week 12 notes. For the assignment, ETL comes immediately before cloud analytics."
+        }
+      },
+      {
+        "id": "w12-chemical",
+        "title": "Chemical plants: monitor the whole operating context",
+        "intro": "Equipment condition, product movement, quality and energy all affect the reliability of a chemical plant.",
+        "paragraphs": [
+          "The six benefits in the notes are predictive maintenance, condition-based monitoring, better logistics, better quality/equipment management, lower supply-chain risk and lower energy expenses. Predictive maintenance aims to address developing equipment issues and reduce breakdown. Condition monitoring supplies the ongoing measurements on which maintenance decisions can depend.",
+          "Chemical logistics uses sensors or RFID tags to track the location of products. A tracked product can be linked to its movement through storage and transport; the tested benefit is visibility of product location, rather than an unrelated change to chemistry.",
+          "To reduce supply-chain risk, the course lists five things to monitor in real time: equipment, material, process, environment and workers. Restricting attention to equipment misses material shortages, process conditions, environmental changes and worker hazards.",
+          "Generic sensors include temperature, proximity, pressure and water-quality sensors. Chemical sensing examples are chemical field-effect transistors, electrochemical gas sensors, fluorescent chloride sensors, pH sensors and potentiometers. Gas examples include CO, CO₂, methane and NOx. Measurements go to a server or cloud for storage/processing, with results available to a manager."
+        ],
+        "keyPoints": [
+          "Six benefits: maintenance, condition monitoring, logistics, quality/equipment, supply-chain risk and energy.",
+          "Five monitored elements: equipment, material, process, environment and workers.",
+          "Sensors/RFID provide the location-tracking answer for logistics.",
+          "Choose a sensor for the required physical or chemical quantity; connectivity cannot supply an unmeasured variable."
+        ],
+        "terms": [
+          {
+            "term": "RFID",
+            "meaning": "Radio-frequency identification: tags and readers identify or track tagged items."
+          },
+          {
+            "term": "pH",
+            "meaning": "A measure of acidity or alkalinity used to monitor products and by-products."
+          }
+        ],
+        "traps": [
+          "Product tracking is a logistics application; predictive maintenance concerns equipment condition and breakdown."
+        ],
+        "diagram": {
+          "type": "branch",
+          "title": "Supply-chain visibility needs five inputs",
+          "nodes": [
+            {
+              "label": "Real-time visibility",
+              "detail": "Combine measurements to reveal operating and supply-chain risks."
+            },
+            {
+              "label": "Equipment",
+              "detail": "Watch machine condition and availability."
+            },
+            {
+              "label": "Material",
+              "detail": "Track raw materials and products."
+            },
+            {
+              "label": "Process",
+              "detail": "Monitor production conditions."
+            },
+            {
+              "label": "Environment",
+              "detail": "Monitor surrounding conditions."
+            },
+            {
+              "label": "Workers",
+              "detail": "Include people and their safety."
+            }
+          ],
+          "caption": "For the assignment, remember the complete five-element list."
+        }
+      },
+      {
+        "id": "w12-pharma",
+        "title": "Pharmaceuticals: follow quality from production to delivery",
+        "intro": "IoT connects manufacturing, monitoring, control and distribution; the measured conditions matter throughout the drug lifecycle.",
+        "paragraphs": [
+          "The notes use vaccine production as a story: raw materials and chemical reactions are followed by trials and distribution. Sensors in production areas supply data for real-time monitoring and remote control, improve equipment use and help reduce cost and wastage. In warehouses and transport, the same information can support safe storage and delivery.",
+          "For the drug-examination assignment, the supplied answer is adverse drug reactions (ADR), effects of pharmaceutical excipients and allergies. These are different from network faults or transport cost. Treat the statement as a course application: collected observations and monitoring can support detection and assessment; a sensor reading alone does not establish a clinical cause.",
+          "The listed sensors are temperature, light, pressure, humidity, pH and specific chemical sensors. pH indicates acidity or alkalinity of products and by-products. Logistics applications include tracking goods, warehousing, routing, machine maintenance and inspection of stored medicines and vaccines."
+        ],
+        "keyPoints": [
+          "Assignment trio: ADR, excipient effects and allergies.",
+          "Quality control relies on monitoring conditions and connecting manufacturing with control and distribution.",
+          "Temperature/light/pressure/humidity/pH are the named sensor examples.",
+          "Goods tracking and storage inspection extend monitoring beyond the factory."
+        ],
+        "terms": [
+          {
+            "term": "ADR",
+            "meaning": "Adverse Drug Reaction: an unwanted harmful response associated with a medicine."
+          },
+          {
+            "term": "Excipient",
+            "meaning": "An ingredient in a pharmaceutical formulation other than its active drug ingredient."
+          }
+        ],
+        "traps": [
+          "Do not confuse adverse drug effects with an equipment or network failure."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "A connected pharmaceutical lifecycle",
+          "nodes": [
+            {
+              "label": "Production",
+              "detail": "Monitor raw materials and process conditions."
+            },
+            {
+              "label": "Quality checks",
+              "detail": "Use recorded observations and measurements."
+            },
+            {
+              "label": "Storage",
+              "detail": "Inspect medicines and monitor storage conditions."
+            },
+            {
+              "label": "Distribution",
+              "detail": "Track movement and delivery of goods."
+            }
+          ],
+          "caption": "Monitoring creates visibility across stages; the assignment’s drug-examination answer is ADR, excipient effects and allergies."
+        }
+      },
+      {
+        "id": "w12-uav-systems",
+        "title": "UAV systems: sensors that can move through the air",
+        "intro": "A UAV carries sensing or delivery capability to places that are distant, difficult or hazardous for people.",
+        "paragraphs": [
+          "UAV means Unmanned Aerial Vehicle. UAVs extend terrestrial IoT into aerial networks, gathering measurements at different locations with adaptable payloads and reprogrammable behaviour. A toxic-waste or nuclear-site inspection illustrates why a mobile sensor can be valuable. A swarm connects multiple UAVs so they can exchange information and coordinate with a ground station.",
+          "The notes describe end-to-end wireless communication between user and controller and direct communication with SCADA, the named industrial control system in the assignment. UAV payloads can capture aerial, visual, thermal and radio-frequency imagery of factory stations or substations. A UAV can also act as a mobile relay between base stations.",
+          "The professor’s SWAN-lab agro-imagery example is a fully autonomous quadcopter. Its four propellers are driven by four motors, with two propellers rotating clockwise and two counter-clockwise. The listed components are an APM flight controller, GPS, Raspberry Pi, camera and LiPo battery. Hexacopters have six propellers and octocopters eight. Indoor navigation is described as harder than outdoor operation.",
+          "The lecture describes seven UAV generations and refers to the seventh as its current generation. This is a course-era statement. The supplied notes explicitly flag a mismatch: the slide groups improved safety/regulatory features, payload/platform adaptability, intelligent piloting, full autonomy and airspace awareness under the sixth generation, but the assignment key selects Fourth Generation. This practice set preserves Fourth as the keyed answer and shows the discrepancy."
+        ],
+        "keyPoints": [
+          "SCADA is the direct industrial-control-system connection tested in the assignment.",
+          "UAVs can carry sensors, cameras or delivery payloads and be reprogrammed for different tasks.",
+          "Quad = 4; hexa = 6; octo = 8 propellers. The demonstrated quadcopter is autonomous.",
+          "Swarms cooperate; a relay UAV carries communications between ground-network points.",
+          "Generation question: assignment key = Fourth; supplied slide description = sixth."
+        ],
+        "terms": [
+          {
+            "term": "SCADA",
+            "meaning": "Supervisory Control and Data Acquisition: supervisory monitoring and control of industrial processes."
+          },
+          {
+            "term": "Payload",
+            "meaning": "The equipment or load carried by the aircraft for its task."
+          },
+          {
+            "term": "UAV swarm",
+            "meaning": "Multiple connected UAVs that communicate and coordinate their work."
+          }
+        ],
+        "traps": [
+          "Fourth Generation is a supplied answer-key convention here; do not present it as an uncontested classification.",
+          "“Seventh generation” describes the lecture’s timeline, rather than a verified current industry standard."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "Airborne sensing joins the industrial control loop",
+          "nodes": [
+            {
+              "label": "UAV payload",
+              "detail": "Capture visual, thermal or other sensor data."
+            },
+            {
+              "label": "Wireless link",
+              "detail": "Carry measurements and control information."
+            },
+            {
+              "label": "SCADA",
+              "detail": "Provide industrial supervision and monitoring."
+            },
+            {
+              "label": "Action",
+              "detail": "Use the information to guide an industrial task."
+            }
+          ],
+          "caption": "The notes name SCADA as the control system UAVs can communicate with directly."
+        }
+      },
+      {
+        "id": "w12-uav-applications",
+        "title": "UAV applications: match the task to the industry",
+        "intro": "The quiz tests recognizable pairs: agriculture and inputs, mining and blast surveys, energy and transmission lines, forestry and carbon in biomass.",
+        "paragraphs": [
+          "In agriculture, aerial measurements support more efficient use of seed, fertilizer and water. In mining, regular surface surveys help optimize blast design. For energy management, the tested advantage is observing miles of transmission lines in one flight, allowing coverage of a long asset without moving an inspector along its whole length.",
+          "Healthcare delivery examples are medicines, vaccines, defibrillators and snake-bite serum. In forestry, the notes associate UAV remote sensing and 3D mapping with carbon storage in biomass. These applications have different objectives: do not swap carbon measurement with medicine delivery or blast planning.",
+          "The wider list includes agriculture, construction, mining, energy, telecommunications, delivery/healthcare, oil and gas, warehousing/inventory, forestry and entertainment. The professor asks learners to identify an industrial problem, test a small UAV project, and then consider the harder problem of coordinating several UAVs."
+        ],
+        "keyPoints": [
+          "Agriculture → seed, fertilizer, water.",
+          "Mining → surface surveys for optimized blast design.",
+          "Energy → miles of transmission lines in a single flight.",
+          "Healthcare → medicines, vaccines, defibrillators, snake-bite serum.",
+          "Forestry → carbon storage in biomass for 3D mapping."
+        ],
+        "terms": [],
+        "traps": [
+          "A payload and its analysis must suit the task; an aerial photograph alone is not a direct measurement of every quantity."
+        ],
+        "diagram": {
+          "type": "branch",
+          "title": "One mobile platform, several task-specific payloads",
+          "nodes": [
+            {
+              "label": "UAV platform",
+              "detail": "Move sensing or supplies to the required location."
+            },
+            {
+              "label": "Agriculture",
+              "detail": "Optimize seed, fertilizer and water."
+            },
+            {
+              "label": "Mining",
+              "detail": "Survey surfaces for blast planning."
+            },
+            {
+              "label": "Energy",
+              "detail": "Inspect long transmission corridors."
+            },
+            {
+              "label": "Healthcare",
+              "detail": "Deliver medicines and emergency supplies."
+            },
+            {
+              "label": "Forestry",
+              "detail": "Estimate carbon storage in biomass."
+            }
+          ],
+          "caption": "Learn the industry–task pair, rather than memorizing UAVs as a generic answer."
+        },
+        "comparison": {
+          "headers": [
+            "Industry",
+            "Assignment cue"
+          ],
+          "rows": [
+            [
+              "Agriculture",
+              "Seed + fertilizer + water"
+            ],
+            [
+              "Mining",
+              "Surface surveys → blast design"
+            ],
+            [
+              "Energy",
+              "Miles of transmission lines"
+            ],
+            [
+              "Healthcare",
+              "Medicines/vaccines/emergency supplies"
+            ],
+            [
+              "Forestry",
+              "Carbon storage in biomass"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "w12-transformation",
+        "title": "Case studies: connect sensing, decisions and feedback",
+        "intro": "A locally automated machine becomes part of an Industry 4.0 system when its information can support coordinated decisions across the process.",
+        "paragraphs": [
+          "The seven case-study sessions are milk processing/packaging, manufacturing I and II, student projects I and II, the VR lab and the steel-technology lab. A case study examines a real-life phenomenon within a specific context, using detailed related evidence and qualitative or quantitative analysis. The goal is to assess the existing process and recommend a justified transformation.",
+          "First assess what the process already does, then set target objectives. Treat the change as a project with objectives, schedule and budget. The assignment checklist is sensors, actuators, networks, interoperability, automated fault detection and maintenance, and feedback control. Also consider real-time versus later analytics, worker health hazards and overall efficiency.",
+          "The central loop is machine → sensors → network → analytics → control feedback → machine. Sensing alone only observes. Analytics must reach a decision, and an actuator or control system must implement it to close the loop. In the lecture’s language, interoperability bridges old and new equipment, while interconnectivity links machines to one another. A working legacy machine need not be discarded simply because it uses an older interface."
+        ],
+        "keyPoints": [
+          "Assessment comes before a recommendation: identify present capabilities and missing links.",
+          "Include objectives, a schedule and a budget in the transformation project.",
+          "Interoperability: different equipment/systems can work together. Interconnectivity: machines exchange information.",
+          "The six-item evaluation checklist is a tested fact; worker safety and efficiency are additional goals."
+        ],
+        "terms": [
+          {
+            "term": "Feedback control",
+            "meaning": "Use observed outcomes to adjust the process through control actions."
+          },
+          {
+            "term": "Interoperability",
+            "meaning": "The ability of different systems to exchange and use information together."
+          }
+        ],
+        "traps": [
+          "Having a PLC does not by itself demonstrate a connected Industry 4.0 plant."
+        ],
+        "diagram": {
+          "type": "loop",
+          "title": "The reusable Industry 4.0 feedback loop",
+          "nodes": [
+            {
+              "label": "Machine",
+              "detail": "Carry out the physical operation."
+            },
+            {
+              "label": "Sensors",
+              "detail": "Measure process and equipment conditions."
+            },
+            {
+              "label": "Network",
+              "detail": "Connect measurements to computation."
+            },
+            {
+              "label": "Analytics",
+              "detail": "Find patterns and decide what to change."
+            },
+            {
+              "label": "Control feedback",
+              "detail": "Adjust the machine through its controller or actuators."
+            }
+          ],
+          "caption": "Apply this loop to each case and ask which links already exist and which are missing."
+        },
+        "example": {
+          "title": "A practical assessment sequence",
+          "steps": [
+            "Describe the current workflow and identify quality, safety or downtime problems.",
+            "Select the measurements and target outcome needed to address one problem.",
+            "Check legacy interfaces, network connections and interoperability.",
+            "Choose immediate control versus later analysis, then define the feedback action.",
+            "Plan the change within a schedule and budget and evaluate the result against the objective."
+          ]
+        }
+      },
+      {
+        "id": "w12-dairy",
+        "title": "Milk processing: build analytics on existing automation",
+        "intro": "At Amul Dudhsagar Dairy in Mehsana, Gujarat, the next step is to connect an already automated process to useful analytics.",
+        "paragraphs": [
+          "The notes describe milk arriving from 1,200 village societies: 25% in cans and 75% through bulk milk coolers (BMC). Milk is tested, pasteurized and processed into products. The consulting opportunity is to connect operational measurements to predictive maintenance and quality prediction.",
+          "The recall sheet highlights a distributed control system (DCS) with two control processors for fault tolerance, hydrostatic level sensors, RTD temperature sensors and spray drying. Infrared level sensing had failed because of foam, which is a useful example of why sensor choice must fit real process conditions. Redundant processors improve continuity of control if one fails."
+        ],
+        "keyPoints": [
+          "Dairy: 1,200 societies; 25% cans and 75% BMC in the supplied case.",
+          "DCS uses two control processors for fault tolerance.",
+          "Hydrostatic level sensing replaced an infrared approach affected by foam.",
+          "RTD temperature sensors and spray drying are named recall details.",
+          "The recommended extension is connected analytics for maintenance and product quality."
+        ],
+        "terms": [
+          {
+            "term": "BMC",
+            "meaning": "Bulk Milk Cooler: equipment for cooling milk before or during collection."
+          },
+          {
+            "term": "RTD",
+            "meaning": "Resistance Temperature Detector: a temperature sensor based on changes in electrical resistance."
+          },
+          {
+            "term": "DCS",
+            "meaning": "Distributed Control System: control distributed across controllers in a process plant."
+          }
+        ],
+        "traps": [
+          "These percentages and instrument choices describe the supplied dairy case, not every dairy."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "Add a learning layer to the dairy process",
+          "nodes": [
+            {
+              "label": "Milk collection",
+              "detail": "Cans and bulk milk coolers supply the dairy."
+            },
+            {
+              "label": "Process control",
+              "detail": "Measure level and temperature during processing."
+            },
+            {
+              "label": "Connected records",
+              "detail": "Combine operational measurements over time."
+            },
+            {
+              "label": "Analytics",
+              "detail": "Predict maintenance needs or quality problems."
+            }
+          ],
+          "caption": "The final analytics step is a transformation opportunity; the notes describe the dairy as already fairly automated."
+        }
+      },
+      {
+        "id": "w12-plastics",
+        "title": "Plastics: local feedback is the starting point",
+        "intro": "A PLC can control one injection-moulding machine while the rest of the plant still lacks coordinated information and decisions.",
+        "paragraphs": [
+          "Growhill Plastics in Unjha, Gujarat melts plastic beads at around 240°C and injects the melt into a mould for battery casings or lids. The named machines are Windsor sprint H 350 for the case and H 250 for the lid. A piece takes about 64–95 seconds in the supplied case.",
+          "A piston-travel sensor and PLC-based feedback make the machine a small cyber-physical system. What is missing for the broader transformation is machine interconnection, centralized or distributed decisions, and automated fault detection and maintenance. The lecturer suggests that one machine’s output could automatically initiate the next operation, reducing downtime and improving productivity/quality.",
+          "The bottle-company example uses a single-stage blow-moulding machine, programmed through an MMI, with a PLC executing the instructions. The same extension applies: link the machines for health monitoring, operational efficiency and predictions instead of keeping every machine’s information isolated."
+        ],
+        "keyPoints": [
+          "Injection moulding: melt beads → inject into mould → form casing or lid.",
+          "Growhill already has sensing, a PLC and feedback; the missing capability is wider interconnection and coordination.",
+          "Bottle example: single-stage blow moulding, MMI programming and PLC execution.",
+          "Connected health monitoring and prediction add value beyond local automation."
+        ],
+        "terms": [
+          {
+            "term": "PLC",
+            "meaning": "Programmable Logic Controller: an industrial controller executing programmed control logic."
+          },
+          {
+            "term": "MMI",
+            "meaning": "Man-Machine Interface: the operator interface named in the bottle-machine case."
+          }
+        ],
+        "traps": [
+          "Interconnection is more than showing individual machines to a human operator."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "From one controlled machine to a coordinated line",
+          "nodes": [
+            {
+              "label": "Sensor + PLC",
+              "detail": "Local feedback controls a moulding operation."
+            },
+            {
+              "label": "Machine links",
+              "detail": "Share completion and health information."
+            },
+            {
+              "label": "Coordinated decisions",
+              "detail": "Use shared information across operations."
+            },
+            {
+              "label": "Maintenance analytics",
+              "detail": "Detect faults and plan interventions."
+            }
+          ],
+          "caption": "The first stage exists in the case. The remaining stages describe the proposed Industry 4.0 extension."
+        }
+      },
+      {
+        "id": "w12-metalwork",
+        "title": "Metal manufacturing: connect the separate operations",
+        "intro": "The wheel-rim and sheet-metal cases already use industrial controllers; the proposal is to coordinate the complete process and analyse its condition.",
+        "paragraphs": [
+          "At Atomic India, CRC steel strip moves from a coil holder through roll forming (including branding and shaping with 16 rolls), seam welding, butt welding, grinding/polishing, hole punching, nickel coating, chrome coating and final polishing/packing. The case lists 32, 36 or 40 holes, and an 8–9 μm nickel layer.",
+          "Existing PLC functions include stopping roll forming when strip dimensions exceed limits, warning about low seam-welder power, setting rim size and controlling polishing/chrome units. The nickel bath is about 65–70°C; below about 50°C the notes say adhesion is poor. The chrome bath is around 40°C; the notes associate higher temperature with burning the nickel and lower temperature with failure to work properly. Remember these as observations from this case.",
+          "The proposed rim-line improvements include coordinated control, interconnected sensors, centralized decisions, fog/cloud computing, analytics, machine-learning-based predictive/prescriptive maintenance and automated worker safety. The lecturer suggests one PLC for the whole process; treat that as a case proposal rather than a requirement for every plant.",
+          "Metal Texigency makes sheet-metal air-conditioner parts: AutoCAD drawings → CNC punching (28 stations, program loaded by memory card) → shearing → bending (45° or 90°) → seven-tank phosphating using a crane → powder coating → assembly. Recommended additions are networked sensors, real-time and later analytics, CPS, SCADA, cloud/fog storage and safety automation. The notes contrast sequential PLC operations with conditional CNC program execution; in practice both can include conditional logic, so use that wording only as the lecture’s simplified comparison."
+        ],
+        "keyPoints": [
+          "Atomic India case: wheel rims, CRC strip and multiple PLC-controlled operations.",
+          "Case temperatures: nickel bath 65–70°C; chrome bath around 40°C.",
+          "Metal Texigency: CNC punching, shearing, bending, phosphating, powder coating and assembly.",
+          "Focus on connecting measurements and decisions across the production line.",
+          "Predictive maintenance anticipates a problem; prescriptive maintenance recommends an action."
+        ],
+        "terms": [
+          {
+            "term": "CNC",
+            "meaning": "Computer Numerical Control: programmed numerical control of machine operations."
+          },
+          {
+            "term": "Prescriptive maintenance",
+            "meaning": "Use analysis to recommend what maintenance action to take."
+          }
+        ],
+        "traps": [
+          "The stated bath temperatures are case-specific exam details, not general operating instructions.",
+          "A plant need not use a single PLC to qualify as Industry 4.0; coordinated control may be distributed."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "Wheel-rim process: follow the material",
+          "nodes": [
+            {
+              "label": "Steel strip",
+              "detail": "Start with CRC steel on a coil holder."
+            },
+            {
+              "label": "Form + weld",
+              "detail": "Roll form and join the rim."
+            },
+            {
+              "label": "Finish + punch",
+              "detail": "Grind, polish and make spoke holes."
+            },
+            {
+              "label": "Nickel + chrome",
+              "detail": "Monitor the coating baths."
+            },
+            {
+              "label": "Polish + pack",
+              "detail": "Complete the product and its records."
+            }
+          ],
+          "caption": "Group the detailed case into stages, then ask where sensors, connectivity and fault detection would help."
+        }
+      },
+      {
+        "id": "w12-projects-vr",
+        "title": "Student projects & VR: learn safely before scaling up",
+        "intro": "Small connected prototypes show the building blocks; virtual factories make hazardous scenarios safe to practise.",
+        "paragraphs": [
+          "The student-project sessions illustrate how small solutions grow from reusable blocks. The notes say almost all use NodeMCU or Raspberry Pi, MQTT and sensors. Think in terms of a complete path: measure a variable, publish the observation, receive it elsewhere and use it in an application.",
+          "The Safety Analytics and Virtual Reality Laboratory at IIT Kharagpur’s Department of Industrial and Systems Engineering was established in 2016 under Prof. J. Maiti, according to the notes. A virtual factory makes it possible to explore accidents and standard operating procedures without creating a real accident.",
+          "The scene-building workflow is 3D models (SolidWorks, Google SketchUp or Maya) → textures for realism → simulation in Unreal Engine with scenarios and procedures. Desktop VR and more immersive projection VR are described. Listed equipment includes data gloves with 14 piezoelectric sensors, an HMD, an eye tracker and a 3D laser scanner.",
+          "Applications include underground-coal-miner training, surgery practice, assembly automation, accident simulation, firefighters, pilots, drivers, work at height, underwater work and hazardous gas/chemical/steel industries. Match VR to simulation/training rather than confusing it with a physical sensor or production controller."
+        ],
+        "keyPoints": [
+          "Student building blocks: NodeMCU/Raspberry Pi + sensors + MQTT.",
+          "VR workflow: models → textures → game engine → scenario-based practice.",
+          "The named game engine is Unreal Engine.",
+          "VR allows practice with dangerous situations without staging the actual event."
+        ],
+        "terms": [
+          {
+            "term": "HMD",
+            "meaning": "Head-Mounted Display: a wearable display used to view a virtual environment."
+          },
+          {
+            "term": "MQTT",
+            "meaning": "A publish/subscribe messaging protocol used by the student-project building blocks."
+          }
+        ],
+        "traps": [
+          "The lab’s date and device specifications are details from the supplied lecture notes."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "Build a virtual training scene",
+          "nodes": [
+            {
+              "label": "3D model",
+              "detail": "Create the factory, equipment and people."
+            },
+            {
+              "label": "Textures",
+              "detail": "Add surface appearance for realism."
+            },
+            {
+              "label": "Unreal Engine",
+              "detail": "Run the virtual environment and scenarios."
+            },
+            {
+              "label": "Practice",
+              "detail": "Rehearse procedures and hazardous events safely."
+            }
+          ],
+          "caption": "The goal is training and analysis in a simulated environment."
+        }
+      },
+      {
+        "id": "w12-fsw",
+        "title": "Friction stir welding: a complete cyber-physical loop",
+        "intro": "FSW joins plates in the solid state. Force and power measurements can reveal defects and guide adjustments to machine speeds.",
+        "paragraphs": [
+          "A rotating tool with a pin and flat shoulder is plunged into the joint between two plates. Friction heats and softens material, and the pin stirs it to make the joint without melting. This separates friction stir welding from fusion welding, which melts the metal. The notes mention computer housings, high-speed rail carriages, space applications and automotive lightweighting or dissimilar-material joining as application examples.",
+          "The controlled setup senses force with a 10 kN load cell and also measures power. Defects affect the signatures of these signals. Data is sent to the cloud, where analytics and a decision/knowledge engine infer defect type or severity. Feedback changes rotational speed and linear travel speed. Measurement, computation and a physical adjustment form the CPS loop; merely uploading measurements would leave the control loop incomplete.",
+          "The demonstrated indigenous three-axis machine is described with a maximum rotation of about 200 rpm, H13 steel tooling, 2.5 mm aluminium plates, a 2.2 mm pin length, a 5 mm pin diameter and a 30 mm shoulder. These are lecture-setup details, not universal FSW settings.",
+          "The second setup is a vertical milling machine converted for manual FSW. It measures force with a piezoelectric dynamometer, temperature with thermocouples and power with a sensor. Since it is not CNC-controlled, its data is analysed after welding, rather than used for real-time automatic speed control. This is the key difference between the two examples."
+        ],
+        "keyPoints": [
+          "FSW is solid-state joining: material softens and is stirred, but does not melt.",
+          "Controlled setup: force + power → cloud analytics → decision → rotational/travel-speed feedback.",
+          "Manual setup adds temperature sensing but uses post-process analysis.",
+          "A feedback action distinguishes monitoring from automatic closed-loop control."
+        ],
+        "terms": [
+          {
+            "term": "Solid-state joining",
+            "meaning": "Joining materials without melting the base material."
+          },
+          {
+            "term": "Load cell",
+            "meaning": "A force sensor; the demonstrated setup lists a 10 kN sensor."
+          },
+          {
+            "term": "Dynamometer",
+            "meaning": "A device for measuring forces in the manual welding setup."
+          }
+        ],
+        "traps": [
+          "Do not say friction stir welding melts the plates.",
+          "The numerical machine specifications come from this demonstration."
+        ],
+        "diagram": {
+          "type": "loop",
+          "title": "FSW: from defect signatures to a speed correction",
+          "nodes": [
+            {
+              "label": "Weld",
+              "detail": "The rotating tool stirs the softened joint."
+            },
+            {
+              "label": "Sense",
+              "detail": "Measure force and power signatures."
+            },
+            {
+              "label": "Analyse",
+              "detail": "Cloud analytics evaluates process/defect information."
+            },
+            {
+              "label": "Decide",
+              "detail": "A knowledge engine selects a correction."
+            },
+            {
+              "label": "Adjust speeds",
+              "detail": "Change rotational and linear travel speeds."
+            }
+          ],
+          "caption": "The manual milling-machine setup does not close this automatic loop; its data is analysed after welding."
+        },
+        "comparison": {
+          "headers": [
+            "Setup",
+            "Measurements",
+            "How data is used"
+          ],
+          "rows": [
+            [
+              "Controlled three-axis FSW",
+              "Force and power",
+              "Online analysis with speed feedback"
+            ],
+            [
+              "Manual milling-machine FSW",
+              "Force, temperature and power",
+              "Analysis after welding"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "w12-conveyor",
+        "title": "Assignment supplement: conveyor-belt monitoring",
+        "intro": "Two assignment questions cover a mining conveyor case that the notes explicitly say is absent from the Week 12 transcript.",
+        "paragraphs": [
+          "The supplied assignment key names Semtech LoRa devices and LoRaWAN as the communications technology used by Transco Industries for conveyor-belt monitoring. LoRa supplies the radio link; LoRaWAN is the associated network protocol. The notes connect this material to the LoRa teaching in Week 7.",
+          "The keyed benefit is a holistic view of the conveyor-belt line and the ability to localize defects. Measurements tied to positions along the line help identify where an abnormality occurs. Remember both the whole-line visibility and the location of a defect; a single isolated alarm does not describe the complete keyed benefit.",
+          "These details are included because they are tested in the supplied assignment. The provided Week 12 transcript does not give the full deployment design, so no specific sensor type, network coverage or operating performance is implied here."
+        ],
+        "keyPoints": [
+          "Transco conveyor case → Semtech LoRa devices + LoRaWAN.",
+          "Benefit → holistic line visibility + defect localization.",
+          "These are assignment-key facts supplied separately from the Week 12 transcript."
+        ],
+        "terms": [
+          {
+            "term": "LoRa",
+            "meaning": "The radio technology named in the supplied conveyor-monitoring answer."
+          },
+          {
+            "term": "LoRaWAN",
+            "meaning": "The networking protocol named with LoRa devices in the supplied case."
+          }
+        ],
+        "traps": [
+          "Do not present these two items as details explained in the Week 12 transcript; the source explicitly labels them assignment supplements."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "Turn distributed belt readings into a located fault",
+          "nodes": [
+            {
+              "label": "Belt measurements",
+              "detail": "Associate observations with line positions."
+            },
+            {
+              "label": "LoRa / LoRaWAN",
+              "detail": "Transmit observations through the named technology."
+            },
+            {
+              "label": "Line view",
+              "detail": "Bring measurements together for visibility."
+            },
+            {
+              "label": "Defect location",
+              "detail": "Identify where an abnormality occurs."
+            }
+          ],
+          "caption": "This is a conceptual illustration of the keyed benefit; the full deployment is not described in the supplied transcript."
+        }
+      }
+    ],
+    "quiz": [
+      {
+        "id": "w12-q1",
+        "question": "What happens before data moves to the cloud-based analytics platform in the oil and gas workflow?",
+        "options": [
+          "Data is discarded without analysis.",
+          "Maintenance is completed before collecting measurements.",
+          "Data analysis through extract, transform and load (ETL).",
+          "All sensors are replaced with manual readings."
+        ],
+        "correctIndex": 2,
+        "explanation": "ETL is the preparation stage immediately before cloud analytics in the supplied sequence. Extraction gathers data, transformation makes it usable, and loading places it for downstream analysis. Identifying required maintenance follows the cloud-analytics stage.",
+        "sectionId": "w12-oil"
+      },
+      {
+        "id": "w12-q2",
+        "question": "What is the objective of predictive maintenance in the chemical industry?",
+        "options": [
+          "Wait for every machine to fail before inspecting it.",
+          "Address real-time issues and reduce equipment breakdown.",
+          "Track only the location of finished products.",
+          "Increase downtime by stopping all machines on a fixed schedule."
+        ],
+        "correctIndex": 1,
+        "explanation": "The supplied key emphasizes addressing developing issues and reducing breakdown. Condition measurements support timely maintenance decisions, helping avoid failure and downtime. Product-location tracking is a logistics function, not the main maintenance objective.",
+        "sectionId": "w12-chemical"
+      },
+      {
+        "id": "w12-q3",
+        "question": "How does IoT improve logistics in the chemical industry?",
+        "options": [
+          "By eliminating the need to identify products.",
+          "By replacing every chemical reaction with a cloud service.",
+          "By tracking product locations through sensors or RFID tags.",
+          "By measuring only the temperature of the office."
+        ],
+        "correctIndex": 2,
+        "explanation": "Sensors and RFID tags make the locations and movement of products visible. This supports logistics through the supply chain. Predicting an equipment fault may also help operations, but it is a different application from the tracking asked for here.",
+        "sectionId": "w12-chemical"
+      },
+      {
+        "id": "w12-q4",
+        "question": "Which elements are monitored in real time to minimize supply-chain risk?",
+        "options": [
+          "Equipment, material, process, environment and workers.",
+          "Equipment and finished products only.",
+          "Only customer invoices and marketing campaigns.",
+          "Only the temperature of the cloud server."
+        ],
+        "correctIndex": 0,
+        "explanation": "The course lists all five elements: equipment, material, process, environment and workers. Each can introduce a different risk; monitoring only machines would miss material, process, environmental and worker-related problems.",
+        "sectionId": "w12-chemical"
+      },
+      {
+        "id": "w12-q5",
+        "question": "What can IoT help detect while examining drugs, according to the supplied notes?",
+        "options": [
+          "Adverse Drug Reactions, effects of excipients and allergies.",
+          "Only network congestion and weak wireless signals.",
+          "Only pipeline leaks and conveyor faults.",
+          "Only changes to shipping prices."
+        ],
+        "correctIndex": 0,
+        "explanation": "The keyed trio is ADR, effects of pharmaceutical excipients and allergies. These concern drug response and formulation effects, whereas the other choices describe unrelated communication, equipment or commercial issues. Monitoring supports assessment; measurements alone do not establish clinical causation.",
+        "sectionId": "w12-pharma"
+      },
+      {
+        "id": "w12-q6",
+        "question": "Which industrial control system can UAVs communicate with directly?",
+        "options": [
+          "A spreadsheet application.",
+          "SCADA.",
+          "A mechanical mould without a controller.",
+          "A standalone word processor."
+        ],
+        "correctIndex": 1,
+        "explanation": "SCADA stands for Supervisory Control and Data Acquisition. It provides industrial supervisory monitoring and control, which is why it is the named system for a UAV’s direct industrial connection in the notes.",
+        "sectionId": "w12-uav-systems"
+      },
+      {
+        "id": "w12-q7",
+        "question": "Which UAV generation is the supplied assignment-key answer for improved safety/regulatory features, adaptability, intelligent piloting, full autonomy and airspace awareness?",
+        "options": [
+          "First Generation.",
+          "Fourth Generation.",
+          "Sixth Generation.",
+          "Second Generation."
+        ],
+        "correctIndex": 1,
+        "explanation": "The supplied assignment key selects Fourth Generation. The same document says the provided slide puts these features under the sixth generation. This question is explicitly scored to the assignment key; the discrepancy is retained so you can distinguish the keyed response from the slide classification.",
+        "sectionId": "w12-uav-systems",
+        "sourceNote": "Source discrepancy: assignment key = Fourth Generation; supplied slide = sixth generation. This is not an uncontested general classification."
+      },
+      {
+        "id": "w12-q8",
+        "question": "How do UAVs help optimize inputs in agriculture?",
+        "options": [
+          "By applying the same amount everywhere without observing the crop.",
+          "By optimizing the use of seed, fertilizer and water.",
+          "By measuring carbon storage in forest biomass only.",
+          "By setting the nickel-coating bath temperature."
+        ],
+        "correctIndex": 1,
+        "explanation": "The agricultural application is to use observations to guide seed, fertilizer and water inputs. Carbon storage belongs to the forestry example, while nickel-bath control belongs to manufacturing. Remember the agriculture–inputs pair.",
+        "sectionId": "w12-uav-applications"
+      },
+      {
+        "id": "w12-q9",
+        "question": "What is a UAV advantage in energy management?",
+        "options": [
+          "It eliminates the need for any inspection data.",
+          "It can observe miles of transmission lines in a single flight.",
+          "It converts every transmission line into an RFID tag.",
+          "It is limited to inspecting one indoor motor."
+        ],
+        "correctIndex": 1,
+        "explanation": "Aerial mobility lets a UAV cover a long transmission corridor during one flight. The key benefit is inspection coverage of a geographically extended asset; the notes do not claim that a flight eliminates the need for interpreting measurements.",
+        "sectionId": "w12-uav-applications"
+      },
+      {
+        "id": "w12-q10",
+        "question": "Which UAV activity supports mining operations?",
+        "options": [
+          "Regular surface surveys for optimized blast design.",
+          "Manufacturing pharmaceutical excipients.",
+          "Setting the temperature of a dairy spray dryer.",
+          "Generating invoices without observing the mine."
+        ],
+        "correctIndex": 0,
+        "explanation": "Surface surveys supply information about the mining area that can be used in blast design. Match mining to survey-based blast planning, rather than to unrelated processing or administrative tasks.",
+        "sectionId": "w12-uav-applications"
+      },
+      {
+        "id": "w12-q11",
+        "question": "Which healthcare task is associated with UAVs in the notes?",
+        "options": [
+          "Delivery of medicines, vaccines, defibrillators and snake-bite serum.",
+          "Replacement of every medical diagnosis with a camera image.",
+          "Nickel and chrome coating of wheel rims.",
+          "Underground blast design."
+        ],
+        "correctIndex": 0,
+        "explanation": "The healthcare example uses a UAV as a delivery platform for medicines, vaccines and emergency supplies, including defibrillators and snake-bite serum. This is a logistics application; it does not make the aircraft a diagnostic replacement.",
+        "sectionId": "w12-uav-applications"
+      },
+      {
+        "id": "w12-q12",
+        "question": "What does UAV remote sensing measure in the forestry example for 3D mapping?",
+        "options": [
+          "Carbon storage in biomass.",
+          "The pH of a pharmaceutical by-product only.",
+          "The number of holes punched in a wheel rim.",
+          "Only the packet count of an MQTT broker."
+        ],
+        "correctIndex": 0,
+        "explanation": "The forestry example links remote sensing and 3D mapping to carbon storage in biomass. Keep forestry paired with biomass/carbon, while agriculture is paired with seed, fertilizer and water and mining with blast surveys.",
+        "sectionId": "w12-uav-applications"
+      },
+      {
+        "id": "w12-q13",
+        "question": "What should be considered when evaluating an existing process for Industry 4.0 transformation?",
+        "options": [
+          "Only replacing every old machine, regardless of compatibility.",
+          "Sensors, actuators, networks, interoperability, automated fault detection and maintenance, and feedback control.",
+          "Only the appearance of the operator dashboard.",
+          "Only the number of staff using a spreadsheet."
+        ],
+        "correctIndex": 1,
+        "explanation": "The complete checklist connects observation, action, communication, compatibility, maintenance and feedback. Assess what already exists and bridge legacy equipment where appropriate. A dashboard or isolated PLC does not by itself connect the whole process.",
+        "sectionId": "w12-transformation"
+      },
+      {
+        "id": "w12-q14",
+        "question": "Which communication technology did Transco Industries use for conveyor-belt monitoring in the supplied mining case?",
+        "options": [
+          "NFC alone.",
+          "Semtech LoRa devices and LoRaWAN.",
+          "A standalone wired keyboard.",
+          "Only infrared remote controls."
+        ],
+        "correctIndex": 1,
+        "explanation": "The supplied answer is Semtech LoRa devices and LoRaWAN. LoRa names the radio technology and LoRaWAN the associated networking protocol. This is a specific case-key fact, rather than a statement that every mining conveyor uses that technology.",
+        "sectionId": "w12-conveyor",
+        "sourceNote": "The notes state that this mining case is not in the Week 12 transcript and connect it to Week 7 LoRa material."
+      },
+      {
+        "id": "w12-q15",
+        "question": "What benefit did IIoT monitoring provide in the conveyor-belt mining case?",
+        "options": [
+          "It removed the need to know where a defect occurs.",
+          "It monitored one isolated point without line context.",
+          "A holistic view of the conveyor-belt line and the ability to localize defects.",
+          "It replaced the conveyor with a UAV delivery route."
+        ],
+        "correctIndex": 2,
+        "explanation": "Combining measurements across the belt line provides overall visibility; associating an abnormal reading with its position helps localize a defect. The keyed answer contains both whole-line context and defect location, rather than just a single isolated alarm.",
+        "sectionId": "w12-conveyor",
+        "sourceNote": "This is an assignment-key supplement: the supplied notes say the full mining case is absent from the Week 12 transcript."
+      }
+    ],
+    "revision": [
+      "Oil/gas sequence: analytics goal → deploy IoT → on-premises real/simulated data → ETL → cloud analytics → maintenance.",
+      "Chemical maintenance reduces breakdown; sensors/RFID track products for logistics.",
+      "Supply-chain risk: equipment, material, process, environment and workers.",
+      "Pharma assignment: ADR, excipient effects and allergies. Sensors: temperature, light, pressure, humidity and pH.",
+      "UAVs communicate directly with SCADA. Quadcopter: four propellers; swarms coordinate multiple UAVs.",
+      "UAV generation discrepancy: the supplied key selects Fourth; the supplied slide places the listed features under sixth.",
+      "Agriculture: seed/fertilizer/water. Mining: surface surveys/blast design. Energy: miles of transmission lines.",
+      "Healthcare: medicines/vaccines/defibrillators/snake-bite serum. Forestry: carbon storage in biomass.",
+      "Transformation checklist: sensors, actuators, networks, interoperability, automated fault detection/maintenance, feedback control.",
+      "Dairy: DCS with two processors, hydrostatic level sensing, RTD temperature sensors; connect existing automation to analytics.",
+      "Growhill: PLC-controlled injection moulding needs wider interconnection. Atomic India: wheel rims; nickel bath 65–70°C in the case.",
+      "VR: 3D models → textures → Unreal Engine → safe training scenarios.",
+      "FSW is solid-state joining. Force/power → analytics → feedback to rotational/travel speeds; manual setup analyses after welding.",
+      "Transco assignment supplement: Semtech LoRa + LoRaWAN; whole conveyor-line view and defect localization."
+    ]
+  }
+]

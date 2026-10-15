@@ -1,0 +1,27 @@
+# Dependencies and generated build/test output.
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+.vercel/
+
+# Local credentials; keep shareable environment templates.
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Logs and OS/editor temporary files.
+*.log
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+~$*
+.~lock.*#
+
+# Generated design reviews; preserve authored design settings and documentation.
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/hook.cache.json

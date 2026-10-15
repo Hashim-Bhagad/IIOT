@@ -1,0 +1,3208 @@
+[
+  {
+    "id": 1,
+    "title": "Sensors, communication & IoT networking",
+    "summary": "Build the complete sensor-to-action chain, then learn which radio, network and messaging protocol carries each part of it. This week supplies the language used throughout the course.",
+    "objectives": [
+      "Explain how sensing, processing and actuation form an IoT system.",
+      "Distinguish range, accuracy, resolution and the main sensor classifications.",
+      "Recognize the radio standards and their assignment-specific numbers.",
+      "Explain why 6LoWPAN and CoRE exist for constrained devices.",
+      "Choose between MQTT, CoAP and DDS and interpret MQTT QoS levels."
+    ],
+    "sections": [
+      {
+        "id": "w1-system",
+        "title": "From a physical change to a useful action",
+        "intro": "A connected factory is a chain of functions. Learn the role of each box before memorizing protocol names.",
+        "paragraphs": [
+          "A sensor observes a physical quantity such as temperature, gas concentration, light, pressure or movement and converts it into a signal. A processor reads that signal, applies a rule or algorithm and produces a decision. An actuator uses energy and a control signal to change the physical world: turn a motor, open a valve, switch a relay or sound a warning.",
+          "A transducer converts energy from one form to another. Sensors and actuators are both transducers, but their directions differ: a microphone turns sound into an electrical signal; a speaker turns an electrical signal into sound. A sensor output can be an electrical change in voltage, current, resistance or capacitance; it often needs processing before a person can understand it.",
+          "IoT connects physical objects to networks so their data can support useful services. IIoT applies this idea to factories, mines, plants and other industrial settings, where reliability and safety matter. Sensing and actuation are the endpoints; communication links them to processing that may be local, at a gateway or in a cloud."
+        ],
+        "keyPoints": [
+          "Sensor → processor → actuator is the essential chain.",
+          "MQ-5 is the assignment answer for LPG, CH4 and CO detection.",
+          "DHT22 measures temperature/humidity; HC-SR04 measures distance; PIR detects motion.",
+          "An actuator needs an energy source as well as a control signal.",
+          "Electric actuators may be linear or rotary; hydraulic/pneumatic actuators use fluid pressure."
+        ],
+        "terms": [
+          {
+            "term": "Transducer",
+            "meaning": "A device that converts one form of energy into another."
+          },
+          {
+            "term": "Sensor",
+            "meaning": "The measurement input of a system."
+          },
+          {
+            "term": "Processor",
+            "meaning": "The computation and decision stage between sensing and action."
+          },
+          {
+            "term": "Actuator",
+            "meaning": "The output device that creates a physical action."
+          },
+          {
+            "term": "Ultrasonic sensing",
+            "meaning": "Measure echo travel time after sending sound to estimate distance."
+          }
+        ],
+        "traps": [
+          "The missing box between a sensor and an actuator is Processor, not another sensor.",
+          "MQ-series devices are gas sensors, but exact gas selectivity and calibration depend on the model and environment; the source groups MQ-5 with LPG, CH4 and CO."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "The IIoT sense-to-action chain",
+          "nodes": [
+            {
+              "label": "Physical quantity",
+              "detail": "Gas, temperature or movement"
+            },
+            {
+              "label": "Sensor",
+              "detail": "Converts the quantity to a signal"
+            },
+            {
+              "label": "Processor",
+              "detail": "Compares, calculates and decides"
+            },
+            {
+              "label": "Actuator",
+              "detail": "Buzzer, valve, motor or relay"
+            },
+            {
+              "label": "Physical result",
+              "detail": "A warning or a changed process"
+            }
+          ],
+          "caption": "A network may carry the sensor reading and the command; the processor still provides the decision between them."
+        },
+        "example": {
+          "title": "A methane alarm in a mine",
+          "steps": [
+            "The gas sensor measures a concentration.",
+            "A local processor compares the reading with a configured safety threshold.",
+            "The radio sends the measurement to the control room.",
+            "A buzzer warns workers and the operator follows the safety procedure."
+          ]
+        }
+      },
+      {
+        "id": "w1-sensors",
+        "title": "How to describe and classify a sensor",
+        "intro": "A sensor can measure the right quantity and still be unsuitable if its range, response or precision is wrong.",
+        "paragraphs": [
+          "Static characteristics describe measurements after the sensor has settled. Range is the lower-to-upper interval it can measure. Accuracy describes closeness to a reference. Resolution is the smallest detectable input change. Error is the difference from the reference. Sensitivity is change in output divided by change in input; linearity describes how closely the calibration curve follows a straight line.",
+          "Drift is a slowly changing reading under unchanged conditions. Repeatability is how consistently the sensor reproduces a reading under the same conditions. Dynamic characteristics describe what happens while an input changes: a zero-order model follows immediately; a first-order model approaches its final value gradually; a second-order model can overshoot or oscillate before settling.",
+          "Analog and digital describe the output interface. An analog signal varies continuously; a digital sensor provides discrete values or a binary state, often after internal conversion. Scalar and vector describe the quantity: temperature or gas concentration has magnitude; acceleration and magnetic field have magnitude and direction. A sensor can therefore be digital and vector at the same time.",
+          "The course uses an active/passive classification in which radar, sounder and altimeter actively interrogate an environment, while examples such as temperature and soil-moisture sensing are passive. This terminology has other conventions in instrumentation, so interpret it in the course context rather than assuming every textbook uses the same definition."
+        ],
+        "keyPoints": [
+          "Range = lowest and highest measurable input.",
+          "Accuracy = closeness to reference; resolution = smallest step.",
+          "Sensitivity is a ratio, not the same thing as accuracy.",
+          "Scalar: magnitude; vector: magnitude, direction and orientation in the assignment wording.",
+          "Sensor sizes include macro, MEMS-based micro and nano devices."
+        ],
+        "terms": [
+          {
+            "term": "MEMS",
+            "meaning": "Micro-electro-mechanical systems used to build small sensing structures."
+          },
+          {
+            "term": "Transient response",
+            "meaning": "Behavior before a changed input has settled."
+          },
+          {
+            "term": "Steady state",
+            "meaning": "The settled operating condition."
+          },
+          {
+            "term": "ADC",
+            "meaning": "Analog-to-digital converter, which expresses an analog signal as digital values."
+          }
+        ],
+        "traps": [
+          "Do not answer accuracy when asked for the highest and lowest measurable values.",
+          "Digital does not necessarily mean only on/off; many digital sensors report numeric measurements.",
+          "Active/passive sensor terminology depends on the field and convention; learn the lecture examples for this course."
+        ],
+        "comparison": {
+          "headers": [
+            "Characteristic",
+            "Question it answers",
+            "Temperature-sensor example"
+          ],
+          "rows": [
+            [
+              "Range",
+              "What interval can it measure?",
+              "−20 to 80 °C"
+            ],
+            [
+              "Resolution",
+              "What is the smallest detectable step?",
+              "0.1 °C"
+            ],
+            [
+              "Accuracy",
+              "How close is it to the reference?",
+              "A reading differs by 0.5 °C"
+            ],
+            [
+              "Repeatability",
+              "Does it give consistent repeat readings?",
+              "Repeated tests cluster closely"
+            ],
+            [
+              "Drift",
+              "Does it change at the same true input?",
+              "Reading slowly shifts while temperature is fixed"
+            ]
+          ]
+        },
+        "example": {
+          "title": "Selecting a furnace sensor",
+          "steps": [
+            "Choose a range that includes the furnace temperature.",
+            "Check that its resolution can reveal the changes you need.",
+            "Check accuracy against a trusted reference.",
+            "Check response time so a dangerous temperature rise is not reported too late."
+          ]
+        }
+      },
+      {
+        "id": "w1-radio",
+        "title": "IEEE 802.15.4 and ZigBee: the radio foundation",
+        "intro": "Separate the low-level radio rulebook from the higher-level network built on it.",
+        "paragraphs": [
+          "IEEE 802.15.4 defines the physical and MAC layers for low-rate wireless personal area networks. The physical layer describes radio bands and modulation; the MAC layer controls access to the shared medium and frames. Low cost, low power and modest throughput make it suitable for small battery-operated sensors. The course associates it with DSSS coding and CSMA/CA medium access.",
+          "DSSS spreads a signal using a code sequence, which helps it resist some interference. CSMA/CA means a device checks the medium and tries to avoid transmitting over another device. In the original course band mapping, the lower 868/915 MHz bands use BPSK at 20–40 kbps, and the 2.4 GHz band uses O-QPSK at 250 kbps. Do not confuse a coding scheme, a modulation method and a MAC access method.",
+          "ZigBee builds networking and application functions above IEEE 802.15.4. A coordinator starts the network; routers relay messages over several hops; end devices do not route other devices’ packets. End devices can send as well as receive their own application data. Star, tree and mesh arrangements are possible, and ZigBee PRO improves network scalability, routing and security capabilities.",
+          "The notes list 802.15.4 variants as a recognition aid: b for higher-rate improvements, a for extended-range alternatives, c for China, d for Japan, e for industrial MAC improvements, f for active-RFID use and g for smart utility networks. Treat these as lecture associations, not as a complete modern standards catalog."
+        ],
+        "keyPoints": [
+          "Assignment: ZigBee at 2.4 GHz uses O-QPSK.",
+          "Assignment: IEEE 802.15.4 coding is DSSS.",
+          "Coordinator initializes; router relays; end device does not relay.",
+          "The source gives ZigBee 20–250 kbps and about 10–70 m, not a universal deployment guarantee.",
+          "A low duty cycle saves battery by reducing radio awake time."
+        ],
+        "terms": [
+          {
+            "term": "WPAN",
+            "meaning": "Wireless personal area network."
+          },
+          {
+            "term": "DSSS",
+            "meaning": "Direct Sequence Spread Spectrum, a spread-spectrum coding technique."
+          },
+          {
+            "term": "O-QPSK",
+            "meaning": "Offset Quadrature Phase Shift Keying."
+          },
+          {
+            "term": "CSMA/CA",
+            "meaning": "Carrier Sense Multiple Access with Collision Avoidance."
+          },
+          {
+            "term": "Multi-hop",
+            "meaning": "A message reaches its destination through intermediate relays."
+          }
+        ],
+        "traps": [
+          "DSSS is coding; O-QPSK is modulation; CSMA/CA is medium access.",
+          "The source calls an end device receive-only; it can send its own data but cannot route for others.",
+          "The source lists a 128-byte ZigBee packet and 104-byte payload; frame and payload limits depend on layers and overhead. IEEE 802.15.4’s stated frame limit is 127 bytes.",
+          "ZigBee range varies with hardware and conditions; other weekly notes may use a different range.",
+          "The source itself corrects a spoken megawatt/milliwatt mistake; never memorize megawatts for a small sensor radio."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "A ZigBee message through a relay",
+          "nodes": [
+            {
+              "label": "End device",
+              "detail": "Measures and sends its own data"
+            },
+            {
+              "label": "Router",
+              "detail": "Relays a packet to the next hop"
+            },
+            {
+              "label": "Coordinator / gateway",
+              "detail": "Maintains the network; connects onward"
+            },
+            {
+              "label": "Application",
+              "detail": "Receives a usable measurement"
+            }
+          ],
+          "caption": "ZigBee adds a network above IEEE 802.15.4’s physical and MAC layers. Relaying extends reach beyond a single radio hop."
+        }
+      },
+      {
+        "id": "w1-ip",
+        "title": "6LoWPAN, heterogeneous networks and service discovery",
+        "intro": "A common IP language helps unlike devices connect, but tiny radio frames need an adaptation layer.",
+        "paragraphs": [
+          "IoT devices often have little memory, processing power and battery energy. Their networks can have small payloads, packet losses and changing routes. Heterogeneity means devices, vendors, access technologies, traffic and protocols differ. A proprietary non-IP gateway may tie a user to a vendor-specific API, reduce interoperability and limit scalable last-mile connection.",
+          "6LoWPAN means IPv6 over Low-power Wireless Personal Area Networks. IPv6 requires support for a 1280-byte minimum MTU, while the course’s IEEE 802.15.4 frame limit is 127 bytes. The adaptation layer between MAC and the IP network layer compresses headers and fragments packets into smaller pieces; the receiving side reassembles them. The original IPv6 header is 40 bytes and a UDP header is 8 bytes.",
+          "In mesh-under, forwarding is handled below IP in the adaptation layer using link-layer addresses. In route-over, each routing hop is at the IP network layer using IP addresses. The source emphasizes stateless address autoconfiguration and link-layer AES-128 security, and gives 2400–2483.5 MHz as the worldwide radio band for the assignment.",
+          "Three IETF efforts divide the job: 6LoWPAN adapts IP to low-power links; ROLL addresses routing in low-power and lossy networks; CoRE addresses web-style services on constrained devices. For service discovery, a device registers its resources through a Registration Interface, a Resource Directory stores descriptions, and a client uses a lookup interface to find them. REST-based protocols such as CoAP support these interactions."
+        ],
+        "keyPoints": [
+          "6LoWPAN inserts an adaptation layer between MAC and IPv6.",
+          "Its key tasks: header compression, fragmentation and reassembly.",
+          "Course worldwide band: 2400–2483.5 MHz; regional bands differ.",
+          "CoRE service discovery uses a Registration Interface, Resource Directory and REST protocols.",
+          "Proprietary solutions can limit flexibility, interoperability and last-mile connectivity."
+        ],
+        "terms": [
+          {
+            "term": "IPv6",
+            "meaning": "Internet Protocol version 6, with a large address space."
+          },
+          {
+            "term": "MTU",
+            "meaning": "Maximum transmission unit for a link or interface."
+          },
+          {
+            "term": "REST",
+            "meaning": "Representational State Transfer, a resource-oriented interaction style."
+          },
+          {
+            "term": "Resource Directory",
+            "meaning": "A catalog that helps clients discover registered device resources."
+          },
+          {
+            "term": "ROLL",
+            "meaning": "Routing Over Low power and Lossy networks."
+          }
+        ],
+        "traps": [
+          "IPv6’s 1280-byte requirement is not an 802.15.4 radio-frame size.",
+          "6LoWPAN is an adaptation mechanism, not a new modulation technique.",
+          "CoRE is the service framework; CoAP is a protocol associated with it.",
+          "The assigned frequency is a course-specific band statement, not a claim that 6LoWPAN only works on one band."
+        ],
+        "diagram": {
+          "type": "layers",
+          "title": "Fitting IPv6 onto a small radio link",
+          "nodes": [
+            {
+              "label": "Application",
+              "detail": "Resources and CoAP messages"
+            },
+            {
+              "label": "IPv6 / UDP",
+              "detail": "Network and transport headers"
+            },
+            {
+              "label": "6LoWPAN adaptation",
+              "detail": "Compress, fragment and reassemble"
+            },
+            {
+              "label": "IEEE 802.15.4 MAC",
+              "detail": "Frames and medium access"
+            },
+            {
+              "label": "IEEE 802.15.4 physical",
+              "detail": "Radio transmission"
+            }
+          ],
+          "caption": "Compression removes unnecessary overhead; fragmentation solves the mismatch between a large IP packet and a small link frame."
+        },
+        "example": {
+          "title": "Finding a factory’s temperature resource",
+          "steps": [
+            "The sensor registers its temperature resource with a Resource Directory.",
+            "The maintenance app looks up temperature resources.",
+            "The app requests a reading using CoAP.",
+            "6LoWPAN adapts the IPv6 packet for the low-power radio link."
+          ]
+        }
+      },
+      {
+        "id": "w1-industrial-radio",
+        "title": "Industrial wireless and home-control radios",
+        "intro": "A factory radio often values predictable delivery more than maximum speed.",
+        "paragraphs": [
+          "WirelessHART is an industrial protocol based on IEEE 802.15.4. HART expands to Highway Addressable Remote Transducer. The course gives 2.4 GHz ISM operation, 250 kbps, DSSS, O-QPSK and channels 11–26. Time Division Multiple Access assigns transmission slots, while channel hopping reduces repeated exposure to an interfered channel. The source describes 100 slots per second; this is a useful timing figure rather than a universal fixed superframe length.",
+          "ISA 100.11a was developed by the International Society of Automation for industrial monitoring and process control. It uses an 802.15.4 foundation, supports IPv6 and AES-128, and emphasizes interoperability across different industrial protocols. The course lists star/mesh and TDMA/CSMA-CA operation.",
+          "Z-Wave is associated with home automation, locks, alarms and appliance control. Its sub-GHz bands avoid the busy 2.4 GHz Wi-Fi/Bluetooth environment. The course answer for maximum data rate is 100 kbps, with about 30 m range and 232 nodes in the described system. A four-byte Home ID identifies a network and a one-byte Node ID identifies a device. Mesh routing can bypass radio dead spots."
+        ],
+        "keyPoints": [
+          "WirelessHART: industrial use, TDMA and channel hopping.",
+          "ISA 100.11a developer: International Society of Automation.",
+          "Z-Wave assignment maximum rate: 100 kbps.",
+          "Z-Wave source bands: 908.42 MHz US and 868.42 MHz Europe.",
+          "A source-routed packet’s route is selected at the source."
+        ],
+        "terms": [
+          {
+            "term": "TDMA",
+            "meaning": "Time Division Multiple Access: devices transmit in allocated time slots."
+          },
+          {
+            "term": "Channel hopping",
+            "meaning": "Change the radio channel between transmissions."
+          },
+          {
+            "term": "Deterministic communication",
+            "meaning": "Delivery timing can be planned within defined conditions."
+          },
+          {
+            "term": "ISM band",
+            "meaning": "Industrial, scientific and medical radio-frequency band."
+          }
+        ],
+        "traps": [
+          "International Society of Automation is the expected current name, not Instrument Society of America.",
+          "The notes contain competing Z-Wave node counts; use 232 for the supplied lecture version.",
+          "100 kbps is the assignment’s Z-Wave answer; protocol generations can differ.",
+          "WirelessHART’s data link is not ordinary unscheduled CSMA/CA just because its physical radio is 802.15.4."
+        ],
+        "comparison": {
+          "headers": [
+            "Technology",
+            "Main setting",
+            "Assignment anchor"
+          ],
+          "rows": [
+            [
+              "WirelessHART",
+              "Industrial monitoring/control",
+              "TDMA; 2.4 GHz; 250 kbps"
+            ],
+            [
+              "ISA 100.11a",
+              "Industrial interoperability",
+              "International Society of Automation"
+            ],
+            [
+              "Z-Wave",
+              "Home/appliance control",
+              "100 kbps; sub-GHz; mesh"
+            ],
+            [
+              "ZigBee",
+              "Low-power device networks",
+              "O-QPSK at 2.4 GHz"
+            ]
+          ]
+        },
+        "example": {
+          "title": "Choosing an industrial radio",
+          "steps": [
+            "A process plant needs regular measurements with controlled timing.",
+            "Scheduled time slots avoid competing transmissions within the configured schedule.",
+            "Channel hopping helps the plant work around local interference.",
+            "Choose a protocol that also fits interoperability, safety and deployment needs."
+          ]
+        }
+      },
+      {
+        "id": "w1-proximity",
+        "title": "Bluetooth, RFID and NFC",
+        "intro": "These technologies solve different jobs: replace a cable, identify an item, or exchange data with a tap.",
+        "paragraphs": [
+          "Bluetooth connects nearby devices and peripherals. In the classic Bluetooth model used by the notes, a piconet has one master and up to seven active slaves; linked piconets form a scatternet. The source gives a 2.4 GHz band, 1–3 Mbps, and class ranges of approximately 1, 10 and 100 m. These are version/class-dependent lecture figures, not specifications for every Bluetooth device.",
+          "RFID has a tag, reader and supporting software. The tag contains an integrated circuit and antenna. A passive tag gets energy from the reader; an active tag has its own battery. Radio identification does not require an optical line of sight like a barcode scanner, which is useful for tracking parts, baggage, livestock and shipments.",
+          "NFC is a very-short-range technology related to RFID. The course gives under 10 cm, 13.56 MHz and rates of 106, 212 or 424 kbps. Its close interaction is useful for contactless payment, access and device pairing. The notes describe active-active and active-passive modes: an active device supplies an RF field, while a passive interaction relies on the other device’s field."
+        ],
+        "keyPoints": [
+          "Bluetooth: cable replacement; classic piconet 1 + 7.",
+          "RFID: tag + reader + software; passive tags have no battery.",
+          "NFC: tap-like interaction; under 10 cm; 13.56 MHz.",
+          "RFID tracks identity; a sensor measures a physical quantity."
+        ],
+        "terms": [
+          {
+            "term": "Piconet",
+            "meaning": "A small classic Bluetooth network."
+          },
+          {
+            "term": "Scatternet",
+            "meaning": "An interconnection of multiple piconets."
+          },
+          {
+            "term": "RFID",
+            "meaning": "Radio Frequency Identification."
+          },
+          {
+            "term": "NFC",
+            "meaning": "Near Field Communication."
+          }
+        ],
+        "traps": [
+          "Do not treat a classic Bluetooth piconet count as a Bluetooth Low Energy topology rule.",
+          "RFID does not require optical line of sight, but material and radio conditions still affect reading.",
+          "The notes’ statement that a passive NFC device only transmits is simplified; interpret passive as relying on the other device’s RF field."
+        ],
+        "comparison": {
+          "headers": [
+            "Job",
+            "Suitable technology",
+            "Reason"
+          ],
+          "rows": [
+            [
+              "Connect a nearby handheld and peripheral",
+              "Bluetooth",
+              "Short-range data connection"
+            ],
+            [
+              "Track a crate through a warehouse",
+              "RFID",
+              "Read an identity tag by radio"
+            ],
+            [
+              "Tap a credential at a door",
+              "NFC",
+              "Very short deliberate interaction"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "w1-qos",
+        "title": "Networks and Quality of Service",
+        "intro": "Delivering a value is useful only if it arrives in time, stays valid and fits the receiver’s limits.",
+        "paragraphs": [
+          "A typical implementation connects sensor motes to a local network and gateway, then to internet/cloud services for storage and analytics, and finally back to an actuator. A mote commonly includes a sensor, processor and radio. A gateway bridges the local technology to the wider network. Applications are the leaves, the architecture is the trunk and device/protocol choices are the roots of the notes’ IoT tree analogy.",
+          "Quality of Service describes delivery and resource properties. Resource utilization controls memory and bandwidth: resource limits restrict buffering and time filters restrict sampling or arrival rate. Timeliness controls freshness: a deadline limits gaps between updates, while a latency budget limits time from send to receive.",
+          "Data availability controls what usable information is retained: durability keeps data available after its publisher disappears; lifespan sets how long a sample remains valid; history sets how many old samples are kept. Data delivery covers reliability and transport priority. These four groups can be remembered as Resource, Timeliness, Availability, Delivery.",
+          "Network requirements can compete: broad coverage, high throughput, low latency, high reliability and power efficiency. Sending continuously may improve freshness but drain batteries; buffering may preserve samples but use memory. Choose policies for the application rather than assuming every reading needs the strongest possible guarantee."
+        ],
+        "keyPoints": [
+          "QoS groups: Resource utilization, Timeliness, Data availability, Data delivery.",
+          "Deadline is update spacing; latency budget is transmission delay.",
+          "Lifespan determines validity; history determines retained count.",
+          "Battery constraints require low-power hardware, software and algorithms."
+        ],
+        "terms": [
+          {
+            "term": "Latency",
+            "meaning": "Delay between an event/send and the corresponding response/receive."
+          },
+          {
+            "term": "Throughput",
+            "meaning": "Rate of useful data transferred."
+          },
+          {
+            "term": "Gateway",
+            "meaning": "A node that connects different network segments or protocols."
+          },
+          {
+            "term": "Durability",
+            "meaning": "Retention that can keep a published sample accessible later."
+          }
+        ],
+        "traps": [
+          "A fast average link does not guarantee each critical alert meets its deadline.",
+          "MQTT QoS levels in the next section are a specific delivery mechanism, not all four general QoS groups."
+        ],
+        "example": {
+          "title": "An alert versus a periodic trend",
+          "steps": [
+            "A gas alarm needs a short delay and reliable delivery.",
+            "A temperature trend may tolerate occasional lost samples.",
+            "A lifespan prevents yesterday’s alarm status from being treated as current.",
+            "A history limit keeps the small device’s buffer from growing indefinitely."
+          ]
+        }
+      },
+      {
+        "id": "w1-messaging",
+        "title": "Application protocols: MQTT, CoAP and DDS",
+        "intro": "Radio carries bits; an application protocol defines how devices and applications exchange meaningful messages.",
+        "paragraphs": [
+          "MQTT uses publish/subscribe over TCP. A publisher sends a message to a broker under a topic name; subscribers ask the broker for topics they want. Publisher and subscriber do not need to know one another directly. QoS 0 is at most once: no protocol acknowledgment or retry. QoS 1 is at least once: retries can produce duplicates. QoS 2 provides exactly-once delivery for the protocol exchange using a stronger handshake; it does not by itself guarantee exactly one business action across an entire system.",
+          "CoAP is a constrained REST-style protocol associated with IETF CoRE. The assignment answer for its transport is UDP. A client accesses resources through request/response operations; confirmable messages can be acknowledged, non-confirmable messages avoid that exchange, and acknowledgment/reset are message types. DTLS is a security protocol used for datagram transport. The notes’ methods list is simplified: Observe is an extension and PUSH is not a standard core CoAP method.",
+          "DDS RTPS is a data-centric real-time publish/subscribe protocol over UDP. The data is organized around topics; subscribers express interest in topics and QoS policies can address deadlines, reliability, persistence and freshness. AMQP supports messaging with delivery guarantees and flow control; the source associates it with financial systems. XMPP is XML-based messaging with extensibility and federated servers; it is not inherently a serverless network. IEEE 1888 is presented as URI-based exchange for environment monitoring and energy management.",
+          "The final assignment’s OSI session-layer question has DTLS as its supplied key. This is a course-key mapping, not a precise universal OSI placement: DTLS secures datagram communications and is commonly discussed with transport security. Keep the answer for this assignment and the technical meaning separate. The source also associates XMPP with DTLS; conventional XMPP transport security is typically TLS."
+        ],
+        "keyPoints": [
+          "MQTT = broker-based publish/subscribe over TCP.",
+          "MQTT QoS 0: at most once; 1: at least once; 2: exactly once for the exchange.",
+          "CoAP = REST-style constrained protocol; assignment transport UDP.",
+          "DDS RTPS data is called topics.",
+          "DTLS = Datagram Transport Layer Security; supplied final-question answer."
+        ],
+        "terms": [
+          {
+            "term": "Publisher",
+            "meaning": "A producer that sends messages under a topic."
+          },
+          {
+            "term": "Subscriber",
+            "meaning": "A consumer that requests messages for topics."
+          },
+          {
+            "term": "Broker",
+            "meaning": "The intermediary that receives publications and distributes them."
+          },
+          {
+            "term": "Topic",
+            "meaning": "A named subject/data channel used by publish/subscribe systems."
+          },
+          {
+            "term": "DTLS",
+            "meaning": "A protocol that secures datagram communications."
+          }
+        ],
+        "traps": [
+          "QoS 0 does not retry; QoS 1 may deliver duplicates.",
+          "TCP transport and MQTT’s chosen QoS level are different layers of behavior.",
+          "Do not generalize the assignment’s DTLS/session-layer answer into a universal networking fact.",
+          "The notes contain simplified CoAP method and XMPP security descriptions; the app labels the course key where needed."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "MQTT decouples a sensor and an application",
+          "nodes": [
+            {
+              "label": "Publisher",
+              "detail": "Sensor publishes a reading"
+            },
+            {
+              "label": "Broker",
+              "detail": "Routes messages by topic"
+            },
+            {
+              "label": "Subscriber",
+              "detail": "Dashboard subscribes to that topic"
+            }
+          ],
+          "caption": "The topic links producer and consumer. Choose QoS separately from the sensor’s radio technology."
+        },
+        "comparison": {
+          "headers": [
+            "Protocol",
+            "Interaction",
+            "Transport / exam hook"
+          ],
+          "rows": [
+            [
+              "MQTT",
+              "Publish/subscribe through a broker",
+              "TCP; QoS 0/1/2"
+            ],
+            [
+              "CoAP",
+              "REST-style resources",
+              "UDP; datagram security with DTLS"
+            ],
+            [
+              "DDS RTPS",
+              "Data-centric publish/subscribe",
+              "UDP; data called topics"
+            ],
+            [
+              "AMQP",
+              "Messaging / publish-subscribe",
+              "Flow control and delivery guarantees"
+            ],
+            [
+              "XMPP",
+              "Extensible XML messaging",
+              "Federated messaging; source security wording is simplified"
+            ]
+          ]
+        }
+      }
+    ],
+    "quiz": [
+      {
+        "id": "w1-q01",
+        "question": "Which sensor detects LPG, CH4 and CO in the assignment?",
+        "options": [
+          "DHT22",
+          "HC-SR04",
+          "MQ-5",
+          "PIR"
+        ],
+        "correctIndex": 2,
+        "explanation": "MQ-5 is the gas-sensor answer given in the source. DHT22 is the closest named alternative but measures temperature and humidity, not those gases.",
+        "sectionId": "w1-system",
+        "sourceNote": "The source groups MQ-5 with these gases. Exact sensitivity and calibration depend on the sensor model and environment."
+      },
+      {
+        "id": "w1-q02",
+        "question": "Which modulation does ZigBee use at 2.4 GHz in the course?",
+        "options": [
+          "O-QPSK",
+          "BPSK",
+          "Frequency modulation",
+          "Amplitude modulation"
+        ],
+        "correctIndex": 0,
+        "explanation": "O-QPSK is the 2.4 GHz modulation in the notes. BPSK is the tempting distractor because it is associated with the lower 868/915 MHz course bands.",
+        "sectionId": "w1-radio"
+      },
+      {
+        "id": "w1-q03",
+        "question": "What does CoRE include for service discovery?",
+        "options": [
+          "Only a Resource Directory",
+          "Registration Interface, Resource Directory and REST-based protocols",
+          "Only a Registration Interface",
+          "Only REST-based protocols"
+        ],
+        "correctIndex": 1,
+        "explanation": "Discovery needs registration, stored resource descriptions and suitable resource interactions. A Resource Directory alone is only the catalog and does not describe the complete process.",
+        "sectionId": "w1-ip"
+      },
+      {
+        "id": "w1-q04",
+        "question": "What is Z-Wave’s maximum data rate in the supplied course notes?",
+        "options": [
+          "20 kbps",
+          "250 kbps",
+          "3 Mbps",
+          "100 kbps"
+        ],
+        "correctIndex": 3,
+        "explanation": "The supplied assignment answer is 100 kbps. The 250 kbps figure belongs to the course’s 2.4 GHz IEEE 802.15.4 family, not the described Z-Wave system.",
+        "sectionId": "w1-industrial-radio",
+        "sourceNote": "This is the lecture/assignment figure; Z-Wave generations and variants can differ."
+      },
+      {
+        "id": "w1-q05",
+        "question": "CoAP is based on which transport protocol in this assignment?",
+        "options": [
+          "TCP",
+          "UDP",
+          "DSSS",
+          "TDMA"
+        ],
+        "correctIndex": 1,
+        "explanation": "UDP is the assignment’s transport answer. TCP is used by MQTT; DSSS and TDMA describe different lower-layer mechanisms.",
+        "sectionId": "w1-messaging"
+      },
+      {
+        "id": "w1-q06",
+        "question": "What is the coding scheme of IEEE 802.15.4 in the course?",
+        "options": [
+          "DSSS",
+          "CSMA/CA",
+          "O-QPSK",
+          "TDMA"
+        ],
+        "correctIndex": 0,
+        "explanation": "DSSS is the spread-spectrum coding scheme. O-QPSK is modulation, so it is a plausible but different category of answer.",
+        "sectionId": "w1-radio"
+      },
+      {
+        "id": "w1-q07",
+        "question": "What does a sensor’s range mean?",
+        "options": [
+          "Closeness to the reference value",
+          "Highest and lowest values it can sense",
+          "Smallest change it can detect",
+          "Difference between the reference and measured value"
+        ],
+        "correctIndex": 1,
+        "explanation": "Range is the measurable input interval. The smallest detectable change is resolution, while closeness to a reference is accuracy.",
+        "sectionId": "w1-sensors"
+      },
+      {
+        "id": "w1-q08",
+        "question": "Who developed ISA 100.11a?",
+        "options": [
+          "IEEE alone",
+          "Internet Engineering Task Force",
+          "International Society of Automation",
+          "ZigBee Alliance"
+        ],
+        "correctIndex": 2,
+        "explanation": "The course answer is International Society of Automation. IEEE supplies the 802.15.4 foundation, but that does not make it the developer of ISA 100.11a.",
+        "sectionId": "w1-industrial-radio"
+      },
+      {
+        "id": "w1-q09",
+        "question": "Which set describes drawbacks of proprietary non-IP solutions?",
+        "options": [
+          "Only low radio frequency",
+          "Guaranteed vendor independence and unlimited scale",
+          "Limited flexibility, interoperability and last-mile connectivity",
+          "No need for gateways or APIs"
+        ],
+        "correctIndex": 2,
+        "explanation": "Vendor-specific gateways and APIs can constrain all three listed properties. Low radio frequency is unrelated to whether the application interface is proprietary.",
+        "sectionId": "w1-ip"
+      },
+      {
+        "id": "w1-q10",
+        "question": "Which MQTT QoS level means “at most once”?",
+        "options": [
+          "QoS 0",
+          "QoS 1",
+          "QoS 2",
+          "All three levels"
+        ],
+        "correctIndex": 0,
+        "explanation": "QoS 0 sends without protocol acknowledgment or retry. QoS 1 is at least once and can duplicate messages, so it is the closest wrong choice.",
+        "sectionId": "w1-messaging"
+      },
+      {
+        "id": "w1-q11",
+        "question": "Fill the missing stage: sensor → ? → actuator.",
+        "options": [
+          "Router",
+          "RFID tag",
+          "Processor",
+          "Power source only"
+        ],
+        "correctIndex": 2,
+        "explanation": "The processor interprets the sensor reading and decides the actuator command. A router can carry the data, but does not fill the decision role in this chain.",
+        "sectionId": "w1-system"
+      },
+      {
+        "id": "w1-q12",
+        "question": "Which description best matches a vector sensor?",
+        "options": [
+          "Depends only on magnitude",
+          "Depends on magnitude, direction and orientation",
+          "Can measure only binary values",
+          "Never depends on direction"
+        ],
+        "correctIndex": 1,
+        "explanation": "A vector quantity includes magnitude and direction; the assignment also names orientation. Magnitude alone describes a scalar sensor.",
+        "sectionId": "w1-sensors"
+      },
+      {
+        "id": "w1-q13",
+        "question": "Which 6LoWPAN frequency band is listed as worldwide in the assignment?",
+        "options": [
+          "902–929 MHz",
+          "13.56 MHz",
+          "868.42 MHz only",
+          "2400–2483.5 MHz"
+        ],
+        "correctIndex": 3,
+        "explanation": "The course worldwide band is 2400–2483.5 MHz. The source identifies 902–929 MHz as a North American band, so it is the nearest distractor.",
+        "sectionId": "w1-ip",
+        "sourceNote": "Band statement follows the supplied course notes; 6LoWPAN itself is an adaptation approach rather than a single fixed-frequency radio."
+      },
+      {
+        "id": "w1-q14",
+        "question": "In DDS RTPS, what is the data organized as?",
+        "options": [
+          "Topics",
+          "Piconets",
+          "Time slots",
+          "Home IDs"
+        ],
+        "correctIndex": 0,
+        "explanation": "DDS is data-centric publish/subscribe organized around topics. Time slots belong to scheduled medium access, not the name for DDS data.",
+        "sectionId": "w1-messaging"
+      },
+      {
+        "id": "w1-q15",
+        "question": "Which protocol is the supplied answer to the OSI session-layer question?",
+        "options": [
+          "MQTT",
+          "CoAP",
+          "AMQP",
+          "DTLS"
+        ],
+        "correctIndex": 3,
+        "explanation": "DTLS is the supplied assignment key. CoAP uses DTLS for secure datagram communication but is an application protocol, so it is the closest distractor in context.",
+        "sectionId": "w1-messaging",
+        "sourceNote": "The notes explicitly flag this answer-key wording. DTLS secures datagram transport; session-layer placement is not a precise general technical statement."
+      }
+    ],
+    "revision": [
+      "Sensor senses; processor decides; actuator acts; both endpoints are transducers.",
+      "Range is an interval; accuracy is closeness; resolution is the smallest change.",
+      "Vector = magnitude + direction/orientation.",
+      "IEEE 802.15.4: physical + MAC; DSSS; 2.4 GHz O-QPSK, 250 kbps.",
+      "ZigBee: coordinator starts, router relays, end device does not route.",
+      "6LoWPAN: compress + fragment/reassemble; worldwide course band 2400–2483.5 MHz.",
+      "WirelessHART uses TDMA; ISA 100.11a comes from International Society of Automation; Z-Wave course rate 100 kbps.",
+      "CoRE discovery: registration, directory and REST interactions.",
+      "MQTT/TCP: QoS 0 at most once, 1 at least once, 2 exactly once for the exchange.",
+      "CoAP/UDP; DDS data = topics; DTLS is the flagged session-layer assignment key."
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Industry 4.0, Lean & the smart factory",
+    "summary": "Understand why industry connects machines, how Lean removes waste and how data creates business value. Connect these ideas to the flexible, self-adapting smart factory.",
+    "objectives": [
+      "Tell the four industrial revolutions apart.",
+      "Explain sustainability, globalization and the pressures on manufacturing.",
+      "Apply Lean, Jidoka, JIT and the seven wastes to a production line.",
+      "Distinguish monitoring, control, optimization and automation.",
+      "Explain smart business value and the core characteristics of a smart factory.",
+      "Recognize the CPS and HL7 prerequisites included in this week’s assignment."
+    ],
+    "sections": [
+      {
+        "id": "w2-revolutions",
+        "title": "Four revolutions, four different enabling ideas",
+        "intro": "The exam often checks whether a technology belongs to the correct industrial era.",
+        "paragraphs": [
+          "The first industrial revolution mechanized production using steam power and railways, broadly from the 1760s to the 1840s in these notes. The second used electricity and mass production in the late nineteenth and early twentieth centuries. The third introduced computers, semiconductors and information technology into manufacturing from the 1960s onward. The fourth connects sensors, machines, computation and people so production can respond intelligently.",
+          "Industry 4.0 is associated with Germany, and the course dates the term to the Hannover Fair in 2011. Smart means a machine can detect conditions and adapt its behavior; connected means it exchanges information over networks. Both matter: a clever isolated controller cannot coordinate an entire supply chain.",
+          "The course calls the fourth revolution the Second Machine Age, associated with Erik Brynjolfsson and Andrew McAfee. Lower-cost sensors, smaller computers, stronger networks and AI make it possible. Digital goods can have very low replication and distribution cost, while physical goods still have material and logistics costs. Historical examples include smartphone growth and platform businesses; those illustrate disruption rather than current market statistics."
+        ],
+        "keyPoints": [
+          "Steam → electricity → computers → connected intelligence.",
+          "The steam engine is not a fourth-revolution characteristic.",
+          "Industry 4.0 term: Hannover Fair, Germany, 2011.",
+          "Fourth-revolution systems combine CPS, internet connectivity, sensors and analytics."
+        ],
+        "terms": [
+          {
+            "term": "Mechanization",
+            "meaning": "Machines provide physical work previously done by people."
+          },
+          {
+            "term": "Mass production",
+            "meaning": "Produce large quantities using standardized processes."
+          },
+          {
+            "term": "Disruption",
+            "meaning": "A change that substantially alters an established way of doing business."
+          },
+          {
+            "term": "Marginal cost",
+            "meaning": "The extra cost of making or distributing one additional unit."
+          }
+        ],
+        "traps": [
+          "Steam belongs to the first revolution, even if a modern smart plant uses a steam process.",
+          "Dates and economic comparisons in the notes are lecture-era illustrations, not present-day forecasts."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "The four industrial revolutions",
+          "nodes": [
+            {
+              "label": "Industry 1.0",
+              "detail": "Steam; mechanization"
+            },
+            {
+              "label": "Industry 2.0",
+              "detail": "Electricity; mass production"
+            },
+            {
+              "label": "Industry 3.0",
+              "detail": "Computers; automation"
+            },
+            {
+              "label": "Industry 4.0",
+              "detail": "Networks; connected intelligence"
+            }
+          ],
+          "caption": "The key shift from 3.0 to 4.0 is coordination across connected systems, rather than automation of an isolated task."
+        }
+      },
+      {
+        "id": "w2-sustainability",
+        "title": "Megatrends and sustainable production",
+        "intro": "Industry 4.0 is driven by physical, digital and biological change, but lasting production must also conserve resources.",
+        "paragraphs": [
+          "The physical megatrend includes autonomous vehicles, 3D printing, advanced robotics and new materials. The notes characterize new materials as lighter, stronger, recyclable and adaptive, with examples such as graphene and carbon nanotubes. These are desirable properties across new-material development, not a promise that every new material has every property.",
+          "The digital megatrend includes IoT, tracking through RFID/NFC, connected supply chains and blockchain-based transactions. The biological megatrend includes gene sequencing, DNA-related engineering and drug selection informed by molecular characteristics. The boundaries can overlap: manufacturing a customized medical implant combines digital design, physical fabrication and biological needs.",
+          "A sustainable industry seeks energy efficiency, resource conservation and low-waste production. It manages the whole process rather than only adding a digital device. Government subsidies can support projects, but reliance on a subsidy is not one of the lecture’s defining characteristics of sustainability. Renewable sources such as solar and wind can reduce dependence on fossil resources, while efficiency reduces the energy demanded in the first place."
+        ],
+        "keyPoints": [
+          "Three megatrends: Physical, Digital, Biological.",
+          "Assignment new-material properties: lighter, stronger, recyclable, adaptive.",
+          "Sustainability: energy efficiency + resource conservation + low waste.",
+          "Reliance on government subsidy is the assignment’s non-characteristic."
+        ],
+        "terms": [
+          {
+            "term": "Additive manufacturing",
+            "meaning": "Build an object by adding material layer by layer, including 3D printing."
+          },
+          {
+            "term": "Sustainability",
+            "meaning": "Operate in a way that can be maintained without exhausting resources or creating excessive harm."
+          },
+          {
+            "term": "Renewable resource",
+            "meaning": "A resource replenished through natural processes on relevant timescales."
+          }
+        ],
+        "traps": [
+          "A forecast in the notes for around 2025 is a historical prediction, not evidence that it happened.",
+          "Sustainable does not simply mean profitable or subsidized.",
+          "Material properties are context-dependent; keep the assignment’s bundle as a recognition answer."
+        ],
+        "comparison": {
+          "headers": [
+            "Megatrend",
+            "Examples from the course",
+            "Industrial meaning"
+          ],
+          "rows": [
+            [
+              "Physical",
+              "Robotics, 3D printing, new materials",
+              "Change how products are made and moved"
+            ],
+            [
+              "Digital",
+              "IoT, tracking, blockchain",
+              "Change how information is shared and acted on"
+            ],
+            [
+              "Biological",
+              "Gene sequencing, cell modification",
+              "Change biological understanding and engineering"
+            ]
+          ]
+        },
+        "example": {
+          "title": "A lower-waste production cell",
+          "steps": [
+            "Measure electricity and material consumption per usable product.",
+            "Use the data to identify idle machines and excess scrap.",
+            "Change scheduling and process settings to reduce waste.",
+            "Check quality and worker safety so savings do not create another problem."
+          ]
+        }
+      },
+      {
+        "id": "w2-global",
+        "title": "The business pressures surrounding a factory",
+        "intro": "ICT connects production, but technology decisions also face supply, energy, regulation and workforce pressures.",
+        "paragraphs": [
+          "The source groups globalization issues into five areas: business models, energy prices, ICT adoption, supply-chain management and emerging markets. Supply-chain management follows materials and products from production through delivery; deciding what to outsource is a strategic choice. Mass customization aims to serve different customer and local-market needs while keeping production efficient.",
+          "Information and Communication Technology is the manufacturing industry’s backbone or nervous system in the course. ERP supports shared planning and business information; wireless networks support mobility; GPS locates shipments; RFID identifies parts. ERP expands to Enterprise Resource Planning, and it coordinates information across functions rather than being a sensor or a radio standard.",
+          "Five emerging issues are technology, population growth, government regulation, natural-resource consumption and economic crises/recessions/depressions. Regulation may address labor, honest advertising, privacy, safety and environmental protection. Energy is produced, transferred, transformed and consumed, so efficiency opportunities exist across that chain, not only at the final machine.",
+          "The course uses simplified descriptions of economic downturns and historical population projections. The practical manufacturing response is to improve productivity and reduce cost while conserving resources. Real-time supply-chain visibility can reduce unnecessary inventory and tied-up capital, because planners can respond to actual status rather than holding excessive stock as a precaution."
+        ],
+        "keyPoints": [
+          "ICT is the main nervous system/backbone of manufacturing.",
+          "ERP = Enterprise Resource Planning.",
+          "Globalization issues: business models, energy, ICT, SCM, emerging markets.",
+          "Emerging issues: technology, population, regulation, resources, downturns.",
+          "Real-time supply-chain monitoring can reduce inventory and capital needs."
+        ],
+        "terms": [
+          {
+            "term": "ICT",
+            "meaning": "Information and Communication Technology."
+          },
+          {
+            "term": "ERP",
+            "meaning": "Enterprise Resource Planning: integrated business planning and information."
+          },
+          {
+            "term": "SCM",
+            "meaning": "Supply Chain Management."
+          },
+          {
+            "term": "Inventory capital",
+            "meaning": "Money tied up in raw material, work in progress or finished stock."
+          }
+        ],
+        "traps": [
+          "ERP belongs to business planning/information; RFID is item identification.",
+          "The notes’ recession/depression durations are simplified lecture wording, not universal economic definitions.",
+          "Visibility helps reduce inventory, but actual stock decisions must still account for uncertainty and lead times."
+        ],
+        "example": {
+          "title": "Tracking a delayed delivery",
+          "steps": [
+            "RFID identifies the parts and GPS shows the truck’s location.",
+            "The network shares the delay with ERP and production planning.",
+            "The planner adjusts the schedule rather than leaving a line waiting.",
+            "Better information can lower excess buffer stock over time."
+          ]
+        }
+      },
+      {
+        "id": "w2-lean",
+        "title": "Lean: create value and remove waste",
+        "intro": "Lean starts with what the customer values, then removes work that does not help deliver it.",
+        "paragraphs": [
+          "Lean grew from Toyota’s production system in Japan. Its goals are high quality, lower cost and shorter production time with minimum waste. The two pillars are Jidoka and Just-in-Time. Jidoka stops or exposes a problem so defective output is not repeatedly produced. JIT makes what the next process needs, in the needed amount and at the needed time.",
+          "The seven wastes are Transportation, Inventory, Motion, Waiting, Overproduction, Over-processing and Defects: TIM WOOD. Transportation moves material/information unnecessarily; motion is unnecessary movement by people. Overproduction makes too much or too soon; over-processing adds work the customer does not value. A connected plant can use timestamps and sensor data to reveal these wastes, but collecting data alone does not remove them.",
+          "A value stream includes every action needed from the customer’s order through delivery. Some work creates customer value, some incidental work is currently necessary but does not add value, and some work is pure waste. Walking one value stream with stakeholders lets a team list and prioritize improvements, then schedule follow-up to see whether they worked.",
+          "Lean implementation has four dimensions: business requirements define objectives and strategy; performance management uses people management and KPIs; operational improvement uses appropriate tools; people engagement follows Learn, Do, Teach. Supporting approaches include quality management, flexible manufacturing, IT, virtual integration, Lean supply chains and JIT. Continuous improvement depends on people practicing and teaching, not just buying software."
+        ],
+        "keyPoints": [
+          "Lean origin: Toyota, Japan; customer value is central.",
+          "Jidoka = stop on a problem; JIT = just what is needed, just when.",
+          "Seven wastes = TIM WOOD.",
+          "Value stream = all actions from order to delivery.",
+          "L, D, T = Learn, Do, Teach."
+        ],
+        "terms": [
+          {
+            "term": "Value stream",
+            "meaning": "All actions required to take a product from customer order to delivery."
+          },
+          {
+            "term": "KPI",
+            "meaning": "Key Performance Indicator used to assess a desired outcome."
+          },
+          {
+            "term": "Jidoka",
+            "meaning": "Build quality into production by stopping or exposing abnormal conditions."
+          },
+          {
+            "term": "JIT",
+            "meaning": "Just-in-Time production driven by the next process’s need."
+          },
+          {
+            "term": "TQM",
+            "meaning": "Total Quality Management."
+          }
+        ],
+        "traps": [
+          "Transportation moves items; motion is unnecessary movement by people.",
+          "Overproduction and inventory are related but are different wastes.",
+          "Lean is not only cutting staff or cost; quality and customer value remain central."
+        ],
+        "diagram": {
+          "type": "loop",
+          "title": "Lean is a repeating improvement cycle",
+          "nodes": [
+            {
+              "label": "Find customer value",
+              "detail": "Define what matters"
+            },
+            {
+              "label": "Walk the value stream",
+              "detail": "See the real process"
+            },
+            {
+              "label": "Identify waste",
+              "detail": "Use evidence and people’s observations"
+            },
+            {
+              "label": "Improve the process",
+              "detail": "Apply the needed tool"
+            },
+            {
+              "label": "Learn, Do, Teach",
+              "detail": "Measure, share and repeat"
+            }
+          ],
+          "caption": "Follow-up closes the loop: an improvement is useful when it actually improves quality, cost or time."
+        },
+        "example": {
+          "title": "A line with too much stock",
+          "steps": [
+            "A station makes 500 parts because it is convenient, but the next station needs 100.",
+            "The extra 400 are overproduction and become inventory.",
+            "JIT aligns the batch with real downstream demand.",
+            "If a defect appears, Jidoka prevents the same fault spreading through the next batch."
+          ]
+        }
+      },
+      {
+        "id": "w2-smart-products",
+        "title": "Smart products: monitor, control, optimize, automate",
+        "intro": "These four capabilities build on one another; the assignment asks what resource enables optimization.",
+        "paragraphs": [
+          "Monitoring observes conditions using sensors and external data. A vibration sensor can report machine health and raise a warning. Control uses software to change operation, often remotely or according to user needs. Monitoring tells you the temperature; control changes the temperature setting.",
+          "Optimization applies algorithms to choose better operating conditions: improve performance, scheduling, energy use or service. Automation combines monitoring, control and optimization so a product performs activities autonomously within its designed limits. Optimization algorithms are the resource linked to Optimization in the assignment.",
+          "Connected products can support faster production, lower costs, more effective recalls, improved supply-chain coordination and reduced environmental impact. Sensors and actuators supply measurements/actions, embedded systems provide local logic and communications, and cloud systems provide larger-scale processing and storage. Real-time monitoring improves visibility; the business must then use the information to create value."
+        ],
+        "keyPoints": [
+          "M-C-O-A = Monitoring, Control, Optimization, Automation.",
+          "Optimization is enabled by optimization algorithms.",
+          "A product can be connected without being fully autonomous.",
+          "Tracking can support recalls and reduce inventory/capital requirements."
+        ],
+        "terms": [
+          {
+            "term": "Monitoring",
+            "meaning": "Observe state and report it."
+          },
+          {
+            "term": "Control",
+            "meaning": "Change state through commands or software."
+          },
+          {
+            "term": "Optimization",
+            "meaning": "Choose settings that improve a defined objective."
+          },
+          {
+            "term": "Automation",
+            "meaning": "Carry out a designed process with reduced continuous human intervention."
+          }
+        ],
+        "traps": [
+          "Manual adjustment is control but not the assignment’s optimization resource.",
+          "Autonomous behavior still has constraints and may require human oversight."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "Four levels of a smart product",
+          "nodes": [
+            {
+              "label": "Monitor",
+              "detail": "What is happening?"
+            },
+            {
+              "label": "Control",
+              "detail": "Change the behavior"
+            },
+            {
+              "label": "Optimize",
+              "detail": "Find better settings"
+            },
+            {
+              "label": "Automate",
+              "detail": "Act using all three capabilities"
+            }
+          ],
+          "caption": "The capabilities are cumulative: automatic operation needs observations, commands and a decision strategy."
+        },
+        "example": {
+          "title": "A smart industrial pump",
+          "steps": [
+            "Monitor: measure pressure and vibration.",
+            "Control: change pump speed remotely.",
+            "Optimize: calculate a speed that meets demand using less energy.",
+            "Automate: adjust speed as demand changes and warn on abnormal vibration."
+          ]
+        }
+      },
+      {
+        "id": "w2-business",
+        "title": "Business value and the three-layer architecture",
+        "intro": "The technology must connect a customer benefit to a workable way to earn revenue.",
+        "paragraphs": [
+          "The course’s three key attributes of a smart business model are value proposition, revenue streams and technologies. The value proposition describes the benefit offered to a customer; revenue streams describe how money arrives; technologies explain what makes delivery possible. Four supporting building blocks are customer value, profit blueprint, key resources and key processes.",
+          "The four value-creation perspectives are novelty, efficiency, lock-in and complementarity. Novelty creates new services or markets. Efficiency reduces friction, delay and error. Lock-in encourages an ongoing customer relationship and makes migration harder. Complementarity combines products, services, technologies and online/offline activities so they create more value together.",
+          "The architecture has physical, connectivity and digital layers. Physical includes sensors, microcontrollers and microprocessors acquiring data. Connectivity carries it through technologies such as Wi-Fi, cellular, ZigBee or Bluetooth. Digital provides storage, algorithms and applications. These are different roles even when one device implements all three.",
+          "The source uses Amazon Dash Button as a historical lock-in example with a low-cost Wi-Fi device and mobile app, and Semios as an efficiency example with agricultural sensing, cellular communication and subscription monitoring. They illustrate the model and layer mapping. Workforce understanding matters: people need to know why a change is being introduced and how to use it."
+        ],
+        "keyPoints": [
+          "Smart business model = value proposition + revenue streams + technologies.",
+          "Three technology layers = Physical, Connectivity, Digital.",
+          "Four value perspectives = novelty, efficiency, lock-in, complementarity.",
+          "Semios course example: efficiency and yearly subscription monitoring."
+        ],
+        "terms": [
+          {
+            "term": "Value proposition",
+            "meaning": "The customer benefit a product or service promises."
+          },
+          {
+            "term": "Revenue stream",
+            "meaning": "A source or mechanism of income."
+          },
+          {
+            "term": "Complementarity",
+            "meaning": "Different offerings or capabilities work together to increase value."
+          },
+          {
+            "term": "Lock-in",
+            "meaning": "Conditions that make changing provider difficult or costly."
+          }
+        ],
+        "traps": [
+          "The source says lock-in lowers switching cost while also preventing migration; that is internally contradictory. Use the migration/retention meaning, and do not memorize the cost statement.",
+          "Historical company examples describe lecture-era offerings, not their current availability."
+        ],
+        "diagram": {
+          "type": "layers",
+          "title": "Three roles in a connected product",
+          "nodes": [
+            {
+              "label": "Digital layer",
+              "detail": "Store, analyze and present information"
+            },
+            {
+              "label": "Connectivity layer",
+              "detail": "Carry data over local and wide networks"
+            },
+            {
+              "label": "Physical layer",
+              "detail": "Sensors, controllers and actuators"
+            }
+          ],
+          "caption": "A sensor is physical; a radio connection is connectivity; an analytics dashboard is digital."
+        }
+      },
+      {
+        "id": "w2-factory",
+        "title": "What makes a factory smart?",
+        "intro": "A smart factory adapts its operations using connected data instead of only repeating fixed isolated tasks.",
+        "paragraphs": [
+          "The course defines a smart factory as a flexible system that can self-optimize across a broader network, adapt and learn from new conditions in real or near-real time, and run production processes autonomously. Smart machines, manufacturing processes, engineering, devices, IT and analytics work together to deliver smart products.",
+          "Five characteristics are Connection, Optimization, Transparency, Proactivity and Agility. Connection links machines, humans and data centers. Optimization improves scheduling, energy, throughput and reliability. Transparency gives a live understandable view of items and machines. Proactivity predicts issues before they stop production. Agility combines Flexibility, Adaptation and Self-configuration.",
+          "Big data handles high-volume, high-velocity, varied readings; cloud provides scalable storage and computation; a smart grid helps manage energy demand and load balancing. The automation pyramid moves from field/device level through control and manufacturing systems to ERP. AR and VR can support remote monitoring, training and safe work around dangerous equipment.",
+          "Expected gains include lower costs, better quality, improved predictability and worker safety. A physical ledger alone is not one of the course’s smart-factory components. It is the connected measurement, software and analysis that enable timely coordinated decisions."
+        ],
+        "keyPoints": [
+          "Definition keywords: flexible, self-optimize, self-adapt, learn, autonomous.",
+          "Five characteristics: connection, optimization, transparency, proactivity, agility.",
+          "Agility = Flexibility + Adaptation + Self-configuration.",
+          "Physical ledgers are the assignment’s non-component.",
+          "Automation pyramid: device → control → manufacturing system → ERP."
+        ],
+        "terms": [
+          {
+            "term": "Transparency",
+            "meaning": "Visibility of understandable, relevant process and item information."
+          },
+          {
+            "term": "Proactivity",
+            "meaning": "Anticipate and address a problem before it becomes a failure."
+          },
+          {
+            "term": "Self-configuration",
+            "meaning": "A system configures itself to operate in its designed context."
+          },
+          {
+            "term": "Load balancing",
+            "meaning": "Distribute energy or computing demand across resources or time."
+          }
+        ],
+        "traps": [
+          "Optimization improves an objective; agility responds to change.",
+          "A warehouse full of computers is not automatically a smart factory; coordinated operations matter."
+        ],
+        "example": {
+          "title": "Responding to a machine fault",
+          "steps": [
+            "Connection shares an abnormal machine reading.",
+            "Transparency shows the affected orders and equipment.",
+            "Proactivity predicts whether the machine needs maintenance.",
+            "Agility reschedules work and adapts the line.",
+            "Optimization chooses a schedule with acceptable time, energy and quality."
+          ]
+        }
+      },
+      {
+        "id": "w2-quiz-bridge",
+        "title": "Three assignment prerequisites from later weeks",
+        "intro": "The assignment includes CPS and healthcare questions outside the week’s lecture sequence; learn these short bridges before the quiz.",
+        "paragraphs": [
+          "CPS means Cyber Physical Systems. A CPS couples physical equipment with computation and communication in an ongoing loop: measure the physical state, compute a decision, control an action and measure again. Embedded systems supply local computation; networked interaction makes the complete system broader than one device.",
+          "The assignment accepts that CPS combined with internet-based technologies led to the Industrial Internet. This is a conceptual statement about connecting real equipment to digital systems and analytics. Week 3 develops CPS in detail, and Week 4 distinguishes the historical Industrial Internet terminology.",
+          "HL7 means Health Level Seven. In the healthcare assignment context, HL7 is a family of standards for exchanging clinical information so systems can communicate in a consistent form. It is not a gas sensor, network radio or hospital actuator. Interoperability also requires agreement on meaning, not just moving bits."
+        ],
+        "keyPoints": [
+          "CPS = Cyber Physical Systems.",
+          "CPS + internet-based technologies → Industrial Internet is True in the supplied key.",
+          "HL7 is the healthcare interoperability/data-exchange answer."
+        ],
+        "terms": [
+          {
+            "term": "CPS",
+            "meaning": "Cyber Physical Systems: interacting physical and computational components."
+          },
+          {
+            "term": "HL7",
+            "meaning": "Health Level Seven, standards associated with healthcare information exchange."
+          },
+          {
+            "term": "Interoperability",
+            "meaning": "Different systems can exchange and use information."
+          }
+        ],
+        "traps": [
+          "These three questions are in the supplied Week 2 assignment, although their full lecture coverage occurs later.",
+          "HL7 is a standards family; the source’s word format is shorthand, not a single universal file format."
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "id": "w2-q01",
+        "question": "Which bundle describes a significant characteristic of new materials?",
+        "options": [
+          "Heavier, weaker and disposable",
+          "Always non-recyclable and fixed",
+          "Lighter, stronger, recyclable and adaptive",
+          "Only inexpensive, regardless of performance"
+        ],
+        "correctIndex": 2,
+        "explanation": "The assignment names lighter, stronger, recyclable and adaptive. Low cost can matter, but it does not replace the material-property bundle in this question.",
+        "sectionId": "w2-sustainability"
+      },
+      {
+        "id": "w2-q02",
+        "question": "Which is NOT a characteristic of the Fourth Industrial Revolution?",
+        "options": [
+          "Cyber Physical Systems",
+          "Connected sensors and machines",
+          "Invention of the steam engine",
+          "AI-supported autonomous monitoring"
+        ],
+        "correctIndex": 2,
+        "explanation": "The steam engine belongs to the first revolution. CPS is a fourth-revolution enabler and therefore does not satisfy the NOT question.",
+        "sectionId": "w2-revolutions"
+      },
+      {
+        "id": "w2-q03",
+        "question": "What is the main nervous system of a manufacturing industry in the lecture?",
+        "options": [
+          "A hydraulic cylinder",
+          "A physical ledger",
+          "A single isolated motor",
+          "ICT"
+        ],
+        "correctIndex": 3,
+        "explanation": "ICT connects and coordinates information throughout manufacturing. A hydraulic actuator moves equipment but does not supply the information backbone.",
+        "sectionId": "w2-global"
+      },
+      {
+        "id": "w2-q04",
+        "question": "Which is NOT a defining characteristic of a sustainable industry?",
+        "options": [
+          "Energy efficiency",
+          "Reliance on government subsidy",
+          "Conservation of resources",
+          "Low-waste production"
+        ],
+        "correctIndex": 1,
+        "explanation": "The source defines sustainability by efficient energy, conserved resources and low waste. A subsidy may fund work, but dependence on it is not the defining production property.",
+        "sectionId": "w2-sustainability"
+      },
+      {
+        "id": "w2-q05",
+        "question": "What do L, D and T mean under Lean People Engagement?",
+        "options": [
+          "Learn, Do, Teach",
+          "Lead, Design, Test",
+          "Log, Deliver, Track",
+          "Lean, Develop, Transfer"
+        ],
+        "correctIndex": 0,
+        "explanation": "Learn, Do, Teach means gain the skill, practice it and share it. Lead, Design, Test sounds like a project workflow but is not the source’s people-engagement sequence.",
+        "sectionId": "w2-lean"
+      },
+      {
+        "id": "w2-q06",
+        "question": "Which resource is linked with Optimization in smart connected products?",
+        "options": [
+          "Optimization algorithms",
+          "Manual control only",
+          "Financial reports only",
+          "Marketing slogans"
+        ],
+        "correctIndex": 0,
+        "explanation": "Optimization algorithms select better operating settings or decisions. Manual controls can change a setting, but do not themselves perform the course’s optimization step.",
+        "sectionId": "w2-smart-products"
+      },
+      {
+        "id": "w2-q07",
+        "question": "CPS combined with internet-based technologies led to the Industrial Internet. True or false?",
+        "options": [
+          "True",
+          "False"
+        ],
+        "correctIndex": 0,
+        "explanation": "The supplied assignment treats the statement as true: CPS links computation and physical processes, and internet connectivity extends the interaction. False would ignore the conceptual bridge emphasized by the course.",
+        "sectionId": "w2-quiz-bridge",
+        "sourceNote": "This assignment prerequisite is developed in later CPS and Industrial Internet lectures."
+      },
+      {
+        "id": "w2-q08",
+        "question": "Real-time supply-chain monitoring can reduce inventory and capital requirements. True or false?",
+        "options": [
+          "False",
+          "True"
+        ],
+        "correctIndex": 1,
+        "explanation": "True is the supplied key: better visibility can reduce unnecessary stock and the money tied up in it. This does not mean every real system can remove all inventory.",
+        "sectionId": "w2-global"
+      },
+      {
+        "id": "w2-q09",
+        "question": "What is the full form of CPS?",
+        "options": [
+          "Central Processing Software",
+          "Cyber Physical Systems",
+          "Connected Power Supply",
+          "Cloud Planning Service"
+        ],
+        "correctIndex": 1,
+        "explanation": "Cyber Physical Systems couples physical components with computational components. Central Processing Software describes software alone and omits the physical interaction.",
+        "sectionId": "w2-quiz-bridge"
+      },
+      {
+        "id": "w2-q10",
+        "question": "What does ERP stand for?",
+        "options": [
+          "Energy Routing Protocol",
+          "Enterprise Resource Planning",
+          "Embedded Radio Processor",
+          "Enterprise Robotic Production"
+        ],
+        "correctIndex": 1,
+        "explanation": "ERP is Enterprise Resource Planning, used for integrated business planning and information. Energy Routing Protocol sounds network-related but is not the course acronym.",
+        "sectionId": "w2-global"
+      },
+      {
+        "id": "w2-q11",
+        "question": "What is a value stream in Lean?",
+        "options": [
+          "Only the assembly machine’s cycle",
+          "Only activities directly billed to the customer",
+          "All actions needed from order to delivery",
+          "Only the final delivery journey"
+        ],
+        "correctIndex": 2,
+        "explanation": "A value stream covers the entire order-to-delivery path, including value-adding work and waste that can be improved. The assembly cycle alone is just one part.",
+        "sectionId": "w2-lean"
+      },
+      {
+        "id": "w2-q12",
+        "question": "Which are the key attributes of a smart business model in the lecture?",
+        "options": [
+          "Only sensors, actuators and routers",
+          "Only profit, payroll and headcount",
+          "Only physical, MAC and network layers",
+          "Value proposition, revenue streams and technologies"
+        ],
+        "correctIndex": 3,
+        "explanation": "The model connects customer benefit, income and enabling technology. Sensors, actuators and routers are implementation elements rather than the three business attributes asked for.",
+        "sectionId": "w2-business"
+      },
+      {
+        "id": "w2-q13",
+        "question": "Which is NOT a component of a smart factory in the course list?",
+        "options": [
+          "Data analytics",
+          "Smart devices",
+          "Physical ledgers",
+          "Information Technology"
+        ],
+        "correctIndex": 2,
+        "explanation": "Physical ledgers are the supplied non-component. Data analytics is a key component because it turns connected measurements into actionable insight.",
+        "sectionId": "w2-factory"
+      },
+      {
+        "id": "w2-q14",
+        "question": "Which standard is named for healthcare data uniformity and interoperability?",
+        "options": [
+          "Z-Wave",
+          "DSSS",
+          "JIT",
+          "HL7"
+        ],
+        "correctIndex": 3,
+        "explanation": "HL7 is associated with healthcare information exchange. Z-Wave carries home-control communications and does not define clinical data exchange.",
+        "sectionId": "w2-quiz-bridge",
+        "sourceNote": "The source labels this a later healthcare-week topic. HL7 is a standards family rather than a single data file format."
+      },
+      {
+        "id": "w2-q15",
+        "question": "What are the key characteristics of agility in a smart factory?",
+        "options": [
+          "Flexibility, Adaptation and Self-configuration",
+          "Volume, Velocity and Variety",
+          "Confidentiality, Integrity and Availability",
+          "Monitoring, Control and Inventory"
+        ],
+        "correctIndex": 0,
+        "explanation": "Agility is flexibility, adaptation and self-configuration. Volume, velocity and variety are big-data characteristics and are the nearest memorable three-part distractor.",
+        "sectionId": "w2-factory"
+      }
+    ],
+    "revision": [
+      "Four revolutions: steam, electricity, computers, connected intelligence.",
+      "Three megatrends: physical, digital, biological.",
+      "New-material assignment bundle: lighter, stronger, recyclable, adaptive.",
+      "Sustainability: energy efficiency, conserve resources, low waste; subsidy reliance is not a defining feature.",
+      "ICT is the backbone; ERP = Enterprise Resource Planning.",
+      "Lean: Toyota; Jidoka + JIT; seven wastes TIM WOOD.",
+      "Value stream is order to delivery; People Engagement is Learn, Do, Teach.",
+      "Smart products: Monitor → Control → Optimize → Automate; optimization uses algorithms.",
+      "Business model: value proposition + revenue streams + technologies.",
+      "Physical, connectivity and digital layers serve different roles.",
+      "Smart-factory agility: flexibility, adaptation, self-configuration.",
+      "CPS = Cyber Physical Systems; HL7 is healthcare information exchange."
+    ]
+  },
+  {
+    "id": 3,
+    "title": "CPS, intelligent sensors, AR/VR & AI",
+    "summary": "Learn how physical machines and computation form a feedback system, how products and teams share knowledge, and how AI and big-data analytics turn measurements into decisions.",
+    "objectives": [
+      "Explain reactive computation and the CPS feedback loop.",
+      "Place each function in the 5C architecture.",
+      "Compare smart and intelligent sensors.",
+      "Explain collaboration platforms and Product Lifecycle Management.",
+      "Tell AR from VR and recognize their main components.",
+      "Interpret the course’s AI terminology and data pipeline without confusing it with universal rules."
+    ],
+    "sections": [
+      {
+        "id": "w3-cps",
+        "title": "Cyber Physical Systems: the physical and cyber worlds interact",
+        "intro": "A CPS keeps reacting to a changing world; it is not a one-time calculation on stored data.",
+        "paragraphs": [
+          "Cyber Physical Systems are interacting networks of physical and computational components, co-engineered as one system. Physical space contains machines, vehicles, people and processes. Cyber space contains computation and software, which may run locally, on a server or in a cloud. A CPS measures a physical state, computes a decision, applies control and then measures the result again.",
+          "An embedded system is computation built into a device, such as a washing-machine controller. Its core capabilities are compute, communicate and control. The course contrasts one embedded device with a broader CPS network of embedded and physical systems. A CPS still can have resource-constrained components; networking does not make every processor unlimited.",
+          "Reactive computation means ongoing interaction with the environment through input/output streams. Concurrency means several processes operate during overlapping time and may communicate synchronously or asynchronously. Real-time computation means a result must meet a timing requirement, not that computation takes zero time. Feedback and coordinated/hybrid control link software decisions to physical consequences.",
+          "CPS applications include image-guided surgery and therapy, robotic surgery, prosthetics and exoskeletons; traffic-signal coordination and collision warnings; smart meters and power-grid monitoring; and intelligent manufacturing machines. Safety, security, robustness, sensing, modeling, verification and training are challenges. Mobile CPS additionally face changing network stability, battery/power limits and security; design aesthetics is not a primary engineering constraint in the assignment."
+        ],
+        "keyPoints": [
+          "CPS = Cyber Physical Systems.",
+          "Reactive = ongoing interaction with the environment.",
+          "Loop = Sensing → Computation → Control → new physical state.",
+          "Healthcare assignment example: image-guided surgery and therapy.",
+          "Mobile CPS constraints: network stability, power requirement, security."
+        ],
+        "terms": [
+          {
+            "term": "Cyber space",
+            "meaning": "The computational/software part of the system."
+          },
+          {
+            "term": "Physical space",
+            "meaning": "Real equipment, people and processes."
+          },
+          {
+            "term": "Concurrency",
+            "meaning": "Multiple processes execute over overlapping time."
+          },
+          {
+            "term": "Real time",
+            "meaning": "The result must arrive by an application-specific deadline."
+          },
+          {
+            "term": "Feedback",
+            "meaning": "Use the measured result of an action to influence the next action."
+          }
+        ],
+        "traps": [
+          "Reactive computation does not mean zero response time or a process isolated from feedback.",
+          "A CPS may contain constrained embedded devices; the source’s resource contrast is simplified.",
+          "Design aesthetics is the NOT answer among mobile CPS engineering constraints."
+        ],
+        "diagram": {
+          "type": "loop",
+          "title": "The CPS feedback loop",
+          "nodes": [
+            {
+              "label": "Physical process",
+              "detail": "A room, patient or machine changes"
+            },
+            {
+              "label": "Sensing",
+              "detail": "Measure its current state"
+            },
+            {
+              "label": "Computation",
+              "detail": "Interpret state and calculate a decision"
+            },
+            {
+              "label": "Control / actuation",
+              "detail": "Apply a physical action"
+            }
+          ],
+          "caption": "The action changes the process, so the system measures again. Timing and safety govern the whole loop."
+        },
+        "example": {
+          "title": "A connected furnace controller",
+          "steps": [
+            "A temperature sensor observes the furnace.",
+            "The controller compares the measurement with the desired temperature.",
+            "A heater command changes energy input.",
+            "The next reading checks whether the action worked.",
+            "A networked monitor tracks many furnaces and alerts an operator to abnormal behavior."
+          ]
+        }
+      },
+      {
+        "id": "w3-five-c",
+        "title": "5C: from a connected machine to self-adjustment",
+        "intro": "The five levels describe an increasing ability to turn measurements into informed action.",
+        "paragraphs": [
+          "Connection acquires accurate data from appropriate sensors and device links. Conversion transforms raw readings into meaningful machine-health information, such as a vibration feature or a fault indicator. The Cyber level collects machine status in a central information hub where records can be compared, mined and stored.",
+          "Cognition presents the information so users gain knowledge and make decisions: collaborative diagnostics, visualization and prioritization belong here. Configuration applies supervisory control so a system can self-configure, self-adjust or self-optimize within its design. The sequence is Connection, Conversion, Cyber, Cognition, Configuration.",
+          "The assignment asks which level gathers precise status information of machines and gives Cyber as the key. Connection is where accurate source measurements are acquired; Cyber is the aggregation/status-information hub in this wording. Later notes name the final stage Control and use Cognitive for Cognition. These are course wording variations for substantially related roles."
+        ],
+        "keyPoints": [
+          "Memorize the order: Connection → Conversion → Cyber → Cognition → Configuration.",
+          "Cyber is the assignment’s machine-status hub.",
+          "Conversion turns measurements into information.",
+          "Cognition builds user understanding; Configuration turns decisions into supervisory action."
+        ],
+        "terms": [
+          {
+            "term": "Prognostics",
+            "meaning": "Estimate future condition or remaining useful life."
+          },
+          {
+            "term": "Cognition",
+            "meaning": "Interpret and present information to build knowledge for decisions."
+          },
+          {
+            "term": "Supervisory control",
+            "meaning": "Higher-level control that sets or adjusts how lower-level processes operate."
+          },
+          {
+            "term": "Self-adaptive",
+            "meaning": "Adjust behavior in response to changing conditions within designed limits."
+          }
+        ],
+        "traps": [
+          "Connection and Cyber are easy to confuse: source acquisition versus the central status hub.",
+          "Do not swap Cognition (understanding/decisions) with Configuration (supervised action).",
+          "Week 4’s Control label corresponds to the final supervisory-control role."
+        ],
+        "diagram": {
+          "type": "layers",
+          "title": "The 5C ladder",
+          "nodes": [
+            {
+              "label": "Configuration",
+              "detail": "Self-adjust and supervise action"
+            },
+            {
+              "label": "Cognition",
+              "detail": "Understand, visualize and prioritize"
+            },
+            {
+              "label": "Cyber",
+              "detail": "Aggregate machine status in a hub"
+            },
+            {
+              "label": "Conversion",
+              "detail": "Extract health information"
+            },
+            {
+              "label": "Connection",
+              "detail": "Acquire accurate device data"
+            }
+          ],
+          "caption": "Read upward from measurements to knowledge and action. The assignment’s precise-status question maps to Cyber."
+        },
+        "example": {
+          "title": "Predicting a bearing fault",
+          "steps": [
+            "Connection collects vibration readings.",
+            "Conversion extracts a vibration indicator.",
+            "Cyber compares the indicator across machines.",
+            "Cognition shows which machine needs attention.",
+            "Configuration adjusts operation or triggers a supervised maintenance response."
+          ]
+        }
+      },
+      {
+        "id": "w3-sensors",
+        "title": "Smart and intelligent sensors",
+        "intro": "A local processor can do more than forward a raw measurement.",
+        "paragraphs": [
+          "A smart sensor combines a sensing element with processing and communication. A typical path is sensing element, signal conditioning, analog-to-digital conversion and digital interface. Conditioning filters or amplifies the raw signal; the ADC changes it into numeric values. Multi-sensing, communication, computation and calibration functions can be integrated.",
+          "The notes draw a distinction between predefined smart-sensor functions and an intelligent sensor that can customize embedded algorithms, process sensed data and manage external sensors or devices. An intelligent sensor contains a microcontroller, memory such as flash/RAM/ROM and an application platform. Local processing can reduce the amount of data sent and support continuous monitoring.",
+          "Hardware constraints include power, response time, synchronization, bandwidth and security; software must be partitioned appropriately across applications and processors. Applications range from fault forecasting and automatic assembly to advanced driver assistance, intelligent textiles and chemical analysis. A more capable processor is useful only if the device can still meet its power and timing limits.",
+          "The smart-versus-intelligent distinction is the course’s conceptual comparison rather than a strict universal product taxonomy. The source first lists smart-sensor self-calibration and later says smart sensors need an external calibration processor. Capabilities vary; the consistent assignment fact is that intelligent sensors can process data and manage external devices."
+        ],
+        "keyPoints": [
+          "Smart sensor: sensing + processing + communication.",
+          "Intelligent sensor: adaptable processing plus management of external sensors/devices.",
+          "MCU + memory support local applications.",
+          "Local filtering/analysis can reduce radio traffic."
+        ],
+        "terms": [
+          {
+            "term": "Signal conditioning",
+            "meaning": "Prepare a measured signal through filtering, amplification or other correction."
+          },
+          {
+            "term": "MCU",
+            "meaning": "Microcontroller unit, combining processing with memory and peripherals."
+          },
+          {
+            "term": "RAM",
+            "meaning": "Working memory used during execution."
+          },
+          {
+            "term": "Flash",
+            "meaning": "Nonvolatile memory that stores code or data without continuous power."
+          }
+        ],
+        "traps": [
+          "The assignment answer includes both processing and managing external devices.",
+          "Calibration claims in the source conflict; real capabilities depend on the design.",
+          "Local intelligence does not eliminate all network or power constraints."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "A sensor reading becomes a local decision",
+          "nodes": [
+            {
+              "label": "Sensing element",
+              "detail": "Detect a physical quantity"
+            },
+            {
+              "label": "Conditioning",
+              "detail": "Filter and amplify"
+            },
+            {
+              "label": "ADC",
+              "detail": "Produce digital measurements"
+            },
+            {
+              "label": "MCU + memory",
+              "detail": "Run the sensing application"
+            },
+            {
+              "label": "Digital interface",
+              "detail": "Share results or manage devices"
+            }
+          ],
+          "caption": "Intelligence lives in computation on measurements, not simply in placing an antenna on a sensor."
+        }
+      },
+      {
+        "id": "w3-plm",
+        "title": "Collaboration and Product Lifecycle Management",
+        "intro": "Teams need a shared product history, not disconnected copies of design and production information.",
+        "paragraphs": [
+          "A collaboration platform is business software that combines organizational networking capacities with operations. It provides a shared workroom for people to exchange knowledge and coordinate business activities. Easy access, familiar functions and usable interactions support adoption. The source cites ProWorkflow as a project-management example.",
+          "Four collaboration enablers are IT proliferation, a single source of truth, industrialization and coordination. A single source of truth means an authoritative product-data source rather than conflicting independent versions; redundant backups can still exist. Coordination means communicating a common target and giving authorized decision makers the ability to act in a decentralized organization.",
+          "Product Lifecycle Management coordinates information, decisions and activities from an idea through use and retirement. The course uses five phases: Visualize the idea, Explain it as a representation, Perceive/build the product, Use/support it and Dispose/retire it. PLM aims to maximize product revenue, decrease cost and increase value. It can reduce development delays and defects while improving release quality and configuration consistency.",
+          "Nine PLM components are objectives/metrics, organization/management, activities, people, product data, product-data management systems, PLM applications, equipment/facilities and techniques/methods. Drivers include shorter lifecycles, complex products, outsourcing and dispersed teams. The assignment asks for a 10-step PLM solution approach. The source fully explains only the first step—data gathering and education—so do not invent an authoritative sequence for the remaining steps."
+        ],
+        "keyPoints": [
+          "Collaboration platform = organizational networking + business operations.",
+          "PLM = manage the entire product lifecycle.",
+          "Five lifecycle phases: Visualize, Explain, Perceive, Use, Dispose.",
+          "PLM has nine components in the lecture list.",
+          "The assignment’s solution approach has 10 steps."
+        ],
+        "terms": [
+          {
+            "term": "PLM",
+            "meaning": "Product Lifecycle Management."
+          },
+          {
+            "term": "Single source of truth",
+            "meaning": "One authoritative interpretation/version of each needed product-data element."
+          },
+          {
+            "term": "Product data management",
+            "meaning": "Control and provide the correct product information at the right time."
+          },
+          {
+            "term": "Configuration conformity",
+            "meaning": "A built or delivered product matches its approved specification."
+          }
+        ],
+        "traps": [
+          "A collaboration platform is not only a social chat channel; it links networking to operations.",
+          "The 10-step count is supplied, but the source does not fully document all ten steps.",
+          "Single source of truth does not prohibit backups or replicated storage."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "The product lifecycle in the course",
+          "nodes": [
+            {
+              "label": "Visualize",
+              "detail": "Form the product idea"
+            },
+            {
+              "label": "Explain",
+              "detail": "Represent and specify it"
+            },
+            {
+              "label": "Perceive",
+              "detail": "Build the product"
+            },
+            {
+              "label": "Use",
+              "detail": "Operate and support it"
+            },
+            {
+              "label": "Dispose",
+              "detail": "Retire or recover it"
+            }
+          ],
+          "caption": "PLM keeps decisions and product information coherent across the whole lifecycle."
+        },
+        "example": {
+          "title": "A redesigned pump component",
+          "steps": [
+            "Design records the approved component version.",
+            "Manufacturing receives the same version and process requirements.",
+            "Service records which customer machines contain the component.",
+            "A defect report links back to the design and production history.",
+            "The team can identify the affected versions without guessing from isolated files."
+          ]
+        }
+      },
+      {
+        "id": "w3-reality",
+        "title": "AR and VR: add to reality or enter a simulation",
+        "intro": "Both can support industrial work, but they change the user’s environment in different ways.",
+        "paragraphs": [
+          "Augmented Reality enhances the present perception of the real world by adding computer-generated information. A maintenance technician can still see the machine while an overlay identifies a part or shows a measurement. Course device components include sensors, cameras, processing, projection/display and optical reflection arrangements; a remote control is the assignment’s non-component.",
+          "Four AR types are marker-based, marker-less, projection-based and superimposition-based. Marker-based AR recognizes a visual pattern. Marker-less AR can use location, compass or motion sensing. Projection-based AR places light on real surfaces. Superimposition uses object recognition to replace part of an observed view with additional content.",
+          "Virtual Reality creates an interactive artificial 3D environment, usually with visual, auditory and sometimes haptic feedback. Components include sensors such as accelerometers/gyroscopes, processing, lenses, displays and headsets. Non-immersive VR uses a screen/window, semi-immersive systems offer a partial immersive environment, and fully immersive systems use head-mounted displays and tracking.",
+          "Industry uses both for training, collaboration, assembly, safety, maintenance, factory planning and digital prototyping. AR can guide work on existing equipment; VR can let an operator practice a hazardous scenario before encountering it. The notes associate AR with Thomas Caudell and VR with Jaron Lanier; recognize these names without assuming one historical milestone describes every earlier system."
+        ],
+        "keyPoints": [
+          "AR enhances the actual environment; VR presents a simulated environment.",
+          "AR assignment non-component: remote control.",
+          "AR types: marker, marker-less, projection, superimposition.",
+          "VR types: non-immersive, semi-immersive, fully immersive.",
+          "Timely processing is important so the displayed view follows the user’s movement."
+        ],
+        "terms": [
+          {
+            "term": "AR",
+            "meaning": "Augmented Reality."
+          },
+          {
+            "term": "VR",
+            "meaning": "Virtual Reality."
+          },
+          {
+            "term": "Haptic feedback",
+            "meaning": "Touch or force feedback."
+          },
+          {
+            "term": "Object recognition",
+            "meaning": "Identify an observed object so software can attach information to it."
+          }
+        ],
+        "traps": [
+          "AR still includes the real world; it does not require replacing the entire environment.",
+          "Not every AR device has the same projector/mirror arrangement; the component list reflects the course device example."
+        ],
+        "comparison": {
+          "headers": [
+            "Feature",
+            "AR",
+            "VR"
+          ],
+          "rows": [
+            [
+              "Environment",
+              "Actual world with digital additions",
+              "Artificial interactive world"
+            ],
+            [
+              "Assignment cue",
+              "Enhances present reality",
+              "Immersive simulated environment"
+            ],
+            [
+              "Factory example",
+              "Show maintenance instructions on a real valve",
+              "Practice a valve-failure scenario virtually"
+            ],
+            [
+              "Main user benefit",
+              "Context while doing the real task",
+              "Experience without physical exposure"
+            ]
+          ]
+        },
+        "example": {
+          "title": "Training a new operator",
+          "steps": [
+            "Use VR to practice a hazardous shutdown without operating the plant.",
+            "Use AR later to highlight the real valves and approved instructions.",
+            "Keep authoritative procedures and supervision available; an overlay is not a substitute for safety rules."
+          ]
+        }
+      },
+      {
+        "id": "w3-ai",
+        "title": "AI, knowledge and learning",
+        "intro": "AI is a broad set of methods; this assignment emphasizes the older knowledge-base and heuristic-search model.",
+        "paragraphs": [
+          "Artificial Intelligence studies computer systems that exhibit forms of intelligence, such as recognizing patterns, interpreting language, planning and decision making. The assignment attributes the phrase Artificial Intelligence to John McCarthy in 1956. The course examples include game playing, speech, computer vision, robotics, fraud detection and expert advice.",
+          "An algorithmic search follows a defined procedure; a heuristic uses rules of thumb to guide a search toward promising choices. The supplied contrast says a program with AI uses a large knowledge base and heuristic search, while a non-AI program uses a database and algorithmic search. This is an instructional contrast, not a universal test of whether modern software is AI.",
+          "Knowledge can be procedural (how to do something), declarative (facts/descriptions) or heuristic (rules of thumb). Machine Learning is a subset of AI that learns patterns from data; Deep Learning is a subset of ML using multilayer models that can learn representations. DL is not automatically the best method: data, compute, task and constraints influence the choice.",
+          "In IIoT, AI may help detect faults, reduce energy use, estimate demand or predict yield. The course lists challenges of connecting devices, understanding data, training models, making data accessible and making outputs actionable. Its NOT question chooses lack of available data because the lecture emphasizes abundant sensor output. In real applications, usable labeled or representative data can still be scarce; raw data volume alone does not solve training."
+        ],
+        "keyPoints": [
+          "Assignment name: John McCarthy.",
+          "Assignment true statement: AI program uses a large knowledge base and heuristic search.",
+          "AI contains ML; ML contains DL.",
+          "Course NOT-a-challenge answer: lack of available data, with an important context caveat.",
+          "Actionable results must lead to an appropriate industrial decision."
+        ],
+        "terms": [
+          {
+            "term": "Heuristic",
+            "meaning": "A useful rule of thumb that guides search or decisions."
+          },
+          {
+            "term": "Knowledge base",
+            "meaning": "Organized domain knowledge used to support reasoning."
+          },
+          {
+            "term": "Machine Learning",
+            "meaning": "Methods that learn patterns from data or experience."
+          },
+          {
+            "term": "Deep Learning",
+            "meaning": "A subset of ML using multilayer models."
+          },
+          {
+            "term": "Expert system",
+            "meaning": "A knowledge-based system intended to provide domain-specific expert advice."
+          }
+        ],
+        "traps": [
+          "A knowledge base plus heuristic search is the supplied exam contrast, not a universal definition of all AI.",
+          "The source’s lack-of-data answer refers to raw IIoT abundance; clean, labeled and accessible data can still be limited.",
+          "Tasks such as vision and language can use several symbolic/statistical approaches; the source’s fixed task-to-learning labels are simplified."
+        ],
+        "comparison": {
+          "headers": [
+            "Knowledge type",
+            "Meaning",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Procedural",
+              "How to perform a task",
+              "Steps to diagnose a pump"
+            ],
+            [
+              "Declarative",
+              "What is true about a thing",
+              "Pump rated operating pressure"
+            ],
+            [
+              "Heuristic",
+              "A guiding rule of thumb",
+              "Inspect the most likely fault first"
+            ]
+          ]
+        },
+        "example": {
+          "title": "Fault prediction from vibration",
+          "steps": [
+            "Collect historical readings and maintenance outcomes.",
+            "Create usable training examples rather than only accumulating files.",
+            "Train a model to recognize patterns associated with faults.",
+            "Check its performance on appropriate unseen data.",
+            "Use the result to guide a supervised maintenance decision."
+          ]
+        }
+      },
+      {
+        "id": "w3-bigdata",
+        "title": "Big data and its pipeline",
+        "intro": "A stream of industrial readings becomes valuable only after it is organized, cleaned and interpreted.",
+        "paragraphs": [
+          "Big data refers to datasets and streams whose scale, speed or complexity exceed what ordinary tools can conveniently handle. Structured data has a defined schema, often tables; unstructured data such as images or free text does not naturally fit one fixed tabular schema. Industrial systems produce both, including time-series measurements, logs, images and maintenance notes.",
+          "The three main Vs are Volume, Velocity and Variety. The notes add Variability, Veracity, Visualization and Value. Volume is amount; velocity is arrival rate; variety is different formats; variability is changing meaning or behavior; veracity concerns trust, bias and noise; visualization presents data for understanding; value is the useful outcome extracted.",
+          "The pipeline collects data from sensors, logs and RFID; transmits it over networks; pre-processes it through integration, cleaning and redundancy reduction; stores it; and analyzes it. Inter-DCN transmission occurs between data centers, while intra-DCN transmission occurs within a data center. Removing repeated or irrelevant readings can reduce storage and bandwidth, but filters must preserve important events.",
+          "GFS and HDFS are distributed file systems for large-scale storage; the notes describe HDFS as open source and influenced by GFS. NoSQL denotes nonrelational database approaches and does not mean that data has no structure at all. Hadoop is a distributed storage/processing ecosystem, not one ordinary relational table. Traditional tools can still be useful for subsets, but large streams often require distributed approaches."
+        ],
+        "keyPoints": [
+          "Three main Vs = Volume, Velocity, Variety.",
+          "Expanded source list has seven Vs.",
+          "Pipeline = Collect → Transmit → Pre-process → Store → Analyze.",
+          "Pre-processing includes integration, cleaning and redundancy mitigation.",
+          "GFS/HDFS are file systems; NoSQL refers to nonrelational database approaches."
+        ],
+        "terms": [
+          {
+            "term": "Veracity",
+            "meaning": "How trustworthy, unbiased and well understood the data is."
+          },
+          {
+            "term": "Pre-processing",
+            "meaning": "Prepare raw data for storage or analysis."
+          },
+          {
+            "term": "HDFS",
+            "meaning": "Hadoop Distributed File System."
+          },
+          {
+            "term": "DCN",
+            "meaning": "Data Center Network."
+          },
+          {
+            "term": "NoSQL",
+            "meaning": "A family of nonrelational data-storage approaches."
+          }
+        ],
+        "traps": [
+          "Volume is not the same as velocity.",
+          "More data is not automatically better data.",
+          "Unstructured data can be stored and queried; it simply does not start with the same fixed tabular schema."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "From raw streams to useful analysis",
+          "nodes": [
+            {
+              "label": "Collect",
+              "detail": "Sensors, logs and RFID"
+            },
+            {
+              "label": "Transmit",
+              "detail": "Local and data-center networks"
+            },
+            {
+              "label": "Pre-process",
+              "detail": "Integrate, clean, reduce redundancy"
+            },
+            {
+              "label": "Store",
+              "detail": "Files and appropriate databases"
+            },
+            {
+              "label": "Analyze",
+              "detail": "Find patterns and useful results"
+            }
+          ],
+          "caption": "Cleaning precedes a trustworthy decision: a faulty measurement can become a faulty recommendation."
+        },
+        "example": {
+          "title": "A noisy temperature dataset",
+          "steps": [
+            "Combine readings from multiple production lines.",
+            "Check timestamps, units and sensor identity.",
+            "Remove or flag impossible and duplicate readings.",
+            "Store both useful measurements and their quality context.",
+            "Analyze the clean series for trends or abnormal events."
+          ]
+        }
+      },
+      {
+        "id": "w3-analytics",
+        "title": "Analytics, cloud and the final decision",
+        "intro": "Describe the past, predict the future, then recommend an action.",
+        "paragraphs": [
+          "Descriptive analytics asks what happened, when and where. Predictive analytics uses patterns to estimate what may happen next. Prescriptive analytics considers what action is best under an objective and constraints. A temperature chart describes yesterday; a forecast estimates tomorrow; a scheduling recommendation prescribes how to respond.",
+          "Cloud computing supplies shared processing, storage and services on demand. The source’s five characteristics are on-demand self-service, broad network access, resource pooling, rapid elasticity and measured service. Elasticity means capacity can expand or contract with demand; measured service supports usage-based charging. This is scalable capacity, not literally infinite storage.",
+          "Industrial analytics should connect back to a CPS action or an informed human decision. A recommender system may suggest a product or maintenance step; an operator still needs useful context and appropriate safeguards. Hadoop and cloud can support large-scale computation, but the meaning and quality of data remain application responsibilities."
+        ],
+        "keyPoints": [
+          "Descriptive: what happened? Predictive: what might happen? Prescriptive: what should we do?",
+          "Cloud characteristics: on-demand, broad access, pooling, elasticity, measured service.",
+          "Analytics must turn into an actionable decision to create value."
+        ],
+        "terms": [
+          {
+            "term": "Elasticity",
+            "meaning": "Adjust provisioned computing capacity as demand changes."
+          },
+          {
+            "term": "Resource pooling",
+            "meaning": "Share a provider’s resources across multiple consumers."
+          },
+          {
+            "term": "Recommender system",
+            "meaning": "Suggest relevant items or actions based on data and a decision method."
+          }
+        ],
+        "traps": [
+          "Prediction is an estimate, not a certainty.",
+          "A descriptive dashboard alone does not optimize the factory.",
+          "Cloud resources have real quotas, costs and limits despite the source’s nearly unlimited shorthand."
+        ],
+        "comparison": {
+          "headers": [
+            "Analytics",
+            "Question",
+            "Factory example"
+          ],
+          "rows": [
+            [
+              "Descriptive",
+              "What happened?",
+              "Last shift had three stoppages"
+            ],
+            [
+              "Predictive",
+              "What may happen?",
+              "A bearing is likely to fail soon"
+            ],
+            [
+              "Prescriptive",
+              "What action is best?",
+              "Schedule maintenance before the next high-demand shift"
+            ]
+          ]
+        }
+      }
+    ],
+    "quiz": [
+      {
+        "id": "w3-q01",
+        "question": "What does reactive computation in CPS mean?",
+        "options": [
+          "A calculation with exactly zero delay",
+          "Execution without any feedback",
+          "Ongoing interaction with the environment",
+          "Only one calculation after startup"
+        ],
+        "correctIndex": 2,
+        "explanation": "Reactive computation keeps processing changing environmental input and producing output. Zero delay is a timing impossibility, not the meaning of reactive.",
+        "sectionId": "w3-cps"
+      },
+      {
+        "id": "w3-q02",
+        "question": "Which is a CPS healthcare application named in the assignment?",
+        "options": [
+          "Only manual paperwork",
+          "Only advertising hospital services",
+          "Only storing unrelated shopping records",
+          "Image-guided surgery and therapy"
+        ],
+        "correctIndex": 3,
+        "explanation": "Image-guided surgery connects sensing, computation and physical intervention. Storing administrative paperwork can be useful IT but does not illustrate the physical feedback application asked for.",
+        "sectionId": "w3-cps"
+      },
+      {
+        "id": "w3-q03",
+        "question": "Which 5C level gathers precise machine-status information in the assignment wording?",
+        "options": [
+          "Connection",
+          "Conversion",
+          "Cyber",
+          "Configuration"
+        ],
+        "correctIndex": 2,
+        "explanation": "Cyber is the central information/status hub in the supplied key. Connection acquires accurate source data, so it is the closest distractor but refers to an earlier function.",
+        "sectionId": "w3-five-c",
+        "sourceNote": "The source distinguishes accurate data acquisition at Connection from the central status-information hub at Cyber."
+      },
+      {
+        "id": "w3-q04",
+        "question": "What can intelligent sensors do in the course comparison?",
+        "options": [
+          "Only output an unprocessed analog voltage",
+          "Process sensed data and manage external sensors/devices",
+          "Only show a value without any processing",
+          "Replace every controller and network automatically"
+        ],
+        "correctIndex": 1,
+        "explanation": "The answer combines processing with management/control of external devices. An analog voltage output alone describes a simpler sensing path and lacks the stated intelligent capabilities.",
+        "sectionId": "w3-sensors"
+      },
+      {
+        "id": "w3-q05",
+        "question": "How many steps are in the PLM solution approach for Industry 4.0 in the assignment?",
+        "options": [
+          "10",
+          "5",
+          "9",
+          "15"
+        ],
+        "correctIndex": 0,
+        "explanation": "The supplied approach has 10 steps. Nine is the number of PLM components in the notes, making it the closest distractor.",
+        "sectionId": "w3-plm",
+        "sourceNote": "The notes give the count and explain the first step, but do not fully specify all ten steps."
+      },
+      {
+        "id": "w3-q06",
+        "question": "Which is NOT a key AR-device component in the course list?",
+        "options": [
+          "Sensors",
+          "Cameras",
+          "Remote control",
+          "Projection screen"
+        ],
+        "correctIndex": 2,
+        "explanation": "Remote control is the supplied non-component. Sensors and cameras capture the environment so the augmentation can be aligned with it.",
+        "sectionId": "w3-reality"
+      },
+      {
+        "id": "w3-q07",
+        "question": "Which is NOT a challenge of AI in IIoT according to the assignment key?",
+        "options": [
+          "Understanding data",
+          "Training models",
+          "Connecting devices",
+          "Lack of available data"
+        ],
+        "correctIndex": 3,
+        "explanation": "The lecture emphasizes the abundance of raw IIoT data, so its key is lack of available data. Understanding that data remains difficult and is a stated challenge.",
+        "sectionId": "w3-ai",
+        "sourceNote": "Course-key context only: real AI projects can lack usable labeled, representative or accessible data even when raw data is abundant."
+      },
+      {
+        "id": "w3-q08",
+        "question": "Which is NOT a primary mobile CPS constraint in the assignment?",
+        "options": [
+          "Network stability",
+          "Design aesthetics",
+          "Power requirement",
+          "Security"
+        ],
+        "correctIndex": 1,
+        "explanation": "Design aesthetics is not in the course’s primary engineering-constraint list. Network stability directly affects the sensing/control exchange and is a constraint.",
+        "sectionId": "w3-cps",
+        "sourceNote": "The supplied notes identify mobile CPS constraints as an assignment topic beyond the Week 3 video coverage."
+      },
+      {
+        "id": "w3-q09",
+        "question": "Which is the correct 5C sequence?",
+        "options": [
+          "Connection, Cognition, Conversion, Cyber, Configuration",
+          "Cyber, Control, Cloud, Communication, Calculation",
+          "Collection, Cooling, Compression, Coding, Control",
+          "Connection, Conversion, Cyber, Cognition, Configuration"
+        ],
+        "correctIndex": 3,
+        "explanation": "The course sequence starts with accurate connection data, converts it, aggregates it in Cyber, builds knowledge in Cognition and acts through Configuration. The second option reverses conversion and interpretation roles.",
+        "sectionId": "w3-five-c"
+      },
+      {
+        "id": "w3-q10",
+        "question": "Which is a key computational feature of CPS?",
+        "options": [
+          "Reactive computation",
+          "No interaction with the environment",
+          "No concurrent activity can occur",
+          "Always unlimited memory"
+        ],
+        "correctIndex": 0,
+        "explanation": "CPS computation reacts to continuing physical inputs. Unlimited memory is not guaranteed, and many CPS components are constrained embedded devices.",
+        "sectionId": "w3-cps"
+      },
+      {
+        "id": "w3-q11",
+        "question": "What is a collaboration platform?",
+        "options": [
+          "Only an isolated temperature display",
+          "Only a private note with no sharing",
+          "Business software combining organizational networking capacities with operations",
+          "Only a radio modulation standard"
+        ],
+        "correctIndex": 2,
+        "explanation": "The course definition links organizational interaction to business operations. A private unshared note stores information but does not enable the described collaboration.",
+        "sectionId": "w3-plm"
+      },
+      {
+        "id": "w3-q12",
+        "question": "What is the key feature of AR?",
+        "options": [
+          "Enhancing the present perception of reality",
+          "Replacing all reality with a separate simulated world",
+          "Displaying no computer-generated information",
+          "Eliminating all sensing"
+        ],
+        "correctIndex": 0,
+        "explanation": "AR adds information to the current real environment. Replacing the environment with a simulation is the defining contrast with VR.",
+        "sectionId": "w3-reality"
+      },
+      {
+        "id": "w3-q13",
+        "question": "Who first proposed the phrase “Artificial Intelligence” in the assignment?",
+        "options": [
+          "Jaron Lanier",
+          "John McCarthy",
+          "Thomas Caudell",
+          "Louis Rosenberg"
+        ],
+        "correctIndex": 1,
+        "explanation": "John McCarthy is the supplied AI-name answer. Jaron Lanier is associated with the term Virtual Reality in the notes.",
+        "sectionId": "w3-ai",
+        "sourceNote": "The notes say this historical name is in the assignment but not in the Week 3 video."
+      },
+      {
+        "id": "w3-q14",
+        "question": "Which statement is true in the course’s AI-program comparison?",
+        "options": [
+          "AI uses a large knowledge base and heuristic search",
+          "AI uses only a small database and no search",
+          "AI never uses knowledge",
+          "AI must use only exhaustive algorithmic search"
+        ],
+        "correctIndex": 0,
+        "explanation": "The course’s chosen pair is large knowledge base plus heuristic search. Exhaustive/fixed algorithmic search is contrasted with heuristic guidance in these notes.",
+        "sectionId": "w3-ai",
+        "sourceNote": "This is a simplified course comparison; many modern AI systems do not fit a literal knowledge-base/heuristic-search template."
+      },
+      {
+        "id": "w3-q15",
+        "question": "Which set contains the mobile CPS constraints from the assignment?",
+        "options": [
+          "Only screen colors and typography",
+          "Network stability, power requirement and security",
+          "Only product naming and packaging",
+          "Only office rent and advertising"
+        ],
+        "correctIndex": 1,
+        "explanation": "All three listed engineering issues affect mobile CPS operation. Visual appearance can matter to users but is not this assignment’s constraint set.",
+        "sectionId": "w3-cps",
+        "sourceNote": "The notes label the mobile CPS constraint list as assignment material beyond the Week 3 videos."
+      }
+    ],
+    "revision": [
+      "CPS = interacting physical and computational components; reactive means ongoing interaction.",
+      "Real time means timely, not zero time; concurrency means overlapping processes.",
+      "Healthcare answer: image-guided surgery and therapy.",
+      "5C: Connection, Conversion, Cyber, Cognition, Configuration; Cyber is the status hub.",
+      "Intelligent sensors process data and manage external sensors/devices.",
+      "Collaboration platform = organizational networking + operations.",
+      "PLM: five lifecycle phases, nine components, ten-step approach.",
+      "AR enhances the real world; VR creates a simulation; remote control is the AR non-component.",
+      "John McCarthy is the AI-name answer; knowledge base + heuristic search is the course contrast.",
+      "Course AI NOT answer: lack of available data, with usable-data caveat.",
+      "Mobile CPS: network stability, power, security; aesthetics is not the primary constraint.",
+      "Big data: seven Vs; collect, transmit, pre-process, store, analyze; descriptive/predictive/prescriptive."
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Industrial security, sensing & control",
+    "summary": "Bring the concepts into real industrial systems: protect connected equipment, handle legacy devices, interpret smart sensors and controllers, and trace an end-to-end factory process.",
+    "objectives": [
+      "Match security defenses and attack types to the correct meaning.",
+      "Explain the CIA triad and IIoT’s additional safety/reliability needs.",
+      "Describe IIoT adoption challenges and how it differs from isolated automation.",
+      "Recognize GE’s Industrial Internet story and three waves.",
+      "Follow a signal through conditioning, ADC, processing and actuation.",
+      "Explain PLC and SCADA roles, the 5C Control stage and factory case studies."
+    ],
+    "sections": [
+      {
+        "id": "w4-security",
+        "title": "Secure every part of the industrial chain",
+        "intro": "A connected machine is a physical process and an information system at the same time.",
+        "paragraphs": [
+          "Cybersecurity protects hardware, software and data from unauthorized access, change or deletion. Physical security protects the real machines and facilities. A factory needs both: a corrupted command can damage equipment, and physical access to a device can compromise its software. Security, privacy and trust are related: protection, control over data exposure and confidence that information/system behavior is genuine.",
+          "The course lists five defense areas. Application security protects software applications; information/data security protects the data; network security protects communications and access; operational security protects the way information assets and business activities are handled; end-user education helps people recognize and avoid attacks. Application firewalls and suitable proxy/router controls can be countermeasures, but no single product provides complete security.",
+          "The CIA triad is Confidentiality, Integrity and Availability. Confidentiality prevents unauthorized disclosure. Integrity prevents unauthorized alteration. Availability means authorized users can obtain needed information/services when required. IIoT adds reliability and safety because a disrupted system can affect physical production and people. Authenticity, access control and non-repudiation also matter.",
+          "Legacy equipment may have been built before today’s security expectations. Connecting it can expose weak points, so protecting each device independently is not enough. Standards and coordinated design help address the whole chain. The notes mention a cyber-attack detection platform and Software Defined Cloud Manufacturing Architecture: software-plane tap points pass observations to an Ensemble Intelligence Framework to detect anomalies across software and hardware planes."
+        ],
+        "keyPoints": [
+          "Application security protects software applications.",
+          "Five areas: application, information, network, operational, end-user education.",
+          "CIA = Confidentiality, Integrity, Availability.",
+          "IIoT additionally requires reliability and safety.",
+          "Security standards address system-wide weak links and inconsistent individual implementations."
+        ],
+        "terms": [
+          {
+            "term": "Confidentiality",
+            "meaning": "Only authorized parties can access protected information."
+          },
+          {
+            "term": "Integrity",
+            "meaning": "Information is protected against unauthorized change."
+          },
+          {
+            "term": "Availability",
+            "meaning": "Authorized access is possible when needed."
+          },
+          {
+            "term": "Legacy system",
+            "meaning": "Older installed equipment or software that remains in operation."
+          },
+          {
+            "term": "Non-repudiation",
+            "meaning": "Evidence that makes it difficult to deny an action or transaction."
+          }
+        ],
+        "traps": [
+          "Security and privacy overlap but do not mean exactly the same thing.",
+          "Application security protects applications; information security focuses on data.",
+          "End-user education is a defense, not an attack type.",
+          "The source calls end users the biggest risk; treat this as its training emphasis rather than a universal measured ranking."
+        ],
+        "diagram": {
+          "type": "layers",
+          "title": "Security around the complete system",
+          "nodes": [
+            {
+              "label": "People & operations",
+              "detail": "Training and controlled procedures"
+            },
+            {
+              "label": "Application",
+              "detail": "Protect software and exposed services"
+            },
+            {
+              "label": "Information",
+              "detail": "Confidentiality, integrity, availability"
+            },
+            {
+              "label": "Network",
+              "detail": "Protect communications and access"
+            },
+            {
+              "label": "Physical equipment",
+              "detail": "Protect machines and facilities"
+            }
+          ],
+          "caption": "A flaw in any layer can affect the physical process. Defense must be coordinated across the industrial system."
+        },
+        "example": {
+          "title": "A manipulated pressure reading",
+          "steps": [
+            "An attacker changes a pressure measurement.",
+            "Integrity protection and anomaly checks should expose the change.",
+            "The operator needs reliable access to genuine data: availability matters too.",
+            "Safe operating controls limit the physical consequence even if an information layer fails."
+          ]
+        }
+      },
+      {
+        "id": "w4-threats",
+        "title": "Recognize ransomware, malware and human deception",
+        "intro": "The exam checks both attack definitions and the difference between broad and targeted phishing.",
+        "paragraphs": [
+          "Malware is malicious software, including viruses, spyware, Trojans and ransomware. Ransomware encrypts or otherwise blocks access to files/systems and demands payment to restore access; Locky is the example named by the source. It is a malware subtype, not an authorized file-backup or protection feature.",
+          "Social engineering manipulates people into violating a security policy or revealing protected information. The source names pretexting, where an attacker invents a plausible story or role, and watering-hole attacks, where a site expected to be visited by a target group is compromised. The common feature is exploitation of trust or behavior.",
+          "Phishing uses deceptive messages or sites that impersonate recognizable sources to steal credentials or other sensitive information. Spear phishing is targeted at a particular person or organization. Broad email phishing may be sent widely; spear phishing can use carefully selected details. The assignment’s statement reversing these two descriptions is False.",
+          "Users should understand how to identify suspicious requests and follow the organization’s verification procedure. Familiar branding alone is not proof that a message or login page is legitimate. The lecture examples of Google Docs and Dropbox phishing refer to imitation or abuse aimed at users, not a claim that those brands are inherently malicious."
+        ],
+        "keyPoints": [
+          "Ransomware = locks/encrypts files and demands money.",
+          "Malware is the broader malicious-software category.",
+          "Social engineering attacks human trust and behavior.",
+          "Phishing can be broad; spear phishing is targeted.",
+          "The reversed spear-phishing/email-phishing statement is False."
+        ],
+        "terms": [
+          {
+            "term": "Phishing",
+            "meaning": "Deceptive communication intended to obtain sensitive information or induce harmful action."
+          },
+          {
+            "term": "Spear phishing",
+            "meaning": "Targeted phishing tailored to a person or organization."
+          },
+          {
+            "term": "Pretexting",
+            "meaning": "Use an invented identity/story to obtain information or cooperation."
+          },
+          {
+            "term": "Trojan",
+            "meaning": "Malicious software disguised as a legitimate or desirable program."
+          }
+        ],
+        "traps": [
+          "Encryption used legitimately is not automatically ransomware; coercive blocking plus the demand is the cue.",
+          "Spear phishing is targeted, not the term for sending thousands of generic emails.",
+          "Phishing is a form of social engineering, so the categories can overlap."
+        ],
+        "comparison": {
+          "headers": [
+            "Attack",
+            "Main mechanism",
+            "Recognition cue"
+          ],
+          "rows": [
+            [
+              "Ransomware",
+              "Malicious access blocking/encryption",
+              "Demand to pay for recovery"
+            ],
+            [
+              "Malware",
+              "Malicious software execution",
+              "Virus, spyware, Trojan or other malicious program"
+            ],
+            [
+              "Social engineering",
+              "Human deception",
+              "An invented trusted role or story"
+            ],
+            [
+              "Phishing",
+              "Impersonating messages/sites",
+              "Fake login or credential request"
+            ],
+            [
+              "Spear phishing",
+              "Targeted impersonation",
+              "Tailored to a selected person or organization"
+            ]
+          ]
+        },
+        "example": {
+          "title": "A fake maintenance login",
+          "steps": [
+            "A message claims a factory account is about to expire.",
+            "It links to a familiar-looking login page.",
+            "The request may be phishing even if the logo looks correct.",
+            "If it is tailored to one engineer with plant-specific details, it is spear phishing."
+          ]
+        }
+      },
+      {
+        "id": "w4-iiot",
+        "title": "IIoT: connected automation and its adoption challenges",
+        "intro": "The change is not that factories suddenly gained sensors; it is that measurements and decisions can be coordinated across them.",
+        "paragraphs": [
+          "IIoT applies IoT to industrial settings such as manufacturing, mining, agriculture and healthcare. Its goals include worker safety, ergonomics, longer machine life and operational efficiency. The professor describes it as traditional automation plus sensing, actuation and decision making in a connected manner.",
+          "The contrast with old automation has three parts. Sensing becomes ubiquitous rather than confined to one machine. Analytics combine data from many machines, sites and processes rather than a standalone local view. IT methods add shared communications, standardization opportunities and access to established hardware, software and skilled people. Connected data still needs useful analysis to produce a benefit.",
+          "Five adoption challenges are data integration, cybersecurity/privacy, lack of standardization, legacy installations and lack of skills. Device interoperability lets devices communicate; semantic interoperability means their data has mutually understood meaning, including units and context. A network can successfully carry two messages while the applications misunderstand them.",
+          "The coal-mine example measures hazardous gas and warns a control center/workers; roof/strata monitoring can give early collapse warnings, and RFID/location information can help locate miners. A hospital example sends body temperature and pulse-oximeter readings to a doctor’s screen. A pulse oximeter estimates oxygen saturation and pulse rate. Connected monitoring supports alerts, but the device is part of a larger safety or clinical procedure."
+        ],
+        "keyPoints": [
+          "IIoT goals: safety, ergonomics, machine life and efficiency.",
+          "Differences from isolated automation: sensing, analytics, IT methodologies.",
+          "Five challenges: data integration, cybersecurity, standards, legacy, skills.",
+          "Mining networks: early disaster warning, working conditions, miner location.",
+          "Pulse oximeter: oxygen saturation and pulse rate."
+        ],
+        "terms": [
+          {
+            "term": "Ubiquitous sensing",
+            "meaning": "Measurement distributed throughout an environment or process."
+          },
+          {
+            "term": "Device interoperability",
+            "meaning": "Devices can exchange communications."
+          },
+          {
+            "term": "Semantic interoperability",
+            "meaning": "Systems agree on the meaning of exchanged information."
+          },
+          {
+            "term": "Ergonomics",
+            "meaning": "Design work and equipment around human capabilities and comfort."
+          },
+          {
+            "term": "Strata monitoring",
+            "meaning": "Monitor ground/roof conditions relevant to mine stability."
+          }
+        ],
+        "traps": [
+          "More connectivity without security can add vulnerabilities.",
+          "Identical network packets do not guarantee identical interpretations of units or meaning.",
+          "IIoT is broader than manufacturing alone in this course."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "A connected mine-safety example",
+          "nodes": [
+            {
+              "label": "Gas / roof sensors",
+              "detail": "Observe hazardous conditions"
+            },
+            {
+              "label": "Local controller",
+              "detail": "Check thresholds and process readings"
+            },
+            {
+              "label": "Communication network",
+              "detail": "Send status and warnings"
+            },
+            {
+              "label": "Control center",
+              "detail": "Monitor conditions and miner locations"
+            },
+            {
+              "label": "Safety response",
+              "detail": "Alarm and follow the emergency procedure"
+            }
+          ],
+          "caption": "Gas, strata and location data serve different functions: warning, condition monitoring and locating workers."
+        },
+        "example": {
+          "title": "Why the same temperature number may not mean the same thing",
+          "steps": [
+            "One device sends 80 in degrees Celsius.",
+            "Another system assumes 80 in degrees Fahrenheit.",
+            "The network transported the number correctly.",
+            "A shared unit/schema is needed for semantic interoperability."
+          ]
+        }
+      },
+      {
+        "id": "w4-internet",
+        "title": "GE’s Industrial Internet: three waves and three elements",
+        "intro": "Industrial Internet and IIoT are closely related terms with different historical origins in the course.",
+        "paragraphs": [
+          "The source attributes the term Industrial Internet to General Electric and says GE helped found the Industrial Internet Consortium. Its definition associates the global industrial system with low-cost sensing, internet interconnection and high-level computing/analytics. The course treats Industrial Internet and IIoT as similar and often interchangeable while explaining their different origins.",
+          "GE’s three waves are the Industrial Revolution, the Internet Revolution and the Industrial Internet. The first wave includes steam followed by internal-combustion engines and electricity; its drawbacks include waste, poor working conditions and inefficient processes. The second connects computers and information. The third connects industrial equipment with sensing and analytics. This three-wave story is a different grouping from the four-revolution timeline.",
+          "Three elements are intelligent machines, advanced analytics and people at work. Computing-enabled machines exchange measurements; predictive/statistical/AI methods interpret their records; people use web/mobile tools for decisions and collaboration. The scale can grow from a machine to a facility, fleet and network, with optimization at each level.",
+          "The course examples include aviation scheduling and engine care, rail maintenance, power-fault location, reservoir understanding and healthcare operations. Its large sector-savings amounts are lecture estimates, often framed over 15 years or around a 1% improvement, rather than verified current savings. Adoption catalysts are equipment/analytics innovation, infrastructure, cybersecurity management and talent development; cloud pay-per-use can make resources accessible."
+        ],
+        "keyPoints": [
+          "Industrial Internet term: General Electric.",
+          "GE waves: Industrial Revolution → Internet Revolution → Industrial Internet.",
+          "Industrial Revolution drawbacks: waste, poor working environment, inefficiency.",
+          "Definition pillars: sensing, interconnection, computation/analytics.",
+          "Elements: intelligent machines, advanced analytics, people at work."
+        ],
+        "terms": [
+          {
+            "term": "IIC",
+            "meaning": "Industrial Internet Consortium, the historical body named by the course."
+          },
+          {
+            "term": "Fleet optimization",
+            "meaning": "Coordinate performance and maintenance across a group of assets."
+          },
+          {
+            "term": "Predictive maintenance",
+            "meaning": "Use condition and historical data to plan maintenance before likely failure."
+          }
+        ],
+        "traps": [
+          "Do not mix GE’s three waves with the four Industry 1.0–4.0 revolutions.",
+          "IC engine here means internal combustion, not integrated circuit.",
+          "The savings numbers in the source are historical estimates, not current measured outcomes."
+        ],
+        "comparison": {
+          "headers": [
+            "GE wave",
+            "Enabling shift",
+            "Industrial example"
+          ],
+          "rows": [
+            [
+              "Industrial Revolution",
+              "Mechanization, engines and electricity",
+              "Mass production"
+            ],
+            [
+              "Internet Revolution",
+              "Computer interconnection",
+              "Share information across distant sites"
+            ],
+            [
+              "Industrial Internet",
+              "Equipment + sensing + analytics",
+              "Coordinate and predict asset performance"
+            ]
+          ]
+        },
+        "example": {
+          "title": "A railway fleet",
+          "steps": [
+            "Each train reports condition data.",
+            "Analytics identify engines showing abnormal patterns.",
+            "Maintenance is prioritized across the fleet rather than train by train in isolation.",
+            "Operators use the shared view to adjust scheduling."
+          ]
+        }
+      },
+      {
+        "id": "w4-sensors",
+        "title": "Industrial sensors and the complete signal path",
+        "intro": "Factories need accurate, reliable measurements for long periods in harsh conditions and at a scale they can afford.",
+        "paragraphs": [
+          "Industrial sensing must balance high performance, durability, low cost and reliable connectivity. The source shows methane, oxygen and carbon-monoxide sensors. It gives a methane operating range of about −20 to +55 °C with an example sensitivity around 24 ± 4 mV per percent methane; an electrochemical oxygen output about 0.1 ± 0.02 mA in air; and a CO range of about 20–2000 ppm. These are example-device figures, not specifications for every gas sensor.",
+          "The lecture’s smart-sensor configuration contains a multi-parameter sensing unit, analog detection circuit, digital signal conditioning unit and bus interface. Manual Control Unit is the assignment’s non-component. The sensor’s physical signal is detected and conditioned, the ADC turns analog into digital values, and a processor runs logic with memory and communication. A DAC can turn a digital command into an analog output for suitable actuation.",
+          "Calibration compares a sensor with a standard reference so bias or other errors can be adjusted or recorded. Conditioning, conversion and calibration are different: filtering prepares the signal; ADC changes representation; calibration establishes correspondence to a known reference. Industry-grade designs may perform sophisticated onboard corrections.",
+          "The milk-packaging example uses an impeller in the flow path. Flow spins the wheel; its electrical pulses/signals let the controller infer how much liquid has passed and stop filling at a threshold. Other applications use GPS for logistics, moisture/weather/nutrient sensors for agriculture, ECG/EMG/EEG and smart beds/pills in healthcare, and RFID in retail. The notes name Zephyr/Linux variants/Android Things, languages such as C/C++/Python, MRAA low-level interfaces and UPM higher-level sensor APIs as software examples."
+        ],
+        "keyPoints": [
+          "Smart configuration: multi-parameter sensing, detection, conditioning, bus interface.",
+          "Manual Control Unit is not in the supplied configuration list.",
+          "ADC = analog to digital; DAC = digital to analog.",
+          "Milk-flow measurement uses a spinning impeller.",
+          "Calibration needs a standard reference.",
+          "IEEE 1451 is the smart-sensor interface standard family named in the course."
+        ],
+        "terms": [
+          {
+            "term": "ADC",
+            "meaning": "Analog-to-digital converter."
+          },
+          {
+            "term": "DAC",
+            "meaning": "Digital-to-analog converter."
+          },
+          {
+            "term": "Impeller",
+            "meaning": "A rotating bladed wheel; rotation can be used to infer flow."
+          },
+          {
+            "term": "Calibration",
+            "meaning": "Compare/adjust a measurement against a known reference."
+          },
+          {
+            "term": "ppm",
+            "meaning": "Parts per million, a concentration unit."
+          }
+        ],
+        "traps": [
+          "An ADC does not automatically calibrate a sensor; it digitizes its signal.",
+          "A DAC converts in the reverse direction from an ADC.",
+          "Gas-sensor numbers are specific example specifications, not general gas limits or safe-exposure guidance.",
+          "The source’s conditioning-unit labels are simplified; conditioning can occur in analog and digital stages."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "The smart-sensor signal path",
+          "nodes": [
+            {
+              "label": "Sensing + detection",
+              "detail": "Physical input produces a signal"
+            },
+            {
+              "label": "Conditioning",
+              "detail": "Amplify/filter as required"
+            },
+            {
+              "label": "ADC",
+              "detail": "Analog → digital"
+            },
+            {
+              "label": "Processor + memory",
+              "detail": "Calculate, calibrate and decide"
+            },
+            {
+              "label": "Interface / output",
+              "detail": "Send data or command an actuator"
+            }
+          ],
+          "caption": "A suitable actuator output may include DAC conversion. Manual control is not one of the listed smart-sensor configurations."
+        },
+        "example": {
+          "title": "Fill a milk pouch to its target quantity",
+          "steps": [
+            "Milk turns the impeller in the outlet line.",
+            "The measurement signal reaches the controller.",
+            "The controller totals a calibrated flow measurement.",
+            "At the target amount it commands the valve to close.",
+            "The reading, action and quality record can be shared with the connected production system."
+          ]
+        }
+      },
+      {
+        "id": "w4-control",
+        "title": "PLC, SCADA and industrial actuation",
+        "intro": "Local controllers execute the process; supervisory systems give operators a wider view.",
+        "paragraphs": [
+          "A Programmable Logic Controller is a rugged special-purpose digital computer used to automate industrial equipment and processes. Its modules are CPU with memory, power supply and input/output. The I/O module connects analog/digital sensors and actuators. A PLC can participate in a connected IIoT system while retaining local control responsibilities.",
+          "The lecture’s scan cycle starts with monitoring/time housekeeping, reads inputs and their status, executes the user application, runs diagnostics, writes outputs and repeats. This repeated scan makes the relationship between current input and commanded output understandable. Timing and safe behavior still depend on the actual controller and process.",
+          "SCADA means Supervisory Control and Data Acquisition. It collects data from multiple sites, supports monitoring and analysis, and provides a supervisory view in water, oil and power systems. Course components are the supervisory system, Human Machine Interface, Remote Terminal Unit, communication interface, programming and PLC. SCADA and PLC are complementary roles, not competing names for exactly the same box.",
+          "Wireless sensor/actuator networks can ease installation and self-organization, but must still satisfy timing, reliability and security needs. Electro-hydrostatic actuation combines electric and hydraulic capabilities, with high force and decentralized control. Electro-pneumatic actuation combines electric control with compressed-fluid action for precise flow control, communications and diagnostics."
+        ],
+        "keyPoints": [
+          "PLC = Programmable Logic Controller; modules CPU, power, I/O.",
+          "Scan: monitor → read → execute → diagnose → write → repeat.",
+          "SCADA = Supervisory Control and Data Acquisition.",
+          "HMI presents the system to people; RTU supports remote-site acquisition/control.",
+          "Electro-hydrostatic = electric + hydraulic; electro-pneumatic = electric + pneumatic."
+        ],
+        "terms": [
+          {
+            "term": "PLC",
+            "meaning": "Industrial programmable controller that reads inputs and drives outputs."
+          },
+          {
+            "term": "SCADA",
+            "meaning": "Supervisory Control and Data Acquisition."
+          },
+          {
+            "term": "HMI",
+            "meaning": "Human Machine Interface."
+          },
+          {
+            "term": "RTU",
+            "meaning": "Remote Terminal Unit."
+          },
+          {
+            "term": "WSAN",
+            "meaning": "Wireless Sensor and Actuator Network."
+          }
+        ],
+        "traps": [
+          "SCADA is supervisory; it is not the name of the PLC’s input/output module.",
+          "A PLC scan is repetitive, but the source sequence is a conceptual model rather than a rule for every controller implementation."
+        ],
+        "diagram": {
+          "type": "loop",
+          "title": "The PLC repeats its scan",
+          "nodes": [
+            {
+              "label": "Monitor",
+              "detail": "Timing and startup housekeeping"
+            },
+            {
+              "label": "Read inputs",
+              "detail": "Capture sensor/input status"
+            },
+            {
+              "label": "Execute program",
+              "detail": "Apply the control logic"
+            },
+            {
+              "label": "Diagnostics",
+              "detail": "Check controller operation"
+            },
+            {
+              "label": "Write outputs",
+              "detail": "Drive the commanded outputs"
+            }
+          ],
+          "caption": "After writing outputs the next scan starts again, checking the changing process."
+        },
+        "example": {
+          "title": "PLC and SCADA in water pumping",
+          "steps": [
+            "The PLC reads local pressure and level signals.",
+            "Its program changes pump/valve outputs.",
+            "SCADA displays status from several pump sites.",
+            "An operator adjusts approved supervisory settings and investigates warnings."
+          ]
+        }
+      },
+      {
+        "id": "w4-processes",
+        "title": "Design a connected process and its 5C Control stage",
+        "intro": "Industry 3.0 automated isolated tasks; Industry 4.0 coordinates them and keeps people informed.",
+        "paragraphs": [
+          "The course process timeline moves from mechanization to mass production, then computers/automation, then connected autonomous systems. The distinguishing 4.0 role is communication across machines and the supply chain. A lecture growth chart predicts the highest growth for electronics; the assignment answer is Electronics. The numerical growth percentages are predictions in the historical source, not present-day evidence.",
+          "An IIoT setup has four components: smart objects, networking infrastructure, business intelligence and people in the loop. Four design facets are interoperability, distributed decision making, information clarity and technical assistance. A machine may decide locally, while shared objectives and information coordinate the wider production system. Technical assistance uses smart objects to reduce unnecessary human burden, while people remain responsible for suitable decisions.",
+          "The final 5C stage is called Control in this lecture. It performs supervised control, self-configuration, self-optimization and self-adjustment. Earlier weeks call the related stage Configuration. Connection collects data, Conversion extracts information, Cyber links/aggregates the system, and Cognitive interpretation supports decisions before Control applies them.",
+          "Enablers are cloud platforms with IaaS/PaaS/SaaS, visualization, analysis and virtualization. Expected process features are efficiency, competitiveness, a skilled workforce, innovation and flexibility. Market volatility, workforce training, supply-chain flexibility, resource use and shorter product lifecycles remain practical challenges even after the devices are connected."
+        ],
+        "keyPoints": [
+          "Industry 4.0 distinguishes connected coordination from isolated automation.",
+          "Lecture-chart assignment answer: Electronics has highest predicted growth.",
+          "Setup: smart objects, networks, business intelligence, people.",
+          "Design: interoperability, distributed decisions, information clarity, technical assistance.",
+          "Control stage: supervised control, self-configure, self-optimize, self-adjust."
+        ],
+        "terms": [
+          {
+            "term": "Business intelligence",
+            "meaning": "Use data and analysis to support business decisions."
+          },
+          {
+            "term": "Distributed decision making",
+            "meaning": "Place decision capabilities across multiple parts of a system."
+          },
+          {
+            "term": "Virtualization",
+            "meaning": "Represent or provide physical/system capabilities through a digital abstraction."
+          },
+          {
+            "term": "Information clarity",
+            "meaning": "Present system data/models in a form people can understand."
+          }
+        ],
+        "traps": [
+          "The Control layer is not merely raw sensing or file storage.",
+          "Historical growth predictions do not describe the current economy.",
+          "Control/Configuration and Cognitive/Cognition are wording variations across the supplied notes."
+        ],
+        "comparison": {
+          "headers": [
+            "Design facet",
+            "Meaning",
+            "Factory example"
+          ],
+          "rows": [
+            [
+              "Interoperability",
+              "Different devices exchange usable data",
+              "Mixed-vendor machines share status"
+            ],
+            [
+              "Distributed decisions",
+              "Local decisions follow a shared objective",
+              "Stations adjust within plant rules"
+            ],
+            [
+              "Information clarity",
+              "People can understand digital state",
+              "Dashboard shows the affected order"
+            ],
+            [
+              "Technical assistance",
+              "Tools reduce unnecessary intervention",
+              "Guided diagnostics help the worker"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "w4-applications",
+        "title": "Factory cases and the end-to-end car process",
+        "intro": "The exam uses named examples, so connect each company to the benefit it illustrates.",
+        "paragraphs": [
+          "Thames Water illustrates operational efficiency through sensor-based equipment-status monitoring and failure detection. Apache is another maintenance example. Volkswagen illustrates product innovation through augmented maintenance, AR and smart fault diagnosis. GE and Rolls-Royce illustrate an enhanced connected ecosystem, including renewable-energy coordination and predictive engine care/TotalCare. The notes use GE Predix for an autonomous pull economy with demand information, end-to-end automation and resource optimization.",
+          "Smart-factory application areas include facility management, connected equipment, inventory, production lines, safety/security, service quality, supply-chain optimization and packaging. These are different views of the same connected operation: track what is present, see how it is performing, understand delays or defects and act on the relevant condition.",
+          "The car example has two production tracks. A body track goes through body/assembly, e-coat/wash and painting. A parts track goes through metal works, washing, assembly and testing. They join in final assembly before shipping. Industry 4.0 adds measurement and communication at phases and transitions, including outsourced parts, so analytics can consider machine health, worker conditions, future output and likely failures across the whole process.",
+          "The source’s traditional diagram has few or no connected sensors. Real earlier factories could certainly have local sensors and computers; the useful contrast is isolated visibility versus end-to-end connected visibility. The functional-viewpoint stack runs from physical system through control, operations, information and application to business, with communication inside and between factories."
+        ],
+        "keyPoints": [
+          "Thames Water = equipment-status monitoring + failure detection.",
+          "Volkswagen = AR/augmented maintenance and product innovation.",
+          "Rolls-Royce = engine reliability and predictive maintenance/TotalCare.",
+          "GE Predix = the lecture’s cloud/pull-economy example.",
+          "Car production joins parallel body and parts tracks before final assembly.",
+          "Functional layers: physical, control, operations, information, application, business."
+        ],
+        "terms": [
+          {
+            "term": "Pull economy",
+            "meaning": "Production/services respond to current demand rather than only pushing planned output."
+          },
+          {
+            "term": "Condition-based monitoring",
+            "meaning": "Assess equipment using measured operating condition."
+          },
+          {
+            "term": "Data monetization",
+            "meaning": "Create revenue or services from useful data or insights."
+          },
+          {
+            "term": "Traceability",
+            "meaning": "Follow an item/process history across its stages and locations."
+          }
+        ],
+        "traps": [
+          "Thames Water is not the source’s data-monetization or AR-maintenance example.",
+          "A connected process does not imply a traditional factory had no sensors at all.",
+          "Company examples describe the course’s historical case studies, not verified current product offerings."
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "Two tracks join into a connected car process",
+          "nodes": [
+            {
+              "label": "Parallel production tracks",
+              "detail": "Body/e-coat/paint AND parts/wash/test"
+            },
+            {
+              "label": "Final assembly",
+              "detail": "Join the body and tested components"
+            },
+            {
+              "label": "Quality / condition data",
+              "detail": "Share status across stages"
+            },
+            {
+              "label": "Shipping",
+              "detail": "Trace the finished vehicle and delivery"
+            }
+          ],
+          "caption": "Sensors and analytics span both tracks and their transitions. The data can reveal dependencies before a delay or fault reaches shipping."
+        },
+        "example": {
+          "title": "Avoiding a stoppage at final assembly",
+          "steps": [
+            "A parts-test station reports abnormal equipment condition.",
+            "The connected system links the risk to the vehicles awaiting those parts.",
+            "Maintenance and scheduling teams see the same status.",
+            "They coordinate repair and production changes before the final station runs out of usable components."
+          ]
+        }
+      }
+    ],
+    "quiz": [
+      {
+        "id": "w4-q01",
+        "question": "Application security aims to protect against what?",
+        "options": [
+          "Only unauthorized building entry",
+          "Only mechanical wear",
+          "Only raw-material waste",
+          "Threats to software applications"
+        ],
+        "correctIndex": 3,
+        "explanation": "Application security focuses on software applications and their exposed functions. Building entry is a physical-security issue and is the nearest related but different defense.",
+        "sectionId": "w4-security"
+      },
+      {
+        "id": "w4-q02",
+        "question": "What is ransomware?",
+        "options": [
+          "An authorized method of encrypting a backup",
+          "Malware that locks/encrypts files and demands money to unlock them",
+          "A sensor-calibration program",
+          "A network-routing protocol"
+        ],
+        "correctIndex": 1,
+        "explanation": "The malicious blocking and payment demand identify ransomware. Legitimate backup encryption may use the same mathematical tool but lacks the coercive attack.",
+        "sectionId": "w4-threats"
+      },
+      {
+        "id": "w4-q03",
+        "question": "Which set contains major challenges in deploying IIoT?",
+        "options": [
+          "Only faster displays and new logos",
+          "Only entertainment and advertising",
+          "Legacy installations, cybersecurity and lack of standardization",
+          "None: existing machines always connect without changes"
+        ],
+        "correctIndex": 2,
+        "explanation": "All three are explicit adoption challenges: older systems, attack exposure and incompatible standards. Faster displays do not address the main deployment barriers.",
+        "sectionId": "w4-iiot"
+      },
+      {
+        "id": "w4-q04",
+        "question": "What are GE’s three waves of innovation in the course?",
+        "options": [
+          "Industrial Revolution, Internet Revolution, Industrial Internet",
+          "Steam, Electricity, Computers only",
+          "Monitoring, Control, Optimization",
+          "Connection, Conversion, Configuration"
+        ],
+        "correctIndex": 0,
+        "explanation": "GE uses the three-wave historical grouping in the second option. Steam/electricity/computers are technologies in the separate revolution timeline, not these wave names.",
+        "sectionId": "w4-internet"
+      },
+      {
+        "id": "w4-q05",
+        "question": "Which was a major drawback of the Industrial Revolution in GE’s story?",
+        "options": [
+          "Poor working environment and inefficient processes",
+          "It had no physical machines",
+          "Universal zero-waste production",
+          "No energy consumption"
+        ],
+        "correctIndex": 0,
+        "explanation": "The source identifies poor working conditions, inefficiency and waste. Zero-waste production is the opposite of the drawback described.",
+        "sectionId": "w4-internet"
+      },
+      {
+        "id": "w4-q06",
+        "question": "Which is NOT part of the lecture’s smart-sensor configurations?",
+        "options": [
+          "Multi-parameter sensing unit",
+          "Analog detection circuit",
+          "Manual Control Unit",
+          "Digital signal conditioning unit"
+        ],
+        "correctIndex": 2,
+        "explanation": "Manual Control Unit is the supplied non-component. Conditioning is included because measurements need preparation before/around processing and conversion.",
+        "sectionId": "w4-sensors"
+      },
+      {
+        "id": "w4-q07",
+        "question": "Which sector has the highest predicted growth in the lecture’s Industry 4.0 chart?",
+        "options": [
+          "Agriculture",
+          "Electronics",
+          "Retail",
+          "Oil and gas"
+        ],
+        "correctIndex": 1,
+        "explanation": "Electronics is the assignment answer tied to the lecture chart. Other sectors can benefit, but are not the highest bar in the supplied example.",
+        "sectionId": "w4-processes",
+        "sourceNote": "Historical lecture prediction, not a verified current growth ranking or investment forecast."
+      },
+      {
+        "id": "w4-q08",
+        "question": "What is the focus of the Control layer in this lecture’s 5C architecture?",
+        "options": [
+          "Only collect raw analog samples",
+          "Only archive files without decisions",
+          "Supervised control: self-configure, self-optimize and self-adjust",
+          "Only name network addresses"
+        ],
+        "correctIndex": 2,
+        "explanation": "The final stage applies supervisory decisions and adaptive actions. Collecting samples belongs at Connection and is the closest earlier-stage distractor.",
+        "sectionId": "w4-processes",
+        "sourceNote": "Earlier weekly notes call this related final stage Configuration."
+      },
+      {
+        "id": "w4-q09",
+        "question": "Why are IIoT security standards needed according to the lecture?",
+        "options": [
+          "Each implementer’s isolated security choice always protects the full factory",
+          "To remove all need for training",
+          "Individual weak links can endanger the whole factory, so security needs coordinated standards",
+          "To guarantee every device uses one vendor"
+        ],
+        "correctIndex": 2,
+        "explanation": "Security is system-wide: inconsistent choices and weak links can expose the whole process. A single-vendor requirement is not the purpose of a security standard.",
+        "sectionId": "w4-security"
+      },
+      {
+        "id": "w4-q10",
+        "question": "What do gas, strata and RFID/location sensor networks enable in mining?",
+        "options": [
+          "Early disaster warning, working-condition monitoring and locating miners",
+          "Only product advertising",
+          "Only online shopping",
+          "Only automatic payroll"
+        ],
+        "correctIndex": 0,
+        "explanation": "The three sensing roles support warning, environmental/structural monitoring and worker location. They are safety/operational functions rather than commercial advertising.",
+        "sectionId": "w4-iiot"
+      },
+      {
+        "id": "w4-q11",
+        "question": "Who coined “Industrial Internet” in the course account?",
+        "options": [
+          "Toyota",
+          "General Electric",
+          "John McCarthy",
+          "Thomas Caudell"
+        ],
+        "correctIndex": 1,
+        "explanation": "The course attributes Industrial Internet to General Electric. Toyota is associated with Lean/TPS, a separate industrial idea.",
+        "sectionId": "w4-internet"
+      },
+      {
+        "id": "w4-q12",
+        "question": "How is flow measured in the lecture’s milk-packaging unit?",
+        "options": [
+          "A thermometer counts packages",
+          "A spinning impeller sends measurement signals as milk flows",
+          "GPS measures liquid volume",
+          "A camera alone measures gas concentration"
+        ],
+        "correctIndex": 1,
+        "explanation": "Liquid flow rotates the impeller and its signals support the flow/quantity estimate. A thermometer measures temperature and cannot replace this flow mechanism.",
+        "sectionId": "w4-sensors"
+      },
+      {
+        "id": "w4-q13",
+        "question": "Which smart-sensor component converts analog input into digital values?",
+        "options": [
+          "DAC",
+          "HMI",
+          "PLC power supply",
+          "ADC"
+        ],
+        "correctIndex": 3,
+        "explanation": "ADC means analog-to-digital converter. DAC performs the opposite digital-to-analog direction, making it the closest distractor.",
+        "sectionId": "w4-sensors"
+      },
+      {
+        "id": "w4-q14",
+        "question": "What benefit is associated with Thames Water smart water management?",
+        "options": [
+          "AR-only vehicle maintenance",
+          "Only data monetization from advertisements",
+          "Only aircraft engine TotalCare",
+          "Sensor-based equipment-status monitoring and failure detection"
+        ],
+        "correctIndex": 3,
+        "explanation": "Thames Water is the operational-efficiency monitoring/failure-detection example. AR maintenance belongs to the Volkswagen example in these notes.",
+        "sectionId": "w4-applications"
+      },
+      {
+        "id": "w4-q15",
+        "question": "“Spear phishing sends thousands of generic emails, while email phishing targets one person.” True or false?",
+        "options": [
+          "False",
+          "True"
+        ],
+        "correctIndex": 0,
+        "explanation": "False: the statement reverses the distinction. Spear phishing is tailored to a specific person or organization; broad phishing can be distributed widely.",
+        "sectionId": "w4-threats",
+        "sourceNote": "The notes label this as assignment knowledge outside the Week 4 videos. Targeting is the defining distinction, not a fixed message count."
+      }
+    ],
+    "revision": [
+      "Five security areas: application, information, network, operational, end-user education.",
+      "CIA: confidentiality, integrity, availability; IIoT also needs reliability and safety.",
+      "Ransomware blocks/encrypts for money; spear phishing is targeted, so the reversed statement is False.",
+      "Five IIoT challenges: data integration, cybersecurity, standards, legacy, skills.",
+      "Mining networks: early warning, condition monitoring, worker location.",
+      "GE coined Industrial Internet; waves: Industrial Revolution, Internet Revolution, Industrial Internet.",
+      "Industrial Internet elements: intelligent machines, advanced analytics, people.",
+      "Smart sensor: sensing/detection/conditioning/interface; Manual Control Unit is not included.",
+      "ADC analog→digital; DAC digital→analog; impeller measures milk flow; calibration needs a reference.",
+      "PLC modules CPU, power, I/O; SCADA is Supervisory Control and Data Acquisition.",
+      "5C Control: supervised self-configuration, optimization, adjustment; Electronics is the historical chart answer.",
+      "Thames Water = status/failure detection; Volkswagen = AR; Rolls-Royce = predictive engine care."
+    ]
+  }
+]

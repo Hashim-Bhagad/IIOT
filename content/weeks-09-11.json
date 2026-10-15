@@ -1,0 +1,2546 @@
+[
+  {
+    "id": 9,
+    "title": "Fog, analytics tools & software-defined networks",
+    "summary": "Keep urgent decisions near the machine, organize industrial data, then make the network programmable. Learn the operator and component names that the assignment tests.",
+    "objectives": [
+      "Explain why fog complements cloud computing and filters industrial data close to its source.",
+      "Recognize R operators, object types and analytics packages, plus Julia dictionary and string syntax.",
+      "Trace generation → acquisition → storage → analysis and distinguish integration, cleaning and redundancy mitigation.",
+      "Separate HDFS storage, MapReduce processing and YARN resource allocation.",
+      "Compare DCN topologies and explain SDN flow rules, APIs and software-defined automation."
+    ],
+    "sections": [
+      {
+        "id": "w9-fog",
+        "title": "Fog: urgent work stays close",
+        "intro": "A machine cannot always wait for a remote cloud. Fog is a lightweight computing layer between end devices and the cloud.",
+        "paragraphs": [
+          "A cloud-only factory sends machine data over a limited-bandwidth link to centralized storage and analytics. This is useful for large historical studies, but transmission and processing delay can be a problem for rapid process decisions. Fog nodes sit near a group of end devices, process some data locally, and send useful summaries upstream.",
+          "Prior filtration at the edge removes noise or unnecessary readings before they consume cloud bandwidth and storage. Fog can classify data, perform preliminary analytics, visualize a live process and support fast decisions; the cloud can train larger models, store history and coordinate many sites. Fog and cloud are complementary.",
+          "In this lecture’s simplified classification, the notes identify plant supervision and enterprise control as IT functions. Process control, sensor/actuator control, unit control and cell control belong to OT. A fog platform helps bridge both. The assignment key also lists merging real-time and non-real-time workloads as a fog-platform capability. Supervisory industrial functions can span IT and OT in practice; treat the lecture grouping as a teaching model rather than a strict universal boundary."
+        ],
+        "keyPoints": [
+          "Three tiers: end devices → fog nodes → cloud; fog nodes may also communicate with one another.",
+          "Fog has less computation and storage than the cloud, but is closer to the data source.",
+          "Mining: local gas/hazard analysis; smart grid: quick demand scheduling; transportation: traffic and parking; oil/gas: leak detection; asset management: remote maintenance and energy monitoring.",
+          "Fog platforms aim for real-time monitoring, security, scalability, flexibility and lower cost; proximity alone does not guarantee these properties.",
+          "FogHorn: edge processing and analytics. Nebbiolo: IT/OT integration with fogOS, fogNode and fogSM.",
+          "Crosser: the course's 'any protocol, any PLC, any hardware' edge-node software. Sonm: distributed customer-hardware computing and blockchain infrastructure."
+        ],
+        "terms": [
+          {
+            "term": "Prior filtration",
+            "meaning": "Filtering noisy or unnecessary data near its source before forwarding it to the cloud."
+          },
+          {
+            "term": "IT",
+            "meaning": "Information technology for supervision, enterprise information and business decisions."
+          },
+          {
+            "term": "OT",
+            "meaning": "Operational technology that monitors and controls physical processes and equipment."
+          }
+        ],
+        "diagram": {
+          "type": "layers",
+          "title": "Place computation where the deadline permits",
+          "nodes": [
+            {
+              "label": "End devices",
+              "detail": "Sensors create readings; actuators affect machines."
+            },
+            {
+              "label": "Fog nodes",
+              "detail": "Filter noise, classify streams and make local decisions."
+            },
+            {
+              "label": "Cloud",
+              "detail": "Store history, run large analytics and coordinate sites."
+            }
+          ],
+          "caption": "Near-source processing reduces unnecessary upstream traffic; fog complements the cloud."
+        },
+        "example": {
+          "title": "A coal-mine gas alarm",
+          "steps": [
+            "A sensor samples gas concentration and sends readings to a nearby fog node.",
+            "The fog node filters repeated/noisy readings and evaluates the local hazard threshold.",
+            "The local system raises an alarm while useful readings and events are sent to the cloud for longer-term analysis."
+          ]
+        },
+        "traps": [
+          "Do not equate fog with replacing the cloud: the lecture explicitly describes a complement.",
+          "'Merging real-time and non-real-time workloads' is an assignment-key fact; the notes say it is not explicitly explained in the transcript.",
+          "Vendor descriptions are course-era examples, not verification of current product support or universal protocol compatibility."
+        ]
+      },
+      {
+        "id": "w9-r",
+        "title": "R: recognize the operators and workflow",
+        "intro": "R is an open-source language and environment for statistics, visualization and analytics; RStudio is an interface used to work with it.",
+        "paragraphs": [
+          "Variables hold values: A = 20 is numeric, X = 'hello' is character, and Y = TRUE is logical. Reserved words such as if, else, repeat, while, function, for, next, break, TRUE and FALSE already have language meanings; they cannot be ordinary variable names. help(reserved) shows the reserved-word list.",
+          "Distinguish three visually similar operators. 1:5 creates the sequence 1, 2, 3, 4, 5. 3 %in% c(1, 3, 5) checks membership and returns TRUE. 7 %/% 2 gives integer division, whereas 7 %% 2 gives the remainder. Powers use ^, comparisons use == or !=, and assignment commonly uses <-.",
+          "R objects package data differently. A vector is one-dimensional; a matrix has rows and columns; an array has multiple dimensions; a list can mix object types; a factor represents categories; and a data frame organizes columns into a table. The listed data types are logical, numeric, integer, complex, character and raw.",
+          "The lecture's iris demo installs caret and e1071 with install.packages(...), loads them with library(...), loads data(iris), and assigns dataset <- iris. trainControl(method='cv', number=10) selects ten-fold cross-validation; set.seed(...) makes random choices reproducible. An SVM is then trained and assessed using accuracy. Ten-fold means train on nine partitions and validate on the remaining partition, rotating through all ten."
+        ],
+        "keyPoints": [
+          "Arithmetic: +, -, *, /, ^, %% (remainder), %/% (integer division).",
+          "Assignment: =, <-, ->; <<- searches outside the local scope and is not simply another spelling of local assignment.",
+          "Relational: <, >, ==, !=, >=, <=. Logical operations include & (elementwise AND), | (elementwise OR), and ! (NOT).",
+          ": creates a sequence; %in% checks whether a value belongs to a vector.",
+          "Matrix example: matrix(1:6, nrow=2, ncol=3, byrow=TRUE). Array example: array(1:18, dim=c(3,3,2)).",
+          "The assignment's validation method is ten-fold cross-validation, not a single train/test split."
+        ],
+        "terms": [
+          {
+            "term": "caret",
+            "meaning": "Package with tools for training and evaluating predictive models."
+          },
+          {
+            "term": "e1071",
+            "meaning": "Package associated in the notes with SVM, fuzzy clustering and Naive Bayes."
+          },
+          {
+            "term": "randomForest / rpart / nnet / igraph",
+            "meaning": "Respectively random forests, regression trees, feed-forward neural networks and network analysis."
+          },
+          {
+            "term": "Cross-validation",
+            "meaning": "Repeatedly holding out part of the data to estimate how well a model generalizes."
+          }
+        ],
+        "comparison": {
+          "headers": [
+            "Object",
+            "Shape / contents",
+            "Useful cue"
+          ],
+          "rows": [
+            [
+              "Vector",
+              "One dimension; elements share a basic type",
+              "c('red','green','yellow')"
+            ],
+            [
+              "Matrix",
+              "Two dimensions",
+              "nrow, ncol"
+            ],
+            [
+              "Array",
+              "Multiple dimensions",
+              "dim=c(3,3,2)"
+            ],
+            [
+              "List",
+              "Can mix values and objects",
+              "Heterogeneous collection"
+            ],
+            [
+              "Factor",
+              "Categories",
+              "Levels"
+            ],
+            [
+              "Data frame",
+              "Tabular columns",
+              "Rows of observations"
+            ]
+          ]
+        },
+        "example": {
+          "title": "Interpret a vibration-reading check",
+          "steps": [
+            "allowed <- c(10, 20, 30) creates a vector of accepted sensor codes.",
+            "20 %in% allowed returns TRUE: the code belongs to the allowed vector.",
+            "1:10 makes a sequence; it does not test membership.",
+            "trainControl(method='cv', number=10) asks for the ten-fold method used in the course demo."
+          ]
+        },
+        "traps": [
+          "%in% is membership; : is sequence creation; %/% is integer division; %% is remainder.",
+          "R is the language/environment; RStudio is an IDE, not a replacement name for R.",
+          "The extracted source's logical-operator row is incomplete. The operator meanings here are presented explicitly rather than copying that broken row.",
+          "Package versions and installation details are course context. No package installation is required to solve these recognition questions."
+        ]
+      },
+      {
+        "id": "w9-julia",
+        "title": "Julia: simple syntax, scientific computation",
+        "intro": "Julia is a high-level, open-source language designed for numerical work, with support for distributed computation and parallelism.",
+        "paragraphs": [
+          "The lecture characterizes Julia as Python-like convenience with C-like performance. Treat this as a design motivation, not a guarantee that every Julia program is as fast as every C program. println(...) prints a value; typeof(...) reports its type. The course shows Int64 for an integer and Float64 for a decimal in its environment.",
+          "Basic arithmetic uses +, -, *, /, ^ for powers and % for the modulus/remainder operation used in the lecture. Double-quoted strings support interpolation: name = \"Asha\" followed by println(\"hello my name is $name\") inserts the variable's value. string(s3, s4) joins strings.",
+          "Tuples are fixed collections, dictionaries associate keys with values, and arrays store indexed values. Dict() creates an empty dictionary. A concrete example is Dict(\"temperature\" => 28, \"pressure\" => 4). Arrays use square brackets, such as [10, 20, 30]."
+        ],
+        "keyPoints": [
+          "Dict() is the dictionary constructor tested by the assignment.",
+          "println prints; typeof identifies a value's type.",
+          "$name inside a double-quoted Julia string interpolates name.",
+          "string(s3, s4) concatenates the strings.",
+          "Julia supports arrays, tuples, dictionaries, distributed computation and parallelism."
+        ],
+        "terms": [
+          {
+            "term": "Dictionary",
+            "meaning": "A collection that maps a key, such as a machine name, to a value, such as its temperature."
+          },
+          {
+            "term": "Interpolation",
+            "meaning": "Inserting a variable's value inside a string using the $ syntax."
+          },
+          {
+            "term": "Parallelism",
+            "meaning": "Performing multiple portions of work concurrently using available computing resources."
+          }
+        ],
+        "example": {
+          "title": "Store a machine reading",
+          "steps": [
+            "readings = Dict(\"motor-1\" => 42) creates a key-to-value mapping.",
+            "println(readings[\"motor-1\"]) prints the stored reading.",
+            "println(\"Motor temperature: $(readings[\"motor-1\"])\") illustrates expression interpolation; simpler $name interpolation is enough for the course.",
+            "typeof(42) reports an integer type; do not confuse the value with its textual display."
+          ]
+        },
+        "traps": [
+          "Dictn() is not the dictionary constructor. Tuple and Array describe different structures.",
+          "Use double quotes for Julia strings; the source's prose uses quotation marks informally.",
+          "Exact default integer width is environment dependent; Int64 is the course demo's output."
+        ]
+      },
+      {
+        "id": "w9-data-management",
+        "title": "Data management: clean before you analyze",
+        "intro": "Managing data means controlling its whole lifecycle, including storage, archiving, security, disposal and the policies that govern it.",
+        "paragraphs": [
+          "Industrial data comes from enterprise trading, finance, sales and inventory records; machine sensors; biomedical measurements; and other large scientific sources. IIoT data can be large, fast and varied. Acquisition collects and logs readings, transmits them through networks, and preprocesses them before storage and analysis.",
+          "Preprocessing has three separate jobs. Integration combines sources into a unified view. Cleaning fixes or removes incomplete, inaccurate or incorrect records. Redundancy mitigation detects repeated data and uses filtering or compression to avoid wasting network and storage capacity.",
+          "Storage may use NoSQL databases or distributed file systems. The notes list key-value, column-oriented and document-oriented NoSQL families, plus GFS, HDFS and KosmosFS as file-system examples. SQL/relational and NoSQL systems can both be appropriate; the lecture highlights NoSQL for large and varied data rather than proving that all IIoT data must use it.",
+          "Analysis can involve Bloom filters, parallel computing, hashing, indexing, clustering, classification, neural networks or SVM. Automated industrial data management makes raw-material consumption, energy use, plant utilization and diagnostics available across the value chain. Availability matters because unavailable measurements cannot guide decisions."
+        ],
+        "keyPoints": [
+          "Process order: generation → acquisition → storage → analysis.",
+          "Sensory data includes sound, vibration, chemicals, pressure and temperature; mobile data includes location, barcodes, images and video.",
+          "Inter-DCN transmission is between data centres; intra-DCN transmission is within one.",
+          "Integration combines; cleaning corrects; redundancy mitigation removes repetition.",
+          "Cloud traits recalled here: on-demand self-service, broad network access, resource pooling, rapid elasticity and measured service."
+        ],
+        "terms": [
+          {
+            "term": "NoSQL",
+            "meaning": "Database approaches outside the traditional relational-table model, including key-value, column and document stores."
+          },
+          {
+            "term": "ETL",
+            "meaning": "Extract, Transform, Load: moving data from sources through transformation into a target system."
+          },
+          {
+            "term": "Redundancy mitigation",
+            "meaning": "Reducing repeated data through detection, filtering and compression."
+          }
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "Turn industrial readings into decisions",
+          "nodes": [
+            {
+              "label": "Generation",
+              "detail": "Machines and enterprise systems create data."
+            },
+            {
+              "label": "Acquisition",
+              "detail": "Collect, transmit, integrate, clean and deduplicate."
+            },
+            {
+              "label": "Storage",
+              "detail": "Keep useful data in databases or file systems."
+            },
+            {
+              "label": "Analysis",
+              "detail": "Find patterns and support plant decisions."
+            }
+          ],
+          "caption": "The tested sequence is generation, acquisition, storage, analysis; preprocessing belongs to acquisition."
+        },
+        "example": {
+          "title": "Three fixes for a plant dataset",
+          "steps": [
+            "Combine maintenance logs with motor-sensor readings: integration.",
+            "Remove an impossible negative absolute-pressure reading or mark it invalid: cleaning.",
+            "Suppress repeated copies of the same timestamped packet: redundancy mitigation.",
+            "Store the resulting dataset and run a fault-classification model: storage followed by analysis."
+          ]
+        },
+        "traps": [
+          "Repeated data is redundancy; incorrect data is a cleaning issue; separate source tables are an integration issue.",
+          "NoSQL is not synonymous with 'no security' or 'no structure'.",
+          "The listed tools are lecture examples, not a claim that a single storage technology fits every workload."
+        ]
+      },
+      {
+        "id": "w9-hadoop",
+        "title": "Hadoop: storage, processing and resource allocation",
+        "intro": "Hadoop is an Apache framework for distributed storage and processing of large datasets across clusters.",
+        "paragraphs": [
+          "Give each module one job. Hadoop Common supplies shared utilities. HDFS stores data reliably across DataNodes, using replicated blocks for fault tolerance. MapReduce divides a processing job into work that can run across machines. YARN, Yet Another Resource Negotiator, allocates and manages cluster resources for applications.",
+          "In HDFS the NameNode is the metadata authority: it tracks files, blocks and the DataNodes that hold them. DataNodes hold actual blocks, report block information to the NameNode and verify checksums. A user reading a file needs the metadata to locate blocks, but the NameNode is not the main store for every file's content.",
+          "The source describes JobTracker on the master and TaskTrackers on worker nodes. These are Hadoop 1 / MapReduce v1 terms. Keep them as historical lecture facts; modern YARN separates resource management into ResourceManager and NodeManager roles. Do not treat JobTracker as an intrinsic current HDFS NameNode duty.",
+          "MongoDB is a document-oriented NoSQL database used with Hadoop for complex analytics. The course lists batch aggregation, data warehousing and ETL. MongoDB supplies a data-management view; Hadoop contributes distributed analytical processing. The assignment selects batch aggregation as one application."
+        ],
+        "keyPoints": [
+          "YARN is the keyed answer for assigning CPU, memory and storage/resources; HDFS's primary role is storage.",
+          "MapReduce processes large data in parallel; Common supports the other modules.",
+          "NameNode = metadata; DataNodes = replicated file blocks.",
+          "Block replication supports tolerance of a node failure; it is not proof that every possible failure is harmless.",
+          "MongoDB + Hadoop: batch aggregation, data warehousing and ETL.",
+          "Hadoop is inspired by GFS and MapReduce; HDFS is its own distributed file system rather than Google's GFS product."
+        ],
+        "terms": [
+          {
+            "term": "NameNode",
+            "meaning": "HDFS service that maintains the filesystem namespace and block-location metadata."
+          },
+          {
+            "term": "DataNode",
+            "meaning": "HDFS node that stores and serves actual data blocks."
+          },
+          {
+            "term": "YARN",
+            "meaning": "Yet Another Resource Negotiator; the cluster resource-management component."
+          },
+          {
+            "term": "Checksum",
+            "meaning": "A value used to detect accidental changes or corruption in stored data."
+          }
+        ],
+        "comparison": {
+          "headers": [
+            "Component",
+            "Primary job",
+            "Do not confuse with"
+          ],
+          "rows": [
+            [
+              "Common",
+              "Shared libraries and utilities",
+              "Dataset storage"
+            ],
+            [
+              "HDFS",
+              "Distributed, replicated storage",
+              "Allocating compute resources"
+            ],
+            [
+              "MapReduce",
+              "Parallel batch processing",
+              "Filesystem metadata"
+            ],
+            [
+              "YARN",
+              "Cluster resource management",
+              "Keeping file blocks"
+            ]
+          ]
+        },
+        "diagram": {
+          "type": "branch",
+          "title": "Metadata locates distributed file blocks",
+          "nodes": [
+            {
+              "label": "NameNode",
+              "detail": "Knows where file blocks live."
+            },
+            {
+              "label": "DataNode A",
+              "detail": "Stores block copies."
+            },
+            {
+              "label": "DataNode B",
+              "detail": "Stores block copies."
+            },
+            {
+              "label": "DataNode C",
+              "detail": "Stores block copies."
+            }
+          ],
+          "caption": "HDFS distributes data blocks while the NameNode holds metadata; the sketch illustrates roles, not a fixed replication count."
+        },
+        "example": {
+          "title": "Analyze one month of vibration readings",
+          "steps": [
+            "HDFS splits the dataset into blocks and stores replicas across DataNodes.",
+            "The NameNode records where those blocks are located.",
+            "YARN gives the analytics application cluster resources.",
+            "MapReduce aggregates readings into per-machine summaries; MongoDB/Hadoop integration can support batch aggregation or ETL."
+          ]
+        },
+        "traps": [
+          "YARN allocates; HDFS stores; MapReduce computes.",
+          "The source mixes Hadoop generations. JobTracker/TaskTracker belongs to older MapReduce architecture.",
+          "'Master/slave' is the source's historical vocabulary; this app uses metadata service and worker nodes."
+        ]
+      },
+      {
+        "id": "w9-dcn",
+        "title": "Data-centre networks: connect the computing fleet",
+        "intro": "A data centre houses many servers, storage devices and network links. Its network must move traffic reliably within and between facilities.",
+        "paragraphs": [
+          "In the three-tier design, edge or Top-of-Rack switches connect servers in a rack. Aggregation switches collect rack traffic. Core switches connect the aggregation layer and external networks. The notes give 1 or 10 Gb/s at the edge and around 10 Gb/s at higher tiers as course-era examples.",
+          "Good DCNs are stable, secure, reliable, scalable and agile. Agility means any service can run on any server at any time. Desired capabilities include VM migration while retaining an IP address, multiple usable paths, failure detection and efficient repair, and self-healing management.",
+          "A conventional three-tier tree can struggle with scalability, failure tolerance, energy efficiency and cross-sectional bandwidth. Fat-tree creates multiple paths using structured pods. For a k-ary fat-tree, each pod has (k/2)^2 servers, k/2 edge switches and k/2 aggregation switches; there are (k/2)^2 core switches. With k=4, that means four servers per pod, two edge and two aggregation switches per pod, and four core switches.",
+          "DCell is recursively constructed and uses server connections plus small switches to reduce single-point dependence. BCube is a server-centric modular-data-centre topology with multiple short parallel paths; its named source-routing protocol is BSR, BCube Source Routing. No topology eliminates every real-world failure.",
+          "IIoT can create many small sensor messages, increasing aggregate inbound bandwidth despite each message being small. Security, privacy, storage, high availability and changing bandwidth requirements matter. A Software-Defined Data Centre virtualizes network, storage and servers to provide programmable infrastructure and workload management."
+        ],
+        "keyPoints": [
+          "Layers: edge/TOR → aggregation → core.",
+          "Topologies: three-tier, fat-tree, DCell, BCube.",
+          "BCube uses BCube Source Routing (BSR), not BGP or OSPF.",
+          "DCN challenges: scalability, poor server-to-server connectivity, static allocation, fragmented resources and fault tolerance.",
+          "SDDC adds logical/virtual resources and programmable workload management above physical infrastructure.",
+          "An IIoT centre's inbound bandwidth demand reflects message count and arrival rate, not only individual packet size."
+        ],
+        "terms": [
+          {
+            "term": "TOR",
+            "meaning": "Top-of-Rack switch connecting servers in a rack."
+          },
+          {
+            "term": "Agility",
+            "meaning": "Ability to run any service on any server at any time in the lecture's definition."
+          },
+          {
+            "term": "VM migration",
+            "meaning": "Moving a virtual machine between physical hosts; the notes emphasize preserving its IP address."
+          },
+          {
+            "term": "SDDC",
+            "meaning": "Software-Defined Data Centre: programmable, virtualized infrastructure."
+          }
+        ],
+        "comparison": {
+          "headers": [
+            "Topology",
+            "Structure",
+            "Memory cue"
+          ],
+          "rows": [
+            [
+              "Three-tier",
+              "Edge, aggregation, core tree",
+              "Familiar hierarchy"
+            ],
+            [
+              "Fat-tree",
+              "Pods with multiple equal-stage paths",
+              "k-ary formulas"
+            ],
+            [
+              "DCell",
+              "Recursive server-connected cells",
+              "Alternate paths"
+            ],
+            [
+              "BCube",
+              "Server-centric modular construction",
+              "BSR routing"
+            ]
+          ]
+        },
+        "diagram": {
+          "type": "layers",
+          "title": "The three-tier network hierarchy",
+          "nodes": [
+            {
+              "label": "Core",
+              "detail": "Connect aggregation switches and external networks."
+            },
+            {
+              "label": "Aggregation",
+              "detail": "Collect traffic from rack switches."
+            },
+            {
+              "label": "Edge / TOR",
+              "detail": "Connect the servers in each rack."
+            }
+          ],
+          "caption": "This layer view explains three-tier roles; DCell and BCube organize connectivity differently."
+        },
+        "example": {
+          "title": "Fat-tree arithmetic for k = 4",
+          "steps": [
+            "k/2 = 2, so each pod contains two edge and two aggregation switches.",
+            "(k/2)^2 = 4, so each pod contains four servers.",
+            "The number of core switches is also (k/2)^2 = 4.",
+            "Keep 'per pod' and 'whole core' separate when applying the formulas."
+          ]
+        },
+        "traps": [
+          "Small sensor messages can collectively create large inbound traffic.",
+          "The inbound-bandwidth answer is key-backed; the source notes it is not explicitly spelled out in the transcript.",
+          "The quoted link speeds are historical examples, not current ceilings.",
+          "SDDC is about programmable infrastructure; it does not make physical servers or links disappear."
+        ]
+      },
+      {
+        "id": "w9-sdn",
+        "title": "SDN: separate deciding from forwarding",
+        "intro": "Software-Defined Networking separates the control plane, which decides forwarding rules, from the data plane, which applies them.",
+        "paragraphs": [
+          "In a traditional network, each forwarding device carries substantial local control logic. SDN exposes rule-controlled forwarding and gives applications a logically centralized controller view. Logical centralization can be implemented with multiple physical controllers for scale and fault tolerance.",
+          "The data layer contains routers/switches that forward packets. The control layer contains the controller and network operating system. The application layer contains business logic. Southbound APIs connect control to data; northbound APIs connect control to applications. OpenFlow is the named southbound protocol in the course.",
+          "Flow rules match packet fields and specify actions. Fast rule storage, often TCAM, has limited capacity. If another rule is needed, a system might replace an existing rule or combine rules using a wildcard. For example, multiple addresses may be covered by a less-specific prefix; combination must preserve the intended policy.",
+          "SDN design considers rule placement, controller placement and security. Controllers need resilient placement and secure links to forwarding devices; DoS and unauthorized rule changes remain risks. Applications include traffic engineering, load balancing, dynamic access control, mobility management and backbone network management."
+        ],
+        "keyPoints": [
+          "Data plane forwards; control plane decides; application layer expresses business needs.",
+          "Southbound: controller ↔ devices. Northbound: applications ↔ controller.",
+          "TCAM = Ternary Content Addressable Memory; limited rule capacity motivates careful rule placement.",
+          "Wildcard-based combination converts compatible rules into fewer, broader rules.",
+          "Controller placement asks how many controllers, where, flat versus hierarchical design, and what happens on failure.",
+          "SDN restructures network control; it is not an entirely unrelated new physical network."
+        ],
+        "terms": [
+          {
+            "term": "Flow rule",
+            "meaning": "A match-and-action instruction used by a forwarding device."
+          },
+          {
+            "term": "TCAM",
+            "meaning": "Fast match storage for rules, with finite capacity."
+          },
+          {
+            "term": "OpenFlow",
+            "meaning": "The course's example protocol for programming forwarding devices from a controller."
+          }
+        ],
+        "diagram": {
+          "type": "layers",
+          "title": "Remember north above, south below",
+          "nodes": [
+            {
+              "label": "Applications",
+              "detail": "Business logic and network policies."
+            },
+            {
+              "label": "Controller",
+              "detail": "Northbound above; southbound below."
+            },
+            {
+              "label": "Forwarding devices",
+              "detail": "Routers and switches apply installed rules."
+            }
+          ],
+          "caption": "The controller sits between policy applications and packet-forwarding devices."
+        },
+        "example": {
+          "title": "Two flows, one compatible rule",
+          "steps": [
+            "Two sensor addresses need the same output path and security action.",
+            "The switch has room for only a limited number of rules.",
+            "The controller combines compatible matches using an appropriate wildcard/prefix.",
+            "A broader match saves rule space but must not accidentally permit unrelated traffic."
+          ]
+        },
+        "traps": [
+          "Wildcard-based rule combination reduces rule count; it does not increase TCAM capacity.",
+          "A logically centralized controller is not necessarily one physical server.",
+          "The source's OpenFlow 1.1–1.5 range and 'latest' wording describe lecture-era versions; do not use them as a current-version claim.",
+          "The source uses 10.0.0.* as an intuitive wildcard sketch; exact match syntax depends on the rule system."
+        ]
+      },
+      {
+        "id": "w9-automation",
+        "title": "Software-defined IIoT and automation",
+        "intro": "Apply programmable networking and virtualization to industrial control, while respecting deadlines, availability and security.",
+        "paragraphs": [
+          "Software-defined IIoT connects machine sensors/actuators at the device layer to a control layer and then to cloud business applications such as billing, analytics and security. The interfaces repeat the SDN pattern: southbound toward devices and northbound toward applications.",
+          "Network segmentation separates traffic groups with different policies. Policy-based forwarding changes priorities as process needs change: temperature alarms may matter more than humidity updates during overheating. Remote control can activate or adjust devices, but requires identity, authorization and secure command paths.",
+          "Required properties include low-latency virtualization, deterministic or predictable networking, high availability, fault tolerance, robust security and cost-effective application updates. Priority rules help express needs; they do not by themselves prove a hard real-time guarantee.",
+          "The course's automation hierarchy places sensors at level 0, digital controllers at level 1, supervisory systems such as SCADA/PLC/HMI at level 2, and business logic/analytics at level 3. Software-defined automation virtualizes control and supervisory functions and links software services to physical devices through the DCN. Sensors and actuators remain physical even when their interfaces or representations are virtualized."
+        ],
+        "keyPoints": [
+          "Changing forwarding requirements → rule-based forwarding policies.",
+          "Main SD-IIoT challenges: segmentation, policy forwarding, remote control and security.",
+          "Software-defined automation's keyed description: a virtualized platform for dynamic, real-time system control.",
+          "Virtualized functions can include digital controllers, PLCs, data acquisition, HMIs and process control.",
+          "Cloud business applications sit above the device/control layers.",
+          "Actual industrial deployment must still satisfy timing and failure-response constraints."
+        ],
+        "terms": [
+          {
+            "term": "HMI",
+            "meaning": "Human–Machine Interface used to view and operate a process."
+          },
+          {
+            "term": "SCADA",
+            "meaning": "Supervisory Control and Data Acquisition."
+          },
+          {
+            "term": "Deterministic networking",
+            "meaning": "Communication with predictable timing and behavior under specified operating conditions."
+          }
+        ],
+        "comparison": {
+          "headers": [
+            "Need",
+            "Software-defined response",
+            "Factory example"
+          ],
+          "rows": [
+            [
+              "Different traffic requirements",
+              "Segmentation",
+              "Keep safety-related and routine telemetry traffic apart"
+            ],
+            [
+              "Changing data priority",
+              "Rule-based forwarding",
+              "Prioritize overheating messages"
+            ],
+            [
+              "Remote activation",
+              "Authorized control path",
+              "Enable a pump from a control station"
+            ],
+            [
+              "Dynamic control services",
+              "Virtualized automation",
+              "Move or update an HMI/control service"
+            ]
+          ]
+        },
+        "example": {
+          "title": "A furnace changes operating mode",
+          "steps": [
+            "During normal operation, routine temperature and humidity telemetry share available capacity.",
+            "An overheating state raises the priority of temperature alarms under a forwarding policy.",
+            "The local control function commands a permitted response through the device interface.",
+            "Supervisory applications record the event while the network and automation services remain managed in software."
+          ]
+        },
+        "traps": [
+          "Software-defined automation does not mean eliminating physical sensors and machines.",
+          "'Dynamic, real-time control' is the keyed course phrase; timing guarantees require an engineered implementation.",
+          "The hierarchy is the lecture's simplified model; labels and PLC placement can differ in other automation architectures."
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "id": "w9-q1",
+        "question": "How does fog stop noisy big data from crowding the cloud?",
+        "options": [
+          "By performing prior filtration at the edge",
+          "By sending every raw sample repeatedly",
+          "By removing all cloud storage",
+          "By encrypting data without filtering"
+        ],
+        "correctIndex": 0,
+        "explanation": "Prior filtration removes noisy or unnecessary data before cloud transmission. Encryption protects contents but does not reduce the repeated or noisy readings themselves.",
+        "sectionId": "w9-fog"
+      },
+      {
+        "id": "w9-q2",
+        "question": "Capability of a fog-based industrial platform?",
+        "options": [
+          "Only offline archiving with no live workloads",
+          "Merging real-time and non-real-time workloads",
+          "Replacing every physical actuator",
+          "Preventing all possible network delays"
+        ],
+        "correctIndex": 1,
+        "explanation": "The assignment key names merging real-time and non-real-time workloads. Offline-only archiving misses the real-time role of near-source computing.",
+        "sectionId": "w9-fog",
+        "sourceNote": "Key-backed fact; the notes say the transcript does not explicitly spell it out."
+      },
+      {
+        "id": "w9-q3",
+        "question": "Fog platform with edge-node software for any protocol, PLC and hardware?",
+        "options": [
+          "Nebbiolo",
+          "Sonm",
+          "Crosser",
+          "HDFS"
+        ],
+        "correctIndex": 2,
+        "explanation": "Crosser is the keyed vendor for this phrase. Nebbiolo is associated with fogOS, fogNode and fogSM in the course.",
+        "sectionId": "w9-fog",
+        "sourceNote": "Course-era vendor description; this is not a verified current compatibility guarantee."
+      },
+      {
+        "id": "w9-q4",
+        "question": "Purpose of %in% in R?",
+        "options": [
+          "To create a numeric sequence",
+          "To calculate integer division",
+          "To calculate a remainder",
+          "To check whether an element belongs to a vector"
+        ],
+        "correctIndex": 3,
+        "explanation": "%in% tests membership. The colon creates a sequence; %/% performs integer division; %% gives a remainder.",
+        "sectionId": "w9-r"
+      },
+      {
+        "id": "w9-q5",
+        "question": "Validation method in the R demo?",
+        "options": [
+          "Ten-fold cross-validation",
+          "One unchanging test observation",
+          "Training accuracy with no validation",
+          "Two-fold cross-validation"
+        ],
+        "correctIndex": 0,
+        "explanation": "trainControl(method='cv', number=10) selects ten-fold cross-validation. Two-fold is the same general family but the wrong number for this demo.",
+        "sectionId": "w9-r",
+        "sourceNote": "The number is specific to the course demo."
+      },
+      {
+        "id": "w9-q6",
+        "question": "Julia function to create a dictionary?",
+        "options": [
+          "Dictn()",
+          "Dict()",
+          "Tuple()",
+          "Array()"
+        ],
+        "correctIndex": 1,
+        "explanation": "Dict() constructs a dictionary. A tuple or array is a different collection type; Dictn() is the distractor spelling.",
+        "sectionId": "w9-julia"
+      },
+      {
+        "id": "w9-q7",
+        "question": "Pre-processing that removes repeated data by detection, filtering and compression?",
+        "options": [
+          "Integration",
+          "Cleaning incorrect values",
+          "Redundancy mitigation",
+          "Model classification"
+        ],
+        "correctIndex": 2,
+        "explanation": "Redundancy mitigation targets repeated data. Cleaning targets inaccurate/incomplete data; integration combines sources.",
+        "sectionId": "w9-data-management"
+      },
+      {
+        "id": "w9-q8",
+        "question": "Hadoop component that assigns CPU, memory and storage?",
+        "options": [
+          "HDFS",
+          "Hadoop Common",
+          "MapReduce",
+          "YARN (Yet Another Resource Negotiator)"
+        ],
+        "correctIndex": 3,
+        "explanation": "YARN is the resource-allocation answer. HDFS stores blocks and MapReduce processes jobs; neither is the component named by the key for resource negotiation.",
+        "sectionId": "w9-hadoop"
+      },
+      {
+        "id": "w9-q9",
+        "question": "Application of MongoDB with Hadoop?",
+        "options": [
+          "Batch aggregation",
+          "Programming a PLC's ladder logic",
+          "Routing BCube packets with BSR",
+          "Scheduling wireless TSCH slots"
+        ],
+        "correctIndex": 0,
+        "explanation": "Batch aggregation is one of the listed MongoDB/Hadoop applications, along with warehousing and ETL. Routing and slot scheduling are network functions.",
+        "sectionId": "w9-hadoop"
+      },
+      {
+        "id": "w9-q10",
+        "question": "Source-routing protocol in BCube?",
+        "options": [
+          "BGP",
+          "BCube Source Routing",
+          "OSPF",
+          "Spanning Tree Protocol"
+        ],
+        "correctIndex": 1,
+        "explanation": "BCube Source Routing (BSR) is the protocol name to remember. BGP and OSPF are other routing protocols, not this BCube-specific answer.",
+        "sectionId": "w9-dcn"
+      },
+      {
+        "id": "w9-q11",
+        "question": "Why might an IIoT data centre need more inbound bandwidth?",
+        "options": [
+          "Because each device always sends a single giant video",
+          "Because sensor data never uses a network",
+          "Because IIoT devices generate a bulk of small messages with sensor data",
+          "Because all traffic travels only outward"
+        ],
+        "correctIndex": 2,
+        "explanation": "Many small sensor messages can add up to a large incoming data rate. Individual message size alone does not describe aggregate traffic.",
+        "sectionId": "w9-dcn",
+        "sourceNote": "Key-backed fact; the notes say the transcript does not explicitly spell it out."
+      },
+      {
+        "id": "w9-q12",
+        "question": "Advantage of a Software-Defined Data Centre?",
+        "options": [
+          "No physical infrastructure is needed",
+          "All workloads must remain on fixed servers",
+          "Virtualization removes every security risk",
+          "Programmable infrastructure and workload management"
+        ],
+        "correctIndex": 3,
+        "explanation": "SDDC provides programmable virtualized infrastructure and workload management. Physical servers still exist; virtualization does not remove security responsibilities.",
+        "sectionId": "w9-dcn"
+      },
+      {
+        "id": "w9-q13",
+        "question": "Turning two flow rules into one when rule capacity is short?",
+        "options": [
+          "Wildcard-based rule combination",
+          "Increasing every packet's size",
+          "Removing the controller's control plane",
+          "Storing all rules in sensor batteries"
+        ],
+        "correctIndex": 0,
+        "explanation": "Compatible rules can be combined with wildcard matches to reduce the rule count. Removing control-plane functions does not solve the limited-rule-storage problem.",
+        "sectionId": "w9-sdn"
+      },
+      {
+        "id": "w9-q14",
+        "question": "How SDN meets changing forwarding needs of IIoT sensor data?",
+        "options": [
+          "By fixing all priorities permanently",
+          "By using rule-based forwarding policies",
+          "By forwarding every flow to every port",
+          "By disabling network segmentation"
+        ],
+        "correctIndex": 1,
+        "explanation": "Rule-based policies let the controller change forwarding behavior as priorities change. Permanently fixed priorities fail to adapt to the process.",
+        "sectionId": "w9-automation"
+      },
+      {
+        "id": "w9-q15",
+        "question": "Software-Defined Automation?",
+        "options": [
+          "It removes sensors and machinery entirely",
+          "It allows only manually fixed control functions",
+          "It uses a virtualized platform for dynamic, real-time system control",
+          "It requires all control to wait for batch processing"
+        ],
+        "correctIndex": 2,
+        "explanation": "The key describes a virtualized platform supporting dynamic, real-time control. Batch-only control misses the time-sensitive automation goal.",
+        "sectionId": "w9-automation",
+        "sourceNote": "Course definition; real-time guarantees depend on the actual implementation."
+      }
+    ],
+    "revision": [
+      "Fog filters near the source; cloud stores and performs larger analytics.",
+      "Crosser = the course's any-protocol/PLC/hardware phrase; Nebbiolo = fogOS, fogNode, fogSM.",
+      "R: %in% membership, : sequence, %% remainder, %/% integer division; demo = ten-fold cross-validation.",
+      "Julia: Dict() dictionary, println print, typeof type, $ interpolation.",
+      "Data order = generation, acquisition, storage, analysis; redundancy mitigation removes repetition.",
+      "HDFS stores; MapReduce processes; YARN allocates; NameNode metadata; DataNodes blocks.",
+      "MongoDB/Hadoop = batch aggregation, warehousing, ETL.",
+      "DCN = edge/TOR, aggregation, core; BCube = BSR; many small messages can demand high inbound bandwidth.",
+      "SDDC = programmable infrastructure and workload management.",
+      "SDN: northbound to applications, southbound to devices; wildcard combination saves rule space.",
+      "Rule-based forwarding changes sensor-data priorities; software-defined automation virtualizes dynamic control."
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Secure IIoT & real industrial applications",
+    "summary": "See SDN operating in constrained networks, learn the security vocabulary and protection layers, then connect the ideas to smart factories and the food chain.",
+    "objectives": [
+      "Recognize Layer 2 slicing, ordinary/emergent streams and the role of fog in delay-constrained services.",
+      "Explain why installed SDN rules keep most packets from visiting the controller.",
+      "Distinguish CIA goals, trustworthiness properties and every STRIDE threat.",
+      "Match security responsibilities to system owner, system builder and component builder.",
+      "Protect devices, fog, cloud, links and data; recognize course standards and factory/food case-study names."
+    ],
+    "sections": [
+      {
+        "id": "w10-sdn-networks",
+        "title": "SDN across sensors, edge, grid and buses",
+        "intro": "The same control pattern repeats: monitor the network, provide a data service, then manage and optimize it.",
+        "paragraphs": [
+          "A software-defined sensor network monitors sensors, acquires data and manages/optimizes operations. A public network monitors links and provides transmission services. Industrial cloud control monitors process units and provides processing; industrial bus control monitors bus states and provides processing services. In each case, applications sit above control and physical forwarding or sensing sits below.",
+          "TSCH means Time Slotted Channel Hopping. Devices communicate in scheduled slots and change radio channels to help deal with interference. 6TiSCH brings IPv6/6LoWPAN into TSCH-based constrained networks. Software-defined 6TiSCH must handle lossy links and the extra control traffic generated by a controller.",
+          "The lecture's slicing mechanism allocates communication resources between end devices and control functions, providing dedicated forwarding paths while reducing control overhead. The assignment specifically places slicing at Layer 2. The stack highlighted in the notes is IEEE 802.15.4 → TSCH MAC → 6LoWPAN header compression. uSDN is a lightweight stack described as running on Contiki.",
+          "Software-defined edge architecture includes industrial devices, access devices or cluster heads, edge/fog nodes, a controller and industrial cloud. The assignment calls its streams ordinary and emergent. Fog nodes and access devices serve delay-constrained emergent services, so an urgent event can receive nearby processing rather than await a remote service.",
+          "The smart-grid control layer includes a centralized controller with DMS, DERMS and SCADA functions, plus interface management, maintenance, fault discovery, security and topology management. OpenFlow can be costly for constrained devices, motivating lightweight and fog-enabled designs rather than simply imposing a data-centre stack on every sensor."
+        ],
+        "keyPoints": [
+          "Shared control jobs: monitoring, data service, management and optimization.",
+          "TSCH = Time Slotted Channel Hopping; the lecture's 'Time Scheduled' wording should not replace the established expansion.",
+          "Software-defined 6TiSCH slicing isolates overhead at Layer 2 in the assignment key.",
+          "uSDN reduces control-plane overhead and is associated with Contiki.",
+          "Two stream categories in the key: ordinary and emergent.",
+          "Fog/access devices support delay-constrained emergent services.",
+          "Smart-grid functions: DMS, DERMS and SCADA."
+        ],
+        "terms": [
+          {
+            "term": "6LoWPAN-HC",
+            "meaning": "Header compression for carrying IPv6 over constrained low-power wireless networks."
+          },
+          {
+            "term": "Control overhead",
+            "meaning": "Bandwidth, time and energy spent exchanging control messages rather than application data."
+          },
+          {
+            "term": "Emergent stream",
+            "meaning": "The assignment's term for time-sensitive events needing delay-constrained service."
+          },
+          {
+            "term": "DERMS",
+            "meaning": "Distributed Energy Resource Management System; management of distributed power resources."
+          }
+        ],
+        "diagram": {
+          "type": "layers",
+          "title": "The 6TiSCH stack cue",
+          "nodes": [
+            {
+              "label": "6LoWPAN-HC",
+              "detail": "Compress IPv6 headers for constrained links."
+            },
+            {
+              "label": "TSCH MAC",
+              "detail": "Time slots and channel hopping; key places slicing at Layer 2."
+            },
+            {
+              "label": "IEEE 802.15.4",
+              "detail": "Low-power wireless foundation."
+            }
+          ],
+          "caption": "The layer-2 slicing answer belongs to the particular software-defined 6TiSCH architecture discussed in the assignment."
+        },
+        "example": {
+          "title": "An overheating event and a normal meter reading",
+          "steps": [
+            "A periodic meter report belongs to ordinary traffic.",
+            "A sudden dangerous-temperature event belongs to the emergent category in the course architecture.",
+            "A nearby fog node/access device gives that event delay-constrained service.",
+            "The cloud can still receive reports for historical and enterprise analysis."
+          ]
+        },
+        "traps": [
+          "Layer 2 is the keyed slicing answer; do not answer Layer 3 merely because 6TiSCH carries IPv6.",
+          "'Ordinary and emergent' and the service phrase are key-backed details that the source says are absent from the video.",
+          "Contiki and the named stack/version are course/research context, not current software recommendations.",
+          "The notes expand DMS as Distributed Management System; keep this lecture label separate from terminology used in other smart-grid references."
+        ]
+      },
+      {
+        "id": "w10-mininet",
+        "title": "The Mininet demo: rules make SDN scalable",
+        "intro": "An emulator can create a small virtual network on one computer so forwarding policies can be observed.",
+        "paragraphs": [
+          "Mininet emulates the network; Open vSwitch supplies OpenFlow-enabled virtual switches; POX is the SDN controller; D-ITG generates traffic; and the application chooses Shortest Path Delay (SPD) routes. The demo uses a Barabási–Albert topology and UDP traffic.",
+          "Packets without a matching rule may cause a packet-in event to the controller. The controller selects behavior and installs a rule. Subsequent matching packets are forwarded at the switch, so the controller does not need to process every packet in the flow.",
+          "The reported experiment had 24 flows and 74,150 packets. The controller received only 277 packet-ins, of which 202 were UDP. Reported outcomes were about 218 ms average delay, 18 ms jitter, 4,578 kbps throughput, 1.85% drop and zero QoS-violated flows under that experiment's conditions.",
+          "The source's environment used POX on port 6633, OpenFlow 1.1, Python 2.7 and NetworkX on a Google Cloud machine with about two vCPUs, 7.5 GB RAM and 50 GB storage. The listed minimum environment was two CPU cores, 4 GB RAM and 20 GB storage. These are historical demo details from the cited 2018 setup, not a requirement to install obsolete software."
+        ],
+        "keyPoints": [
+          "Mininet = emulator; POX = controller; OvS = switch; D-ITG = traffic generator; SPD = routing policy.",
+          "Packet-in is a switch-to-controller event, not a synonym for every data packet.",
+          "Installed flow rules explain 277 controller events versus 74,150 total packets.",
+          "Throughput measures delivered data rate; delay measures travel time; jitter measures delay variation; loss measures undelivered traffic.",
+          "Zero QoS violations in one demo does not guarantee every network always meets deadlines."
+        ],
+        "terms": [
+          {
+            "term": "SPD",
+            "meaning": "Shortest Path Delay: the routing objective used to choose a low-delay path in the demo."
+          },
+          {
+            "term": "Packet-in",
+            "meaning": "A switch notification carrying packet information to the controller, often when a rule decision is needed."
+          },
+          {
+            "term": "Jitter",
+            "meaning": "Variation in packet delay; the source informally describes it as rate of change of delay."
+          }
+        ],
+        "diagram": {
+          "type": "branch",
+          "title": "Does the packet match an installed rule?",
+          "nodes": [
+            {
+              "label": "Incoming packet",
+              "detail": "Arrives at an SDN switch."
+            },
+            {
+              "label": "Matching rule exists",
+              "detail": "Forward directly using the rule."
+            },
+            {
+              "label": "Rule missing / controller event",
+              "detail": "Ask the controller; install forwarding behavior."
+            }
+          ],
+          "caption": "Most packets in a configured flow can be handled locally at the forwarding device."
+        },
+        "example": {
+          "title": "A new vibration-data flow",
+          "steps": [
+            "The first relevant unmatched packet triggers a controller decision.",
+            "POX applies the chosen SPD routing logic and programs the switches.",
+            "Later packets matching those rules follow the installed path directly.",
+            "The rule can later change if policy or network conditions require it."
+          ]
+        },
+        "traps": [
+          "The controller did not inspect all 74,150 packets; 277 is the controller packet-in count.",
+          "OpenFlow 1.1 was the version used in this demo. The source's support claim is not a general statement about all current Mininet versions.",
+          "Python 2.7 and historical resource sizes are recognition facts, not a setup guide."
+        ]
+      },
+      {
+        "id": "w10-trust",
+        "title": "Security goals, trustworthiness and risk",
+        "intro": "IIoT protection must account for information and physical consequences together.",
+        "paragraphs": [
+          "Industrial devices often have limited energy, processing, buffer space and bandwidth. Many vendors, protocols and legacy systems create heterogeneity. Connecting more devices enlarges the attack surface. The consequences can include stolen data, stopped production, machine malfunction, accidents and harm to people.",
+          "CIA stands for confidentiality, integrity and availability. Confidentiality limits who can read useful data; integrity guards against unauthorized alteration; availability keeps authorized access and services usable. These goals overlap with, but do not exhaust, system trustworthiness.",
+          "The five trustworthiness properties in the lecture are security, privacy, reliability, resilience and safety. Reliability means operating correctly for a specified time under stated conditions. Resilience means continuing to function correctly under dynamic adversarial conditions; safety concerns avoiding unacceptable physical harm.",
+          "IT emphasizes information protection, privacy and reliable services. OT emphasizes safe physical operation, resilience and reliability. IIoT convergence requires a shared trust model, including third-party cloud services and incoming commands. Physical isolation and old IT assumptions are insufficient as the only protections.",
+          "The risk treatments listed are avoid, mitigate, outsource/transfer, accept and balance residual risk. Threat actors may be external criminals, unethical insiders, outsourced providers, hardware vendors or service suppliers. A trusted contractual role does not remove the need for access controls, updates and risk evaluation."
+        ],
+        "keyPoints": [
+          "CIA: confidentiality, integrity, availability.",
+          "Trustworthiness: security, privacy, reliability, resilience, safety.",
+          "Dynamic adversarial conditions → resilience, the assignment's answer.",
+          "Security protects against attacks; privacy concerns appropriate handling of personal/sensitive information.",
+          "Protect IT and OT together; include third-party/cloud dependencies in the trust boundary.",
+          "Risk remains after controls; acceptance and transfer do not make the underlying hazard disappear."
+        ],
+        "terms": [
+          {
+            "term": "Attack surface",
+            "meaning": "All exposed entry points or weak points through which an adversary could affect the system."
+          },
+          {
+            "term": "Residual risk",
+            "meaning": "Risk left after chosen controls and treatments have been applied."
+          },
+          {
+            "term": "Trust boundary",
+            "meaning": "A boundary across which assumptions about identity, permissions or control may change."
+          }
+        ],
+        "comparison": {
+          "headers": [
+            "Property",
+            "Question it answers",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Confidentiality",
+              "Who can read it?",
+              "Only authorized staff view a process recipe"
+            ],
+            [
+              "Integrity",
+              "Has it been altered?",
+              "Protect a control setpoint against tampering"
+            ],
+            [
+              "Availability",
+              "Can authorized users use it?",
+              "Keep a monitoring service accessible"
+            ],
+            [
+              "Reliability",
+              "Does it work under stated conditions?",
+              "A sensor works for its specified service period"
+            ],
+            [
+              "Resilience",
+              "Does it cope with changing adversity?",
+              "Maintain essential operation during an evolving attack"
+            ],
+            [
+              "Safety",
+              "Can it harm people/equipment?",
+              "Prevent a hazardous machine movement"
+            ]
+          ]
+        },
+        "example": {
+          "title": "A connected robot cell",
+          "steps": [
+            "Restrict recipe access to authorized users: confidentiality.",
+            "Prevent unauthorized edits to motion parameters: integrity.",
+            "Keep essential monitoring and control available: availability.",
+            "Plan for changing attacks and failures while avoiding unsafe motion: resilience and safety."
+          ]
+        },
+        "traps": [
+          "Resilience is not the same as reliability: changing adversarial conditions are the distinguishing cue.",
+          "Availability is not permission for everyone to read everything; confidentiality and authorization still apply.",
+          "More capable cloud hardware does not mean cloud security is automatically solved."
+        ]
+      },
+      {
+        "id": "w10-stride",
+        "title": "STRIDE, attack layers and responsibility",
+        "intro": "Use a threat vocabulary to ask what can go wrong, then identify who must build and maintain the protection.",
+        "paragraphs": [
+          "STRIDE names six categories: Spoofing identity, Tampering, Repudiation, Information disclosure, Denial of service and Elevation of privilege. A person pretending to be an operator is spoofing; altering a setpoint is tampering; denying a performed action is repudiation; leaking a recipe is information disclosure; exhausting a service is DoS; gaining extra rights is elevation of privilege.",
+          "The lecture groups attack surfaces into application, network and physical levels. SQL injection abuses application queries, replay resends an old message, man-in-the-middle intercepts or modifies communication, sniffing observes packets, misrouting sends traffic incorrectly, and jamming disrupts radio communication. Device tampering attacks the physical equipment.",
+          "Trust responsibilities propagate through the lifecycle. The system owner defines operational requirements, evaluates risks and ensures timely patches. The system builder designs a cost-efficient trustworthy system, defines component trust requirements, and tests/certifies the system. Component builders deliver hardware, software and services that meet those requirements.",
+          "Coordination matters: organizations should identify threats early, adapt security measures and respond quickly. Hardware modules, interfaces, virtual machines and IaaS/PaaS/SaaS services all contribute to system trust; checking one component once is not enough to cover its entire lifecycle."
+        ],
+        "keyPoints": [
+          "STRIDE's E = Elevation of privilege.",
+          "Tampering attacks integrity; information disclosure attacks confidentiality; DoS attacks availability.",
+          "Application cue: SQL injection. Network cue: interception/sniffing/misrouting. Physical cue: jamming/device tampering.",
+          "Owner sets requirements and maintains operation; builder designs/tests; component builder supplies compliant parts.",
+          "The System Builder is the keyed answer for cost-efficient trustworthy design, component requirements, tests and certifications."
+        ],
+        "terms": [
+          {
+            "term": "Repudiation",
+            "meaning": "Denying that an action or exchange took place when it did."
+          },
+          {
+            "term": "Replay attack",
+            "meaning": "Capturing a valid past message and retransmitting it to cause an unintended action."
+          },
+          {
+            "term": "Elevation of privilege",
+            "meaning": "Obtaining permissions beyond those legitimately granted."
+          }
+        ],
+        "comparison": {
+          "headers": [
+            "Letter",
+            "Threat",
+            "Memory cue"
+          ],
+          "rows": [
+            [
+              "S",
+              "Spoofing identity",
+              "Pretend to be someone else"
+            ],
+            [
+              "T",
+              "Tampering",
+              "Change data or system state"
+            ],
+            [
+              "R",
+              "Repudiation",
+              "Deny an action"
+            ],
+            [
+              "I",
+              "Information disclosure",
+              "Leak data"
+            ],
+            [
+              "D",
+              "Denial of service",
+              "Make a service unavailable"
+            ],
+            [
+              "E",
+              "Elevation of privilege",
+              "Gain extra rights"
+            ]
+          ]
+        },
+        "example": {
+          "title": "A supplier-connected gateway",
+          "steps": [
+            "The owner defines who may connect and when updates must be applied.",
+            "The system builder designs access boundaries and tests the gateway within the plant.",
+            "The component builder supplies supported hardware/software that meets the agreed requirements.",
+            "Monitor for spoofed logins, altered messages and excessive requests using the STRIDE vocabulary."
+          ]
+        },
+        "traps": [
+          "System Builder is distinct from System Owner and Component Builder.",
+          "Jamming is listed under physical attacks in this course, even though its consequence is disrupted communication.",
+          "The source also names 'resource exemption' and 'reversal attack' without enough definition; these labels are not substitutes for the clearly defined STRIDE categories."
+        ]
+      },
+      {
+        "id": "w10-protection",
+        "title": "Protect the devices, links and all data states",
+        "intro": "End-to-end protection must cover where data is born, where it travels, where it is stored and where it is used.",
+        "paragraphs": [
+          "The five protection areas are end devices, fog devices, cloud, communication and data, coordinated by security management. Horizontal protection concerns peer devices at the same layer. Vertical protection concerns interactions between layers or parts of the stack. Industry-specific requirements add to shared IIoT needs.",
+          "End-device controls include physical protection, verified identity, appropriate access rights and data protection. Authentication checks who a device/user is; authorization checks what it may do. The keyed choice for resource-constrained devices is lightweight symmetric-key cryptography, supported by energy-efficient authentication and intrusion detection/prevention. Lightweight must still mean appropriately secure.",
+          "Fog nodes are more capable than end devices but remain semi-constrained; protect fog identity and fog-to-cloud access. Cloud protection covers data, applications, infrastructure, provider-access policies, identity management and physical security. A third-party provider adds trust and responsibility questions rather than removing them.",
+          "Data at rest is stored, data in transit is moving, and data in use is actively processed. Apply confidentiality, integrity and availability to each state. Protect not only sensor readings but commands, actuation signals, logs and security-configuration messages. Firewalls, gateways, access controls and suitable cryptographic mechanisms protect communications.",
+          "Security management handles configuration, patches and controls, with prevention, detection, analysis and mitigation. Its monitoring cycle combines monitoring, response and analysis. The healthcare example includes embedded devices, fog and cloud, with device authentication, protected communications, access-controlled cloud data and SDN-based monitoring.",
+          "The course names ISO/IEC 15408 (Common Criteria) for IT security evaluation, IEC 62443 for industrial automation/control security, and NIST SP 800-82 for industrial-control/OT guidance. The assignment specifically selects NIST SP 800-82. The source's claim that no IT/OT-convergence standard exists is historical lecture context, not a verified present-day standards survey."
+        ],
+        "keyPoints": [
+          "Five protection areas + manager: end device, fog, cloud, communication, data; security management coordinates them.",
+          "Three data states: at rest, in use, in transit.",
+          "Authentication = identity; authorization = permission.",
+          "Lightweight symmetric-key cryptography is the constrained-device answer; both ends use a shared secret key.",
+          "Firewall = rule-based boundary between trusted/internal and unauthorized/external traffic.",
+          "Standards cue: ISO/IEC 15408 → IT; IEC 62443 and NIST SP 800-82 → OT/control systems.",
+          "Protect command integrity as carefully as measurement confidentiality."
+        ],
+        "terms": [
+          {
+            "term": "Symmetric-key cryptography",
+            "meaning": "Cryptographic protection using a shared secret key for the communicating parties."
+          },
+          {
+            "term": "Firewall",
+            "meaning": "A system enforcing rules to allow or block traffic at network boundaries."
+          },
+          {
+            "term": "Data in use",
+            "meaning": "Data actively being processed by an application or computing device."
+          }
+        ],
+        "diagram": {
+          "type": "layers",
+          "title": "Protection follows the whole data path",
+          "nodes": [
+            {
+              "label": "End devices",
+              "detail": "Physical security, identity and lightweight controls."
+            },
+            {
+              "label": "Fog",
+              "detail": "Local processing and authenticated access."
+            },
+            {
+              "label": "Cloud",
+              "detail": "Data, applications, infrastructure and provider policies."
+            }
+          ],
+          "caption": "Communication and data protection span all three tiers; security management coordinates every area."
+        },
+        "example": {
+          "title": "Protect a blood-pressure monitoring stream",
+          "steps": [
+            "Authenticate the sensor and permit only approved readings or commands.",
+            "Protect readings while travelling to a fog gateway and cloud service.",
+            "Control access to stored patient records and protect active processing.",
+            "Monitor events, respond to abnormal traffic and apply required updates."
+          ]
+        },
+        "traps": [
+          "Disabling authentication to save battery is not the recommended constrained-device solution.",
+          "Data in use is not another term for data in transit.",
+          "NIST SP 800-82 is the quiz's keyed answer; IEC 62443 is also relevant but is not included as a second correct option here.",
+          "A firewall enforces rules; it does not replace all device, data or application protections.",
+          "Standards names and the 'no converged standard' remark are course context, not current compliance advice."
+        ]
+      },
+      {
+        "id": "w10-factory",
+        "title": "Smart factories: four levels, five traits",
+        "intro": "Connected production links workers and machines to plant execution and enterprise planning.",
+        "paragraphs": [
+          "Traditional factories may have isolated machines, unbalanced workloads, limited live data and long changeovers. A smart factory connects the process so machine health, quality and production status can guide decisions. It aims to reduce changeover and production time, improve maintenance and support new products or components.",
+          "The four levels are field devices, shop floor, plant and enterprise. Field devices include sensor-enabled tools and worker wearables. Shop-floor controllers use suitable networks such as ZigBee or Bluetooth in the examples. At plant level, MES coordinates execution and control rooms. Enterprise ERP and cloud services consolidate planning, storage, analytics and visualization.",
+          "The five traits are connected, optimized, transparent, proactive and agile/flexible. Connected means exchanging data; transparent means making the state visible; proactive means anticipating problems; optimized means improving operations; flexible means adapting process parameters and configuration. The assignment's question about optimally adjusting machine configuration, material flow or temperature selects flexibility.",
+          "The company examples are lecture-era case studies. Airbus uses connected manufacturing, robots, AR/computer vision and predictive analytics. KUKA links robots to a private cloud; DeWalt tracks construction workers/equipment through IoT and Wi-Fi mesh; ABB YuMi supports human–robot collaboration. Amazon's robotic shelves have a reported 20% operating-cost reduction in the 2014 example.",
+          "Other examples: Caterpillar uses AR and predictive maintenance; Fanuc's Zero Downtime uses sensors/cloud analytics; Gehring connects honing machines; Maersk monitors shipping assets, fuel and refrigerated containers; Magna Steyr uses wearables, driverless transport and a digital factory. Rio Tinto uses autonomous trucks/trains/drilling; Bosch improves working conditions and reduces errors.",
+          "Hitachi's Lumada layers in the notes are Edge, Core, Analytics, Studio and Foundry; Transport is not a layer. North Star BlueScope Steel uses smart helmets/wristbands to monitor worker health and detect radiation and toxic gases. These names are quiz cues, not claims about every current product configuration."
+        ],
+        "keyPoints": [
+          "Levels: field devices → shop floor → plant/MES → enterprise/ERP.",
+          "Traits: connected, optimized, transparent, proactive, agile/flexible.",
+          "Flexibility adapts process parameters as requirements change.",
+          "Lumada: Edge, Core, Analytics, Studio, Foundry; exclude Transport.",
+          "North Star BlueScope: worker wearables detecting radiation and toxic gases.",
+          "Fanuc = Zero Downtime; ABB = YuMi; Amazon = robotic shelves."
+        ],
+        "terms": [
+          {
+            "term": "MES",
+            "meaning": "Manufacturing Execution System that coordinates and records manufacturing execution at plant level."
+          },
+          {
+            "term": "ERP",
+            "meaning": "Enterprise Resource Planning system for integrated business planning and records."
+          },
+          {
+            "term": "Changeover",
+            "meaning": "Reconfiguring a line from producing one product or variant to another."
+          }
+        ],
+        "comparison": {
+          "headers": [
+            "Company / system",
+            "Lecture case-study cue"
+          ],
+          "rows": [
+            [
+              "Airbus",
+              "Factory of the Future; connected aerospace production, robots and AR"
+            ],
+            [
+              "KUKA",
+              "Connected robots and a private cloud; 800+ units/day in the example"
+            ],
+            [
+              "DeWalt",
+              "Wi-Fi mesh / construction worker and equipment tracking"
+            ],
+            [
+              "ABB",
+              "YuMi human–robot collaboration and maintenance"
+            ],
+            [
+              "Amazon",
+              "Moving robotic shelves; reported 2014 cost reduction"
+            ],
+            [
+              "Caterpillar",
+              "AR factory view and marine predictive maintenance"
+            ],
+            [
+              "Fanuc",
+              "Zero Downtime; 2016 GM innovation-award example"
+            ],
+            [
+              "Gehring",
+              "Connected honing machines"
+            ],
+            [
+              "Hitachi",
+              "Lumada: Edge, Core, Analytics, Studio, Foundry"
+            ],
+            [
+              "Maersk",
+              "Shipping, fuel, refrigerated containers and supply-chain traceability"
+            ],
+            [
+              "Magna Steyr",
+              "Wearables, driverless transport and digital factory"
+            ],
+            [
+              "North Star BlueScope",
+              "Radiation / toxic-gas safety wearables"
+            ],
+            [
+              "Rio Tinto",
+              "Autonomous trucks, trains and drilling"
+            ],
+            [
+              "Bosch",
+              "Improved work-floor conditions and fewer errors"
+            ]
+          ]
+        },
+        "diagram": {
+          "type": "layers",
+          "title": "From a connected tool to enterprise planning",
+          "nodes": [
+            {
+              "label": "Enterprise",
+              "detail": "ERP and cloud business information."
+            },
+            {
+              "label": "Plant",
+              "detail": "MES and control rooms coordinate execution."
+            },
+            {
+              "label": "Shop floor",
+              "detail": "Machine controllers and industrial connectivity."
+            },
+            {
+              "label": "Field devices",
+              "detail": "Sensors, tools and worker wearables."
+            }
+          ],
+          "caption": "Measurements travel upward to inform decisions; approved instructions can travel downward to affect production."
+        },
+        "example": {
+          "title": "Switch from one bottle size to another",
+          "steps": [
+            "Field sensors report machine state and worker activity.",
+            "Shop-floor controllers apply the new permitted machine settings.",
+            "MES coordinates material flow and production execution.",
+            "ERP updates planning; flexibility lets the process adapt without a lengthy manual changeover."
+          ]
+        },
+        "traps": [
+          "'Transport' is the NOT-a-Lumada-layer answer.",
+          "The question about adjusted process parameters uses flexibility, even though optimization is another genuine factory trait.",
+          "The quantified company results and product architectures are historical examples, not updated performance claims."
+        ]
+      },
+      {
+        "id": "w10-food",
+        "title": "Food IIoT: trace a product from field to consumer",
+        "intro": "The same sensing, networking and analytics tools can improve farming, processing, logistics and food transparency.",
+        "paragraphs": [
+          "The field-to-plate chain begins with sowing and growing, followed by harvesting, processing, packaging, transport, wholesale, retail and consumption. Networked sensors can measure environmental and product conditions; communication links stakeholders; applications serve farmers, retailers, government, consumers and insurers.",
+          "End-to-end traceability links a finished item to its source and journey. A packet of rice could be traced back to the paddy field when records are complete. Benefits include efficient production, food safety/compliance, supply-chain transparency and lower waste. Traceability records the journey; condition monitoring checks whether the journey preserved quality.",
+          "Farm uses include weather, crop maturity, insect, soil-moisture, water-level, fertilizer and nutrient sensing. Livestock systems monitor health, feeding and barn/hatchery temperature. GPS can track animals/equipment; drones monitor fields; predictive maintenance monitors tractors. Factory connections help quality, time to market, compliance and worker safety.",
+          "The course's SmartLabel example uses a QR code to provide ingredients, allergens, nutrition, certification, handling and related product information. Intellicup has an NFC chip at its base, paired with e-wallet/QR functions and an IntelliHead dispensing unit to reduce waiting. BioRanger detects food pathogens with a handheld device and Android app.",
+          "Other named examples are CityCrop's indoor climate-controlled growing, Eskesso app-controlled Wi-Fi cooking, a Culinary Science Flavor Matrix using data/ML for pairings, Spinn smart coffee brewing and Farmshelf indoor farming. Treat product names/features as course examples rather than current purchase recommendations."
+        ],
+        "keyPoints": [
+          "Food architecture: sensing → communication → stakeholder applications.",
+          "Traceability links a product back to its origin; sensors also monitor storage conditions.",
+          "SmartLabel = QR code; Intellicup = NFC chip at the base.",
+          "Diagenetix BioRanger = pathogen detection.",
+          "CityCrop/Farmshelf = indoor growing; Spinn = smart coffee; Eskesso = app-controlled cooking.",
+          "Benefits: efficiency, food safety, transparency, lower waste and reduced time to market."
+        ],
+        "terms": [
+          {
+            "term": "Traceability",
+            "meaning": "Ability to follow a product's origin, processing and movement through recorded stages."
+          },
+          {
+            "term": "TTM",
+            "meaning": "Time to market: the time taken to bring a product to the market."
+          },
+          {
+            "term": "NFC",
+            "meaning": "Near Field Communication, the short-range technology in the Intellicup course example."
+          }
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "The field-to-plate traceability chain",
+          "nodes": [
+            {
+              "label": "Sow",
+              "detail": "Record source and seed information."
+            },
+            {
+              "label": "Grow",
+              "detail": "Observe soil, weather and crop health."
+            },
+            {
+              "label": "Harvest",
+              "detail": "Identify the crop lot."
+            },
+            {
+              "label": "Process",
+              "detail": "Monitor production and quality."
+            },
+            {
+              "label": "Package",
+              "detail": "Link labels to lot records."
+            },
+            {
+              "label": "Transport",
+              "detail": "Track location and conditions."
+            },
+            {
+              "label": "Wholesale",
+              "detail": "Preserve custody records."
+            },
+            {
+              "label": "Retail",
+              "detail": "Expose product information."
+            },
+            {
+              "label": "Consumer",
+              "detail": "Review source and handling information."
+            }
+          ],
+          "caption": "Traceability depends on records linking the stages; a label alone cannot recreate missing history."
+        },
+        "example": {
+          "title": "A rice packet with a problem",
+          "steps": [
+            "Use the packet's lot identity to find its processing and packaging records.",
+            "Follow transport and storage records to check temperature, damage or delay.",
+            "Trace the lot back through harvest records to the paddy field.",
+            "Use the linked history to identify affected products rather than guessing across all inventory."
+          ]
+        },
+        "traps": [
+          "SmartLabel's code is QR; Intellicup's base component is NFC. Do not swap them.",
+          "QR, RFID, GPS and NFC have different roles; using one name for all tracking is inaccurate.",
+          "The lecture's phrase that sensors help 'every step except the plate' is a course illustration, not a universal technology limitation."
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "id": "w10-q1",
+        "question": "Layer where slicing isolates SDN control overhead in software-defined 6TiSCH?",
+        "options": [
+          "Layer 2",
+          "Layer 3",
+          "Application layer only",
+          "Cloud storage layer"
+        ],
+        "correctIndex": 0,
+        "explanation": "The key places the slicing mechanism at Layer 2. The presence of IPv6 does not move this specific link/MAC slicing function to Layer 3.",
+        "sectionId": "w10-sdn-networks",
+        "sourceNote": "Specific to the software-defined 6TiSCH architecture tested in the course."
+      },
+      {
+        "id": "w10-q2",
+        "question": "Data streams in the adaptive transmission architecture for software-defined edge computing?",
+        "options": [
+          "Encrypted and unencrypted streams",
+          "Ordinary and emergent data streams",
+          "Only batch and archived streams",
+          "Only TCP and optical streams"
+        ],
+        "correctIndex": 1,
+        "explanation": "Ordinary and emergent are the keyed categories. TCP is a transport protocol; encryption is a protection choice, not the two service categories here.",
+        "sectionId": "w10-sdn-networks",
+        "sourceNote": "Key-backed detail; the source says it is not in the video."
+      },
+      {
+        "id": "w10-q3",
+        "question": "Fog nodes and access devices provide which service?",
+        "options": [
+          "Unlimited-delay historical archiving only",
+          "Guaranteed zero-latency global computing",
+          "Delay-constrained emergent services",
+          "Replacement of all cloud analytics"
+        ],
+        "correctIndex": 2,
+        "explanation": "Nearby fog/access resources provide the key's delay-constrained emergent services. Fog reduces travel/processing demands but does not guarantee zero latency everywhere.",
+        "sectionId": "w10-sdn-networks",
+        "sourceNote": "Key-backed detail; the source says it is not in the video."
+      },
+      {
+        "id": "w10-q4",
+        "question": "Function correctly under dynamic adversarial conditions?",
+        "options": [
+          "Privacy",
+          "Reliability",
+          "Transparency",
+          "Resilience"
+        ],
+        "correctIndex": 3,
+        "explanation": "Resilience concerns continued correct behavior as adversity changes. Reliability is correct operation under stated conditions over a specified period.",
+        "sectionId": "w10-trust"
+      },
+      {
+        "id": "w10-q5",
+        "question": "'E' in STRIDE?",
+        "options": [
+          "Elevation of privilege",
+          "Encryption of packets",
+          "Enterprise optimization",
+          "Energy conservation"
+        ],
+        "correctIndex": 0,
+        "explanation": "E means Elevation of privilege: gaining unauthorized additional rights. Encryption is a control, not this threat-model category.",
+        "sectionId": "w10-stride"
+      },
+      {
+        "id": "w10-q6",
+        "question": "Who designs a cost-efficient trustworthy system, defines trust requirements and tests and certifies?",
+        "options": [
+          "System Owner",
+          "System Builder",
+          "Only the end user",
+          "Only the component manufacturer"
+        ],
+        "correctIndex": 1,
+        "explanation": "The System Builder owns design, component trust requirements and verification. The owner defines operational needs and ensures continued maintenance.",
+        "sectionId": "w10-stride"
+      },
+      {
+        "id": "w10-q7",
+        "question": "Protection for resource-constrained end devices?",
+        "options": [
+          "Disable all authentication",
+          "Send all secret keys openly",
+          "Lightweight symmetric key cryptography",
+          "Require every packet to run heavy cloud-only verification"
+        ],
+        "correctIndex": 2,
+        "explanation": "The suggested approach is lightweight symmetric-key cryptography, alongside identity/access controls. Disabling authentication sacrifices protection rather than solving resource constraints.",
+        "sectionId": "w10-protection"
+      },
+      {
+        "id": "w10-q8",
+        "question": "Three states of data?",
+        "options": [
+          "Small, medium, large",
+          "Public, private, deleted",
+          "Sensing, sending, learning",
+          "Data-at-Rest, Data-in-Use, Data-in-Transit"
+        ],
+        "correctIndex": 3,
+        "explanation": "The security states are stored, actively processed and moving. Sensing/sending/learning are architecture stages from another application, not the three data states.",
+        "sectionId": "w10-protection"
+      },
+      {
+        "id": "w10-q9",
+        "question": "OT security standard for industrial control systems?",
+        "options": [
+          "NIST SP 800-82",
+          "ISO/IEC 15408 only",
+          "IEEE 802.15.4",
+          "OpenFlow 1.1"
+        ],
+        "correctIndex": 0,
+        "explanation": "NIST SP 800-82 is the keyed control-system/OT guidance. ISO/IEC 15408 is the notes' IT-security evaluation example; wireless/OpenFlow specifications are not the requested guidance.",
+        "sectionId": "w10-protection",
+        "sourceNote": "The notes also identify IEC 62443 as relevant OT security material. This quiz preserves the assignment's NIST SP 800-82 answer without making IEC 62443 a conflicting option."
+      },
+      {
+        "id": "w10-q10",
+        "question": "NOT a Lumada layer?",
+        "options": [
+          "Edge",
+          "Transport",
+          "Analytics",
+          "Foundry"
+        ],
+        "correctIndex": 1,
+        "explanation": "Transport is absent from the listed five layers: Edge, Core, Analytics, Studio and Foundry. Edge and Analytics are genuine layers in this course example.",
+        "sectionId": "w10-factory",
+        "sourceNote": "Course-era Lumada architecture."
+      },
+      {
+        "id": "w10-q11",
+        "question": "North Star BlueScope sensors detect?",
+        "options": [
+          "Only shelf barcode digits",
+          "Only a phone's GPS coordinates",
+          "Radiation and toxic gases",
+          "Only product QR codes"
+        ],
+        "correctIndex": 2,
+        "explanation": "Worker helmets/wristbands in this case detect radiation and toxic gases and help monitor health. Product identifiers belong to other application examples.",
+        "sectionId": "w10-factory"
+      },
+      {
+        "id": "w10-q12",
+        "question": "SmartLabel uses?",
+        "options": [
+          "GPS satellites",
+          "Bluetooth mesh only",
+          "A BCube routing rule",
+          "QR code"
+        ],
+        "correctIndex": 3,
+        "explanation": "SmartLabel uses a QR code to expose product information. GPS tracks position; it is not the product-information code in this example.",
+        "sectionId": "w10-food"
+      },
+      {
+        "id": "w10-q13",
+        "question": "Intellicup base has?",
+        "options": [
+          "NFC chip",
+          "GPS receiver",
+          "Wi-Fi router",
+          "Gas-leak alarm"
+        ],
+        "correctIndex": 0,
+        "explanation": "The base contains an NFC chip. The QR/e-wallet process is related to the system but is not the physical component asked for.",
+        "sectionId": "w10-food"
+      },
+      {
+        "id": "w10-q14",
+        "question": "Smart factory characteristic that lets process parameters be optimally adjusted?",
+        "options": [
+          "Transparency",
+          "Flexibility",
+          "Isolation",
+          "Fixed configuration"
+        ],
+        "correctIndex": 1,
+        "explanation": "The keyed characteristic is flexibility: adapting machine configuration, material flow or temperature to requirements. Transparency makes the state visible but does not itself describe adjustment.",
+        "sectionId": "w10-factory"
+      },
+      {
+        "id": "w10-q15",
+        "question": "Fence between trusted internal and unauthorized external network using rules?",
+        "options": [
+          "Data warehouse",
+          "RFID reader",
+          "Firewall",
+          "Temperature sensor"
+        ],
+        "correctIndex": 2,
+        "explanation": "A firewall applies rules allowing or blocking network traffic. A data warehouse stores data and does not inherently act as the network boundary.",
+        "sectionId": "w10-protection"
+      }
+    ],
+    "revision": [
+      "Control-plane pattern = monitoring, data service, management/optimization.",
+      "TSCH = Time Slotted Channel Hopping; slicing answer = Layer 2; uSDN = lightweight/Contiki.",
+      "Edge streams = ordinary and emergent; fog/access = delay-constrained emergent services.",
+      "Demo = Mininet, OvS, POX, D-ITG, SPD; installed rules explain few packet-ins.",
+      "CIA = confidentiality, integrity, availability; resilience handles dynamic adversarial conditions.",
+      "STRIDE = Spoofing, Tampering, Repudiation, Information disclosure, DoS, Elevation of privilege.",
+      "System Builder designs the trustworthy system, component requirements and tests/certification.",
+      "Protect end devices, fog, cloud, communication and data; management coordinates them.",
+      "Lightweight symmetric-key cryptography for constrained devices; data states = rest/use/transit.",
+      "NIST SP 800-82 is the OT-guidance quiz answer; firewall is the rule-based traffic fence.",
+      "Lumada = Edge, Core, Analytics, Studio, Foundry; Transport is excluded.",
+      "North Star BlueScope = radiation/toxic gases; adaptable parameters = flexibility.",
+      "SmartLabel = QR; Intellicup = NFC; BioRanger = pathogens."
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Healthcare, energy, inventory & plant operations",
+    "summary": "Reuse the IIoT toolbox in five settings. Follow the data path, match the device names, and learn the precise architecture and security phrases used in the assignment.",
+    "objectives": [
+      "Recall healthcare's sensing → sending → processing → storing → learning sequence and match devices to measurements.",
+      "Explain the power-plant maturity model, smart-grid network scopes and AMI component roles.",
+      "Distinguish inventory visibility, stock-out prevention and lead-time management.",
+      "Compare passive, active and semi-passive RFID tags.",
+      "Explain availability, network segmentation, safety wearables and facility analytics."
+    ],
+    "sections": [
+      {
+        "id": "w11-healthcare",
+        "title": "Healthcare: measurements become useful knowledge",
+        "intro": "Networked medical and wearable devices support remote monitoring and communication between patients and care teams.",
+        "paragraphs": [
+          "Patient sensors can observe blood pressure, respiration, pulse, heart rate, weight, glucose or temperature. Gateways send readings to an IoT cloud service that verifies, processes, analyzes and stores them for authorized healthcare applications. The course's five-stage sequence is sensing, sending, processing, storing and learning.",
+          "Telecare and telemedicine can reduce travel and support monitoring at home. Hospital examples include smart-bed activity notifications, hygiene monitoring and emergency-unit planning. Sensors and alerts support professionals; these educational examples do not establish that every device can diagnose a condition or replace clinical assessment.",
+          "Device associations to learn are QardioCore for ECG, Dexcom for continuous glucose, iHealth BP5 for blood pressure and Kinsa for temperature. Pulse oximetry concerns oxygen saturation. The source also describes IoT contact-lens glucose monitoring as a technology example. ADAMM, an asthma-monitoring example, uses body temperature, cough rate and heart rate to identify early warning patterns.",
+          "Mobile examples include Health Assistant, Google Fit for physical activity and ECG Self Monitoring / ECG Self Check. Challenges include limited compute, memory and energy, patient mobility, growing device diversity and scalable algorithms without compromised security. Protect confidentiality, integrity, authentication and availability.",
+          "The notes motivate healthcare IoT using ageing-population figures: approximately 382 million people aged 60+ in 1980 and a projection of 2.1 billion in 2050. These are the lecture's historical figures/projection, not newly verified population statistics."
+        ],
+        "keyPoints": [
+          "Exact sequence: sensing → sending → processing → storing → learning.",
+          "Cloud data path: smart sensor → gateway → IoT cloud → authorized application.",
+          "ADAMM: body temperature + cough rate + heart rate.",
+          "QardioCore = ECG; Dexcom = glucose; iHealth BP5 = blood pressure; Kinsa = thermometer.",
+          "Benefits in the notes: remote/24×7 monitoring, early alerts, hygiene oversight and potentially lower monitoring cost.",
+          "Scalable algorithms without compromising security is the keyed healthcare challenge."
+        ],
+        "terms": [
+          {
+            "term": "ECG",
+            "meaning": "Electrocardiogram: measurement of the heart's electrical activity."
+          },
+          {
+            "term": "SpO₂ / pulse oximetry",
+            "meaning": "An estimate of blood oxygen saturation from a pulse-oximetry device."
+          },
+          {
+            "term": "Telecare / telemedicine",
+            "meaning": "Using communication technologies to support care or clinical interaction at a distance."
+          },
+          {
+            "term": "Learning stage",
+            "meaning": "Extracting knowledge or patterns from processed/stored information in the course architecture."
+          }
+        ],
+        "comparison": {
+          "headers": [
+            "Measurement / need",
+            "Course example"
+          ],
+          "rows": [
+            [
+              "ECG",
+              "QardioCore"
+            ],
+            [
+              "Glucose",
+              "Dexcom; contact-lens research/technology example"
+            ],
+            [
+              "Blood pressure",
+              "iHealth BP5"
+            ],
+            [
+              "Temperature",
+              "Kinsa"
+            ],
+            [
+              "Oxygen saturation",
+              "Pulse oximetry"
+            ],
+            [
+              "Asthma warning patterns",
+              "ADAMM: temperature, cough rate, heart rate"
+            ],
+            [
+              "Physical activity",
+              "Google Fit"
+            ]
+          ]
+        },
+        "diagram": {
+          "type": "flow",
+          "title": "Healthcare's five tested stages",
+          "nodes": [
+            {
+              "label": "Sensing",
+              "detail": "Measure a physiological signal."
+            },
+            {
+              "label": "Sending",
+              "detail": "Transmit the reading."
+            },
+            {
+              "label": "Processing",
+              "detail": "Check and interpret the data."
+            },
+            {
+              "label": "Storing",
+              "detail": "Keep records securely."
+            },
+            {
+              "label": "Learning",
+              "detail": "Extract patterns and knowledge."
+            }
+          ],
+          "caption": "Memorize this course sequence; sending comes before processing."
+        },
+        "example": {
+          "title": "A remote blood-pressure record",
+          "steps": [
+            "An iHealth BP5-type device measures blood pressure.",
+            "A gateway sends the reading to the authorized service.",
+            "The service checks and processes the reading, stores the record and supports trend analysis.",
+            "An authorized care team can review an alert under the system's configured workflow."
+          ]
+        },
+        "traps": [
+          "Do not swap sending and processing in the architecture sequence.",
+          "ADAMM's three measurements are temperature, cough rate and heart rate—not blood pressure, glucose and weight.",
+          "The scalable-algorithm answer is key-backed and only partly covered by the transcript.",
+          "Product features and demographic projections are lecture context, not current medical-device advice."
+        ]
+      },
+      {
+        "id": "w11-power",
+        "title": "Power plants: from monitoring to autonomy",
+        "intro": "Smart grids carry information as well as electricity, allowing demand, equipment and faults to be managed more actively.",
+        "paragraphs": [
+          "A traditional grid mainly delivers energy to a passive consumer. IIoT adds measurements and information exchange across generation, transmission, distribution and consumption. Consumers and distributed resources can participate through demand scheduling, customized service and electric-vehicle integration.",
+          "The course's maturity sequence is monitoring, control, optimization and autonomy. Monitoring uses connected sensors. Control adds actuators and feedback. Optimization analyzes accumulated data to improve performance. Autonomy extends decision-making to device, system and application levels. The stage immediately after optimization is autonomy.",
+          "The three-layer architecture is sensing/perception, gateways/network, and applications. Sensors, RFID, cameras and audio devices sit at sensing; enterprise/access/home gateways connect through wireless, mobile or satellite networks; applications include smart homes, offices, EVs and transmission services. Fog is close to sensing while cloud supports higher-level services.",
+          "Network names describe scope. HAN connects home devices using examples such as ZigBee and 6LoWPAN. NAN covers neighborhood/distribution aggregation. FAN connects distribution controllers, regulators and data collectors; the key lists WiMAX, 3G and 4G wireless and Ethernet wired. WAN connects wider areas. These are course-listed choices, not an exhaustive current network catalogue.",
+          "Benefits include remote turbine/transformer monitoring, fault detection, demand scheduling, self-healing, blackout prevention, voltage stabilization and better energy efficiency. Other examples are water pressure/quality and leak prediction, wind-turbine control, solar fault monitoring, smart pumps/boilers, SCADA plants and digital twins.",
+          "Challenges include security/privacy, resource constraints, scalability, unpredictable delay and inconsistent protocols/security design. The notes' approximately 200 ms or more cloud round-trip delay is an example-dependent value, not a universal cloud latency. Time-critical control needs timing analysis and appropriate local control."
+        ],
+        "keyPoints": [
+          "Maturity: monitoring → control → optimization → autonomy.",
+          "Information flow complements power flow; it does not mean information is converted into electrical energy.",
+          "Architecture: sensing → gateways/network → applications.",
+          "HAN = home; NAN = neighborhood; FAN = field/distribution; WAN = wide area.",
+          "FAN quiz technologies: WiMAX, 3G, 4G wireless; Ethernet wired.",
+          "Power flow: generation → transmission → distribution → consumption.",
+          "Self-healing means responding to faults to maintain/recover service within engineered limits."
+        ],
+        "terms": [
+          {
+            "term": "Demand scheduling",
+            "meaning": "Moving or scheduling appliance demand according to system needs, time or price."
+          },
+          {
+            "term": "FAN",
+            "meaning": "Field Area Network connecting distribution-domain equipment, controllers and collectors."
+          },
+          {
+            "term": "Autonomy",
+            "meaning": "The maturity stage where systems can carry out appropriate decisions/actions with reduced manual intervention."
+          }
+        ],
+        "comparison": {
+          "headers": [
+            "Network",
+            "Scope",
+            "Lecture technology cue"
+          ],
+          "rows": [
+            [
+              "HAN",
+              "Devices inside the home",
+              "ZigBee, 6LoWPAN"
+            ],
+            [
+              "NAN",
+              "Neighborhood / distribution aggregation",
+              "Smart devices to gateways"
+            ],
+            [
+              "FAN",
+              "Distribution field equipment",
+              "WiMAX, 3G, 4G; Ethernet"
+            ],
+            [
+              "WAN",
+              "Broad geographic connectivity",
+              "Wide-area communication"
+            ]
+          ]
+        },
+        "diagram": {
+          "type": "flow",
+          "title": "The power-plant maturity ladder",
+          "nodes": [
+            {
+              "label": "Monitoring",
+              "detail": "Connected sensors reveal the state."
+            },
+            {
+              "label": "Control",
+              "detail": "Actuators and feedback affect it."
+            },
+            {
+              "label": "Optimization",
+              "detail": "Analytics improves performance."
+            },
+            {
+              "label": "Autonomy",
+              "detail": "Appropriate decisions run with less manual intervention."
+            }
+          ],
+          "caption": "Optimization is followed by autonomy in the assignment's maturity model."
+        },
+        "example": {
+          "title": "A wind-turbine maintenance progression",
+          "steps": [
+            "Monitoring: collect vibration and temperature readings.",
+            "Control: apply permitted operating adjustments using feedback.",
+            "Optimization: analyze history to improve operation and maintenance timing.",
+            "Autonomy: an engineered system initiates permitted responses without waiting for every manual decision."
+          ]
+        },
+        "traps": [
+          "After optimization comes autonomy, not another monitoring stage.",
+          "FAN is not the same scope as HAN; learn the technology bundle given by the key.",
+          "The 200 ms value is a lecture example, not a fixed delay for every cloud location or network.",
+          "Self-healing and autonomous actions remain subject to safety, permission and failure constraints."
+        ]
+      },
+      {
+        "id": "w11-ami",
+        "title": "AMI: acquisition gathers, management analyzes",
+        "intro": "Advanced Metering Infrastructure includes the meters, communication network and systems that collect and manage their data.",
+        "paragraphs": [
+          "A smart meter records utility use and communicates readings, enabling remote operations, usage visibility and potentially lower operating cost or energy loss. AMI includes more than the meter itself: communication links such as broadband over power line or fixed radio also connect the system.",
+          "The Meter Data Acquisition System, MDAS, gathers meter readings. The Meter Data Management System, MDMS, manages and analyzes the collected data. The quiz asks which component analyzes data, so choose MDMS rather than MDAS.",
+          "Smart energy meters support electricity networks; smart water meters support water systems. Analytics can reveal unusual use, losses or trends, while access controls and data protection are needed because usage patterns can be sensitive. The source's widespread-deployment remarks describe lecture context."
+        ],
+        "keyPoints": [
+          "AMI = smart meters + communications + acquisition/management systems.",
+          "MDAS gathers data; MDMS analyzes/manages data.",
+          "Remote meter operations can reduce operating cost.",
+          "Protect meter data and authenticated control messages.",
+          "Do not confuse the complete infrastructure with one meter."
+        ],
+        "terms": [
+          {
+            "term": "AMI",
+            "meaning": "Advanced Metering Infrastructure."
+          },
+          {
+            "term": "MDAS",
+            "meaning": "Meter Data Acquisition System; collects readings."
+          },
+          {
+            "term": "MDMS",
+            "meaning": "Meter Data Management System; manages/analyzes collected readings."
+          }
+        ],
+        "diagram": {
+          "type": "flow",
+          "title": "A meter reading's journey",
+          "nodes": [
+            {
+              "label": "Smart meter",
+              "detail": "Measures electricity or water use."
+            },
+            {
+              "label": "Communication network",
+              "detail": "Carries authenticated readings."
+            },
+            {
+              "label": "MDAS",
+              "detail": "Acquires the readings."
+            },
+            {
+              "label": "MDMS",
+              "detail": "Manages and analyzes them."
+            }
+          ],
+          "caption": "The 'analyzes smart meter data' answer is MDMS; MDAS is the acquisition cue."
+        },
+        "example": {
+          "title": "Detect an unusual overnight usage pattern",
+          "steps": [
+            "A meter records repeated high overnight consumption.",
+            "The network conveys readings to MDAS.",
+            "MDMS analyzes the series and makes the unusual pattern available to the responsible application.",
+            "The operator reviews it under the configured workflow rather than treating one reading as proof of a fault."
+          ]
+        },
+        "traps": [
+          "Acquisition means gathering, not the keyed analysis function.",
+          "AMI includes communication and backend systems; it is not only a collection of meters."
+        ]
+      },
+      {
+        "id": "w11-inventory",
+        "title": "Inventory and quality: know what you have",
+        "intro": "Inventory is a usable but idle resource with economic value. Management balances availability against the cost of holding it.",
+        "paragraphs": [
+          "A bakery needs enough flour to meet demand but not so much that money is tied up or materials spoil. Inventory management controls ordering, storing and stock movement. It meets anticipated demand, smooths production and distribution, protects against stock-outs, supports order cycles and can respond to price changes or quantity discounts.",
+          "The supply chain described is raw materials → suppliers → manufacturers → distributors → warehouses → retail shops → customers. Sensors and RFID provide identification, location, condition and stock movement. Networks connect purchasing, materials, production and sales, while analytics supports demand forecasts and replenishment.",
+          "Effective management tracks inventory, forecasts demand, handles lead time and its variability, estimates holding/ordering/shortage costs, and classifies stock. Lead time is the gap between placing an order and receiving it. The more variable that gap is, the harder it is to prevent shortages using a simple fixed schedule.",
+          "Quality control routinely checks product/service standards, ensures correct and complete data, fixes errors and omissions, and documents/archives inspections and inventory activity. Condition sensors and analytics complement identification: knowing where a food lot is does not alone establish that it stayed within temperature requirements.",
+          "Comprehensive visibility in the assignment means inventory levels, expiration dates, item locations and forecast demand. RFID can also support shelf identification, storage-temperature monitoring, damage assessment, shrinkage/shortage/overstock detection and route planning. Adoption challenges include scattered/inconsistent data, human error, training expense, security gaps, hidden costs and potential disruption during rollout."
+        ],
+        "keyPoints": [
+          "Inventory-management function tested: protection against stock-outs.",
+          "Lead time = order-to-delivery delay; variability matters.",
+          "Comprehensive visibility = levels + expiry dates + locations + demand forecasts.",
+          "Quality control needs consistent checks and trustworthy records.",
+          "Tracking/identification and quality-condition measurement are related but distinct jobs.",
+          "Forecast demand, classify inventory and account for holding, ordering and shortage costs."
+        ],
+        "terms": [
+          {
+            "term": "Stock-out",
+            "meaning": "Having insufficient stock to meet a requirement or demand."
+          },
+          {
+            "term": "Shrinkage",
+            "meaning": "Inventory loss or mismatch between recorded and actual stock."
+          },
+          {
+            "term": "Lead time",
+            "meaning": "Time between placing an order and receiving the delivery."
+          },
+          {
+            "term": "Holding cost",
+            "meaning": "Cost of keeping stock, including space, handling and tied-up capital."
+          }
+        ],
+        "comparison": {
+          "headers": [
+            "Information",
+            "What it tells you",
+            "Why it matters"
+          ],
+          "rows": [
+            [
+              "Inventory level",
+              "How much stock exists",
+              "Avoid shortages / excess"
+            ],
+            [
+              "Expiration date",
+              "When an item expires",
+              "Reduce waste and unsafe use"
+            ],
+            [
+              "Item location",
+              "Where stock is",
+              "Find and move it efficiently"
+            ],
+            [
+              "Forecast demand",
+              "What may be needed",
+              "Plan replenishment"
+            ],
+            [
+              "Condition measurements",
+              "Temperature or damage",
+              "Assess quality"
+            ]
+          ]
+        },
+        "example": {
+          "title": "A refrigerated-food warehouse",
+          "steps": [
+            "RFID identifies each lot and its shelf/location.",
+            "Condition sensors record storage temperature.",
+            "The system combines current stock, expiry dates and forecast demand.",
+            "Replenishment protects against stock-outs while quality checks identify lots needing review."
+          ]
+        },
+        "traps": [
+          "Inventory management protects against stock-outs; increasing stock-outs is not its objective.",
+          "'Comprehensive visibility' includes forecasts and expiration dates, not only a live location.",
+          "RFID identification does not itself predict demand; forecasting needs linked data and analytics."
+        ]
+      },
+      {
+        "id": "w11-rfid",
+        "title": "RFID: battery presence does not tell the whole story",
+        "intro": "An RFID system uses a tag, a reader and backend information systems; tags communicate through radio.",
+        "paragraphs": [
+          "A passive tag has no internal power source and draws energy from the reader field. It responds by backscattering rather than running its own active transmitter. The course describes passive tags as comparatively small, thin and inexpensive.",
+          "An active tag has its own power supply and active radio transmission, offering longer-range behavior and additional capabilities at greater cost/size. The assignment divides active tags into transponders and beacons. A transponder-style response is triggered by an interrogation; a beacon periodically broadcasts.",
+          "A semi-passive or battery-assisted passive tag has an onboard battery for its IC or sensing functions, but no active transmitter in the course taxonomy. It still communicates through backscatter. That is the key distinction from the active-tag answer.",
+          "Compared with a conventional barcode workflow, RFID can be read without optical line of sight and can identify multiple tags in a suitably designed read zone. Tags can link identities to additional records or store additional data. These benefits depend on reader design and environment; RFID is not automatically secure, and barcodes can also link to rich backend information."
+        ],
+        "keyPoints": [
+          "Passive: reader-powered, no onboard battery, backscatter.",
+          "Active: own power and active transmission; key's types = transponders and beacons.",
+          "Semi-passive: battery powers IC, no active transmitter, backscatter.",
+          "Line-of-sight is an optical-barcode constraint; radio RFID need not have it.",
+          "RFID backend data can support stock levels, expiry, location and demand visibility.",
+          "Security still needs authentication/access controls and trustworthy backend records."
+        ],
+        "terms": [
+          {
+            "term": "Backscatter",
+            "meaning": "Communicating by modulating/reflection of the reader's radio signal rather than generating an active radio transmission."
+          },
+          {
+            "term": "Beacon",
+            "meaning": "An active tag that broadcasts its information periodically in the course taxonomy."
+          },
+          {
+            "term": "Transponder",
+            "meaning": "An active-tag category responding to interrogation in the assignment's classification."
+          }
+        ],
+        "comparison": {
+          "headers": [
+            "Tag type",
+            "Power",
+            "Communication cue"
+          ],
+          "rows": [
+            [
+              "Passive",
+              "Reader field; no internal battery",
+              "Backscatter"
+            ],
+            [
+              "Active",
+              "Own battery",
+              "Active transmitter; transponder/beacon"
+            ],
+            [
+              "Semi-passive",
+              "Battery for IC",
+              "No active transmitter; backscatter"
+            ]
+          ]
+        },
+        "example": {
+          "title": "Identify the tag from its specification",
+          "steps": [
+            "'No battery; powered by reader' identifies passive.",
+            "'Battery powers electronics but no active transmitter' identifies semi-passive.",
+            "'Has its own transmitter and periodically broadcasts' identifies an active beacon.",
+            "Use communication behavior as well as battery presence when choosing the answer."
+          ]
+        },
+        "traps": [
+          "A battery alone does not make a tag active; semi-passive also has a battery.",
+          "A semi-passive tag does not actively beacon in this course's description.",
+          "Transponders and beacons is a key-backed active-tag classification, only partly explained by the source.",
+          "The source's broad 'RFID is more secure / carries more information' comparison is a simplification; implementation and backend design determine these properties."
+        ]
+      },
+      {
+        "id": "w11-safety",
+        "title": "Plant safety: protect people, equipment and commands",
+        "intro": "A connected plant adds network/software protection to the physical protection of workers and machinery.",
+        "paragraphs": [
+          "Worker wearables can measure physiological and ergonomic conditions; machine/truck sensors reveal operating state. Collected data supports monitoring and approved feedback commands. The intrusion triangle lists motive, means and opportunity. Security controls aim to reduce the opportunity or means rather than assuming every possible attacker lacks a motive.",
+          "OT protection covers devices and machines; IT protection covers networks and software. The notes' software goals are authentication, integrity and availability. For the assignment, availability is functioning time divided by total time: if a service works for 990 of 1,000 observed hours, its observed availability is 0.99 or 99%.",
+          "Network segmentation divides a network into smaller parts and explicitly applies policies to each. Supporting controls include privilege-based access, firewalls, VPNs, IDS/IPS, endpoint/mobile protection, anti-malware, behavioral analytics, data-loss prevention, email/phishing controls, cloud security and SIEM. Segmentation can limit propagation but must be engineered and enforced.",
+          "The assignment's mobile-security answer is a secure web gateway, described as detecting attacks early and using cloud-integrated security to help stop spread between branches. This is a key/architecture-specific capability, not a guarantee that every gateway identifies every future attack.",
+          "AR glasses can overlay leak warnings and safe-exit guidance onto the real scene. VR presents a simulated environment, useful for training examples. Both depend on software and trustworthy content: corrupted instructions or displays can create physical risk, so these systems need integrity and access protection as well as useful sensors."
+        ],
+        "keyPoints": [
+          "Protect workers and equipment together.",
+          "Intrusion triangle: motive + means + opportunity.",
+          "Availability formula in the key: functioning time / total time.",
+          "Segmentation = smaller network parts + explicitly enforced security policies.",
+          "IDS detects; IPS can prevent/block; SIEM consolidates security information/events.",
+          "Secure web gateway is the keyed early-detection/cross-branch answer.",
+          "AR safety information must remain trustworthy; an incorrect overlay can increase risk."
+        ],
+        "terms": [
+          {
+            "term": "Authentication",
+            "meaning": "Checking that a user/device is the identity it claims."
+          },
+          {
+            "term": "Network segmentation",
+            "meaning": "Dividing network areas and enforcing appropriate policies at their boundaries."
+          },
+          {
+            "term": "SIEM",
+            "meaning": "Security Information and Event Management: collecting/correlating security event information."
+          },
+          {
+            "term": "Secure web gateway",
+            "meaning": "A control that inspects/enforces policy on web traffic; the assignment associates it with early attack identification and cloud-integrated branch protection."
+          }
+        ],
+        "diagram": {
+          "type": "branch",
+          "title": "One safety goal, two protection responsibilities",
+          "nodes": [
+            {
+              "label": "Safe plant operation",
+              "detail": "Protect workers and equipment together."
+            },
+            {
+              "label": "OT protection",
+              "detail": "Machines, devices and physical process behavior."
+            },
+            {
+              "label": "IT protection",
+              "detail": "Software, networks and trustworthy information."
+            }
+          ],
+          "caption": "Connected control means information faults can affect physical safety; both responsibilities must cooperate."
+        },
+        "example": {
+          "title": "Keep a plant incident from spreading",
+          "steps": [
+            "Separate worker/mobile access, enterprise services and control-network zones.",
+            "Apply explicit permitted-flow policies at each boundary.",
+            "Inspect activity and respond through the configured IDS/IPS, gateway and event-management controls.",
+            "Keep local safe-operation and trustworthy emergency instructions available under the planned failure conditions."
+          ]
+        },
+        "traps": [
+          "Availability is a time ratio here, not an encryption or successful-login ratio.",
+          "Segmentation means enforced policies, not simply drawing boxes on a network map.",
+          "The secure-web-gateway answer is key-backed and not fully developed in the transcript.",
+          "AR/VR overlays are not inherently safe because they look helpful; protect the content and command chain."
+        ]
+      },
+      {
+        "id": "w11-facilities",
+        "title": "Facility management: maintain the place, people and process",
+        "intro": "Facility management guides operations and maintenance for property owners, covering infrastructure as well as finance, people and contracts.",
+        "paragraphs": [
+          "A manufacturing facility can include buildings, machinery, trucks and fleet infrastructure. Stakeholders include owners, customers, tenants, contractors and subcontractors. Facility management integrates people, place and process, alongside support functions such as finance, IT, HR and administration.",
+          "A single-facility system collects IoT measurements into a common database and monitoring station. A multi-facility system combines multiple collection units and sites at a manager/control station, sometimes involving subcontractors. Keep security and privacy boundaries explicit across those relationships.",
+          "The important record covers every asset, machine, fault, repair, usage pattern and modification. Analytics can use this history to predict needs, prevent hazards, ensure consistent decisions and optimize manpower, technology, assets and cost.",
+          "Applications include smart lighting, refrigeration, meters, fire suppression, safety/security alarms, HVAC, room reservation and stocks/supplies. Real-time room status can prevent double booking; occupancy/space analytics can estimate office square-foot utilization. The exact-utilization phrase is the assignment's named analytics application.",
+          "IoT addresses the cost barrier by increasing operating efficiency and reducing maintenance cost. Other benefits include energy management, remote monitoring, better customer experience, intrusion tracking and productivity. Challenges include balancing quality with budget, aging assets, regulatory change and security. These are possible outcomes from a well-run implementation, not automatic savings from attaching sensors."
+        ],
+        "keyPoints": [
+          "Definition: guide/manage operations and maintenance of facilities on behalf of owners.",
+          "Actors: owners, customers, tenants, contractors and subcontractors.",
+          "Cost-barrier answer: raise operating efficiency + reduce maintenance cost.",
+          "Analytics quiz example: exact square-foot utilization of office space.",
+          "Applications: lighting, HVAC, refrigeration, meters, fire suppression, alarms, booking and stock monitoring.",
+          "Predictive records help anticipate faults and preventive maintenance.",
+          "Challenges: cost, aging inventory/assets, regulations/compliance and security."
+        ],
+        "terms": [
+          {
+            "term": "HVAC",
+            "meaning": "Heating, Ventilation and Air Conditioning."
+          },
+          {
+            "term": "Preventive maintenance",
+            "meaning": "Planned actions intended to reduce failure likelihood before a fault occurs."
+          },
+          {
+            "term": "Space utilization",
+            "meaning": "How much of an available office/building area is actually used."
+          }
+        ],
+        "comparison": {
+          "headers": [
+            "Application",
+            "Measurement / record",
+            "Useful decision"
+          ],
+          "rows": [
+            [
+              "Lighting / HVAC",
+              "Occupancy, temperature, energy use",
+              "Adjust operation within comfort rules"
+            ],
+            [
+              "Room reservation",
+              "Booking and live room status",
+              "Avoid double booking"
+            ],
+            [
+              "Meters",
+              "Consumption over time",
+              "Identify waste and plan energy use"
+            ],
+            [
+              "Asset maintenance",
+              "Fault, repair and usage history",
+              "Plan service before disruption"
+            ],
+            [
+              "Office space",
+              "Occupancy and area mapping",
+              "Estimate square-foot utilization"
+            ],
+            [
+              "Safety systems",
+              "Alarm and equipment status",
+              "Review response and maintenance needs"
+            ]
+          ]
+        },
+        "diagram": {
+          "type": "flow",
+          "title": "Turn facility records into preventive action",
+          "nodes": [
+            {
+              "label": "Collect",
+              "detail": "Measure usage, condition and occupancy."
+            },
+            {
+              "label": "Consolidate",
+              "detail": "Keep consistent asset and fault records."
+            },
+            {
+              "label": "Analyze",
+              "detail": "Find waste, utilization and risk patterns."
+            },
+            {
+              "label": "Act",
+              "detail": "Plan maintenance and efficient operation."
+            }
+          ],
+          "caption": "The cost benefit comes from better operations and reduced maintenance burden, not from data collection alone."
+        },
+        "example": {
+          "title": "A lightly used office wing",
+          "steps": [
+            "Combine occupancy readings with room area and booking records.",
+            "Estimate which square feet are used and when.",
+            "Review lighting/HVAC schedules while preserving the building's requirements.",
+            "Use equipment history to plan maintenance and reduce avoidable disruption."
+          ]
+        },
+        "traps": [
+          "Facility management includes people, finance and contracts, not only building sensors.",
+          "The key's space-utilization application is only partly/not explicitly covered by the transcript.",
+          "Collected data must be consistent and useful before it can support the claimed efficiency improvements."
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "id": "w11-q1",
+        "question": "Sequence of stages in IIoT healthcare architecture?",
+        "options": [
+          "Sensing, Sending, Processing, Storing, Learning",
+          "Sensing, Processing, Sending, Learning, Storing",
+          "Sending, Sensing, Storing, Processing, Learning",
+          "Learning, Storing, Sensing, Sending, Processing"
+        ],
+        "correctIndex": 0,
+        "explanation": "The course order is sensing → sending → processing → storing → learning. The closest swapped sequence places processing before sending, contrary to this architecture.",
+        "sectionId": "w11-healthcare"
+      },
+      {
+        "id": "w11-q2",
+        "question": "ADAMM predicts asthma attack pre-symptoms using?",
+        "options": [
+          "Blood pressure, glucose and weight",
+          "Body temperature, cough rate and heart rate",
+          "Only GPS, step count and room lighting",
+          "Only oxygen consumption and barcode identity"
+        ],
+        "correctIndex": 1,
+        "explanation": "The named combination is temperature, cough rate and heart rate. Blood pressure/glucose/weight are other health measurements but not this course's ADAMM cue.",
+        "sectionId": "w11-healthcare",
+        "sourceNote": "Course device example; this is not a clinical claim about diagnostic accuracy."
+      },
+      {
+        "id": "w11-q3",
+        "question": "Challenge in IIoT healthcare?",
+        "options": [
+          "Removing every need for patient data security",
+          "Making every wearable require mains power",
+          "Designing scalable algorithms without compromising security",
+          "Using only one sensor type for all conditions"
+        ],
+        "correctIndex": 2,
+        "explanation": "Scale and security must be maintained together. Disabling security is not a solution to scaling, and healthcare requires diverse devices and measurements.",
+        "sectionId": "w11-healthcare",
+        "sourceNote": "Key-backed answer; the notes say it is only partly/not explicitly present in the transcript."
+      },
+      {
+        "id": "w11-q4",
+        "question": "Stage after optimization in the power-plant maturity model?",
+        "options": [
+          "Monitoring",
+          "Control",
+          "Manual archiving",
+          "Autonomy"
+        ],
+        "correctIndex": 3,
+        "explanation": "The sequence is monitoring, control, optimization, autonomy. Monitoring and control precede optimization.",
+        "sectionId": "w11-power"
+      },
+      {
+        "id": "w11-q5",
+        "question": "Field Area Network technologies?",
+        "options": [
+          "WiMAX, 3G and 4G wireless, Ethernet wired",
+          "Only ZigBee and 6LoWPAN inside a home",
+          "Only USB keyboards and display cables",
+          "Only NFC cup identification"
+        ],
+        "correctIndex": 0,
+        "explanation": "The FAN answer lists WiMAX/3G/4G and Ethernet. ZigBee/6LoWPAN is the HAN technology cue in these notes.",
+        "sectionId": "w11-power",
+        "sourceNote": "Course-listed technology bundle; not an exhaustive current list."
+      },
+      {
+        "id": "w11-q6",
+        "question": "AMI component that analyses smart meter data?",
+        "options": [
+          "Meter Data Acquisition System",
+          "Meter Data Management System",
+          "The passive RFID tag only",
+          "Top-of-Rack switch"
+        ],
+        "correctIndex": 1,
+        "explanation": "MDMS manages/analyzes meter data; MDAS acquires it. The distinction between acquisition and management is the exam cue.",
+        "sectionId": "w11-ami"
+      },
+      {
+        "id": "w11-q7",
+        "question": "Function of inventory management?",
+        "options": [
+          "Increasing stock-outs",
+          "Discarding all demand forecasts",
+          "Protection against stock-outs",
+          "Ensuring every warehouse is overfilled"
+        ],
+        "correctIndex": 2,
+        "explanation": "Inventory management protects against stock-outs while balancing cost. Overfilling is not the objective and can increase holding cost or spoilage.",
+        "sectionId": "w11-inventory"
+      },
+      {
+        "id": "w11-q8",
+        "question": "Semi-passive RFID tag?",
+        "options": [
+          "No internal power source of any kind",
+          "Active transmitter broadcasting periodic beacons",
+          "A barcode requiring optical line of sight",
+          "Onboard battery to power the IC but no active transmitter"
+        ],
+        "correctIndex": 3,
+        "explanation": "Semi-passive has a battery for the IC but communicates without an active transmitter. A fully passive tag is reader-powered; an active beacon transmits itself.",
+        "sectionId": "w11-rfid"
+      },
+      {
+        "id": "w11-q9",
+        "question": "'Comprehensive visibility' in RFID inventory management?",
+        "options": [
+          "Inventory levels, expiration dates, item location and forecast demand",
+          "Only the product's price",
+          "Only a reader's battery level",
+          "Only the room temperature"
+        ],
+        "correctIndex": 0,
+        "explanation": "Comprehensive visibility combines levels, expiry, locations and demand forecast. Temperature is a useful condition measurement but is not the full keyed visibility definition.",
+        "sectionId": "w11-inventory"
+      },
+      {
+        "id": "w11-q10",
+        "question": "Availability in software security?",
+        "options": [
+          "Encrypted packets divided by all packets",
+          "Ratio of time of functioning to the total time",
+          "Correct passwords divided by all passwords",
+          "Stored bytes divided by memory capacity"
+        ],
+        "correctIndex": 1,
+        "explanation": "The key defines availability as functioning time / total time. Password or encryption ratios measure different things.",
+        "sectionId": "w11-safety"
+      },
+      {
+        "id": "w11-q11",
+        "question": "Purpose of network segmentation?",
+        "options": [
+          "Connect every device with unrestricted access",
+          "Remove all network policies",
+          "Divide the network into smaller parts and explicitly enforce security policies",
+          "Replace all physical machines with barcodes"
+        ],
+        "correctIndex": 2,
+        "explanation": "Segmentation makes smaller areas and enforces policies at their boundaries. Merely dividing a diagram without access enforcement misses the protection purpose.",
+        "sectionId": "w11-safety"
+      },
+      {
+        "id": "w11-q12",
+        "question": "How IoT addresses the cost barrier in facility management?",
+        "options": [
+          "By ignoring maintenance completely",
+          "By raising energy use in every room",
+          "By removing every asset record",
+          "By increasing operating efficiency and reducing maintenance cost"
+        ],
+        "correctIndex": 3,
+        "explanation": "Better operations and maintenance can address cost. Ignoring maintenance can increase future failures and expense rather than improve efficiency.",
+        "sectionId": "w11-facilities"
+      },
+      {
+        "id": "w11-q13",
+        "question": "Application of analytics in facility management?",
+        "options": [
+          "Determining the exact square-foot utilization of office space",
+          "Scheduling only barcode printing",
+          "Creating a dictionary in Julia only",
+          "Routing BCube packets only"
+        ],
+        "correctIndex": 0,
+        "explanation": "Space-utilization analysis is the keyed facility application. Julia and routing may be tools elsewhere but are not the application asked here.",
+        "sectionId": "w11-facilities",
+        "sourceNote": "Key-backed example; the notes say this is only partly/not explicitly present in the transcript."
+      },
+      {
+        "id": "w11-q14",
+        "question": "Two types of active RFID tags?",
+        "options": [
+          "Passive and semi-passive",
+          "Transponders and beacons",
+          "QR and barcode labels",
+          "NameNodes and DataNodes"
+        ],
+        "correctIndex": 1,
+        "explanation": "The active-tag classification in the key is transponders and beacons. Passive and semi-passive are separate tag power/communication categories, not two active types.",
+        "sectionId": "w11-rfid",
+        "sourceNote": "Assignment-key taxonomy; only partly/not explicitly explained in the transcript."
+      },
+      {
+        "id": "w11-q15",
+        "question": "Mobile-device security component that spots attacks early and stops spread across branches?",
+        "options": [
+          "A smart electricity meter",
+          "A room-booking calendar",
+          "Secure web gateway",
+          "A passive barcode sticker"
+        ],
+        "correctIndex": 2,
+        "explanation": "Secure web gateway is the keyed component in the described cloud-integrated security architecture. A meter or calendar does not perform this web-security control role.",
+        "sectionId": "w11-safety",
+        "sourceNote": "Key-backed architecture-specific capability, not a universal guarantee of every gateway."
+      }
+    ],
+    "revision": [
+      "Healthcare sequence = sensing, sending, processing, storing, learning.",
+      "ADAMM = body temperature, cough rate, heart rate; challenge = scalable algorithms without compromised security.",
+      "QardioCore ECG; Dexcom glucose; iHealth BP5 blood pressure; Kinsa temperature.",
+      "Power maturity = monitoring, control, optimization, autonomy.",
+      "FAN = WiMAX/3G/4G wireless, Ethernet wired; HAN = ZigBee/6LoWPAN.",
+      "AMI: MDAS gathers, MDMS analyzes.",
+      "Inventory protects against stock-outs; lead time is order-to-delivery delay.",
+      "Visibility = inventory levels, expiry dates, item locations, forecast demand.",
+      "Passive = reader-powered; active = own transmitter; semi-passive = battery for IC, no active transmitter.",
+      "Active tag types in the key = transponders and beacons.",
+      "Availability = functioning time / total time; segmentation = divide and enforce policy.",
+      "Secure web gateway = the keyed mobile-security/cross-branch control.",
+      "Facility cost = higher operating efficiency + lower maintenance cost; analytics example = office square-foot utilization."
+    ]
+  }
+]
